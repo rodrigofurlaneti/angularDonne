@@ -1,0 +1,29 @@
+<section>
+  <mat-form-field appearance="fill">
+    <mat-label>Nova forma de pagamento</mat-label>
+    <input id="formOfPaymentName" name="formOfPaymentName" [(ngModel)]="formOfPaymentModel.formOfPaymentName" matInput />
+  </mat-form-field>
+
+  <div class="example-button-row">
+    <div class="example-flex-container">
+      <div class="example-button-container">
+        <div class="example-label">
+          Voltar
+          <button mat-raised-button mat-mini-fab matTooltip="Voltar para a pagina principal." (click)="reply()"
+            color="primary" aria-label="Example icon button with a menu icon">
+            <mat-icon>reply_all</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="example-button-container">
+        <div class="example-label">
+          Salvar
+          <button mat-raised-button mat-mini-fab matTooltip="Salvar o novo perfil." (click)="save()" color="primary"
+            aria-label="Example icon button with a menu icon">
+            <mat-icon>save_alt</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

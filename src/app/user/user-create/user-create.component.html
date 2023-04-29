@@ -1,0 +1,57 @@
+<div class="container">
+<mat-form-field appearance="fill">
+  <mat-label>Nome da novo usuário</mat-label>
+  <input id="userName" name="userName" matInput [(ngModel)]="user.userName">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Senha</mat-label>
+  <input id="userPassword" name="userPassword" matInput [(ngModel)]="user.userPassword">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Loja</mat-label>
+  <mat-select #matSelect id="dropDownListStore" name="dropDownListStore" [(ngModel)]="user.store">
+    <mat-option [value]="element" *ngFor="let element of dataSourceStore" >
+      {{ element.storeName }}
+     </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Perfil do novo usuário</mat-label>
+  <mat-select #matSelect id="dropDownListProfile" name="dropDownListProfile" [(ngModel)]="user.profile">
+    <mat-option [value]="element" *ngFor="let element of dataSource" >
+      {{ element.profileName }}
+     </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<section>
+  <div class="example-button-row">
+    <div class="example-flex-container">
+      <div class="example-button-container">
+        <div class="example-label">Voltar
+          <button mat-raised-button
+                mat-mini-fab
+                matTooltip="Voltar para a pagina principal."
+                (click)="reply()" 
+                 color="primary" 
+                aria-label="Example icon button with a menu icon">
+            <mat-icon>reply_all</mat-icon>
+          </button>
+        </div>  
+      </div>
+      <div class="example-button-container">
+        <div class="example-label">Salvar
+          <button mat-raised-button
+                mat-mini-fab
+                matTooltip="Salvar o novo perfil."
+                (click)="save()" 
+                color="primary" 
+                aria-label="Example icon button with a menu icon">
+            <mat-icon>save_alt</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

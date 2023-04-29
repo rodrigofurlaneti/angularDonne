@@ -1,0 +1,95 @@
+<input type="hidden" id="categoryIdModel" name="categoryIdModel" value="{{formofpaymentModel.ProductId}}">
+
+
+
+<div class="container">
+  <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nome do produto</th>
+          <td mat-cell (click)="getById(element.formofpaymentId)" *matCellDef="let element">
+            {{element.formofpaymentName}}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </ng-template>
+
+  <ng-template #isIdGreaterThanZero>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome do novo produto</mat-label>
+        <input id="nameProduct" name="nameProduct" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Nova categoria do produto</mat-label>
+        <mat-select #matSelect id="dropDownListCategory" name="dropDownListCategory" [(ngModel)]="formofpaymentModel.CategoryName" (selectionChange)="change($event.value)">
+          <mat-option [value]="element" *ngFor="let element of dataSourceCategory">
+            {{ element.categoryName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Novo custo do produto</mat-label>
+        <input id="CostPriceProduct" name="CostPriceProduct" matInput type="" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Novo custo de venda do produto</mat-label>
+        <input id="SalePriceProduct" name="SalePriceProduct" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Nova quantidade em estoque</mat-label>
+        <input id="QuantityStock" name="QuantityStock" matInput />
+      </mat-form-field>
+      <div class="checkboxs">
+        <div class="example-section" *ngFor="let item of items">
+          <mat-checkbox  class="example-margin" [checked]="item.selected" (change)="onChange($event)">{{item.label}}</mat-checkbox>
+        </div>
+        <div class="example-section" *ngFor="let status of status">
+          <mat-checkbox  class="example-margin" [checked]="status.selected" (change)="onChangeStatus($event)">{{status.label}}</mat-checkbox>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <div class="example-label">Atualizar
+              <button mat-raised-button
+                    mat-mini-fab
+                    matTooltip="Atualizar a categoria." 
+                    (click)="update()" 
+                    color="primary" 
+                    aria-label="Example icon button with a menu icon">
+                <mat-icon>sync</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ng-template>
+  
+  <section>
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <div class="example-button-container">
+          <div class="example-label">Voltar
+            <button mat-raised-button
+                  mat-mini-fab
+                  matTooltip="Voltar para a pagina principal."
+                  (click)="reply()" 
+                   color="primary" 
+                  aria-label="Example icon button with a menu icon">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+          </div>  
+        </div>
+        </div>
+    </div>
+  </section>
+</div>

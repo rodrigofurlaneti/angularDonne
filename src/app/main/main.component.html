@@ -1,0 +1,202 @@
+<img class="logofurlaneti" src="assets/logo_footer.webp" alt="" />
+
+<button mat-button [matMenuTriggerFor]="menuCaregory" matTooltip="Acessar o menu de categorias de produtos."> <mat-icon
+    class="icon">dashboard </mat-icon><span class="user-type"> Categoria</span></button>
+<mat-menu #menuCaregory="matMenu" class="custom">
+  <button matTooltip="Menu para adicionar mais uma categoria." [matTooltipPosition]="'right'"
+    (click)="activeCategoryCreate()" mat-menu-item>
+    <mat-icon>exposure_plus_1</mat-icon>
+    <span>Adicionar</span>
+
+  </button>
+  <button matTooltip="Menu para atualizar uma categoria." [matTooltipPosition]="'right'"
+    (click)="activeCategoryUpdate()" mat-menu-item>
+    <mat-icon>sync</mat-icon>
+    <span>Atualizar</span>
+  </button>
+  <button matTooltip="Menu para excluir uma categoria." [matTooltipPosition]="'right'" (click)="activeCategoryDelete()"
+    mat-menu-item>
+    <mat-icon>delete_forever</mat-icon>
+    <span>Excluir</span>
+  </button>
+  <button matTooltip="Menu para mostrar a lista de categorias." [matTooltipPosition]="'right'"
+    (click)="activeCategoryList()" mat-menu-item>
+    <mat-icon>list_alt</mat-icon>
+    <span>Listar</span>
+  </button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="menuBuyer" matTooltip="Acessar o menu de clientes."> <mat-icon class="icon">
+    supervisor_account </mat-icon><span class="user-type"> Clientes</span></button>
+<mat-menu #menuBuyer="matMenu" class="custom">
+  <button matTooltip="Menu para adicionar mais um cliente no sistema." [matTooltipPosition]="'right'"
+    (click)="activeBuyerCreate()" mat-menu-item>
+    <mat-icon>exposure_plus_1</mat-icon>
+    <span>Adicionar</span>
+  </button>
+  <button matTooltip="Menu para atualizar mais um cliente no sistema." [matTooltipPosition]="'right'"
+    (click)="activeBuyerUpdate()" mat-menu-item>
+    <mat-icon>sync</mat-icon>
+    <span>Atualizar</span>
+  </button>
+  <button matTooltip="Menu para excluir um cliente do sistema." [matTooltipPosition]="'right'"
+    (click)="activeBuyerDelete()" mat-menu-item>
+    <mat-icon>delete_forever</mat-icon>
+    <span>Excluir</span>
+  </button>
+  <button matTooltip="Menu para mostrar a lista de clientes no sistema." [matTooltipPosition]="'right'"
+    (click)="activeBuyerList()" mat-menu-item>
+    <mat-icon>list_alt</mat-icon>
+    <span>Listar</span>
+  </button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="menuStore" matTooltip="Acessar o menu de lojas cadastradas."> <mat-icon
+    class="icon">shopping_cart </mat-icon><span class="user-type"> Loja</span></button>
+<mat-menu #menuStore="matMenu" class="custom">
+  <button matTooltip="Menu para adicionar mais uma loja no sistema." [matTooltipPosition]="'right'"
+    (click)="activeStoreCreate()" mat-menu-item>
+    <mat-icon>exposure_plus_1</mat-icon>
+    <span>Adicionar</span>
+  </button>
+  <button matTooltip="Menu para excluir uma loja do sistema." [matTooltipPosition]="'right'"
+    (click)="activeStoreDelete()" mat-menu-item>
+    <mat-icon>delete_forever</mat-icon>
+    <span>Excluir</span>
+  </button>
+  <button matTooltip="Menu para mostrar a lista de lojas no sistema." [matTooltipPosition]="'right'"
+    (click)="activeStoreList()" mat-menu-item>
+    <mat-icon>list_alt</mat-icon>
+    <span>Listar</span>
+  </button>
+  <button matTooltip="Menu para atualizar uma loja no sistema." [matTooltipPosition]="'right'"
+    (click)="activeStoreUpdate()" mat-menu-item>
+    <mat-icon>sync</mat-icon>
+    <span>Atualizar</span>
+  </button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="menuProduct" matTooltip="Acessar o menu de produtos cadastrados."> <mat-icon
+    class="icon">local_offer </mat-icon><span class="user-type"> Produtos</span></button>
+<mat-menu #menuProduct="matMenu" class="custom">
+  <button matTooltip="Menu para adicionar mais um produto no sistema." [matTooltipPosition]="'right'"
+    (click)="activeProductCreate()" mat-menu-item>
+    <mat-icon>exposure_plus_1</mat-icon>
+    <span>Adicionar</span>
+  </button>
+  <button matTooltip="Menu para atualizar um produto no sistema." [matTooltipPosition]="'right'"
+    (click)="activeProductUpdate()" mat-menu-item>
+    <mat-icon>sync</mat-icon>
+    <span>Atualizar</span>
+  </button>
+  <button matTooltip="Menu para excluir um produto do sistema." [matTooltipPosition]="'right'"
+    (click)="activeProductDelete()" mat-menu-item>
+    <mat-icon>delete_forever</mat-icon>
+    <span>Excluir</span>
+  </button>
+  <button matTooltip="Menu para mostrar a lista de produtos no sistema." [matTooltipPosition]="'right'"
+    (click)="activeProductList()" mat-menu-item>
+    <mat-icon>list_alt</mat-icon>
+    <span>Listar</span>
+  </button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="menuOrder" matTooltip="Acessar o menu de pedidos."> <mat-icon
+    class="icon">reorder </mat-icon><span class="user-type"> Pedido</span></button>
+<mat-menu #menuOrder="matMenu" class="custom">
+  <button matTooltip="Menu para adicionar mais um pedido no sistema." [matTooltipPosition]="'right'"
+    (click)="activeOrderCreate()" mat-menu-item>
+    <mat-icon>exposure_plus_1</mat-icon>
+    <span>Adicionar</span>
+  </button>
+  <button matTooltip="Menu para atualizar um pedido no sistema." [matTooltipPosition]="'right'"
+    (click)="activeOrderUpdate()" mat-menu-item>
+    <mat-icon>sync</mat-icon>
+    <span>Atualizar</span>
+  </button>
+  <button matTooltip="Menu para excluir um pedido no sistema." [matTooltipPosition]="'right'"
+    (click)="activeOrderDelete()" mat-menu-item>
+    <mat-icon>delete_forever</mat-icon>
+    <span>Excluir</span>
+  </button>
+  <button matTooltip="Menu para mostrar lista de pedidos no sistema." [matTooltipPosition]="'right'"
+    (click)="activeOrderList()" mat-menu-item>
+    <mat-icon>list_alt</mat-icon>
+    <span>Listar</span>
+  </button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="menuProfile" matTooltip="Acessar o menu de perfis no sistema."> <mat-icon
+    class="icon">account_box </mat-icon><span class="user-type"> Perfil</span></button>
+<mat-menu #menuProfile="matMenu" class="custom">
+  <button matTooltip="Menu para adicionar mais um perfil no sistema." [matTooltipPosition]="'right'"
+    (click)="activeProfileCreate()" mat-menu-item>
+    <mat-icon>exposure_plus_1</mat-icon>
+    <span>Adicionar</span>
+  </button>
+  <button matTooltip="Menu para atualizar um perfil no sistema." [matTooltipPosition]="'right'"
+    (click)="activeProfileUpdate()" mat-menu-item>
+    <mat-icon>sync</mat-icon>
+    <span>Atualizar</span>
+  </button>
+  <button matTooltip="Menu para excluir um perfil no sistema." [matTooltipPosition]="'right'"
+    (click)="activeProfileDelete()" mat-menu-item>
+    <mat-icon>delete_forever</mat-icon>
+    <span>Excluir</span>
+  </button>
+  <button matTooltip="Menu para mostrar lista de perfis no sistema." [matTooltipPosition]="'right'"
+    (click)="activeProfileList()" mat-menu-item>
+    <mat-icon>list_alt</mat-icon>
+    <span>Listar</span>
+  </button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="menuUser" matTooltip="Acessar o menu das formas de pagamentos."> <mat-icon
+    class="icon">payment </mat-icon> <span class="user-type"> Pagamentos</span></button>
+<mat-menu #menuUser="matMenu" class="custom">
+  <button matTooltip="Menu para adicionar mais um usuário no sistema." [matTooltipPosition]="'right'"
+    (click)="activeFormofpaymentCreate()" mat-menu-item>
+    <mat-icon>exposure_plus_1</mat-icon>
+    <span>Adicionar</span>
+  </button>
+  <button matTooltip="Menu para atualizar um usuário no sistema." [matTooltipPosition]="'right'"
+    (click)="activeUserUpdate()" mat-menu-item>
+    <mat-icon>sync</mat-icon>
+    <span>Atualizar</span>
+  </button>
+  <button matTooltip="Menu para excluir um usuário do sistema." [matTooltipPosition]="'right'"
+    (click)="activeUserDelete()" mat-menu-item>
+    <mat-icon>delete_forever</mat-icon>
+    <span>Excluir</span>
+  </button>
+  <button matTooltip="Menu para mostrar lista de usuários no sistema." [matTooltipPosition]="'right'"
+    (click)="activeFormofpaymentList()" mat-menu-item>
+    <mat-icon>list_alt</mat-icon>
+    <span>Listar</span>
+  </button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="menuUser" matTooltip="Acessar o menu de usuarios."> <mat-icon
+    class="icon">account_circle </mat-icon> <span class="user-type"> Usuário</span></button>
+<mat-menu #menuUser="matMenu" class="custom">
+  <button matTooltip="Menu para adicionar mais um usuário no sistema." [matTooltipPosition]="'right'"
+    (click)="activeUserCreate()" mat-menu-item>
+    <mat-icon>exposure_plus_1</mat-icon>
+    <span>Adicionar</span>
+  </button>
+  <button matTooltip="Menu para atualizar um usuário no sistema." [matTooltipPosition]="'right'"
+    (click)="activeUserUpdate()" mat-menu-item>
+    <mat-icon>sync</mat-icon>
+    <span>Atualizar</span>
+  </button>
+  <button matTooltip="Menu para excluir um usuário do sistema." [matTooltipPosition]="'right'"
+    (click)="activeUserDelete()" mat-menu-item>
+    <mat-icon>delete_forever</mat-icon>
+    <span>Excluir</span>
+  </button>
+  <button matTooltip="Menu para mostrar lista de usuários no sistema." [matTooltipPosition]="'right'"
+    (click)="activeUserList()" mat-menu-item>
+    <mat-icon>list_alt</mat-icon>
+    <span>Listar</span>
+  </button>
+</mat-menu>

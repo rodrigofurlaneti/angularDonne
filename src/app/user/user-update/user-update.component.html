@@ -1,0 +1,75 @@
+<div class="container">
+<input type="hidden" id="userIdModel" name="userIdModel" value="{{userModel.userId}}">
+
+<ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nome dos usuários</th>
+        <td mat-cell (click)="getById(element.userId)" *matCellDef="let element">
+          {{element.userName}}
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</ng-template>
+
+<ng-template #isIdGreaterThanZero>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Nome da novo usuário</mat-label>
+      <input id="nameUser" name="nameUser" value="{{userModel.userName}}" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input id="userPassword" name="userPassword" value="{{userModel.userPassword}}" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-select #matSelect id="dropDownListProfile" name="dropDownListProfile">
+        <mat-option [value]="elementProfile.profileId" *ngFor="let elementProfile of dataSourceProfile" >
+          {{ elementProfile.profileName }}
+         </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <section>
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <div class="example-button-container">
+          <div class="example-label">Atualizar
+            <button mat-raised-button
+                  mat-mini-fab
+                  matTooltip="Atualizar o usuário." 
+                  (click)="update()" 
+                  color="primary" 
+                  aria-label="Example icon button with a menu icon">
+              <mat-icon>sync</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<section>
+  <div class="example-button-row">
+    <div class="example-flex-container">
+      <div class="example-button-container">
+        <div class="example-label">Voltar
+          <button mat-raised-button
+                mat-mini-fab
+                matTooltip="Voltar para a pagina principal."
+                (click)="reply()" 
+                 color="primary" 
+                aria-label="Example icon button with a menu icon">
+            <mat-icon>reply_all</mat-icon>
+          </button>
+        </div>  
+      </div>
+      </div>
+  </div>
+</section>
+</div>

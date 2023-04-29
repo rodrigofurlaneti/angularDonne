@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-form-field appearance="fill">
+    <mat-label>Cliente</mat-label>
+    <mat-select #matSelect id="dropDownListBuyer" name="dropDownListBuyer" [(ngModel)]="order.clientName" (selectionChange)="change($event.value)">
+      <mat-option [value]="element" *ngFor="let element of dataSourceStore " >
+        {{ element.buyerName }}
+       </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Produto</mat-label>
+    <mat-select #matSelect id="dropDownListProduct" name="dropDownListProduct" [(ngModel)]="order.productName" (selectionChange)="changeProduct($event.value)">
+      <mat-option [value]="element" *ngFor="let element of dataSourceProducts " >
+        {{ element.productName  }}
+       </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Quantidade</mat-label>
+    <input id="orderAmount" name="orderAmount" matInput />
+  </mat-form-field>
+
+<section>
+  <div class="example-button-row">
+    <div class="example-flex-container">
+      <div class="example-button-container">
+        <div class="example-label">Voltar
+          <button mat-raised-button
+                mat-mini-fab
+                matTooltip="Voltar para a pagina principal."
+                (click)="reply()" 
+                 color="primary" 
+                aria-label="Example icon button with a menu icon">
+            <mat-icon>reply_all</mat-icon>
+          </button>
+        </div>  
+      </div>
+      <div class="example-button-container">
+        <div class="example-label">Salvar
+          <button mat-raised-button
+                mat-mini-fab
+                matTooltip="Salvar o novo perfil."
+                (click)="save()" 
+                color="primary" 
+                aria-label="Example icon button with a menu icon">
+            <mat-icon>save_alt</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

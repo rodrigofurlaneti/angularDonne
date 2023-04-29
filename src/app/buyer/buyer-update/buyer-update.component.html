@@ -1,0 +1,67 @@
+<input type="hidden" id="clientIdModel" name="clientIdModel" value="{{buyerModel.buyerId}}">
+
+
+
+<div class="container">
+  <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nome do Cliente</th>
+          <td mat-cell (click)="getById(element.buyerId)" *matCellDef="let element">
+            {{element.buyerName}}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </ng-template>
+
+  <ng-template #isIdGreaterThanZero>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome do cliente</mat-label>
+        <input id="clientName" name="clientName" value="{{buyerModel.buyerName}}" matInput>
+      </mat-form-field>
+    </div>
+
+    <section>
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <div class="example-label">Atualizar
+              <button mat-raised-button
+                    mat-mini-fab
+                    matTooltip="Atualizar a categoria." 
+                    (click)="update()" 
+                    color="primary" 
+                    aria-label="Example icon button with a menu icon">
+                <mat-icon>sync</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ng-template>
+  
+  <section>
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <div class="example-button-container">
+          <div class="example-label">Voltar
+            <button mat-raised-button
+                  mat-mini-fab
+                  matTooltip="Voltar para a pagina principal."
+                  (click)="reply()" 
+                   color="primary" 
+                  aria-label="Example icon button with a menu icon">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+          </div>  
+        </div>
+        </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,40 @@
+<section>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome da nova categoria</mat-label>
+    <input id="categoryName" name="categoryName" [(ngModel)]="categoryModel.categoryName" matInput />
+  </mat-form-field>
+  <div class="example-button-row">
+    <div class="example-flex-container">
+      <div class="example-button-container">
+        <div class="example-label">
+          Voltar
+          <button
+            mat-raised-button
+            mat-mini-fab
+            matTooltip="Voltar para a pagina principal."
+            (click)="reply()"
+            color="primary"
+            aria-label="Example icon button with a menu icon"
+          >
+            <mat-icon>reply_all</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="example-button-container">
+        <div class="example-label">
+          Salvar
+          <button
+            mat-raised-button
+            mat-mini-fab
+            matTooltip="Salvar o novo perfil."
+            (click)="save()"
+            color="primary"
+            aria-label="Example icon button with a menu icon"
+          >
+            <mat-icon>save_alt</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

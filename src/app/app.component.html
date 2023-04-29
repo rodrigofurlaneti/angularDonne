@@ -1,0 +1,72 @@
+<ng-container *ngIf="!access" class="ng-container">
+  <div class="mat-form">
+    <div class="acess-wrapper">
+      <span class="material-symbols-outlined"> account_circle </span>
+      <h1>ACESSO:</h1>
+    </div>
+    <mat-form-field>
+      <mat-label>Loja</mat-label>
+      <input
+        matInput
+        type="text"
+        id="storeName"
+        name="storeName"
+        (blur)="addStoreName($event)"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Usuário </mat-label>
+      <input
+        matInput
+        type="text"
+        id="userName"
+        name="userName"
+        (blur)="addUserName($event)"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <input
+        matInput
+        type="password"
+        id="userPassword"
+        name="userPassword"
+        [type]="hide ? 'password' : 'text'"
+        (blur)="addUserPassword($event)"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <section>
+      <button
+        class="example-button-row"
+        matTooltip="Acessar o sistema."
+        (click)="validar()"
+        type="button"
+      >
+        <span>ACESSAR</span>
+      </button>
+    </section>
+  </div>
+</ng-container>
+<ng-container *ngIf="access">
+  <router-outlet> </router-outlet>
+</ng-container>
+
+<footer>
+  <div class="contant">
+    <p>
+      © 2011, Furlaneti Suporte em Inf. LTDA - CNPJ 14.486.046/0001-77 
+      <br>
+      Versão: 1.0.0
+    </p>
+    <img class="logoaws" src="assets/logo_aws.webp" alt="" />
+  </div>
+</footer>

@@ -1,0 +1,70 @@
+.container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 1rem;
+  border: 2px solid #fff;
+  width: 360px;
+  max-height: 560px;
+  overflow-y: auto;
+  background-color: #1b1b1b65;
+  backdrop-filter: blur(10px);
+  box-shadow: 2px 2px 8px #000;
+  border-radius: 8px;
+  margin: auto;
+  transform: translateY(35vh);
+}
+
+.example-label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-elevation-z8{
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.mat-form-field{
+  display: block;
+}
+
+
+.mat-row .mat-cell {
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+  background-color: #7B1FA2;
+}
+
+.mat-table{
+  background-color: transparent;
+}
+
+.demo-table {
+    width: 100%;
+  }
+  
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+  
+.example-flex-container{
+  padding-top: 10px;
+  padding-left: 20px;
+}
