@@ -8,4 +8,4 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class FormofpaymentUpdateModule { }
+export class FormOfPaymentUpdateModule { }

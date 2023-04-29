@@ -137,11 +137,20 @@ export class MainComponent implements OnInit{
     this.router.navigate(['product-update']);
   }
 
-  public activeFormofpaymentCreate() {
+  public activeFormOfPaymentCreate() {
     this.router.navigate(['formofpayment-create']);
   }
 
-  public activeFormofpaymentList() {
+  public activeFormOfPaymentList() {
     this.router.navigate(['formofpayment-list']);
   }
+
+  public activeFormOfPaymentDelete() {
+    this.router.navigate(['formofpayment-delete']);
+  }
+
+  public activeFormOfPaymentUpdate() {
+    this.router.navigate(['formofpayment-update']);
+  }
+
 }

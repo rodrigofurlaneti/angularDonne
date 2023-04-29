@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { FormofpaymentListService } from './formofpayment-list.service';
+import { FormOfPaymentListService } from './formofpayment-list.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 
@@ -11,11 +11,11 @@ let ELEMENT_DATA: FormOfPaymentModel[];
   templateUrl: './formofpayment-list.component.html',
   styleUrls: ['./formofpayment-list.component.css']
 })
-export class FormofpaymentListComponent implements OnInit {
+export class FormOfPaymentListComponent implements OnInit {
 
   displayedColumns: string[] = ['name'];
 
-  constructor(private formofpaymentListService: FormofpaymentListService,
+  constructor(private formOfPaymentListService: FormOfPaymentListService,
               private _snackBar: MatSnackBar, 
               private router: Router) { }
   
@@ -24,12 +24,12 @@ export class FormofpaymentListComponent implements OnInit {
   }
 
   list() {
-    this.formofpaymentListService.list().subscribe(list => {
+    this.formOfPaymentListService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
     }, err => {
-      console.log('Erro ao listar as categorias', err);
+      this._snackBar.open('Erro ao listar as formas de pagamentos!', 'Voltar');
+      console.log('Erro ao listar as formas de pagamentos!', err);
     })
   }
 

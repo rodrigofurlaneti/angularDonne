@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FormofpaymentModel } from 'src/interface/formofpayment.interface';
-import { ConditionalExpr } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FormofpaymentDeleteService {
+export class FormOfPaymentDeleteService {
 
   private routeAws = 'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
 

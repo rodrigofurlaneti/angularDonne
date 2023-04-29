@@ -31,14 +31,14 @@ import { OrderCreateComponent } from './order/order-create/order-create.componen
 import { OrderListComponent } from './order/order-list/order-list.component';
 import { OrderDeleteComponent } from './order/order-delete/order-delete.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
-import { ProductCreateService } from './product/product-create/product-create.service';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
 import { OrderUpdateComponent } from './order/order-update/order-update.component';
-
-import { FormofpaymentCreateComponent } from './formofpayment/formofpayment-create/formofpayment-create.component';
-import { FormofpaymentListComponent } from './formofpayment/formofpayment-list/formofpayment-list.component';
+import { FormOfPaymentCreateComponent } from './formofpayment/formofpayment-create/formofpayment-create.component';
+import { FormOfPaymentListComponent } from './formofpayment/formofpayment-list/formofpayment-list.component';
+import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-delete/formofpayment-delete.component';
+import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-update/formofpayment-update.component';
 
 export const routes: Routes = [
   { path: '', component: AppComponent },
@@ -71,10 +71,10 @@ export const routes: Routes = [
   { path: 'product-list', component: ProductListComponent },
   { path: 'product-delete', component: ProductDeleteComponent },
   { path: 'product-update', component: ProductUpdateComponent },
-  { path: 'formofpayment-create', component: FormofpaymentCreateComponent },
-  { path: 'formofpayment-list', component: FormofpaymentListComponent },
-
-
+  { path: 'formofpayment-create', component: FormOfPaymentCreateComponent },
+  { path: 'formofpayment-list', component: FormOfPaymentListComponent },
+  { path: 'formofpayment-delete', component: FormOfPaymentDeleteComponent },
+  { path: 'formofpayment-update', component: FormOfPaymentUpdateComponent }
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormofpaymentCreateService } from './formofpayment-create.service';
+import { FormOfPaymentCreateService } from './formofpayment-create.service';
 import { FormOfPaymentModel } from '../../../interface/formofpayment.interface';
 import { CategoryModel } from 'src/interface/category.interface';
 import { MatSelect } from '@angular/material/select';
@@ -20,7 +20,7 @@ let ELEMENT_DATA_Category: CategoryModel[];
   styleUrls: ['./formofpayment-create.component.css']
 })
 
-export class FormofpaymentCreateComponent {
+export class FormOfPaymentCreateComponent {
 
   needToPrint: boolean = false;
   formofpaymentStatus: boolean = false;
@@ -35,7 +35,7 @@ export class FormofpaymentCreateComponent {
 
   selectedCategory: CategoryModel = new CategoryModel();
 
-  constructor(private formofpaymentCreateService: FormofpaymentCreateService,
+  constructor(private formOfPaymentCreateService: FormOfPaymentCreateService,
     private _snackBar: MatSnackBar, private readonly router: Router, 
     private storeNameService: StoreNameService,
     private storeIdService: StoreIdService,
@@ -52,11 +52,14 @@ export class FormofpaymentCreateComponent {
       this._snackBar.open('Não está preenchido o campo nome da forma de pagamento!', 'Voltar');
     }
     if (this.formOfPaymentModel.formOfPaymentName != '') {
+      this.formOfPaymentModel.dateInsert = new Date().toISOString();
+      this.formOfPaymentModel.dateUpdate = new Date().toISOString();
       this.formOfPaymentModel.storeId = parseInt(this.storeIdService.storeId);
       this.formOfPaymentModel.storeName = this.storeNameService.storeName;
       this.formOfPaymentModel.userId = parseInt(this.userIdService.userID);
       this.formOfPaymentModel.userName = this.userNameService.userName;
-      this.formofpaymentCreateService.save(this.formOfPaymentModel).subscribe(formofpayment => {
+      console.log(this.formOfPaymentModel);
+      this.formOfPaymentCreateService.save(this.formOfPaymentModel).subscribe(formofpayment => {
         this._snackBar.open('Nova forma de pagamento cadastrada com sucesso!', 'Voltar');
         this.router.navigate(['formofpayment-list']);
       }, err => {

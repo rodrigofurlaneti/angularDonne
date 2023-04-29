@@ -6,7 +6,7 @@ import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class FormofpaymentCreateService {
+export class FormOfPaymentCreateService {
 
   private routeAws = 'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
 

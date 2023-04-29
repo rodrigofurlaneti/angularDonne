@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FormofpaymentListService {
+export class FormOfPaymentListService {
 
   private routeAws = 'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
 

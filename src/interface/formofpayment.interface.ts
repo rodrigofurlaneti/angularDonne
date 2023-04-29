@@ -1,8 +1,8 @@
 export interface IFormOfPaymentInterface {
     formOfPaymentId: number;
     formOfPaymentName: string;
-    dateInsert: Date,
-    dateUpdate: Date,
+    dateInsert: string,
+    dateUpdate: string,
     storeId: number;
     storeName: string;
     userId: number;
@@ -11,11 +11,11 @@ export interface IFormOfPaymentInterface {
 export class FormOfPaymentModel implements IFormOfPaymentInterface {
     formOfPaymentId: number = 0;
     formOfPaymentName: string = '';
-    dateInsert: Date = new Date();
-    dateUpdate: Date = new Date();
+    dateInsert: string = '';
+    dateUpdate: string = '';
     storeId: number = 0;
-    storeName: string = " ";
+    storeName: string = '';
     userId: number = 0;
-    userName: string = " ";
+    userName: string = '';
     constructor(){}
   }

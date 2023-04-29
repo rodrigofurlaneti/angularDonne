@@ -11,4 +11,4 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule
   ]
 })
-export class FormofpaymentCreateModule { }
+export class FormOfPaymentCreateModule { }

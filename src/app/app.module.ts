@@ -76,8 +76,10 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
 
-import { FormofpaymentCreateComponent } from './formofpayment/formofpayment-create/formofpayment-create.component';
-import { FormofpaymentListComponent } from './formofpayment/formofpayment-list/formofpayment-list.component';
+import { FormOfPaymentCreateComponent } from './formofpayment/formofpayment-create/formofpayment-create.component';
+import { FormOfPaymentListComponent } from './formofpayment/formofpayment-list/formofpayment-list.component';
+import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-delete/formofpayment-delete.component';
+import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-update/formofpayment-update.component';
 
 @NgModule({
   declarations: [
@@ -111,8 +113,10 @@ import { FormofpaymentListComponent } from './formofpayment/formofpayment-list/f
     ProductListComponent,
     ProductDeleteComponent,
     ProductUpdateComponent,
-    FormofpaymentCreateComponent,
-    FormofpaymentListComponent,
+    FormOfPaymentCreateComponent,
+    FormOfPaymentListComponent,
+    FormOfPaymentDeleteComponent,
+    FormOfPaymentUpdateComponent
   ],
   imports: [
     AppRoutingModule,
