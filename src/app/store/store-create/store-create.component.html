@@ -1,15 +1,15 @@
 <div class="container">
 <mat-form-field appearance="fill">
   <mat-label>Nome da nova loja</mat-label>
-  <input id="storeName" name="storeName" [value]='storeModel.storeName' matInput>
+  <input id="storeName" name="storeName" [(ngModel)]="storeModel.storeName" matInput>
 </mat-form-field>
 <mat-form-field appearance="fill">
   <mat-label>Cnpj</mat-label>
-  <input id="storeCnpj" name="storeCnpj" [value]='storeModel.storeCnpj' matInput>
+  <input id="storeCnpj" name="storeCnpj" [(ngModel)]="storeModel.storeCnpj" matInput>
 </mat-form-field>
 <mat-form-field appearance="fill">
   <mat-label>Endereço</mat-label>
-  <input id="storeAddress" name="storeAddress" [value]='storeModel.storeAddress' matInput>
+  <input id="storeAddress" name="storeAddress" [(ngModel)]="storeModel.storeAddress" matInput>
 </mat-form-field>
   <section class="example-section">
     <mat-checkbox id="status" name="status" class="example-margin" (change)="onChangeDemo($event)" checked>Status</mat-checkbox>

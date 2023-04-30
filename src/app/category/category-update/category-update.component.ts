@@ -63,12 +63,24 @@ export class CategoryUpdateComponent implements OnInit {
   }
 
   public update() {
-    this.categoryModel.categoryName = (<HTMLSelectElement>document.getElementById('categoryName')).value;
-    this.categoryUpdateService.update(this.categoryModel)
-                              .subscribe(category => { 
-                                this._snackBar.open('Categoria atualizada com sucesso!', 'Voltar');
-                                this.reply();
+    
+    //checkFields
+    if(this.categoryModel.categoryName == "")
+    {
+      this._snackBar.open('O nome da categoria está vazio, precisa preencher!');
+    }
 
-                              });
+    //save
+    if(this.categoryModel.categoryName != "")
+    {
+      this.categoryUpdateService.update(this.categoryModel)
+                              .subscribe(category => { 
+                                this._snackBar.open('A categoria '+ this.categoryModel.categoryName +' foi atualizada com sucesso!', 'Voltar');
+                                this.reply();
+                           }, err => {
+                            this._snackBar.open('Erro ao atualizar a categoria '+ this.categoryModel.categoryName +', necessário refazer o procedimento!', 'Voltar');
+                            console.log('Erro ao listar as categorias', err);
+                          });
+    }
   }
 }

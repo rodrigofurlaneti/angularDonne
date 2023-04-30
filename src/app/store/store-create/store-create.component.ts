@@ -3,9 +3,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { StoreCreateService } from './store-create.service';
 import { StoreModel } from '../../../interface/store.interface';
-import { FormControl } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-
 
 @Component({
   selector: 'store-create',
@@ -15,9 +13,9 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 
 export class StoreCreateComponent {
 
-  statusStore: boolean = true;
+  storeModel = new StoreModel();
 
-  @Input() public storeModel = new StoreModel();
+  statusStore: boolean = true;
 
   constructor(private storeCreateService: StoreCreateService, 
     private _snackBar: MatSnackBar,  private readonly router: Router) { }
@@ -27,23 +25,28 @@ export class StoreCreateComponent {
   }
 
   save() {
-    this.storeModel.storeName = (<HTMLSelectElement>document.getElementById('storeName')).value;
-    this.storeModel.storeCnpj = (<HTMLSelectElement>document.getElementById('storeCnpj')).value;
-    this.storeModel.storeAddress = (<HTMLSelectElement>document.getElementById('storeAddress')).value;
-
+    if(this.storeModel.storeName == "")
+    {
+      this._snackBar.open('O nome da loja está vazio, necessário o preenchimento!', 'Voltar');
+    }
+    if(this.storeModel.storeCnpj == "")
+    {
+      this._snackBar.open('O número do CNPJ da loja está vazio, necessário o preenchimento!', 'Voltar');
+    }
+    if(this.storeModel.storeAddress == "")
+    {
+      this._snackBar.open('O endereço da loja está vazio, necessário o preenchimento!', 'Voltar');
+    }
     if(this.storeModel.storeName != '' && this.storeModel.storeCnpj != '' && this.storeModel.storeAddress != '' )
     {
       this.storeModel.status = this.statusStore;
       this.storeCreateService.save(this.storeModel).subscribe(store => {
-        this._snackBar.open('Perfil cadastrada com sucesso!', 'Voltar');
+        this._snackBar.open('A loja "'+this.storeModel.storeName+'", foi cadastrada com sucesso!', 'Voltar');
         this.router.navigate(['store-list']);
       }, err => {
-          console.log('Erro ao adicionar o perfil!', err);
+        this._snackBar.open('Erro ao cadastrar a loja "'+this.storeModel.storeName+'", necessário refazer o procedimento!', 'Voltar');
+        console.log('Erro ao adicionar o perfil!', err);
       })
-    }
-    if(this.storeModel.storeName == '')
-    {
-      this._snackBar.open('Não está preenchido o campo nome da loja!', 'Voltar');
     }
   }
 

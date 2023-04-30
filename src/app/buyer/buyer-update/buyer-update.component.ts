@@ -63,12 +63,33 @@ export class BuyerUpdateComponent implements OnInit {
   }
 
   public update() {
-    this.buyerModel.buyerName = (<HTMLSelectElement>document.getElementById('clientName')).value;
-    this.buyerUpdateService.update(this.buyerModel)
-                              .subscribe(buyer => { 
-                                this._snackBar.open('Categoria atualizada com sucesso!', 'Voltar');
-                                this.reply();
 
-                              });
+    //check fields
+    if(this.buyerModel.buyerName == "")
+    {
+      this._snackBar.open('Não está preenchido o campo nome do cliente!', 'Voltar');
+    }
+    if(this.buyerModel.buyerAddress == "")
+    {
+      this._snackBar.open('Não está preenchido o campo endereço do cliente!', 'Voltar');
+    }
+    if(this.buyerModel.buyerPhone == "")
+    {
+      this._snackBar.open('Não está preenchido o campo telefone do cliente!', 'Voltar');
+    }
+
+    //update
+    if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
+    {
+      this.buyerUpdateService.update(this.buyerModel).subscribe(buyer => { 
+        this._snackBar.open('O cliente "'+ this.buyerModel.buyerName +'", foi atualizado com sucesso!', 'Voltar');
+        this.reply();
+      }, err => {
+        let message = 'Erro ao atualizar o cliente '+ this.buyerModel.buyerName +', necessário refazer o procedimento!';
+        this._snackBar.open(message, 'Voltar');
+        console.log(message, err);
+      });
+
+    }
   }
 }

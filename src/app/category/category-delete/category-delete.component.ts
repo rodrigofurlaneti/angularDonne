@@ -31,7 +31,6 @@ export class CategoryDeleteComponent implements OnInit {
     this.categoryDeleteService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })
@@ -40,7 +39,7 @@ export class CategoryDeleteComponent implements OnInit {
   public delete(id: number) {
     this.categoryDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('Excluido a categoria com sucesso!', 'Voltar');
+    this._snackBar.open('A categoria foi excluida com sucesso!', 'Voltar');
   }
 
   dataSource = ELEMENT_DATA;

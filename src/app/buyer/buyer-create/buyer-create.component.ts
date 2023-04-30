@@ -20,6 +20,8 @@ export class BuyerCreateComponent {
     private _snackBar: MatSnackBar,  private readonly router: Router,private storeNameService: StoreNameService, private storeIdService: StoreIdService) { }
 
   save() {
+    
+    //check fields
     if(this.buyerModel.buyerName == "")
     {
       this._snackBar.open('Não está preenchido o campo nome do cliente!', 'Voltar');
@@ -32,15 +34,17 @@ export class BuyerCreateComponent {
     {
       this._snackBar.open('Não está preenchido o campo telefone do cliente!', 'Voltar');
     }
+
+    //save
     if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
     {
       this.buyerModel.StoreName = this.storeNameService.storeName;
       this.buyerModel.StoreId = this.storeIdService.storeId;
       this.buyerCreateService.save(this.buyerModel).subscribe(buyer => {
-        this._snackBar.open('Cliente cadastrado com sucesso!', 'Voltar');
+        this._snackBar.open('O cliente '+ this.buyerModel.buyerName +', foi cadastrado com sucesso!', 'Voltar');
         this.router.navigate(['buyer-list']);
         }, err => {
-          this._snackBar.open('Erro ao salvar o novo cliente!', 'Voltar');
+          this._snackBar.open('Erro ao cadastrar o cliente '+this.buyerModel.buyerName+', necessário refazer o procedimento!', 'Voltar');
         })
       }
     }

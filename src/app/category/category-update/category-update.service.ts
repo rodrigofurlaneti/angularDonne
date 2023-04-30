@@ -25,7 +25,6 @@ export class CategoryUpdateService {
   }
 
   public update(categoryModel: CategoryModel) {
-    console.log(categoryModel);
     return this.httpClient.put(`${this.routeAws}Category`, categoryModel);
   }
 }

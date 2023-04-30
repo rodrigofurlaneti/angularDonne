@@ -20,7 +20,7 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Nome do cliente</mat-label>
-        <input id="clientName" name="clientName" value="{{buyerModel.buyerName}}" matInput>
+        <input id="clientName" name="clientName" [(ngModel)]="buyerModel.buyerName" matInput>
       </mat-form-field>
     </div>
 

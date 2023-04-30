@@ -41,7 +41,6 @@ export class StoreUpdateComponent implements OnInit {
     this.storeUpdateService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })
@@ -59,7 +58,6 @@ export class StoreUpdateComponent implements OnInit {
                                 this.storeModel.storeCnpj = store.storeCnpj;
                                 this.storeModel.storeAddress = store.storeAddress;
                                 this.storeModel.status = store.status;
-                                console.log(this.storeModel.status);
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
@@ -74,12 +72,14 @@ export class StoreUpdateComponent implements OnInit {
   }
 
   public update() {
-    this.storeModel.storeName = (<HTMLSelectElement>document.getElementById('storeName')).value;
+    this.storeModel;
     this.storeUpdateService.update(this.storeModel)
                               .subscribe(store => { 
-                                this._snackBar.open('Categoria atualizada com sucesso!', 'Voltar');
+                                this._snackBar.open('A loja "'+this.storeModel.storeName+'", foi atualizada com sucesso!', 'Voltar');
                                 this.reply();
-
+                              }, err => {
+                                this._snackBar.open('Erro ao atualizar a loja "'+ this.storeModel.storeName +'", necessário refazer o procedimento!', 'Voltar');
+                                console.log('Erro ao listar as categorias', err);
                               });
   }
 }

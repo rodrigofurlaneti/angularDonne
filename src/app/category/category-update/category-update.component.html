@@ -22,7 +22,7 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Nome categoria</mat-label>
-        <input id="categoryName" name="categoryName" value="{{categoryModel.categoryName}}" matInput>
+        <input id="categoryName" name="categoryName" [(ngModel)]="categoryModel.categoryName" matInput>
       </mat-form-field>
     </div>
 
