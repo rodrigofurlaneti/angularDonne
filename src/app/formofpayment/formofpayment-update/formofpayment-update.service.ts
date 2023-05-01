@@ -24,6 +24,7 @@ export class FormOfPaymentUpdateService {
   }
 
   public update(formOfPaymentModel: FormOfPaymentModel) {
+    console.log(formOfPaymentModel);
     return this.httpClient.put(`${this.routeAws}FormOfPayment`, formOfPaymentModel);
   }
 }

@@ -1,4 +1,4 @@
-<input type="hidden" id="formOfPaymentId" name="formOfPaymentId" value="{{formOfPaymentModel.formOfPaymentId}">
+<input type="hidden" id="formOfPaymentId" name="formOfPaymentId" value="{{formOfPaymentModel.formOfPaymentId}}">
 
 <div class="container">
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
@@ -20,7 +20,7 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Nome forma de pagamento:</mat-label>
-        <input id="formOfPagamentName" name="formOfPagamentName" matInput [(ngModel)]="formOfPaymentModel.formOfPaymentName" />
+        <input id="formOfPaymentName" name="formOfPaymentName"  [(ngModel)]="formOfPaymentModel.formOfPaymentName" matInput/>
       </mat-form-field>
     </div>
 

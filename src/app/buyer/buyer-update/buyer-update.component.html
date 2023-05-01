@@ -22,9 +22,17 @@
         <mat-label>Nome do cliente</mat-label>
         <input id="clientName" name="clientName" [(ngModel)]="buyerModel.buyerName" matInput>
       </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Telefone</mat-label>
+        <input id="buyerPhone" name="buyerPhone" [(ngModel)]="buyerModel.buyerPhone" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Endereço</mat-label>
+        <input id="buyerAddress" name="buyerAddress" [(ngModel)]="buyerModel.buyerAddress" matInput />
+      </mat-form-field>
     </div>
 
-    <section>
+    <section class="update_btn">
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
@@ -44,7 +52,7 @@
     </section>
   </ng-template>
   
-  <section>
+  <section class="back_btn">
     <div class="example-button-row">
       <div class="example-flex-container">
         <div class="example-button-container">

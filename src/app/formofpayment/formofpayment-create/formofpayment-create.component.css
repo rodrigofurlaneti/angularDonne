@@ -53,8 +53,3 @@ section {
     overflow: auto;
     border: 1px solid #ccc;
   }
-
-  .mat-form-field + .mat-form-field,
-.mat-raised-button {
-  margin-left: 8px;
-}

@@ -1,11 +1,10 @@
 section {
     display: flex;
-    justify-content: center;
     flex-direction: column;
 
     padding: 1rem;
     border: 2px solid #fff;
-    width: 360px;
+    width: 418px;
     max-height: 560px;
     overflow-y: auto;
     background-color: #1b1b1b65;
@@ -18,12 +17,32 @@ section {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .mat-form-field{
+
+  }
+
+  .inputs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
     
   .checkboxs{
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .input3row{
+    display: flex;
+    gap: 1rem;
+  }
+
+  .input3row .mat-form-field{
+    width: 128px;
   }
 
   .example-label {
@@ -53,8 +72,3 @@ section {
     overflow: auto;
     border: 1px solid #ccc;
   }
-
-  .mat-form-field + .mat-form-field,
-.mat-raised-button {
-  margin-left: 8px;
-}

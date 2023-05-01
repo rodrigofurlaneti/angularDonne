@@ -1,4 +1,5 @@
 :host {
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -7,12 +8,18 @@
   left: 0;
   bottom: 0;
   height: 100%;
+  width: 320px;
   background-color: #1b1b1b65;
   backdrop-filter: blur(10px);
   box-shadow: 2px 2px 8px #000;
   border-radius: 0px 8px 8px 0px;
 }
   
+.matTooltipPosition{
+  z-index: 1100;
+  font-size: 16px;
+}
+
 .logofurlaneti{
   width: 130px;
   align-self: center;
@@ -25,7 +32,7 @@
 .mat-button {
   text-align: start;
   padding: 0.4rem;
-  width: 190px;
+  width: 85%;
   border-radius: 8px;
   border: none;
   color: #ffffff;

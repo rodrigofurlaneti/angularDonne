@@ -78,6 +78,13 @@ export class ProductUpdateComponent implements OnInit {
     console.log(event);
   }
 
+  calculate(){
+    var totalValueCostOfInventory = parseFloat(this.productModel.costPrice) * this.productModel.quantityStock;
+    this.productModel.totalValueCostOfInventory = totalValueCostOfInventory.toString();
+    var totalValueSaleStock = parseFloat(this.productModel.salePrice) * this.productModel.quantityStock;
+    this.productModel.totalValueSaleStock = totalValueSaleStock.toString();
+  }
+
   list() {
     this.productUpdateService.list().subscribe(list => {
       ELEMENT_DATA = list;
