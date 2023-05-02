@@ -36,7 +36,18 @@ export class UserUpdateComponent implements OnInit {
   
   ngOnInit(): void {
     this.list();
-    this.listProfile();    
+    this.listProfile();  
+    this.hideUpdateButton();  
+  }
+
+  hideUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'none';
+  }
+
+  showUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'block';
   }
 
   list() {
@@ -53,16 +64,18 @@ export class UserUpdateComponent implements OnInit {
       ELEMENT_DATA_PROFILE = list;
 
     }, err => {
-      console.log('Erro ao listar os usuários', err);
+      console.log('Erro ao listar os perfis', err);
     })
   }
 
   public getById(id: number) {
+    this.showUpdateButton();
     this.userUpdateService.getById(id)
                               .subscribe(user => { 
                                 this.userModel.userId = user.userId;
                                 this.userModel.userName = user.userName;
                                 this.userModel.userPassword = user.userPassword;
+                                this.userModel.profile = user.profile.profileName;
                                 this.selected = user.profileName;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
@@ -88,7 +101,9 @@ export class UserUpdateComponent implements OnInit {
     this.userModel.userPassword = (<HTMLSelectElement>document.getElementById('userPassword')).value;
     this.userUpdateService.update(this.userModel)
                               .subscribe(user => { 
-                                this._snackBar.open('Usuário atualizado com sucesso!', 'Voltar');
+                                this._snackBar.open('Usuário atualizado com sucesso!', 'Voltar', {
+                                  duration: 1300
+                                });
                                 this.reply();
 
                               });

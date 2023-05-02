@@ -2,6 +2,12 @@
     width: 100%;
   }
   
+.btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .container{
   display: flex;
   justify-content: center;

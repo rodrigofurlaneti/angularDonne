@@ -40,7 +40,9 @@ export class BuyerDeleteComponent implements OnInit {
   public delete(id: number) {
     this.buyerDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('Excluido a categoria com sucesso!', 'Voltar');
+    this._snackBar.open('O cliente foi excluido com sucesso!', 'Voltar', {
+      duration: 1300
+    });
   }
 
   dataSource = ELEMENT_DATA;

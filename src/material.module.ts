@@ -45,9 +45,13 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {CdkMenuModule} from '@angular/cdk/menu';
 import {DialogModule} from '@angular/cdk/dialog';
+import { NgxMaskModule} from 'ngx-mask/lib/ngx-mask.module';
+
+
 
 @NgModule({
   exports: [
+    NgxMaskModule,
     A11yModule,
     CdkAccordionModule,
     ClipboardModule,

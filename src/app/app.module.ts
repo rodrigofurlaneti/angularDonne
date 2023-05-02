@@ -47,6 +47,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatGridListModule } from '@angular/material/grid-list';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { StoreCreateModule } from './store/store-create/store-create.module';
 import { StoreDeleteComponent } from './store/store-delete/store-delete.component';
@@ -120,6 +121,7 @@ import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-upda
     FormOfPaymentUpdateComponent
   ],
   imports: [
+    NgxMaskModule.forRoot(),
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,

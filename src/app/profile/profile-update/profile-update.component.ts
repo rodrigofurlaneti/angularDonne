@@ -31,7 +31,18 @@ export class ProfileUpdateComponent implements OnInit {
     private router: Router) { }
   
   ngOnInit(): void {
-    this.list();    
+    this.list(); 
+    this.hideUpdateButton();   
+  }
+
+  hideUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'none';
+  }
+
+  showUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'block';
   }
 
   list() {
@@ -45,6 +56,7 @@ export class ProfileUpdateComponent implements OnInit {
   }
 
   public getById(id: number) {
+    this.showUpdateButton();
     this.profileUpdateService.getById(id)
                               .subscribe(profile => { 
                                 this.profileModel.profileId = profile.profileId;
@@ -66,7 +78,9 @@ export class ProfileUpdateComponent implements OnInit {
     this.profileModel.profileName = (<HTMLSelectElement>document.getElementById('profileName')).value;
     this.profileUpdateService.update(this.profileModel)
                               .subscribe(profile => { 
-                                this._snackBar.open('Categoria atualizada com sucesso!', 'Voltar');
+                                this._snackBar.open('O perfil foi atualizado com sucesso!', 'Voltar', {
+                                  duration: 1300
+                                });
                                 this.reply();
 
                               });

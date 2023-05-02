@@ -24,7 +24,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Cnpj</mat-label>
-      <input id="storeCnpj" name="storeCnpj" [(ngModel)]="storeModel.storeCnpj" matInput>
+      <input id="storeCnpj" name="storeCnpj" [(ngModel)]="storeModel.storeCnpj" matInput mask="00.000.000/0000-00">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Endereço</mat-label>
@@ -34,17 +34,30 @@
   <section class="example-section">
     <mat-checkbox id="status" name="status" class="example-margin" [(ngModel)]="storeModel.status">Status</mat-checkbox>
   </section> 
-  <section>
+</ng-template>
+<div class="btns">
+  <section class="back_btn">
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <div class="example-button-container">
+          <div class="example-label">Voltar
+            <button mat-raised-button mat-mini-fab matTooltip="Voltar para a pagina principal." (click)="reply()"
+              color="primary" aria-label="Example icon button with a menu icon">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="update_btn">
     <div class="example-button-row">
       <div class="example-flex-container">
         <div class="example-button-container">
           <div class="example-label">Atualizar
-            <button mat-raised-button
-                  mat-mini-fab
-                  matTooltip="Atualizar a loja." 
-                  (click)="update()" 
-                  color="primary" 
-                  aria-label="Example icon button with a menu icon">
+            <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria." (click)="update()"
+              color="primary" aria-label="Example icon button with a menu icon">
               <mat-icon>sync</mat-icon>
             </button>
           </div>
@@ -52,24 +65,6 @@
       </div>
     </div>
   </section>
-</ng-template>
+</div>
 
-<section>
-  <div class="example-button-row">
-    <div class="example-flex-container">
-      <div class="example-button-container">
-        <div class="example-label">Voltar
-          <button mat-raised-button
-                mat-mini-fab
-                matTooltip="Voltar para a pagina principal."
-                (click)="reply()" 
-                 color="primary" 
-                aria-label="Example icon button with a menu icon">
-            <mat-icon>reply_all</mat-icon>
-          </button>
-        </div>  
-      </div>
-      </div>
-  </div>
-</section>
 </div>

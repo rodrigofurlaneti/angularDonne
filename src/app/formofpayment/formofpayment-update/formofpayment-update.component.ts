@@ -36,6 +36,17 @@ export class FormOfPaymentUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.list();
+    this.hideUpdateButton();
+  }
+
+  hideUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'none';
+  }
+
+  showUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'block';
   }
 
   list() {
@@ -48,6 +59,7 @@ export class FormOfPaymentUpdateComponent implements OnInit {
   }
 
   public getById(id: number) {
+    this.showUpdateButton();
     this.formOfPaymentUpdateService.getById(id)
       .subscribe(formOfPayment => {
         this.isIdZero = false;
@@ -76,17 +88,23 @@ export class FormOfPaymentUpdateComponent implements OnInit {
   public update() {
     //check fields
     if (this.formOfPaymentModel.formOfPaymentName == "") {
-      this._snackBar.open('Não está preenchido o campo nome da forma de pagamento!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo nome da forma de pagamento!', 'Voltar', {
+        duration: 1300
+      });
     }
 
     //update
     if (this.formOfPaymentModel.formOfPaymentName != "") {
       this.formOfPaymentUpdateService.update(this.formOfPaymentModel).subscribe(formOfPayment => {
-        this._snackBar.open('O cliente "' + this.formOfPaymentModel.formOfPaymentName + '", foi atualizado com sucesso!', 'Voltar');
+        this._snackBar.open('O cliente "' + this.formOfPaymentModel.formOfPaymentName + '", foi atualizado com sucesso!', 'Voltar', {
+          duration: 1300
+        });
         this.reply();
       }, err => {
         let message = 'Erro ao atualizar o cliente ' + this.formOfPaymentModel.formOfPaymentId + ', necessário refazer o procedimento!';
-        this._snackBar.open(message, 'Voltar');
+        this._snackBar.open(message, 'Voltar', {
+          duration: 1300
+        });
         console.log(message, err);
       });
 

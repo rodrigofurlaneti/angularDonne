@@ -40,6 +40,18 @@
   align-items: center;
 }
 
+.categoryName ::ng-deep .mat-select-placeholder, .clientName ::ng-deep .mat-select-placeholder {
+  color: rgb(255, 255, 255); /* Substitua pela cor desejada */
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  margin-top: 1.3rem;
+}
+
+.btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .input3row{
   display: flex;
   justify-content: center;

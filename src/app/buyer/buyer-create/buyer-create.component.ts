@@ -24,15 +24,21 @@ export class BuyerCreateComponent {
     //check fields
     if(this.buyerModel.buyerName == "")
     {
-      this._snackBar.open('Não está preenchido o campo nome do cliente!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo nome do cliente!', 'Voltar', {
+        duration: 1300
+      });
     }
     if(this.buyerModel.buyerAddress == "")
     {
-      this._snackBar.open('Não está preenchido o campo endereço do cliente!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo endereço do cliente!', 'Voltar',{
+        duration: 1300
+      });
     }
     if(this.buyerModel.buyerPhone == "")
     {
-      this._snackBar.open('Não está preenchido o campo telefone do cliente!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo telefone do cliente!', 'Voltar',{
+        duration: 1300
+      });
     }
 
     //save
@@ -41,10 +47,14 @@ export class BuyerCreateComponent {
       this.buyerModel.StoreName = this.storeNameService.storeName;
       this.buyerModel.StoreId = this.storeIdService.storeId;
       this.buyerCreateService.save(this.buyerModel).subscribe(buyer => {
-        this._snackBar.open('O cliente '+ this.buyerModel.buyerName +', foi cadastrado com sucesso!', 'Voltar');
+        this._snackBar.open('O cliente '+ this.buyerModel.buyerName +', foi cadastrado com sucesso!', 'Voltar',{
+          duration: 1300
+        });
         this.router.navigate(['buyer-list']);
         }, err => {
-          this._snackBar.open('Erro ao cadastrar o cliente '+this.buyerModel.buyerName+', necessário refazer o procedimento!', 'Voltar');
+          this._snackBar.open('Erro ao cadastrar o cliente '+this.buyerModel.buyerName+', necessário refazer o procedimento!', 'Voltar',{
+            duration: 1300
+          });
         })
       }
     }

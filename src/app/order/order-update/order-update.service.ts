@@ -34,6 +34,7 @@ export class OrderUpdateService {
   }
 
   public update(orderModel: OrderModel) {
+    console.log(orderModel);
     return this.httpClient.put(this.routeAws+'Order/', orderModel);
   }
 }

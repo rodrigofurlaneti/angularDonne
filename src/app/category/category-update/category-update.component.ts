@@ -32,6 +32,17 @@ export class CategoryUpdateComponent implements OnInit {
   
   ngOnInit(): void {
     this.list();    
+    this.hideUpdateButton();
+  }
+  
+ hideUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'none';
+  }
+
+  showUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'block';
   }
 
   list() {
@@ -45,6 +56,7 @@ export class CategoryUpdateComponent implements OnInit {
   }
 
   public getById(id: number) {
+    this.showUpdateButton();
     this.categoryUpdateService.getById(id)
                               .subscribe(category => { 
                                 this.categoryModel.categoryId = category.categoryId;
@@ -67,7 +79,9 @@ export class CategoryUpdateComponent implements OnInit {
     //checkFields
     if(this.categoryModel.categoryName == "")
     {
-      this._snackBar.open('O nome da categoria está vazio, precisa preencher!');
+      this._snackBar.open('O nome da categoriafoi atualizado com sucesso!', 'Voltar', {
+        duration: 1300
+      });
     }
 
     //save

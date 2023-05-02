@@ -11,7 +11,8 @@
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
+          *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
   </ng-template>
@@ -24,25 +25,38 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Telefone</mat-label>
-        <input id="buyerPhone" name="buyerPhone" [(ngModel)]="buyerModel.buyerPhone" matInput />
+        <input id="buyerPhone" name="buyerPhone" [(ngModel)]="buyerModel.buyerPhone" matInput mask="(00) 00000-0000"/>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Endereço</mat-label>
         <input id="buyerAddress" name="buyerAddress" [(ngModel)]="buyerModel.buyerAddress" matInput />
       </mat-form-field>
     </div>
+  </ng-template>
+
+  <div class="btns">
+    <section class="back_btn">
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <div class="example-label">Voltar
+              <button mat-raised-button mat-mini-fab matTooltip="Voltar para a pagina principal." (click)="reply()"
+                color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>reply_all</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="update_btn">
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
             <div class="example-label">Atualizar
-              <button mat-raised-button
-                    mat-mini-fab
-                    matTooltip="Atualizar a categoria." 
-                    (click)="update()" 
-                    color="primary" 
-                    aria-label="Example icon button with a menu icon">
+              <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria." (click)="update()"
+                color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>sync</mat-icon>
               </button>
             </div>
@@ -50,24 +64,7 @@
         </div>
       </div>
     </section>
-  </ng-template>
-  
-  <section class="back_btn">
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <div class="example-label">Voltar
-            <button mat-raised-button
-                  mat-mini-fab
-                  matTooltip="Voltar para a pagina principal."
-                  (click)="reply()" 
-                   color="primary" 
-                  aria-label="Example icon button with a menu icon">
-              <mat-icon>reply_all</mat-icon>
-            </button>
-          </div>  
-        </div>
-        </div>
-    </div>
-  </section>
+
+
+  </div>
 </div>

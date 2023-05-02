@@ -49,6 +49,17 @@ export class ProductUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.list();  
     this.listCategory();  
+    this.hideUpdateButton();
+  }
+
+  hideUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'none';
+  }
+
+  showUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'block';
   }
 
   listCategory() {
@@ -75,6 +86,7 @@ export class ProductUpdateComponent implements OnInit {
 
   change(event: any) {
     this.categoryIDSelect = event.categoryId;
+    this.categoryNameSelect = event.categoryName;
     console.log(event);
   }
 
@@ -96,6 +108,7 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   public getById(id: number) {
+    this.showUpdateButton();
     this.productUpdateService.getById(id)
                               .subscribe(product => { 
                                 this.selectedValue = product.categoryId;
@@ -103,6 +116,7 @@ export class ProductUpdateComponent implements OnInit {
                                 this.productModel.productName = product.productName;
                                 this.productModel.categoryId = product.categoryId;
                                 this.productModel.categoryName = product.categoryName;
+                                console.log(product.categoryName);
                                 this.productModel.costPrice = product.costPrice;
                                 this.productModel.salePrice = product.salePrice;
                                 this.productModel.imagePath = product.imagePath;
@@ -156,7 +170,9 @@ export class ProductUpdateComponent implements OnInit {
     this.productModel.minimumStockQuantity = 0;
     this.productUpdateService.update(this.productModel)
                               .subscribe(product => { 
-                                this._snackBar.open('Categoria atualizada com sucesso!', 'Voltar');
+                                this._snackBar.open('Categoria atualizada com sucesso!', 'Voltar', {
+                                  duration: 1300
+                                });
                                 this.reply();
 
                               });

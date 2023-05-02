@@ -14,11 +14,11 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Valor do custo do Produto</mat-label>
-    <input id="costPrice" name="costPrice" matInput [(ngModel)]="productModel.costPrice" type="" />
+    <input id="costPrice" name="costPrice" matInput mask="000,00" [(ngModel)]="productModel.costPrice" type="" />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Valor da venda do produto</mat-label>
-    <input id="salePrice" name="salePrice" matInput [(ngModel)]="productModel.salePrice" />
+    <input id="salePrice" name="salePrice" matInput mask="000,00" [(ngModel)]="productModel.salePrice" />
   </mat-form-field>
 
   <div class="input3row">

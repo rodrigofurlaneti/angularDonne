@@ -27,7 +27,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Nova categoria</mat-label>
-        <mat-select value="{{productModel.categoryId}}" #matSelect id="dropDownListCategory" name="dropDownListCategory" [value]="selectedValue" (selectionChange)="change($event.value)">
+        <mat-select placeholder="{{productModel.categoryName}}" value="{{productModel.categoryId}}" #matSelect id="dropDownListCategory" name="dropDownListCategory" [value]="selectedValue" (selectionChange)="change($event.value)" class="categoryName">
           <mat-option [value]="element.categoryId" *ngFor="let element of dataSourceCategory">
             {{ element.categoryName }}
           </mat-option>
@@ -35,11 +35,11 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Novo custo</mat-label>
-        <input id="costPrice" name="costPrice" value="{{productModel.costPrice}}" matInput type="" />
+        <input id="costPrice" name="costPrice" value="{{productModel.costPrice}}" matInput mask="000,00" type="" />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Novo custo de venda</mat-label>
-        <input id="salePrice" name="salePrice" value="{{productModel.salePrice}}" matInput />
+        <input id="salePrice" name="salePrice" value="{{productModel.salePrice}}" matInput mask="000,00" />
       </mat-form-field>
     </div>
       <div class="input3row">
@@ -65,18 +65,30 @@
         </div>
     </div>
     </div>
-
-    <section>
+  </ng-template>
+  <div class="btns">
+    <section class="back_btn">
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <div class="example-label">Voltar
+              <button mat-raised-button mat-mini-fab matTooltip="Voltar para a pagina principal." (click)="reply()"
+                color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>reply_all</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="update_btn">
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
             <div class="example-label">Atualizar
-              <button mat-raised-button
-                    mat-mini-fab
-                    matTooltip="Atualizar a categoria." 
-                    (click)="update()" 
-                    color="primary" 
-                    aria-label="Example icon button with a menu icon">
+              <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria." (click)="update()"
+                color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>sync</mat-icon>
               </button>
             </div>
@@ -84,24 +96,5 @@
         </div>
       </div>
     </section>
-  </ng-template>
-  
-  <section>
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <div class="example-label">Voltar
-            <button mat-raised-button
-                  mat-mini-fab
-                  matTooltip="Voltar para a pagina principal."
-                  (click)="reply()" 
-                   color="primary" 
-                  aria-label="Example icon button with a menu icon">
-              <mat-icon>reply_all</mat-icon>
-            </button>
-          </div>  
-        </div>
-        </div>
-    </div>
-  </section>
+  </div>
 </div>
