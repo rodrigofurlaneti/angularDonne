@@ -87,7 +87,7 @@ export class ProductUpdateComponent implements OnInit {
   change(event: any) {
     this.categoryIDSelect = event.categoryId;
     this.categoryNameSelect = event.categoryName;
-    console.log(event);
+    console.log(event.categoryName);
   }
 
   calculate(){

@@ -14,18 +14,18 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Valor do custo do Produto</mat-label>
-    <input id="costPrice" name="costPrice" matInput mask="000,00" [(ngModel)]="productModel.costPrice" type="" />
+    <input id="costPrice" name="costPrice" matInput [(ngModel)]="productModel.costPrice" type="number" (ngModelChange)="calculate()" />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Valor da venda do produto</mat-label>
-    <input id="salePrice" name="salePrice" matInput mask="000,00" [(ngModel)]="productModel.salePrice" />
+    <input id="salePrice" name="salePrice" matInput [(ngModel)]="productModel.salePrice" type="number" (ngModelChange)="calculate()" />
   </mat-form-field>
 
   <div class="input3row">
     <mat-form-field appearance="fill">
       <mat-label>Quantidade no estoque</mat-label>
-      <input id="quantityStock" name="quantityStock" matInput [(ngModel)]="productModel.quantityStock" (blur)="calculate()"/>
-    </mat-form-field>
+      <input id="quantityStock" name="quantityStock" matInput [(ngModel)]="productModel.quantityStock" type="number" (ngModelChange)="calculate()" />
+  </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Total custo</mat-label>
       <input id="quantityStock" name="quantityStock" matInput [(ngModel)]="productModel.totalValueCostOfInventory" readonly/>

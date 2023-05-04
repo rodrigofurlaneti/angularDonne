@@ -6,7 +6,11 @@ export interface IUserInterface {
     userName: string;
     userPassword: string;
     store: StoreModel;
+    storeName: string;
+    storeId: number;
     profile: ProfileModel;
+    profileName: string;
+    profileId: number;
     status: boolean;
 }
 export class UserModel implements IUserInterface {
@@ -14,7 +18,11 @@ export class UserModel implements IUserInterface {
     userName: string = '';
     userPassword: string = '';
     store: StoreModel = new StoreModel;
+    storeName: string = ' ';
+    storeId: number = 0;
     profile: ProfileModel = new ProfileModel;
+    profileName: string = ' ';
+    profileId: number = 0;
     status: boolean = true;
     constructor(){}
   }

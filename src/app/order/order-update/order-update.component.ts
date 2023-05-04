@@ -128,6 +128,8 @@ export class OrderUpdateComponent implements OnInit {
                                 this.orderModel.storeName = order.storeName;
                                 this.orderModel.userId = order.userId;
                                 this.orderModel.userName = order.userName;
+                                this.orderModel.DateInsert = order.dateInsert;
+                                this.orderModel.DateUpdate = order.dateUpdate;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });

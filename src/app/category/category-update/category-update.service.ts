@@ -9,7 +9,8 @@ import { CategoryModel } from 'src/interface/category.interface';
 
 export class CategoryUpdateService {
 
-  private routeAws = 'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private routeAws = 'https://localhost:7027/';
+  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
 
   constructor(
     private httpClient: HttpClient

@@ -62,7 +62,7 @@
       {
         this._snackBar.open('Não está preenchido o campo senha!', 'Voltar');
       }
-      else if(this.user.store.storeName != userResp.store.storeName)
+      else if(this.user.store.storeName != userResp.storeName)
       {
         this._snackBar.open('Loja inválida!', 'Voltar');
       }
@@ -72,11 +72,11 @@
       }
       else if(this.user.userPassword === userResp.userPassword && 
           this.user.userName === userResp.userName &&
-          this.user.store.storeName === userResp.store.storeName)
+          this.user.store.storeName === userResp.storeName)
       {
         this.access = true;
-        this.storeNameService.setStoreName(userResp.store.storeName);
-        this.storeIdService.setStoreId(`${userResp.store.storeId}`);
+        this.storeNameService.setStoreName(userResp.storeName);
+        this.storeIdService.setStoreId(`${userResp.storeId}`);
         this.userIdService.setUserId(`${userResp.userId}`)
         this.userNameService.setUserName(userResp.userName);
         this.router.navigate(['/main']);

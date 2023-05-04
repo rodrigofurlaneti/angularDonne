@@ -62,7 +62,7 @@ export class UserUpdateComponent implements OnInit {
   listProfile() {
     this.userUpdateService.listProfile().subscribe(list => {
       ELEMENT_DATA_PROFILE = list;
-
+      this.dataSourceProfile = ELEMENT_DATA_PROFILE;
     }, err => {
       console.log('Erro ao listar os perfis', err);
     })
@@ -75,7 +75,11 @@ export class UserUpdateComponent implements OnInit {
                                 this.userModel.userId = user.userId;
                                 this.userModel.userName = user.userName;
                                 this.userModel.userPassword = user.userPassword;
-                                this.userModel.profile = user.profile.profileName;
+                                this.userModel.profile = user.profileName;
+                                this.userModel.storeId = user.storeId;
+                                this.userModel.storeName = user.storeName;
+                                this.userModel.profileId = user.profileId;
+                                this.userModel.profileName = user.profileName;
                                 this.selected = user.profileName;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;

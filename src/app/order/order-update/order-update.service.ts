@@ -9,7 +9,8 @@ import { OrderModel } from 'src/interface/order.interface';
 
 export class OrderUpdateService {
 
-  private routeAws = 'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private routeAws = 'https://localhost:7027/';
+  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
 
   constructor(
     private httpClient: HttpClient

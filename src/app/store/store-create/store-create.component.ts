@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { StoreCreateService } from './store-create.service';
 import { StoreModel } from '../../../interface/store.interface';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { StoreIdService } from 'src/app/store-id.service';
 
 @Component({
   selector: 'store-create',
@@ -18,7 +19,8 @@ export class StoreCreateComponent {
   statusStore: boolean = true;
 
   constructor(private storeCreateService: StoreCreateService, 
-    private _snackBar: MatSnackBar,  private readonly router: Router) { }
+    private _snackBar: MatSnackBar,  private readonly router: Router,
+    private storeIdService: StoreIdService) { }
 
   onChangeDemo(ob: MatCheckboxChange) {
       this.statusStore = ob.checked;
@@ -46,6 +48,8 @@ export class StoreCreateComponent {
     if(this.storeModel.storeName != '' && this.storeModel.storeCnpj != '' && this.storeModel.storeAddress != '' )
     {
       this.storeModel.status = this.statusStore;
+      this.storeModel.storeId = parseInt(this.storeIdService.storeId);
+      console.log(this.storeModel);
       this.storeCreateService.save(this.storeModel).subscribe(store => {
         this._snackBar.open('A loja "'+this.storeModel.storeName+'", foi cadastrada com sucesso!', 'Voltar', {
           duration: 1300

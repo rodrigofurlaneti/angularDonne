@@ -9,6 +9,8 @@ export interface IOrderInterface {
     storeId: number;
     userId: number;
     userName: string;
+    DateInsert: Date;
+    DateUpdate: Date;
 }
 export class OrderModel implements IOrderInterface {
     orderId: number = 0;    
@@ -21,5 +23,7 @@ export class OrderModel implements IOrderInterface {
     storeId: number = 0;
     userId: number = 0;
     userName: string = " ";
+    DateInsert: Date = new Date;
+    DateUpdate: Date = new Date;
     constructor(){}
   }

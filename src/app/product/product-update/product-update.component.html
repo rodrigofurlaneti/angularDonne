@@ -28,24 +28,24 @@
       <mat-form-field appearance="fill">
         <mat-label>Nova categoria</mat-label>
         <mat-select placeholder="{{productModel.categoryName}}" value="{{productModel.categoryId}}" #matSelect id="dropDownListCategory" name="dropDownListCategory" [value]="selectedValue" (selectionChange)="change($event.value)" class="categoryName">
-          <mat-option [value]="element.categoryId" *ngFor="let element of dataSourceCategory">
+          <mat-option [value]="element" *ngFor="let element of dataSourceCategory">
             {{ element.categoryName }}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Novo custo</mat-label>
-        <input id="costPrice" name="costPrice" value="{{productModel.costPrice}}" matInput mask="000,00" type="" />
+        <input id="costPrice" name="costPrice" [(ngModel)]="productModel.costPrice" matInput type="number" (ngModelChange)="calculate()" />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Novo custo de venda</mat-label>
-        <input id="salePrice" name="salePrice" value="{{productModel.salePrice}}" matInput mask="000,00" />
+        <input id="salePrice" name="salePrice" [(ngModel)]="productModel.salePrice" matInput type="number" (ngModelChange)="calculate()" />
       </mat-form-field>
     </div>
       <div class="input3row">
       <mat-form-field appearance="fill">
         <mat-label>Nova quantidade em estoque</mat-label>
-        <input id="quantityStock" name="quantityStock" value="{{productModel.quantityStock}}" matInput />
+        <input id="quantityStock" name="quantityStock"  [(ngModel)]="productModel.quantityStock" matInput type="number" (ngModelChange)="calculate()"/>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Total custo</mat-label>
