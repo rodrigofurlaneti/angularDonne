@@ -24,12 +24,12 @@ export class ProductModel implements IProductInterface {
     productName: string = ''; 
     categoryId: number = 0;
     categoryName : string = " ";
-    costPrice: string = "0";
-    salePrice: string = "0";
-    quantityStock: number = 0;
+    costPrice: string = " ";
+    salePrice: string = " ";
+    quantityStock: number = NaN;
     minimumStockQuantity: number = 0;
-    totalValueCostOfInventory: string = "0";
-    totalValueSaleStock: string = "0";
+    totalValueCostOfInventory: string = " ";
+    totalValueSaleStock: string = " ";
     imagePath: string = '';
     dateInsert: Date = new Date();
     dateUpdate: Date = new Date();

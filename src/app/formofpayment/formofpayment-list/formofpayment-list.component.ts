@@ -28,7 +28,7 @@ export class FormOfPaymentListComponent implements OnInit {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
     }, err => {
-      this._snackBar.open('Erro ao listar as formas de pagamentos!', 'Voltar');
+      this._snackBar.open('Erro ao listar as formas de pagamentos!','');
       console.log('Erro ao listar as formas de pagamentos!', err);
     })
   }

@@ -42,8 +42,8 @@ export class OrderDeleteComponent implements OnInit {
     console.log(id);
     this.orderDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('Excluido o usuário com sucesso!', 'Voltar', {
-      duration: 1300
+    this._snackBar.open('Excluido o usuário com sucesso!','', {
+      duration: 2000
     });
   }
 

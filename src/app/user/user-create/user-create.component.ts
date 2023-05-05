@@ -86,11 +86,13 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
     this.user.storeId = parseInt(this.storeIdService.storeId);
     this.user.profileName = this.user.profile.profileName;
     this.user.profileId = this.user.profile.profileId;
+    this.user.storeId = parseInt(this.storeIdService.storeId);
+    this.user.storeName = this.storeNameService.storeName;
     if(this.user.userName != '' && this.user.userPassword != '')
     {
       this.userCreateService.save(this.user).subscribe(userResp => {
-        this._snackBar.open('Perfil cadastrada com sucesso!', 'Voltar', {
-          duration: 1300
+        this._snackBar.open('Perfil cadastrada com sucesso!','', {
+          duration: 2000
         });
         this.router.navigate(['user-list']);
       }, err => {
@@ -99,14 +101,14 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
     }
     if(this.user.userName == '')
     {
-      this._snackBar.open('Não está preenchido o campo nome do usuario!', 'Voltar', {
-        duration: 1300
+      this._snackBar.open('Não está preenchido o campo nome do usuario!','', {
+        duration: 2000
       });
     }
     if(this.user.userPassword == '')
     {
-      this._snackBar.open('Não está preenchido o campo senha do usuario!', 'Voltar', {
-        duration: 1300
+      this._snackBar.open('Não está preenchido o campo senha do usuario!','', {
+        duration: 2000
       });
     }
   }

@@ -88,22 +88,22 @@ export class FormOfPaymentUpdateComponent implements OnInit {
   public update() {
     //check fields
     if (this.formOfPaymentModel.formOfPaymentName == "") {
-      this._snackBar.open('Não está preenchido o campo nome da forma de pagamento!', 'Voltar', {
-        duration: 1300
+      this._snackBar.open('Não está preenchido o campo nome da forma de pagamento!','', {
+        duration: 2000
       });
     }
 
     //update
     if (this.formOfPaymentModel.formOfPaymentName != "") {
       this.formOfPaymentUpdateService.update(this.formOfPaymentModel).subscribe(formOfPayment => {
-        this._snackBar.open('O cliente "' + this.formOfPaymentModel.formOfPaymentName + '", foi atualizado com sucesso!', 'Voltar', {
-          duration: 1300
+        this._snackBar.open('O cliente "' + this.formOfPaymentModel.formOfPaymentName + '", foi atualizado com sucesso!','', {
+          duration: 2000
         });
         this.reply();
       }, err => {
         let message = 'Erro ao atualizar o cliente ' + this.formOfPaymentModel.formOfPaymentId + ', necessário refazer o procedimento!';
-        this._snackBar.open(message, 'Voltar', {
-          duration: 1300
+        this._snackBar.open(message,'', {
+          duration: 2000
         });
         console.log(message, err);
       });

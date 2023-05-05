@@ -26,19 +26,25 @@ import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
+
 import { MainComponent } from './main/main.component';
+
 import { OrderCreateComponent } from './order/order-create/order-create.component';
 import { OrderListComponent } from './order/order-list/order-list.component';
 import { OrderDeleteComponent } from './order/order-delete/order-delete.component';
+
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
 import { OrderUpdateComponent } from './order/order-update/order-update.component';
+
 import { FormOfPaymentCreateComponent } from './formofpayment/formofpayment-create/formofpayment-create.component';
 import { FormOfPaymentListComponent } from './formofpayment/formofpayment-list/formofpayment-list.component';
 import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-delete/formofpayment-delete.component';
 import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-update/formofpayment-update.component';
+
+import { CommandsCreateComponent } from './commands/commands-create/commands-create.component';
 
 export const routes: Routes = [
   { path: '', component: AppComponent },
@@ -74,7 +80,8 @@ export const routes: Routes = [
   { path: 'formofpayment-create', component: FormOfPaymentCreateComponent },
   { path: 'formofpayment-list', component: FormOfPaymentListComponent },
   { path: 'formofpayment-delete', component: FormOfPaymentDeleteComponent },
-  { path: 'formofpayment-update', component: FormOfPaymentUpdateComponent }
+  { path: 'formofpayment-update', component: FormOfPaymentUpdateComponent },
+  { path: 'commands-create', component: CommandsCreateComponent }
 ];
 
 @NgModule({

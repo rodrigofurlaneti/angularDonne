@@ -160,8 +160,8 @@ export class OrderUpdateComponent implements OnInit {
     this.orderModel.amount = parseInt((<HTMLSelectElement>document.getElementById('orderAmount')).value);
     this.orderUpdateService.update(this.orderModel)
                               .subscribe(order => { 
-                                this._snackBar.open('Pedido atualizado com sucesso!', 'Voltar', {
-                                  duration: 1300
+                                this._snackBar.open('Pedido atualizado com sucesso!','', {
+                                  duration: 2000
                                 });
                                 this.reply();
 

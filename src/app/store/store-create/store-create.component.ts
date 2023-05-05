@@ -30,19 +30,19 @@ export class StoreCreateComponent {
     if(this.storeModel.storeName == "")
     {
       this._snackBar.open('O nome da loja está vazio, necessário o preenchimento!', 'Voltar', {
-        duration: 1300
+        duration: 2000
       });
     }
     if(this.storeModel.storeCnpj == "")
     {
       this._snackBar.open('O número do CNPJ da loja está vazio, necessário o preenchimento!', 'Voltar', {
-        duration: 1300
+        duration: 2000
       });
     }
     if(this.storeModel.storeAddress == "")
     {
       this._snackBar.open('O endereço da loja está vazio, necessário o preenchimento!', 'Voltar', {
-        duration: 1300
+        duration: 2000
       });
     }
     if(this.storeModel.storeName != '' && this.storeModel.storeCnpj != '' && this.storeModel.storeAddress != '' )
@@ -51,13 +51,13 @@ export class StoreCreateComponent {
       this.storeModel.storeId = parseInt(this.storeIdService.storeId);
       console.log(this.storeModel);
       this.storeCreateService.save(this.storeModel).subscribe(store => {
-        this._snackBar.open('A loja "'+this.storeModel.storeName+'", foi cadastrada com sucesso!', 'Voltar', {
-          duration: 1300
+        this._snackBar.open('A loja "'+this.storeModel.storeName+'", foi cadastrada com sucesso!','', {
+          duration: 2000
         });
         this.router.navigate(['store-list']);
       }, err => {
-        this._snackBar.open('Erro ao cadastrar a loja "'+this.storeModel.storeName+'", necessário refazer o procedimento!', 'Voltar', {
-          duration: 1300
+        this._snackBar.open('Erro ao cadastrar a loja "'+this.storeModel.storeName+'", necessário refazer o procedimento!','', {
+          duration: 2000
         });
         console.log('Erro ao adicionar o perfil!', err);
       })

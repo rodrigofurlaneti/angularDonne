@@ -11,14 +11,6 @@
       'visibility'}}</mat-icon>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Loja</mat-label>
-    <mat-select #matSelect id="dropDownListStore" name="dropDownListStore" [(ngModel)]="user.store">
-      <mat-option [value]="element" *ngFor="let element of dataSourceStore">
-        {{ element.storeName }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
     <mat-label>Perfil do novo usuário</mat-label>
     <mat-select #matSelect id="dropDownListProfile" name="dropDownListProfile" [(ngModel)]="user.profile">
       <mat-option [value]="element" *ngFor="let element of dataSource">

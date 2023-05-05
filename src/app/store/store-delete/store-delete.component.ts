@@ -40,8 +40,8 @@ export class StoreDeleteComponent implements OnInit {
     console.log(id);
     this.storeDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('Excluido a loja com sucesso!', 'Voltar', {
-      duration: 1300
+    this._snackBar.open('Excluido a loja com sucesso!','', {
+      duration: 2000
     });
   }
 

@@ -51,6 +51,31 @@
   </button>
 </mat-menu>
 
+<button mat-button [matMenuTriggerFor]="menuCommands" matTooltip="Acessar o menu de comandas."> <mat-icon class="icon">
+  assignment</mat-icon><span class="user-type"> Comandas</span></button>
+<mat-menu #menuCommands="matMenu" class="custom">
+<button matTooltip="Menu para adicionar mais uma comanda ao sistema." [matTooltipPosition]="'right'"
+  (click)="activeCommandsCreate()" mat-menu-item>
+  <mat-icon>exposure_plus_1</mat-icon>
+  <span>Adicionar</span>
+</button>
+<button matTooltip="Menu para atualizar mais um cliente no sistema." [matTooltipPosition]="'right'"
+  (click)="activeBuyerUpdate()" mat-menu-item>
+  <mat-icon>sync</mat-icon>
+  <span>Atualizar</span>
+</button>
+<button matTooltip="Menu para excluir um cliente do sistema." [matTooltipPosition]="'right'"
+  (click)="activeBuyerDelete()" mat-menu-item>
+  <mat-icon>delete_forever</mat-icon>
+  <span>Excluir</span>
+</button>
+<button matTooltip="Menu para mostrar a lista de clientes no sistema." [matTooltipPosition]="'right'"
+  (click)="activeBuyerList()" mat-menu-item>
+  <mat-icon>list_alt</mat-icon>
+  <span>Listar</span>
+</button>
+</mat-menu>
+
 <button mat-button [matMenuTriggerFor]="menuStore" matTooltip="Acessar o menu de lojas cadastradas."> <mat-icon
     class="icon">shopping_cart </mat-icon><span class="user-type"> Loja</span></button>
 <mat-menu #menuStore="matMenu" class="custom">

@@ -14,11 +14,11 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Valor do custo do Produto</mat-label>
-    <input id="costPrice" name="costPrice" matInput [(ngModel)]="productModel.costPrice" type="number" (ngModelChange)="calculate()" />
+    <input id="costPrice" name="costPrice" matInput [(ngModel)]="productModel.costPrice" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Valor da venda do produto</mat-label>
-    <input id="salePrice" name="salePrice" matInput [(ngModel)]="productModel.salePrice" type="number" (ngModelChange)="calculate()" />
+    <input id="salePrice" name="salePrice" matInput [(ngModel)]="productModel.salePrice" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
   </mat-form-field>
 
   <div class="input3row">
@@ -28,11 +28,11 @@
   </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Total custo</mat-label>
-      <input id="quantityStock" name="quantityStock" matInput [(ngModel)]="productModel.totalValueCostOfInventory" readonly/>
+      <input id="totalPriceCost" name="totalPriceCost" matInput [(ngModel)]="productModel.totalValueCostOfInventory" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" readonly/>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Total venda</mat-label>
-      <input id="quantityStock" name="quantityStock" matInput [(ngModel)]="productModel.totalValueSaleStock" readonly/>
+      <input id="totalSalePrice" name="totalSalePrice" matInput [(ngModel)]="productModel.totalValueSaleStock" currencyMask  [options]="{ prefix: '', thousands: '.', decimal: ',' }" readonly/>
     </mat-form-field>
   </div>
 

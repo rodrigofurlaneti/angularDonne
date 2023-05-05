@@ -61,6 +61,8 @@ export class ProfileUpdateComponent implements OnInit {
                               .subscribe(profile => { 
                                 this.profileModel.profileId = profile.profileId;
                                 this.profileModel.profileName = profile.profileName;
+                                this.profileModel.storeId = profile.storeId;
+                                this.profileModel.storeName = profile.storeName;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
@@ -78,8 +80,8 @@ export class ProfileUpdateComponent implements OnInit {
     this.profileModel.profileName = (<HTMLSelectElement>document.getElementById('profileName')).value;
     this.profileUpdateService.update(this.profileModel)
                               .subscribe(profile => { 
-                                this._snackBar.open('O perfil foi atualizado com sucesso!', 'Voltar', {
-                                  duration: 1300
+                                this._snackBar.open('O perfil foi atualizado com sucesso!','', {
+                                  duration: 2000
                                 });
                                 this.reply();
 

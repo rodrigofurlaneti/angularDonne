@@ -76,12 +76,10 @@ export class ProductUpdateComponent implements OnInit {
 
   onChange(event: MatCheckboxChange) {
     this.needToPrint = event.checked;
-    alert(event.checked);
   }
 
   onChangeStatus(event: MatCheckboxChange) {
     this.productStatus = event.checked;
-    alert(event.checked);
   }
 
   change(event: any) {
@@ -132,7 +130,8 @@ export class ProductUpdateComponent implements OnInit {
                                 this.productModel.minimumStockQuantity = product.minimumStockQuantity;
                                 this.productModel.productId = product.id;
                                 this.needToPrint = product.needToPrint;
-                                this.productStatus = product.productStatus;
+                                this.productStatus = product.status;
+                                console.log(product.productStatus + " " + product.needToPrint);
                                 this.productID = id;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
@@ -151,7 +150,6 @@ export class ProductUpdateComponent implements OnInit {
 
   public update() {
     this.productModel.productId = this.productID;
-    console.log(" atualização do ID conferir: " + this.productModel);
     this.productModel.productName = (<HTMLSelectElement>document.getElementById('nameProduct')).value;
     this.productModel.categoryName = this.categoryNameSelect;
     this.productModel.categoryId = this.categoryIDSelect;
@@ -164,14 +162,14 @@ export class ProductUpdateComponent implements OnInit {
     this.productModel.storeName = this.storeNameService.storeName;
     this.productModel.userId = parseInt(this.userIdService.userID);
     this.productModel.userName = this.userNameService.userName;
-    this.productModel.totalValueCostOfInventory = ((this.productModel.quantityStock * parseFloat(this.productModel.costPrice)) / 1000).toFixed(3);
-    this.productModel.totalValueSaleStock = ((this.productModel.quantityStock * parseFloat(this.productModel.salePrice)) / 1000).toFixed(3);
+    this.productModel.totalValueCostOfInventory = (this.productModel.quantityStock * parseFloat(this.productModel.costPrice)).toString();
+    this.productModel.totalValueSaleStock = (this.productModel.quantityStock * parseFloat(this.productModel.salePrice)).toString();
     this.productModel.imagePath = " "
     this.productModel.minimumStockQuantity = 0;
     this.productUpdateService.update(this.productModel)
                               .subscribe(product => { 
-                                this._snackBar.open('Categoria atualizada com sucesso!', 'Voltar', {
-                                  duration: 1300
+                                this._snackBar.open('Categoria atualizada com sucesso!','', {
+                                  duration: 2000
                                 });
                                 this.reply();
 

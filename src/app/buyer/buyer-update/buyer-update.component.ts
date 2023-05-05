@@ -83,20 +83,20 @@ export class BuyerUpdateComponent implements OnInit {
     //check fields
     if(this.buyerModel.buyerName == "")
     {
-      this._snackBar.open('Não está preenchido o campo nome do cliente!', 'Voltar', {
-        duration: 1300
+      this._snackBar.open('Não está preenchido o campo nome do cliente!','', {
+        duration: 2000
       });
     }
     if(this.buyerModel.buyerAddress == "")
     {
-      this._snackBar.open('Não está preenchido o campo endereço do cliente!', 'Voltar', {
-        duration: 1300
+      this._snackBar.open('Não está preenchido o campo endereço do cliente!','', {
+        duration: 2000
       });
     }
     if(this.buyerModel.buyerPhone == "")
     {
-      this._snackBar.open('Não está preenchido o campo telefone do cliente!', 'Voltar', {
-        duration: 1300
+      this._snackBar.open('Não está preenchido o campo telefone do cliente!','', {
+        duration: 2000
       });
     }
 
@@ -104,14 +104,14 @@ export class BuyerUpdateComponent implements OnInit {
     if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
     {
       this.buyerUpdateService.update(this.buyerModel).subscribe(buyer => { 
-        this._snackBar.open('O cliente "'+ this.buyerModel.buyerName +'", foi atualizado com sucesso!', 'Voltar', {
-          duration: 1300
+        this._snackBar.open('O cliente'+ this.buyerModel.buyerName +', foi atualizado com sucesso!','', {
+          duration: 2000
         });
         this.reply();
       }, err => {
         let message = 'Erro ao atualizar o cliente '+ this.buyerModel.buyerName +', necessário refazer o procedimento!';
-        this._snackBar.open(message, 'Voltar', {
-          duration: 1300
+        this._snackBar.open(message,'', {
+          duration: 2000
         });
         console.log(message, err);
       });

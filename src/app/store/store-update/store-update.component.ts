@@ -87,13 +87,13 @@ export class StoreUpdateComponent implements OnInit {
     this.storeModel;
     this.storeUpdateService.update(this.storeModel)
                               .subscribe(store => { 
-                                this._snackBar.open('A loja "'+this.storeModel.storeName+'", foi atualizada com sucesso!', 'Voltar', {
-                                  duration: 1300
+                                this._snackBar.open('A loja "'+this.storeModel.storeName+'", foi atualizada com sucesso!','', {
+                                  duration: 2000
                                 });
                                 this.reply();
                               }, err => {
-                                this._snackBar.open('Erro ao atualizar a loja "'+ this.storeModel.storeName +'", necessário refazer o procedimento!', 'Voltar', {
-                                  duration: 1300
+                                this._snackBar.open('Erro ao atualizar a loja "'+ this.storeModel.storeName +'", necessário refazer o procedimento!','', {
+                                  duration: 2000
                                 });
                                 console.log('Erro ao listar as categorias', err);
                               });

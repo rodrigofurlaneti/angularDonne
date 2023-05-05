@@ -26,8 +26,8 @@ export class CategoryCreateComponent {
     //checkFields
     if(this.categoryModel.categoryName == "")
     {
-      this._snackBar.open('O nome da categoria está vazio, precisa preencher!', 'Voltar', {
-        duration: 1300
+      this._snackBar.open('O nome da categoria está vazio, precisa preencher!','', {
+        duration: 2000
       });
     }
 
@@ -37,13 +37,13 @@ export class CategoryCreateComponent {
       this.categoryModel.storeName = this.storeNameService.storeName;
       this.categoryModel.storeId = parseInt(this.storeIdService.storeId);
       this.categoryCreateService.save(this.categoryModel).subscribe(user => {
-        this._snackBar.open('A categoria "'+ this.categoryModel.categoryName +'" foi cadastrada com sucesso!', 'Voltar', {
-          duration: 1300
+        this._snackBar.open('A categoria "'+ this.categoryModel.categoryName +'" foi cadastrada com sucesso!','', {
+          duration: 2000
         });
         this.categoryList();
       }, err => {
-        this._snackBar.open('Erro ao cadastrar a categoria "'+ this.categoryModel.categoryName +'" foi cadastrada com sucesso!', 'Voltar', {
-          duration: 1300
+        this._snackBar.open('Erro ao cadastrar a categoria "'+ this.categoryModel.categoryName +'" foi cadastrada com sucesso!','', {
+          duration: 2000
         });
         console.log('Erro ao cadastrar a categoria "'+ this.categoryModel.categoryName +'", necessário refazer o procedimento!', err);
       })
