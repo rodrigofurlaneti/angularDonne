@@ -153,4 +153,7 @@ export class MainComponent implements OnInit{
     this.router.navigate(['formofpayment-update']);
   }
 
+  public activeCommandsCreate() {
+    this.router.navigate(['commands-create']);
+  }
 }

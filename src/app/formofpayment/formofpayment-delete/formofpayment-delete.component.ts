@@ -33,14 +33,16 @@ export class FormOfPaymentDeleteComponent implements OnInit {
       this.dataSource = ELEMENT_DATA;
       console.log(this.dataSource);
     }, err => {
-      console.log('Erro ao listar as categorias', err);
+      console.log('Erro ao listar as formas de pagamento', err);
     })
   }
 
   public delete(id: number) {
     this.formOfPaymentDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('Excluido a categoria com sucesso!', 'Voltar');
+    this._snackBar.open('Excluido a forma de pagamento com sucesso!','', {
+      duration: 2000
+    });
   }
 
   dataSource = ELEMENT_DATA;

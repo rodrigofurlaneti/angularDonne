@@ -1,16 +1,18 @@
 <div class="container">
+  <div class="inputs">
 <mat-form-field appearance="fill">
   <mat-label>Nome da nova loja</mat-label>
   <input id="storeName" name="storeName" [(ngModel)]="storeModel.storeName" matInput>
 </mat-form-field>
 <mat-form-field appearance="fill">
   <mat-label>Cnpj</mat-label>
-  <input id="storeCnpj" name="storeCnpj" [(ngModel)]="storeModel.storeCnpj" matInput>
+  <input id="storeCnpj" name="storeCnpj" [(ngModel)]="storeModel.storeCnpj" matInput mask="00.000.000/0000-00">
 </mat-form-field>
 <mat-form-field appearance="fill">
   <mat-label>Endereço</mat-label>
   <input id="storeAddress" name="storeAddress" [(ngModel)]="storeModel.storeAddress" matInput>
 </mat-form-field>
+  </div>
   <section class="example-section">
     <mat-checkbox id="status" name="status" class="example-margin" (change)="onChangeDemo($event)" checked>Status</mat-checkbox>
   </section>

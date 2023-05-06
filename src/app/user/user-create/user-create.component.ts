@@ -7,6 +7,10 @@ import { FormControl, NgForm } from '@angular/forms';
 import { ProfileModel } from 'src/interface/profile.interface';
 import { MatSelect } from '@angular/material/select';
 import { StoreModel } from 'src/interface/store.interface';
+import { UserIdService } from 'src/app/user-id.service';
+import { UserNameService } from 'src/app/user-name.service';
+import { StoreNameService } from 'src/app/store-name.service';
+import { StoreIdService } from 'src/app/store-id.service';
 
 let ELEMENT_DATA: ProfileModel[];
 let ELEMENT_DATA_STORE: StoreModel[];
@@ -20,6 +24,8 @@ let ELEMENT_DATA_STORE: StoreModel[];
 export class UserCreateComponent implements OnInit, AfterViewInit{
 
   user: UserModel;
+  
+  showPassword: boolean = false;
 
   displayedColumns: string[] = ['name'];
 
@@ -28,7 +34,11 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
   selectedProfile : ProfileModel = new ProfileModel();
 
   constructor(private userCreateService: UserCreateService, 
-    private _snackBar: MatSnackBar,  private readonly router: Router) {
+    private _snackBar: MatSnackBar,  private readonly router: Router, 
+    private storeNameService: StoreNameService,
+    private storeIdService: StoreIdService,
+    private userNameService: UserNameService,
+    private userIdService: UserIdService) {
       this.user = new UserModel()
     }
 
@@ -72,10 +82,18 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
 
   save() {
     console.log(this.user);
+    this.user.storeName = this.storeNameService.storeName;
+    this.user.storeId = parseInt(this.storeIdService.storeId);
+    this.user.profileName = this.user.profile.profileName;
+    this.user.profileId = this.user.profile.profileId;
+    this.user.storeId = parseInt(this.storeIdService.storeId);
+    this.user.storeName = this.storeNameService.storeName;
     if(this.user.userName != '' && this.user.userPassword != '')
     {
       this.userCreateService.save(this.user).subscribe(userResp => {
-        this._snackBar.open('Perfil cadastrada com sucesso!', 'Voltar');
+        this._snackBar.open('Perfil cadastrada com sucesso!','', {
+          duration: 2000
+        });
         this.router.navigate(['user-list']);
       }, err => {
           console.log('Erro ao adicionar o novo usuário!', err);
@@ -83,11 +101,15 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
     }
     if(this.user.userName == '')
     {
-      this._snackBar.open('Não está preenchido o campo nome do usuario!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo nome do usuario!','', {
+        duration: 2000
+      });
     }
     if(this.user.userPassword == '')
     {
-      this._snackBar.open('Não está preenchido o campo senha do usuario!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo senha do usuario!','', {
+        duration: 2000
+      });
     }
   }
 

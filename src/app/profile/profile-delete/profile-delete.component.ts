@@ -40,7 +40,9 @@ export class ProfileDeleteComponent implements OnInit {
   public delete(id: number) {
     this.profileDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('Excluido o perfil com sucesso!', 'Voltar');
+    this._snackBar.open('Excluido o perfil com sucesso!','', {
+      duration: 2000
+    });
   }
 
   dataSource = ELEMENT_DATA;

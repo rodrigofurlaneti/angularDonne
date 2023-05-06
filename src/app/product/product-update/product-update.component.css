@@ -4,13 +4,12 @@
   
 .container{
   display: flex;
-  justify-content: center;
   flex-direction: column;
 
   padding: 1rem;
   border: 2px solid #fff;
-  width: 360px;
-  max-height: 620px;
+  width: 480px;
+  max-height: 560px;
   overflow-y: auto;
   background-color: #1b1b1b65;
   backdrop-filter: blur(10px);
@@ -22,6 +21,47 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.mat-form-field{
+
+}
+
+.inputs{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.checkboxs{
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categoryName ::ng-deep .mat-select-placeholder, .clientName ::ng-deep .mat-select-placeholder {
+  color: rgb(255, 255, 255); /* Substitua pela cor desejada */
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  margin-top: 1.3rem;
+}
+
+.btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input3row{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.input3row .mat-form-field{
+  width: 132px;
+}
+
 
 .mat-table{
   background-color: transparent;

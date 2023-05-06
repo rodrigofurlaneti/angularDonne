@@ -4,9 +4,9 @@
 
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Nome do produto</th>
-    <td mat-cell (click)="delete(element.categoryId)" *matCellDef="let element">
-      {{element.productName}}
-      <input type="hidden" id="categoryId" name="categoryId" [value]=element.categoryId>
+    <td mat-cell (click)="delete(element.formOfPaymentId)" *matCellDef="let element">
+      {{element.formOfPaymentName}}
+      <input type="hidden" id="formOfPaymentId" name="formOfPaymentId" [value]=element.formOfPaymentId>
     </td>
   </ng-container>
 

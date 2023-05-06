@@ -46,6 +46,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatGridListModule } from '@angular/material/grid-list';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 import { StoreCreateModule } from './store/store-create/store-create.module';
 import { StoreDeleteComponent } from './store/store-delete/store-delete.component';
@@ -80,6 +83,8 @@ import { FormOfPaymentCreateComponent } from './formofpayment/formofpayment-crea
 import { FormOfPaymentListComponent } from './formofpayment/formofpayment-list/formofpayment-list.component';
 import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-delete/formofpayment-delete.component';
 import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-update/formofpayment-update.component';
+
+import { CommandsCreateComponent } from './commands/commands-create/commands-create.component';
 
 @NgModule({
   declarations: [
@@ -116,9 +121,12 @@ import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-upda
     FormOfPaymentCreateComponent,
     FormOfPaymentListComponent,
     FormOfPaymentDeleteComponent,
-    FormOfPaymentUpdateComponent
+    FormOfPaymentUpdateComponent,
+    CommandsCreateComponent,
   ],
   imports: [
+    CurrencyMaskModule,
+    NgxMaskModule.forRoot(),
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -146,6 +154,7 @@ import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-upda
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    MatGridListModule,
     MatTooltipModule,
     MatCheckboxModule,
     UserCreateModule,

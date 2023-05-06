@@ -57,6 +57,17 @@ export class OrderUpdateComponent implements OnInit {
     this.list();
     this.listBuyer();
     this.listProducts();
+    this.hideUpdateButton();
+  }
+
+  hideUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'none';
+  }
+
+  showUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'block';
   }
 
   listBuyer() {
@@ -101,8 +112,11 @@ export class OrderUpdateComponent implements OnInit {
   }
 
   public getById(id: number) {
+    this.showUpdateButton();
     this.orderUpdateService.getById(id)
                               .subscribe(order => { 
+                                this.productSelectedName = order.productName;
+                                console.log(this.productSelectedName + " + " + order.productName);
                                 this.orderID = id;
                                 this.orderModel.orderId = id;
                                 this.orderModel.clientName = order.clientName;
@@ -114,9 +128,12 @@ export class OrderUpdateComponent implements OnInit {
                                 this.orderModel.storeName = order.storeName;
                                 this.orderModel.userId = order.userId;
                                 this.orderModel.userName = order.userName;
+                                this.orderModel.DateInsert = order.dateInsert;
+                                this.orderModel.DateUpdate = order.dateUpdate;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
+                              
   }
 
   dataSource = ELEMENT_DATA;
@@ -143,7 +160,9 @@ export class OrderUpdateComponent implements OnInit {
     this.orderModel.amount = parseInt((<HTMLSelectElement>document.getElementById('orderAmount')).value);
     this.orderUpdateService.update(this.orderModel)
                               .subscribe(order => { 
-                                this._snackBar.open('Usuário atualizado com sucesso!', 'Voltar');
+                                this._snackBar.open('Pedido atualizado com sucesso!','', {
+                                  duration: 2000
+                                });
                                 this.reply();
 
                               });

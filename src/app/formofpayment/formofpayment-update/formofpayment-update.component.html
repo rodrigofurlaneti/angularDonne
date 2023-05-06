@@ -1,4 +1,4 @@
-<input type="hidden" id="formOfPaymentId" name="formOfPaymentId" value="{{formOfPaymentModel.formOfPaymentId}">
+<input type="hidden" id="formOfPaymentId" name="formOfPaymentId" value="{{formOfPaymentModel.formOfPaymentId}}">
 
 <div class="container">
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
@@ -11,7 +11,8 @@
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
+          *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
   </ng-template>
@@ -20,21 +21,34 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Nome forma de pagamento:</mat-label>
-        <input id="formOfPagamentName" name="formOfPagamentName" matInput [(ngModel)]="formOfPaymentModel.formOfPaymentName" />
+        <input id="formOfPaymentName" name="formOfPaymentName" [(ngModel)]="formOfPaymentModel.formOfPaymentName"
+          matInput />
       </mat-form-field>
     </div>
+  </ng-template>
+  <div class="btns">
+    <section class="back_btn">
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <div class="example-label">Voltar
+              <button mat-raised-button mat-mini-fab matTooltip="Voltar para a pagina principal." (click)="reply()"
+                color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>reply_all</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section>
+    <section class="update_btn">
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
             <div class="example-label">Atualizar
-              <button mat-raised-button
-                    mat-mini-fab
-                    matTooltip="Atualizar a categoria." 
-                    (click)="update()" 
-                    color="primary" 
-                    aria-label="Example icon button with a menu icon">
+              <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria." (click)="update()"
+                color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>sync</mat-icon>
               </button>
             </div>
@@ -42,24 +56,5 @@
         </div>
       </div>
     </section>
-  </ng-template>
-  
-  <section>
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <div class="example-label">Voltar
-            <button mat-raised-button
-                  mat-mini-fab
-                  matTooltip="Voltar para a pagina principal."
-                  (click)="reply()" 
-                   color="primary" 
-                  aria-label="Example icon button with a menu icon">
-              <mat-icon>reply_all</mat-icon>
-            </button>
-          </div>  
-        </div>
-        </div>
-    </div>
-  </section>
+  </div>
 </div>

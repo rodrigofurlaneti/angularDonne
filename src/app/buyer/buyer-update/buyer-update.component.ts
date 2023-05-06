@@ -31,7 +31,18 @@ export class BuyerUpdateComponent implements OnInit {
     private router: Router) { }
   
   ngOnInit(): void {
-    this.list();    
+    this.list();   
+    this.hideUpdateButton(); 
+  }
+
+  hideUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'none';
+  }
+
+  showUpdateButton() {
+    const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
+    updateBtn.style.display = 'block';
   }
 
   list() {
@@ -45,10 +56,15 @@ export class BuyerUpdateComponent implements OnInit {
   }
 
   public getById(id: number) {
+    this.showUpdateButton();
     this.buyerUpdateService.getById(id)
                               .subscribe(buyer => { 
                                 this.buyerModel.buyerId = buyer.buyerId;
                                 this.buyerModel.buyerName = buyer.buyerName;
+                                this.buyerModel.buyerAddress = buyer.buyerAddress;
+                                this.buyerModel.buyerPhone = buyer.buyerPhone;
+                                this.buyerModel.StoreId = buyer.storeId;
+                                this.buyerModel.StoreName = buyer.storeName;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
@@ -67,26 +83,36 @@ export class BuyerUpdateComponent implements OnInit {
     //check fields
     if(this.buyerModel.buyerName == "")
     {
-      this._snackBar.open('Não está preenchido o campo nome do cliente!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo nome do cliente!','', {
+        duration: 2000
+      });
     }
     if(this.buyerModel.buyerAddress == "")
     {
-      this._snackBar.open('Não está preenchido o campo endereço do cliente!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo endereço do cliente!','', {
+        duration: 2000
+      });
     }
     if(this.buyerModel.buyerPhone == "")
     {
-      this._snackBar.open('Não está preenchido o campo telefone do cliente!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo telefone do cliente!','', {
+        duration: 2000
+      });
     }
 
     //update
     if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
     {
       this.buyerUpdateService.update(this.buyerModel).subscribe(buyer => { 
-        this._snackBar.open('O cliente "'+ this.buyerModel.buyerName +'", foi atualizado com sucesso!', 'Voltar');
+        this._snackBar.open('O cliente'+ this.buyerModel.buyerName +', foi atualizado com sucesso!','', {
+          duration: 2000
+        });
         this.reply();
       }, err => {
         let message = 'Erro ao atualizar o cliente '+ this.buyerModel.buyerName +', necessário refazer o procedimento!';
-        this._snackBar.open(message, 'Voltar');
+        this._snackBar.open(message,'', {
+          duration: 2000
+        });
         console.log(message, err);
       });
 

@@ -20,7 +20,7 @@
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Nome do novo Cliente</mat-label>
-      <mat-select #matSelect id="dropDownListBuyer" name="dropDownListBuyer" [(ngModel)]="orderModel.clientName" (selectionChange)="change($event.value)">
+      <mat-select placeholder="{{orderModel.clientName}}" #matSelect id="dropDownListBuyer" name="dropDownListBuyer" [(ngModel)]="orderModel.clientName" (selectionChange)="change($event.value)" class="clientName">
         <mat-option [value]="element" *ngFor="let element of dataSourceStore " >
           {{ element.buyerName }}
          </mat-option>
@@ -28,28 +28,42 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Novo produto</mat-label>
-      <mat-select #matSelect id="dropDownListProduct" name="dropDownListProduct" [(ngModel)]="orderModel.productName" (selectionChange)="changeProduct($event.value)">
-        <mat-option [value]="element"*ngFor="let element of dataSourceProducts " >
+      <mat-select placeholder="{{orderModel.productName}}" #matSelect id="dropDownListProduct" name="dropDownListProduct" [(ngModel)]="orderModel.productName" (selectionChange)="changeProduct($event.value)" class="productName" >
+        <mat-option [value]="element" *ngFor="let element of dataSourceProducts " >
           {{ element.productName }}
          </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Nova quantidade</mat-label>
-      <input id="orderAmount" name="orderAmount" value="{{orderModel.amount}}"  matInput />
+      <input type="number" id="orderAmount" name="orderAmount" [(ngModel)]="orderModel.amount" matInput />
     </mat-form-field>
   </div>
-  <section>
+</ng-template>
+
+<div class="btns">
+  <section class="back_btn">
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <div class="example-button-container">
+          <div class="example-label">Voltar
+            <button mat-raised-button mat-mini-fab matTooltip="Voltar para a pagina principal." (click)="reply()"
+              color="primary" aria-label="Example icon button with a menu icon">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="update_btn">
     <div class="example-button-row">
       <div class="example-flex-container">
         <div class="example-button-container">
           <div class="example-label">Atualizar
-            <button mat-raised-button
-                  mat-mini-fab
-                  matTooltip="Atualizar o usuário." 
-                  (click)="update()" 
-                  color="primary" 
-                  aria-label="Example icon button with a menu icon">
+            <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria." (click)="update()"
+              color="primary" aria-label="Example icon button with a menu icon">
               <mat-icon>sync</mat-icon>
             </button>
           </div>
@@ -57,24 +71,5 @@
       </div>
     </div>
   </section>
-</ng-template>
-
-<section>
-  <div class="example-button-row">
-    <div class="example-flex-container">
-      <div class="example-button-container">
-        <div class="example-label">Voltar
-          <button mat-raised-button
-                mat-mini-fab
-                matTooltip="Voltar para a pagina principal."
-                (click)="reply()" 
-                 color="primary" 
-                aria-label="Example icon button with a menu icon">
-            <mat-icon>reply_all</mat-icon>
-          </button>
-        </div>  
-      </div>
-      </div>
-  </div>
-</section>
+</div>
 </div>

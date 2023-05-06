@@ -19,6 +19,12 @@
   transform: translate(-50%, -50%);
 }
 
+.btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .example-label{
   display: flex;
   justify-content: center;

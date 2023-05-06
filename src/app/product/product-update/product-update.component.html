@@ -20,30 +20,42 @@
 
   <ng-template #isIdGreaterThanZero>
     <div>
+      <div class="inputs">
       <mat-form-field appearance="fill">
-        <mat-label>Nome do novo produto</mat-label>
+        <mat-label>Novo nome</mat-label>
         <input id="nameProduct" name="nameProduct" value="{{productModel.productName}}" matInput />
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Nova categoria do produto</mat-label>
-        <mat-select value="{{productModel.categoryId}}" #matSelect id="dropDownListCategory" name="dropDownListCategory" [value]="selectedValue" (selectionChange)="change($event.value)">
-          <mat-option [value]="element.categoryId" *ngFor="let element of dataSourceCategory">
+        <mat-label>Nova categoria</mat-label>
+        <mat-select placeholder="{{productModel.categoryName}}" value="{{productModel.categoryId}}" #matSelect id="dropDownListCategory" name="dropDownListCategory" [value]="selectedValue" (selectionChange)="change($event.value)" class="categoryName">
+          <mat-option [value]="element" *ngFor="let element of dataSourceCategory">
             {{ element.categoryName }}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Novo custo do produto</mat-label>
-        <input id="costPrice" name="costPrice" value="{{productModel.costPrice}}" matInput type="" />
+        <mat-label>Novo custo</mat-label>
+        <input id="costPrice" name="costPrice" [(ngModel)]="productModel.costPrice" matInput currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Novo custo de venda do produto</mat-label>
-        <input id="salePrice" name="salePrice" value="{{productModel.salePrice}}" matInput />
+        <mat-label>Novo custo de venda</mat-label>
+        <input id="salePrice" name="salePrice" [(ngModel)]="productModel.salePrice" matInput currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
       </mat-form-field>
+    </div>
+      <div class="input3row">
       <mat-form-field appearance="fill">
         <mat-label>Nova quantidade em estoque</mat-label>
-        <input id="quantityStock" name="quantityStock" value="{{productModel.quantityStock}}" matInput />
+        <input id="quantityStock" name="quantityStock"  [(ngModel)]="productModel.quantityStock" matInput type="number" (ngModelChange)="calculate()"/>
       </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Total custo</mat-label>
+        <input id="quantityStock" name="quantityStock" matInput [(ngModel)]="productModel.totalValueCostOfInventory" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" readonly/>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Total venda</mat-label>
+        <input id="quantityStock" name="quantityStock" matInput [(ngModel)]="productModel.totalValueSaleStock" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" readonly/>
+      </mat-form-field>
+    </div>
       <div class="checkboxs">
         <div class="example-section" *ngFor="let item of items">
           <mat-checkbox  class="example-margin" [checked]="needToPrint" (change)="onChange($event)">{{item.label}}</mat-checkbox>
@@ -51,20 +63,32 @@
         <div class="example-section" *ngFor="let status of status">
           <mat-checkbox  class="example-margin" [checked]="productStatus" (change)="onChangeStatus($event)">{{status.label}}</mat-checkbox>
         </div>
-      </div>
     </div>
-
-    <section>
+    </div>
+  </ng-template>
+  <div class="btns">
+    <section class="back_btn">
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <div class="example-label">Voltar
+              <button mat-raised-button mat-mini-fab matTooltip="Voltar para a pagina principal." (click)="reply()"
+                color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>reply_all</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="update_btn">
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
             <div class="example-label">Atualizar
-              <button mat-raised-button
-                    mat-mini-fab
-                    matTooltip="Atualizar a categoria." 
-                    (click)="update()" 
-                    color="primary" 
-                    aria-label="Example icon button with a menu icon">
+              <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria." (click)="update()"
+                color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>sync</mat-icon>
               </button>
             </div>
@@ -72,24 +96,5 @@
         </div>
       </div>
     </section>
-  </ng-template>
-  
-  <section>
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <div class="example-label">Voltar
-            <button mat-raised-button
-                  mat-mini-fab
-                  matTooltip="Voltar para a pagina principal."
-                  (click)="reply()" 
-                   color="primary" 
-                  aria-label="Example icon button with a menu icon">
-              <mat-icon>reply_all</mat-icon>
-            </button>
-          </div>  
-        </div>
-        </div>
-    </div>
-  </section>
+  </div>
 </div>

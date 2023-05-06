@@ -42,7 +42,9 @@ export class UserDeleteComponent implements OnInit {
     console.log(id);
     this.userDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('Excluido o usuário com sucesso!', 'Voltar');
+    this._snackBar.open('Excluido o usuário com sucesso!','', {
+      duration: 2000
+    });
   }
 
   dataSource = ELEMENT_DATA;

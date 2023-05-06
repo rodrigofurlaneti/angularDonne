@@ -49,7 +49,9 @@ export class FormOfPaymentCreateComponent {
   save() {
     if(this.formOfPaymentModel.formOfPaymentName == "")
     {
-      this._snackBar.open('Não está preenchido o campo nome da forma de pagamento!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo nome da forma de pagamento!','', {
+        duration: 2000
+      });
     }
     if (this.formOfPaymentModel.formOfPaymentName != '') {
       this.formOfPaymentModel.dateInsert = new Date().toISOString();
@@ -60,7 +62,9 @@ export class FormOfPaymentCreateComponent {
       this.formOfPaymentModel.userName = this.userNameService.userName;
       console.log(this.formOfPaymentModel);
       this.formOfPaymentCreateService.save(this.formOfPaymentModel).subscribe(formofpayment => {
-        this._snackBar.open('Nova forma de pagamento cadastrada com sucesso!', 'Voltar');
+        this._snackBar.open('Nova forma de pagamento ' + formofpayment.formOfPaymentName + ' cadastrada com sucesso!','', {
+          duration: 2000
+        });
         this.router.navigate(['formofpayment-list']);
       }, err => {
         console.log('Erro ao adicionar a nova forma de pagamento!', err);

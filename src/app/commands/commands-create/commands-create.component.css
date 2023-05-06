@@ -1,0 +1,145 @@
+section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 1rem;
+    border: 2px solid #fff;
+    width: 360px;
+    max-height: 560px;
+    overflow-y: auto;
+    background-color: #1b1b1b65;
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 8px #000;
+    border-radius: 8px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-x: hidden;
+  }
+    
+.command{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.save_btn{
+  border: none;
+  width: 80px;
+  padding: 0.5rem 0;
+  background-color: #7B1FA2;
+  color: #fff;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.3em;
+  cursor: pointer;
+  gap: 0.2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.plus_btn{
+  border: none;
+  width: 30px;
+  height: 30px;
+  padding: 0.5rem 0;
+  background-color: #ffffff;
+  color: #7B1FA2;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: .7em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 24px;
+}
+
+.save_btn_pedido{
+  border: none;
+  width: 30px;
+  height: 30px;
+  padding: 0.5rem 0;
+  background-color: #ffffff;
+  color: #7B1FA2;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: .7em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 18px;
+}
+
+.save_btn:hover, .plus_btn:hover, .save_btn_pedido:hover{
+  transform: scale(1.1);
+}
+
+.ordercommand_display{
+  width: 360px;
+  max-height: 420px;
+  overflow-y: auto;
+  background-color: #ffffff30;
+  border-radius: 8px;
+  border: 2px solid rgb(156, 70, 193);
+  top: 50%;
+  left: 50%;
+  margin-bottom: 1rem;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.02), 0px 6px 10px 0px rgba(0, 0, 0, 0.01), 0px 1px 18px 0px rgba(0, 0, 0, 0.01);
+
+}
+
+.order_row .mat-form-field{
+  width: 130px !important;
+  
+}
+
+.order_row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.ordercommand_display .contant{
+  padding: 0.5rem;
+}
+
+  .example-label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+      
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: auto;
+  }
+
+  .example-button {
+    display: block;
+    margin: 80px auto 400px;
+  }
+  
+  .example-container {
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #ccc;
+  }

@@ -116,7 +116,9 @@ export class OrderCreateComponent implements OnInit, AfterViewInit {
       console.log(orderModel);
 
       this.orderCreateService.save(orderModel).subscribe(order => {
-        this._snackBar.open('Pedido cadastrado com sucesso!', 'Voltar');
+        this._snackBar.open('Pedido cadastrado com sucesso!','', {
+          duration: 2000
+        });
         this.router.navigate(['order-list']);
       }, err => {
         console.log('Erro ao adicionar um novo pedido!', err);

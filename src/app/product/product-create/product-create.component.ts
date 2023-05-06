@@ -91,16 +91,24 @@ export class ProductCreateComponent {
  
   save() {
     if (this.productModel.productName == '') {
-      this._snackBar.open('Não está preenchido o campo nome do produto!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo nome do produto!','', {
+        duration: 2000
+      });
     }
     if (this.productModel.costPrice == '') {
-      this._snackBar.open('Não está preenchido o campo preço de custo do produto!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo preço de custo do produto!','', {
+        duration: 2000
+      });
     }
     if (this.productModel.salePrice == '') {
-      this._snackBar.open('Não está preenchido o campo preço de venda do produto!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo preço de venda do produto!','', {
+        duration: 2000
+      });
     }
     if (this.productModel.quantityStock == 0) {
-      this._snackBar.open('Não está preenchido o campo quantidade no estoque do produto!', 'Voltar');
+      this._snackBar.open('Não está preenchido o campo quantidade no estoque do produto!','', {
+        duration: 2000
+      });
     }
     if (this.productModel.productName != '' && this.productModel.costPrice != '' && this.productModel.salePrice != '' && this.productModel.quantityStock != 0) {
       this.productModel.categoryName = this.categoryNameSelect;
@@ -114,7 +122,9 @@ export class ProductCreateComponent {
       this.productModel.userId = parseInt(this.userIdService.userID);
       this.productModel.userName = this.userNameService.userName;
       this.productCreateService.save(this.productModel).subscribe(product => {
-        this._snackBar.open('Produto foi cadastrado com sucesso!', 'Voltar');
+        this._snackBar.open('Produto foi cadastrado com sucesso!','', {
+          duration: 2000
+        });
         this.router.navigate(['product-list']);
       }, err => {
         console.log('Erro ao adicionar o novo produto!', err);

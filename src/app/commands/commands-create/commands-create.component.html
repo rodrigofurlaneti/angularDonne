@@ -1,0 +1,69 @@
+<section>
+  <div class="command">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome do cliente</mat-label>
+      <mat-select #matSelect id="dropDownListBuyers" name="dropDownListBuyers" (selectionChange)="change($event.value)">
+        <mat-option [value]="element" *ngFor="let element of dataSourceBuyer">
+          {{ element.buyerName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="example-button-container">
+      <button class="save_btn" matTooltip="Salvar o novo perfil." (click)="saveClient()">
+        Salvar <mat-icon>save</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="ordercommand_display">
+    <div class="contant">
+      <h3>Pedidos</h3>
+      <div class="order_row">
+        <mat-form-field appearance="fill">
+          <mat-label>Produto</mat-label>
+          <mat-select #matSelect id="dropDownListBuyers" name="dropDownListBuyers"
+            (selectionChange)="change($event.value)">
+            <mat-option [value]="element" *ngFor="let element of dataSourceBuyer">
+              {{ element.buyerName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Quantidade</mat-label>
+          <input id="quantity" name="quantity" type="number" matInput />
+        </mat-form-field>
+        <div class="example-button-container">
+          <button class="save_btn_pedido" matTooltip="Salvar o novo perfil." (click)="saveClient()">
+          <mat-icon>save</mat-icon>
+          </button>
+        </div>
+        <div class="example-button-container">
+          <button class="plus_btn" matTooltip="Salvar o novo perfil." (click)="saveClient()">
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="example-button-row">
+    <div class="example-flex-container">
+      <div class="example-button-container">
+        <div class="example-label">
+          Voltar
+          <button mat-raised-button mat-mini-fab matTooltip="Voltar para a pagina principal." (click)="reply()"
+            color="primary" aria-label="Example icon button with a menu icon">
+            <mat-icon>reply_all</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="example-button-container">
+        <div class="example-label">
+          Salvar
+          <button mat-raised-button mat-mini-fab matTooltip="Salvar o novo perfil." (click)="save()" color="primary"
+            aria-label="Example icon button with a menu icon">
+            <mat-icon>save_alt</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
