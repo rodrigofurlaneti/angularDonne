@@ -109,6 +109,8 @@ export class ProductUpdateComponent implements OnInit {
     this.showUpdateButton();
     this.productUpdateService.getById(id)
                               .subscribe(product => { 
+                                this.categoryNameSelect = product.categoryName;
+                                this.categoryIDSelect = product.categoryId;
                                 this.selectedValue = product.categoryId;
                                 this.productModel.productId = product.productId;
                                 this.productModel.productName = product.productName;
@@ -153,9 +155,9 @@ export class ProductUpdateComponent implements OnInit {
     this.productModel.productName = (<HTMLSelectElement>document.getElementById('nameProduct')).value;
     this.productModel.categoryName = this.categoryNameSelect;
     this.productModel.categoryId = this.categoryIDSelect;
-    this.productModel.costPrice = parseFloat((<HTMLSelectElement>document.getElementById('costPrice')).value).toFixed(2);
-    this.productModel.salePrice = parseFloat((<HTMLSelectElement>document.getElementById('salePrice')).value).toFixed(2);
-    this.productModel.quantityStock = parseInt((<HTMLSelectElement>document.getElementById('quantityStock')).value);
+    this.productModel.costPrice = parseFloat(this.productModel.costPrice).toString();
+    this.productModel.salePrice = parseFloat(this.productModel.salePrice).toString();
+    this.productModel.quantityStock = this.productModel.quantityStock;
     this.productModel.needToPrint = this.needToPrint;
     this.productModel.status = this.productStatus;
     this.productModel.storeId = parseInt(this.storeIdService.storeId);

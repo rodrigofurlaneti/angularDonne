@@ -101,7 +101,7 @@ section {
 }
 
 .order_row .mat-form-field{
-  width: 130px !important;
+  width: 160px !important;
   
 }
 
@@ -142,4 +142,9 @@ section {
     height: 200px;
     overflow: auto;
     border: 1px solid #ccc;
+  }
+
+  .btns_all{
+    display: flex;
+    gap: 1rem;
   }

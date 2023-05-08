@@ -91,10 +91,14 @@ export class CategoryUpdateComponent implements OnInit {
     {
       this.categoryUpdateService.update(this.categoryModel)
                               .subscribe(category => { 
-                                this._snackBar.open('A categoria '+ this.categoryModel.categoryName +' foi atualizada com sucesso!', 'Voltar');
+                                this._snackBar.open('A categoria '+ this.categoryModel.categoryName +' foi atualizada com sucesso!', '',{
+                                  duration: 2000
+                                });
                                 this.reply();
                            }, err => {
-                            this._snackBar.open('Erro ao atualizar a categoria '+ this.categoryModel.categoryName +', necessário refazer o procedimento!', 'Voltar');
+                            this._snackBar.open('Erro ao atualizar a categoria '+ this.categoryModel.categoryName +', necessário refazer o procedimento!', '',{
+                              duration: 2000
+                            });
                             console.log('Erro ao listar as categorias', err);
                           });
     }

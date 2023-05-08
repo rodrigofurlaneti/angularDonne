@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CommandsModel } from 'src/interface/commands.interface';
+import { OrderModel } from 'src/interface/order.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,24 @@ export class CommandsCreateService {
 
   constructor(private http: HttpClient) { }
 
-  save(commands: CommandsModel) : Observable<any>{
+  saveClient(commands: CommandsModel) : Observable<any>{
     return this.http.post<any>(this.routeAws+'Commands', commands)
   }
 
+  saveCommand(order: OrderModel) : Observable<any>{
+    return this.http.post<any>(this.routeAws+'Order', order)
+  }
+
+  listProducts() : Observable<any>{
+    return this.http.get(this.routeAws+'Product')
+  }
+  
   listBuyer() : Observable<any>{
     return this.http.get(this.routeAws+'Buyer')
+  }
+
+  public getCommandId(id: number): Observable<any> {
+    console.log(id);
+    return this.http.get<any>(`${this.routeAws}Commands/${id}`);
   }
 }

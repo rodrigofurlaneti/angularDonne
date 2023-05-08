@@ -52,23 +52,23 @@
       this.appService.appService(this.user).subscribe(userResp => {
       if(userResp.userName === null)
       {
-        this._snackBar.open('Não existe este usuário cadastrado!', 'Voltar');
+        this._snackBar.open('Não existe este usuário cadastrado!','',);
       }
       else if(this.user.store.storeName === '')
       {
-        this._snackBar.open('Não está preenchido o campo nome da loja!', 'Voltar');
+        this._snackBar.open('Não está preenchido o campo nome da loja!','',);
       }
       else if(this.user.userPassword === '')
       {
-        this._snackBar.open('Não está preenchido o campo senha!', 'Voltar');
+        this._snackBar.open('Não está preenchido o campo senha!','',);
       }
       else if(this.user.store.storeName != userResp.storeName)
       {
-        this._snackBar.open('Loja inválida!', 'Voltar');
+        this._snackBar.open('Loja inválida!','',);
       }
       else if(this.user.userPassword != userResp.userPassword)
       {
-        this._snackBar.open('Senha inválida!', 'Voltar');
+        this._snackBar.open('Senha inválida!','',);
       }
       else if(this.user.userPassword === userResp.userPassword && 
           this.user.userName === userResp.userName &&
@@ -80,7 +80,7 @@
         this.userIdService.setUserId(`${userResp.userId}`)
         this.userNameService.setUserName(userResp.userName);
         this.router.navigate(['/main']);
-        this._snackBar.open('Acesso autorizado com sucesso!', 'Voltar');
+        this._snackBar.open('Acesso autorizado com sucesso! Seja bem-vindo!','',);
         console.log();
       }
       }, err => {
@@ -89,6 +89,6 @@
 
       setTimeout(() => {
         this._snackBar.dismiss();
-      }, 1500);
+      }, 2000);
     }
   }

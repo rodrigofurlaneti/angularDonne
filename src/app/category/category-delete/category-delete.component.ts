@@ -39,8 +39,8 @@ export class CategoryDeleteComponent implements OnInit {
   public delete(id: number) {
     this.categoryDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('A categoria foi excluida com sucesso!', 'Voltar', {
-      duration: 1300
+    this._snackBar.open('A categoria foi completamente excluida com sucesso!', '', {
+      duration: 2000
     });
   }
 

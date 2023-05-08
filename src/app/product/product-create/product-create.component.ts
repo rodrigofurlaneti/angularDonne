@@ -113,8 +113,8 @@ export class ProductCreateComponent {
     if (this.productModel.productName != '' && this.productModel.costPrice != '' && this.productModel.salePrice != '' && this.productModel.quantityStock != 0) {
       this.productModel.categoryName = this.categoryNameSelect;
       this.productModel.categoryId = this.categoryIDSelect;
-      this.productModel.costPrice = parseFloat(this.productModel.costPrice).toFixed(2); //parseFloat(priceCost)
-      this.productModel.salePrice = parseFloat(this.productModel.salePrice).toFixed(2); //parseFloat(priceSale)
+      this.productModel.costPrice = parseFloat(this.productModel.costPrice).toString(); //parseFloat(priceCost)
+      this.productModel.salePrice = parseFloat(this.productModel.salePrice).toString(); //parseFloat(priceSale)
       this.productModel.needToPrint = this.needToPrint;
       this.productModel.status = this.productStatus;
       this.productModel.storeId = parseInt(this.storeIdService.storeId);

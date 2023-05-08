@@ -126,31 +126,6 @@
   </button>
 </mat-menu>
 
-<button mat-button [matMenuTriggerFor]="menuOrder" matTooltip="Acessar o menu de pedidos."> <mat-icon
-    class="icon">reorder </mat-icon><span class="user-type"> Pedido</span></button>
-<mat-menu #menuOrder="matMenu" class="custom">
-  <button matTooltip="Menu para adicionar mais um pedido no sistema." [matTooltipPosition]="'right'"
-    (click)="activeOrderCreate()" mat-menu-item>
-    <mat-icon>exposure_plus_1</mat-icon>
-    <span>Adicionar</span>
-  </button>
-  <button matTooltip="Menu para atualizar um pedido no sistema." [matTooltipPosition]="'right'"
-    (click)="activeOrderUpdate()" mat-menu-item>
-    <mat-icon>sync</mat-icon>
-    <span>Atualizar</span>
-  </button>
-  <button matTooltip="Menu para excluir um pedido no sistema." [matTooltipPosition]="'right'"
-    (click)="activeOrderDelete()" mat-menu-item>
-    <mat-icon>delete_forever</mat-icon>
-    <span>Excluir</span>
-  </button>
-  <button matTooltip="Menu para mostrar lista de pedidos no sistema." [matTooltipPosition]="'right'"
-    (click)="activeOrderList()" mat-menu-item>
-    <mat-icon>list_alt</mat-icon>
-    <span>Listar</span>
-  </button>
-</mat-menu>
-
 <button mat-button [matMenuTriggerFor]="menuProfile" matTooltip="Acessar o menu de perfis no sistema."> <mat-icon
     class="icon">account_box </mat-icon><span class="user-type"> Perfil</span></button>
 <mat-menu #menuProfile="matMenu" class="custom">
