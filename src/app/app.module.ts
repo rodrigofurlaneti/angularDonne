@@ -85,6 +85,8 @@ import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-dele
 import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-update/formofpayment-update.component';
 
 import { CommandsCreateComponent } from './commands/commands-create/commands-create.component';
+import { CommandsListComponent } from './commands/commands-list/commands-list.component';
+import { CommandsDeleteComponent } from './commands/commands-delete/commands-delete.component';
 
 @NgModule({
   declarations: [
@@ -123,6 +125,8 @@ import { CommandsCreateComponent } from './commands/commands-create/commands-cre
     FormOfPaymentDeleteComponent,
     FormOfPaymentUpdateComponent,
     CommandsCreateComponent,
+    CommandsListComponent,
+    CommandsDeleteComponent,
   ],
   imports: [
     CurrencyMaskModule,

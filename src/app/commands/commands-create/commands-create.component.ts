@@ -24,6 +24,15 @@ let ELEMENT_DATA_PRODUCT: ProductModel[];
 
 export class CommandsCreateComponent {
 
+  orders: { productName: string, quantity: number, productId: number, }[] = [];
+  dataSourceProducts = [
+    { productName: '' }];
+  addOrder() {
+    this.orders.push({ productName: '', quantity: 0, productId: 0, });
+    console.log("quantidade de pedidos:" + this.orders.length);
+  };
+
+
   selectValueSelected = false;
   buyerNameSelect: string = " ";
   buyerIDSelect: number = 0;
@@ -53,6 +62,7 @@ export class CommandsCreateComponent {
   ngOnInit(): void {
     this.listBuyer();
     this.listProducts();
+    this.addOrder();
     this.order = new OrderModel();
   }
 
@@ -67,11 +77,10 @@ export class CommandsCreateComponent {
     this.buyerNameSelect = event.buyerName;
   }
 
-  changeProduct(event: any) {
-    console.log(event);
-    this.productSelectedID = event.productId;
-    this.productSelectedName = event.productName;
-    console.log(event.productName);
+  changeProduct(product: ProductModel) {
+    console.log(product.productName);
+    this.productSelectedName = product.productName;
+    this.productSelectedID = product.productId;
   }
 
   listBuyer() {
@@ -91,7 +100,7 @@ export class CommandsCreateComponent {
       console.log('Erro ao listar os perfis', err);
     })
   }
-  
+
   saveClient() {
 
     //checkFields
@@ -116,6 +125,7 @@ export class CommandsCreateComponent {
         this._snackBar.open('O novo cliente "' + this.commandsModel.buyerName + '" foi cadastrado com sucesso!', '', {
           duration: 2000
         });
+        this.commandId = client;
       }, err => {
         this._snackBar.open('Erro ao cadastrar o novo cliente "' + this.commandsModel.buyerName + '" foi cadastrada com sucesso!', '', {
           duration: 2000
@@ -126,82 +136,49 @@ export class CommandsCreateComponent {
   }
 
   saveCommand() {
-
-    //checkFields
-    if (this.order.productName == "") {
-      this._snackBar.open('O cliente não foi seleciona, precisa selecionar!', '', {
+    // Check fields
+    if (this.orders.length === 0) {
+      this._snackBar.open('Não há pedidos para salvar!', '', {
         duration: 2000
       });
+      return;
     }
 
-    //save
-    if (this.order.productName != "") {
-      var amount = (<HTMLSelectElement>document.getElementById('quantity')).value;
-      var orderModel = new OrderModel();
+    // Save 
+    for (const order of this.orders) {
+      const orderModel = new OrderModel();
       orderModel.clientName = this.buyerNameSelect;
       orderModel.clientId = this.buyerIDSelect;
       orderModel.productName = this.productSelectedName;
       orderModel.productId = this.productSelectedID;
-      orderModel.amount = parseInt(amount);
+      orderModel.amount = order.quantity;
       orderModel.userId = parseInt(this.userIdService.userID);
       orderModel.userName = this.userNameService.userName;
       orderModel.storeName = this.storeNameService.storeName;
       orderModel.storeId = parseInt(this.storeIdService.storeId);
-      console.log(orderModel);
 
       this.commandsCreateService.saveCommand(orderModel).subscribe(command => {
-        this._snackBar.open('O cliente "' + this.selectedBuyerName.buyerName + '" foi salvo na comanda com sucesso!', '', {
+        this._snackBar.open('O pedido foi salvo com sucesso!', '', {
           duration: 2000
         });
       }, err => {
-        this._snackBar.open('Erro ao salvar o cliente"' + this.selectedBuyerName.buyerName + '", necessário refazer o procedimento!', '', {
+        this._snackBar.open('Erro ao salvar o pedido, necessário refazer o procedimento!', '', {
           duration: 2000
         });
-        console.log('Erro ao salvar o cliente"' + this.selectedBuyerName.buyerName + '", necessário refazer o procedimento!', err);
-      })
+        console.log('Erro ao salvar o pedido:', err);
+      });
     }
+    this.orders = [];
+    this.commandsList();
   }
 
   dataSourceBuyer = ELEMENT_DATA_Buyer;
-  dataSourceProducts = ELEMENT_DATA_PRODUCT;
 
   reply() {
     this.router.navigate(['main']);
   }
 
   commandsList() {
-    this.router.navigate(['main']);
-  }
-
-  //EM PRODUÇÃO//
-  addNewDiv() {
-    const newDiv = this.renderer.createElement('div');
-    this.renderer.addClass(newDiv, 'contant'); // Adicione a classe desejada
-    const h3 = this.renderer.createElement('h3');
-    const text = this.renderer.createText('Nova div');
-    this.renderer.appendChild(h3, text);
-    const orderRow = this.renderer.createElement('div');
-    this.renderer.addClass(orderRow, 'order_row'); // Adicione a classe desejada
-    const matFormField1 = this.renderer.createElement('mat-form-field');
-    const matLabel1 = this.renderer.createElement('mat-label');
-    const text1 = this.renderer.createText('Produto');
-    this.renderer.appendChild(matLabel1, text1);
-    const matSelect = this.renderer.createElement('mat-select');
-    this.renderer.setAttribute(matSelect, 'id', 'dropDownListProduct');
-    this.renderer.setAttribute(matSelect, 'name', 'dropDownListProduct');
-    const inputElement1 = this.renderer.createElement('input');
-    this.renderer.setAttribute(inputElement1, 'id', 'quantity');
-    this.renderer.setAttribute(inputElement1, 'name', 'quantity');
-    this.renderer.setAttribute(inputElement1, 'type', 'number');
-    this.renderer.setAttribute(inputElement1, 'matInput', '');
-
-    // Adicione os elementos criados à nova div
-    this.renderer.appendChild(matFormField1, matLabel1);
-    this.renderer.appendChild(matSelect, inputElement1);
-    this.renderer.appendChild(orderRow, matFormField1);
-    this.renderer.appendChild(orderRow, matSelect);
-    this.renderer.appendChild(newDiv, h3);
-    this.renderer.appendChild(newDiv, orderRow);
-
+    this.router.navigate(['commands-list']);
   }
 }

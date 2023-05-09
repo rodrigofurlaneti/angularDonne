@@ -29,9 +29,4 @@ export class CommandsCreateService {
   listBuyer() : Observable<any>{
     return this.http.get(this.routeAws+'Buyer')
   }
-
-  public getCommandId(id: number): Observable<any> {
-    console.log(id);
-    return this.http.get<any>(`${this.routeAws}Commands/${id}`);
-  }
 }

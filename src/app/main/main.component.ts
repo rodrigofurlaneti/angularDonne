@@ -156,4 +156,12 @@ export class MainComponent implements OnInit{
   public activeCommandsCreate() {
     this.router.navigate(['commands-create']);
   }
+
+  public activeCommandsList() {
+    this.router.navigate(['commands-list']);
+  }
+  
+  public activeCommandsDelete() {
+    this.router.navigate(['commands-delete']);
+  }
 }

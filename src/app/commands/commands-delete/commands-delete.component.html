@@ -3,10 +3,10 @@
 
 
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Nome da categoria</th>
-    <td mat-cell (click)="delete(element.categoryId)" *matCellDef="let element">
-      {{element.categoryName}}
-      <input type="hidden" id="categoryId" name="categoryId" [value]=element.categoryId>
+    <th mat-header-cell *matHeaderCellDef>Comandas</th>
+    <td mat-cell (click)="delete(element.commandsId)" *matCellDef="let element">
+      {{element.buyerName}}
+      <input type="hidden" id="commandsId" name="commandsId" [value]=element.commandsId>
     </td>
   </ng-container>
 
