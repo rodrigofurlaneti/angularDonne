@@ -65,12 +65,12 @@
   <span>Atualizar</span>
 </button>
 <button matTooltip="Menu para excluir um cliente do sistema." [matTooltipPosition]="'right'"
-  (click)="activeBuyerDelete()" mat-menu-item>
+  (click)="activeCommandsDelete()" mat-menu-item>
   <mat-icon>delete_forever</mat-icon>
   <span>Excluir</span>
 </button>
 <button matTooltip="Menu para mostrar a lista de clientes no sistema." [matTooltipPosition]="'right'"
-  (click)="activeBuyerList()" mat-menu-item>
+  (click)="activeCommandsList()" mat-menu-item>
   <mat-icon>list_alt</mat-icon>
   <span>Listar</span>
 </button>
@@ -121,31 +121,6 @@
   </button>
   <button matTooltip="Menu para mostrar a lista de produtos no sistema." [matTooltipPosition]="'right'"
     (click)="activeProductList()" mat-menu-item>
-    <mat-icon>list_alt</mat-icon>
-    <span>Listar</span>
-  </button>
-</mat-menu>
-
-<button mat-button [matMenuTriggerFor]="menuOrder" matTooltip="Acessar o menu de pedidos."> <mat-icon
-    class="icon">reorder </mat-icon><span class="user-type"> Pedido</span></button>
-<mat-menu #menuOrder="matMenu" class="custom">
-  <button matTooltip="Menu para adicionar mais um pedido no sistema." [matTooltipPosition]="'right'"
-    (click)="activeOrderCreate()" mat-menu-item>
-    <mat-icon>exposure_plus_1</mat-icon>
-    <span>Adicionar</span>
-  </button>
-  <button matTooltip="Menu para atualizar um pedido no sistema." [matTooltipPosition]="'right'"
-    (click)="activeOrderUpdate()" mat-menu-item>
-    <mat-icon>sync</mat-icon>
-    <span>Atualizar</span>
-  </button>
-  <button matTooltip="Menu para excluir um pedido no sistema." [matTooltipPosition]="'right'"
-    (click)="activeOrderDelete()" mat-menu-item>
-    <mat-icon>delete_forever</mat-icon>
-    <span>Excluir</span>
-  </button>
-  <button matTooltip="Menu para mostrar lista de pedidos no sistema." [matTooltipPosition]="'right'"
-    (click)="activeOrderList()" mat-menu-item>
     <mat-icon>list_alt</mat-icon>
     <span>Listar</span>
   </button>

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { CategoryDeleteService } from './category-delete.service';
+import { CommandsDeleteService } from './commands-delete.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CategoryModel } from 'src/interface/category.interface';
+import { CommandsModel } from 'src/interface/commands.interface';
 
-let ELEMENT_DATA: CategoryModel[];
+let ELEMENT_DATA: CommandsModel[];
 
 @Component({
-  selector: 'category-delete',
-  templateUrl: './category-delete.component.html',
-  styleUrls: ['./category-delete.component.css']
+  selector: 'commands-delete',
+  templateUrl: './commands-delete.component.html',
+  styleUrls: ['./commands-delete.component.css']
 })
-export class CategoryDeleteComponent implements OnInit {
+export class CommandsDeleteComponent implements OnInit {
 
   displayedColumns: string[] = ['name'];
 
@@ -19,7 +19,7 @@ export class CategoryDeleteComponent implements OnInit {
 
   ids: number = 0;
 
-  constructor(private categoryDeleteService: CategoryDeleteService,
+  constructor(private commandsDeleteService: CommandsDeleteService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
@@ -28,24 +28,25 @@ export class CategoryDeleteComponent implements OnInit {
   }
 
   public list() {
-    this.categoryDeleteService.list().subscribe(list => {
+    this.commandsDeleteService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
+      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })
   }
 
   public delete(id: number) {
-    this.categoryDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
+    this.commandsDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('A categoria foi completamente excluida com sucesso!', '', {
+    this._snackBar.open('A categoria foi excluida com sucesso!','', {
       duration: 2000
     });
   }
 
   dataSource = ELEMENT_DATA;
-  clickedRows = new Set<CategoryModel>();
+  clickedRows = new Set<CommandsModel>();
 
   reply(){
     this.router.navigate(['main']);

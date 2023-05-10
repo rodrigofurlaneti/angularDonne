@@ -23,11 +23,11 @@
       <div class="inputs">
       <mat-form-field appearance="fill">
         <mat-label>Novo nome</mat-label>
-        <input id="nameProduct" name="nameProduct" value="{{productModel.productName}}" matInput />
+        <input id="nameProduct" name="nameProduct" [(ngModel)]="productModel.productName"  matInput />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Nova categoria</mat-label>
-        <mat-select placeholder="{{productModel.categoryName}}" value="{{productModel.categoryId}}" #matSelect id="dropDownListCategory" name="dropDownListCategory" [value]="selectedValue" (selectionChange)="change($event.value)" class="categoryName">
+        <mat-select placeholder="{{productModel.categoryName}}" [(ngModel)]="productModel.categoryName" #matSelect id="dropDownListCategory" name="dropDownListCategory" [value]="selectedValue" (selectionChange)="change($event.value)" class="categoryName">
           <mat-option [value]="element" *ngFor="let element of dataSourceCategory">
             {{ element.categoryName }}
           </mat-option>
@@ -35,11 +35,11 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Novo custo</mat-label>
-        <input id="costPrice" name="costPrice" [(ngModel)]="productModel.costPrice" matInput currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
+        <input id="costPrice" name="costPrice" [(ngModel)]="productModel.costPrice" matInput currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }"/>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Novo custo de venda</mat-label>
-        <input id="salePrice" name="salePrice" [(ngModel)]="productModel.salePrice" matInput currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
+        <input id="salePrice" name="salePrice" [(ngModel)]="productModel.salePrice" matInput currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }"/>
       </mat-form-field>
     </div>
       <div class="input3row">

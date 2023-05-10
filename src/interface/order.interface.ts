@@ -11,6 +11,7 @@ export interface IOrderInterface {
     userName: string;
     DateInsert: Date;
     DateUpdate: Date;
+    CommandId: number;
 }
 export class OrderModel implements IOrderInterface {
     orderId: number = 0;    
@@ -25,5 +26,6 @@ export class OrderModel implements IOrderInterface {
     userName: string = " ";
     DateInsert: Date = new Date;
     DateUpdate: Date = new Date;
+    CommandId: number = 0;
     constructor(){}
   }

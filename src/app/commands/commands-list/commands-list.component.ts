@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { CategoryListService } from './category-list.service';
+import { CommandsListService } from './commands-list.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CategoryModel } from 'src/interface/category.interface';
+import { CommandsModel } from 'src/interface/commands.interface';
 
-let ELEMENT_DATA: CategoryModel[];
+let ELEMENT_DATA: CommandsModel[];
 
 @Component({
-  selector: 'category-list',
-  templateUrl: './category-list.component.html',
-  styleUrls: ['./category-list.component.css']
+  selector: 'commands-list',
+  templateUrl: './commands-list.component.html',
+  styleUrls: ['./commands-list.component.css']
 })
-export class CategoryListComponent implements OnInit {
+export class CommandsListComponent implements OnInit {
 
   displayedColumns: string[] = ['name'];
 
-  constructor(private categoryListService: CategoryListService,
+  constructor(private commandsListService: CommandsListService,
               private _snackBar: MatSnackBar, 
               private router: Router) { }
   
@@ -24,7 +24,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   list() {
-    this.categoryListService.list().subscribe(list => {
+    this.commandsListService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
       console.log(this.dataSource);
@@ -34,7 +34,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   dataSource = ELEMENT_DATA;
-  clickedRows = new Set<CategoryModel>();
+  clickedRows = new Set<CommandsModel>();
 
   reply(){
     this.router.navigate(['main']);

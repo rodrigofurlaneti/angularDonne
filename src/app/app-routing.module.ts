@@ -45,6 +45,8 @@ import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-dele
 import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-update/formofpayment-update.component';
 
 import { CommandsCreateComponent } from './commands/commands-create/commands-create.component';
+import { CommandsListComponent } from './commands/commands-list/commands-list.component';
+import { CommandsDeleteComponent } from './commands/commands-delete/commands-delete.component';
 
 export const routes: Routes = [
   { path: '', component: AppComponent },
@@ -57,10 +59,10 @@ export const routes: Routes = [
   { path: 'buyer-delete', component: BuyerDeleteComponent },
   { path: 'buyer-list', component: BuyerListComponent },
   { path: 'buyer-update', component: BuyerUpdateComponent },
-  { path: 'order-create', component: OrderCreateComponent},
-  { path: 'order-list', component: OrderListComponent},
-  { path: 'order-delete', component: OrderDeleteComponent},
-  { path: 'order-update', component: OrderUpdateComponent},
+  { path: 'order-create', component: OrderCreateComponent },
+  { path: 'order-list', component: OrderListComponent },
+  { path: 'order-delete', component: OrderDeleteComponent },
+  { path: 'order-update', component: OrderUpdateComponent },
   { path: 'store-create', component: StoreCreateComponent },
   { path: 'store-delete', component: StoreDeleteComponent },
   { path: 'store-list', component: StoreListComponent },
@@ -81,7 +83,9 @@ export const routes: Routes = [
   { path: 'formofpayment-list', component: FormOfPaymentListComponent },
   { path: 'formofpayment-delete', component: FormOfPaymentDeleteComponent },
   { path: 'formofpayment-update', component: FormOfPaymentUpdateComponent },
-  { path: 'commands-create', component: CommandsCreateComponent }
+  { path: 'commands-create', component: CommandsCreateComponent },
+  { path: 'commands-list', component: CommandsListComponent },
+  { path: 'commands-delete', component:CommandsDeleteComponent },
 ];
 
 @NgModule({
