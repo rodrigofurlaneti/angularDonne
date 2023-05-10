@@ -8,13 +8,12 @@ import { CategoryModel } from 'src/interface/category.interface';
 })
 export class CategoryCreateService {
 
-  private routeAws = 'https://localhost:7027/';
-  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private route = 'https://localhost:7027/';
 
   constructor(private http: HttpClient) { }
 
   save(category: CategoryModel) : Observable<any>{
-    return this.http.post<any>(this.routeAws+'Category', category)
+    return this.http.post<any>(this.route+'Category', category)
   }
 
 }

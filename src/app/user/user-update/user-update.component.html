@@ -28,7 +28,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Novo perfil</mat-label>
-      <mat-select placeholder="{{userModel.profile}}" #matSelect id="dropDownListProfile" name="dropDownListProfile" class="profile">
+      <mat-select #matSelect id="dropDownListProfile" name="dropDownListProfile" class="profile">
         <mat-option [value]="elementProfile.profileId" *ngFor="let elementProfile of dataSourceProfile" >
           {{ elementProfile.profileName }}
          </mat-option>

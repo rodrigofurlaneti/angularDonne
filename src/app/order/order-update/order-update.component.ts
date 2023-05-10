@@ -3,15 +3,8 @@ import { Router } from '@angular/router';
 import { OrderUpdateService } from './order-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderModel } from 'src/interface/order.interface';
-import { ProfileModel } from 'src/interface/profile.interface';
 import { BuyerModel } from 'src/interface/buyer.interface';
 import { ProductModel } from 'src/interface/product.interface';
-import { UserIdService } from 'src/app/user-id.service';
-import { UserNameService } from 'src/app/user-name.service';
-import { StoreNameService } from 'src/app/store-name.service';
-import { StoreIdService } from 'src/app/store-id.service';
-
-
 
 let ELEMENT_DATA: OrderModel[];
 let ELEMENT_DATA_PRODUCT: ProductModel[];
@@ -47,11 +40,7 @@ export class OrderUpdateComponent implements OnInit {
 
   constructor(private orderUpdateService: OrderUpdateService,
     private _snackBar: MatSnackBar, 
-    private router: Router,
-    private storeNameService: StoreNameService,
-    private storeIdService: StoreIdService,
-    private userNameService: UserNameService,
-    private userIdService: UserIdService) { }
+    private router: Router) { }
   
   ngOnInit(): void {
     this.list();
@@ -128,8 +117,8 @@ export class OrderUpdateComponent implements OnInit {
                                 this.orderModel.storeName = order.storeName;
                                 this.orderModel.userId = order.userId;
                                 this.orderModel.userName = order.userName;
-                                this.orderModel.DateInsert = order.dateInsert;
-                                this.orderModel.DateUpdate = order.dateUpdate;
+                                this.orderModel.dateInsert = order.dateInsert;
+                                this.orderModel.dateUpdate = order.dateUpdate;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
@@ -152,10 +141,6 @@ export class OrderUpdateComponent implements OnInit {
     this.orderModel.productName = this.productSelectedName;
     this.orderModel.productId = this.productSelectedID;
     this.orderModel.clientId = this.clientSelectedID;
-    this.orderModel.storeId = parseInt(this.storeIdService.storeId);
-    this.orderModel.storeName = this.storeNameService.storeName;
-    this.orderModel.userId = parseInt(this.userIdService.userID);
-    this.orderModel.userName = this.userNameService.userName;
     this.orderModel.orderId = this.orderID;
     this.orderModel.amount = parseInt((<HTMLSelectElement>document.getElementById('orderAmount')).value);
     this.orderUpdateService.update(this.orderModel)

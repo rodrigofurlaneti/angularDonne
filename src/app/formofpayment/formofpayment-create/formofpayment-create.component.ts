@@ -6,10 +6,6 @@ import { CategoryModel } from 'src/interface/category.interface';
 import { MatSelect } from '@angular/material/select';
 import { FormControl } from '@angular/forms';
 import { Component, ViewChild } from '@angular/core';
-import { StoreNameService } from 'src/app/store-name.service';
-import { StoreIdService } from 'src/app/store-id.service';
-import { UserNameService } from 'src/app/user-name.service';
-import { UserIdService } from 'src/app/user-id.service';
 
 let ELEMENT_DATA_Category: CategoryModel[];
 
@@ -36,11 +32,7 @@ export class FormOfPaymentCreateComponent {
   selectedCategory: CategoryModel = new CategoryModel();
 
   constructor(private formOfPaymentCreateService: FormOfPaymentCreateService,
-    private _snackBar: MatSnackBar, private readonly router: Router, 
-    private storeNameService: StoreNameService,
-    private storeIdService: StoreIdService,
-    private userNameService: UserNameService,
-    private userIdService: UserIdService) {
+    private _snackBar: MatSnackBar, private readonly router: Router) {
   }
 
   @ViewChild('matSelect')
@@ -56,10 +48,6 @@ export class FormOfPaymentCreateComponent {
     if (this.formOfPaymentModel.formOfPaymentName != '') {
       this.formOfPaymentModel.dateInsert = new Date().toISOString();
       this.formOfPaymentModel.dateUpdate = new Date().toISOString();
-      this.formOfPaymentModel.storeId = parseInt(this.storeIdService.storeId);
-      this.formOfPaymentModel.storeName = this.storeNameService.storeName;
-      this.formOfPaymentModel.userId = parseInt(this.userIdService.userID);
-      this.formOfPaymentModel.userName = this.userNameService.userName;
       console.log(this.formOfPaymentModel);
       this.formOfPaymentCreateService.save(this.formOfPaymentModel).subscribe(formofpayment => {
         this._snackBar.open('Nova forma de pagamento ' + formofpayment.formOfPaymentName + ' cadastrada com sucesso!','', {

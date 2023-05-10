@@ -7,13 +7,8 @@ import { MatSelect } from '@angular/material/select';
 import { FormControl } from '@angular/forms';
 import { Component, ViewChild } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { StoreNameService } from 'src/app/store-name.service';
-import { StoreIdService } from 'src/app/store-id.service';
-import { UserNameService } from 'src/app/user-name.service';
-import { UserIdService } from 'src/app/user-id.service';
 
 let ELEMENT_DATA_Category: CategoryModel[];
-
 
 @Component({
   selector: 'product-create',
@@ -37,11 +32,8 @@ export class ProductCreateComponent {
   selectedCategory: CategoryModel = new CategoryModel();
 
   constructor(private productCreateService: ProductCreateService,
-    private _snackBar: MatSnackBar, private readonly router: Router, 
-    private storeNameService: StoreNameService,
-    private storeIdService: StoreIdService,
-    private userNameService: UserNameService,
-    private userIdService: UserIdService) {
+    private _snackBar: MatSnackBar, 
+    private readonly router: Router) {
   }
 
   @ViewChild('matSelect')
@@ -117,10 +109,6 @@ export class ProductCreateComponent {
       this.productModel.salePrice = parseFloat(this.productModel.salePrice).toString(); //parseFloat(priceSale)
       this.productModel.needToPrint = this.needToPrint;
       this.productModel.status = this.productStatus;
-      this.productModel.storeId = parseInt(this.storeIdService.storeId);
-      this.productModel.storeName = this.storeNameService.storeName;
-      this.productModel.userId = parseInt(this.userIdService.userID);
-      this.productModel.userName = this.userNameService.userName;
       this.productCreateService.save(this.productModel).subscribe(product => {
         this._snackBar.open('Produto foi cadastrado com sucesso!','', {
           duration: 2000

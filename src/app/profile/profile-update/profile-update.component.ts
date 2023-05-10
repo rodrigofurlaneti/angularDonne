@@ -61,8 +61,6 @@ export class ProfileUpdateComponent implements OnInit {
                               .subscribe(profile => { 
                                 this.profileModel.profileId = profile.profileId;
                                 this.profileModel.profileName = profile.profileName;
-                                this.profileModel.storeId = profile.storeId;
-                                this.profileModel.storeName = profile.storeName;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });

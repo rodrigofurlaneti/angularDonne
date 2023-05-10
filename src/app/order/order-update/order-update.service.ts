@@ -9,33 +9,32 @@ import { OrderModel } from 'src/interface/order.interface';
 
 export class OrderUpdateService {
 
-  private routeAws = 'https://localhost:7027/';
-  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private route = 'https://localhost:7027/';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.routeAws+'Order');
+    return this.httpClient.get(this.route+'Order');
 
   }
 
   public listBuyer() : Observable<any>{
-    return this.httpClient.get(this.routeAws+'Buyer');
+    return this.httpClient.get(this.route+'Buyer');
   }
 
   public listProducts() : Observable<any>{
-    return this.httpClient.get(this.routeAws+'Product');
+    return this.httpClient.get(this.route+'Product');
   }
 
   public getById(id: number): Observable<any> {
     console.log(id);
-    return this.httpClient.get<any>(`${this.routeAws}Order/${id}`);
+    return this.httpClient.get<any>(`${this.route}Order/${id}`);
   }
 
   public update(orderModel: OrderModel) {
     console.log(orderModel);
-    return this.httpClient.put(this.routeAws+'Order/', orderModel);
+    return this.httpClient.put(this.route+'Order/', orderModel);
   }
 }

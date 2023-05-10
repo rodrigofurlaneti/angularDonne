@@ -9,13 +9,12 @@ import { ConditionalExpr } from '@angular/compiler';
 })
 export class OrderDeleteService {
 
-  private routeAws = 'https://localhost:7027/';
-  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private route = 'https://localhost:7027/';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.routeAws+'Order')
+    return this.http.get(this.route+'Order')
   }
 
   delete(id:number): Observable<any>{
@@ -24,6 +23,6 @@ export class OrderDeleteService {
     let options={
       headers:httpheaders
     };
-    return this.http.delete(this.routeAws+'Order/'+id, options)
+    return this.http.delete(this.route+'Order/'+id, options)
   }
 }

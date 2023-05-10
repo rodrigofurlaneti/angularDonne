@@ -9,23 +9,21 @@ import { CommandsModel } from 'src/interface/commands.interface';
 
 export class CommandsUpdateService {
 
-  private routeAws = 'https://localhost:7027/';
-  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private route = 'https://localhost:7027/';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.routeAws+'Commands');
-
+    return this.httpClient.get(this.route+'Commands');
   }
 
   public getById(id: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.routeAws}Commands/${id}`);
+    return this.httpClient.get<any>(`${this.route}Commands/${id}`);
   }
 
   public update(commandsModel: CommandsModel) {
-    return this.httpClient.put(`${this.routeAws}Commands`, commandsModel);
+    return this.httpClient.put(`${this.route}Commands`, commandsModel);
   }
 }

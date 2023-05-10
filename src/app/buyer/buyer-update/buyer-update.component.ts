@@ -63,8 +63,6 @@ export class BuyerUpdateComponent implements OnInit {
                                 this.buyerModel.buyerName = buyer.buyerName;
                                 this.buyerModel.buyerAddress = buyer.buyerAddress;
                                 this.buyerModel.buyerPhone = buyer.buyerPhone;
-                                this.buyerModel.StoreId = buyer.storeId;
-                                this.buyerModel.StoreName = buyer.storeName;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });

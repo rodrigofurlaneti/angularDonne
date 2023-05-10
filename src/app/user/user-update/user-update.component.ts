@@ -4,8 +4,6 @@ import { UserUpdateService } from './user-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserModel } from 'src/interface/user.interface';
 import { ProfileModel } from 'src/interface/profile.interface';
-import { StoreNameService } from 'src/app/store-name.service';
-import { StoreIdService } from 'src/app/store-id.service';
 
 let ELEMENT_DATA: UserModel[];
 let ELEMENT_DATA_PROFILE: ProfileModel[];
@@ -34,9 +32,7 @@ export class UserUpdateComponent implements OnInit {
 
   constructor(private userUpdateService: UserUpdateService,
     private _snackBar: MatSnackBar,
-    private router: Router,
-    private storeNameService: StoreNameService,
-    private storeIdService: StoreIdService,) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.list();
@@ -79,9 +75,6 @@ export class UserUpdateComponent implements OnInit {
         this.userModel.userId = user.userId;
         this.userModel.userName = user.userName;
         this.userModel.userPassword = user.userPassword;
-        this.userModel.profile = user.profileName;
-        this.userModel.storeId = user.storeId;
-        this.userModel.storeName = user.storeName;
         this.userModel.profileId = user.profileId;
         this.userModel.profileName = user.profileName;
         this.selected = user.profileName;
@@ -105,8 +98,7 @@ export class UserUpdateComponent implements OnInit {
   }
 
   public update() {
-    this.userModel.storeId = parseInt(this.storeIdService.storeId);
-    this.userModel.storeName = this.storeNameService.storeName;
+
     this.userModel.userName = (<HTMLSelectElement>document.getElementById('nameUser')).value;
     this.userModel.userPassword = (<HTMLSelectElement>document.getElementById('userPassword')).value;
     this.userUpdateService.update(this.userModel)

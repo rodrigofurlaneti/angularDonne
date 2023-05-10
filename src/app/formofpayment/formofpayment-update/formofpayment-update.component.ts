@@ -4,10 +4,6 @@ import { FormOfPaymentUpdateService } from './formofpayment-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 import { CategoryModel } from 'src/interface/category.interface';
-import { StoreNameService } from 'src/app/store-name.service';
-import { StoreIdService } from 'src/app/store-id.service';
-import { UserNameService } from 'src/app/user-name.service';
-import { UserIdService } from 'src/app/user-id.service';
 
 let ELEMENT_DATA: FormOfPaymentModel[];
 let ELEMENT_DATA_Category: CategoryModel[];
@@ -28,11 +24,7 @@ export class FormOfPaymentUpdateComponent implements OnInit {
 
   constructor(private formOfPaymentUpdateService: FormOfPaymentUpdateService,
     private _snackBar: MatSnackBar,
-    private router: Router,
-    private storeNameService: StoreNameService,
-    private storeIdService: StoreIdService,
-    private userNameService: UserNameService,
-    private userIdService: UserIdService) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.list();
@@ -66,10 +58,6 @@ export class FormOfPaymentUpdateComponent implements OnInit {
         this.isIdGreaterThanZero = true;
         this.formOfPaymentModel.dateUpdate = formOfPayment.dateUpdate;
         this.formOfPaymentModel.dateInsert = formOfPayment.dateInsert;
-        this.formOfPaymentModel.userName = this.userNameService.userName;
-        this.formOfPaymentModel.userId = parseInt(this.userIdService.userID);
-        this.formOfPaymentModel.storeName = this.storeNameService.storeName;
-        this.formOfPaymentModel.storeId = parseInt(this.storeIdService.storeId);
         this.formOfPaymentModel.formOfPaymentId = formOfPayment.formOfPaymentId;
         this.formOfPaymentModel.formOfPaymentName = formOfPayment.formOfPaymentName;
       });

@@ -5,10 +5,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductModel } from 'src/interface/product.interface';
 import { CategoryModel } from 'src/interface/category.interface';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { StoreNameService } from 'src/app/store-name.service';
-import { StoreIdService } from 'src/app/store-id.service';
-import { UserNameService } from 'src/app/user-name.service';
-import { UserIdService } from 'src/app/user-id.service';
 
 let ELEMENT_DATA: ProductModel[];
 let ELEMENT_DATA_Category: CategoryModel[];
@@ -40,11 +36,7 @@ export class ProductUpdateComponent implements OnInit {
    
   constructor(private productUpdateService: ProductUpdateService,
     private _snackBar: MatSnackBar, 
-    private router: Router,
-    private storeNameService: StoreNameService,
-    private storeIdService: StoreIdService,
-    private userNameService: UserNameService,
-    private userIdService: UserIdService) { }
+    private router: Router) { }
   
   ngOnInit(): void {
     this.list();  
@@ -116,24 +108,19 @@ export class ProductUpdateComponent implements OnInit {
                                 this.productModel.productName = product.productName;
                                 this.productModel.categoryId = product.categoryId;
                                 this.productModel.categoryName = product.categoryName;
-                                console.log(product.categoryName);
                                 this.productModel.costPrice = product.costPrice;
                                 this.productModel.salePrice = product.salePrice;
-                                this.productModel.imagePath = product.imagePath;
                                 this.productModel.needToPrint = product.needToPrint;
                                 this.productModel.quantityStock = product.quantityStock;
                                 this.productModel.status = product.status;
                                 this.productModel.userId = product.userId;
                                 this.productModel.userName = product.userName;
-                                this.productModel.storeId = product.storeId;
-                                this.productModel.storeName = product.storeName;
                                 this.productModel.totalValueCostOfInventory = product.totalValueCostOfInventory;
                                 this.productModel.totalValueSaleStock = product.totalValueSaleStock;
                                 this.productModel.minimumStockQuantity = product.minimumStockQuantity;
                                 this.productModel.productId = product.id;
                                 this.needToPrint = product.needToPrint;
                                 this.productStatus = product.status;
-                                console.log(product.productStatus + " " + product.needToPrint);
                                 this.productID = id;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
@@ -160,13 +147,9 @@ export class ProductUpdateComponent implements OnInit {
     this.productModel.quantityStock = this.productModel.quantityStock;
     this.productModel.needToPrint = this.needToPrint;
     this.productModel.status = this.productStatus;
-    this.productModel.storeId = parseInt(this.storeIdService.storeId);
-    this.productModel.storeName = this.storeNameService.storeName;
-    this.productModel.userId = parseInt(this.userIdService.userID);
-    this.productModel.userName = this.userNameService.userName;
+
     this.productModel.totalValueCostOfInventory = (this.productModel.quantityStock * parseFloat(this.productModel.costPrice)).toString();
     this.productModel.totalValueSaleStock = (this.productModel.quantityStock * parseFloat(this.productModel.salePrice)).toString();
-    this.productModel.imagePath = " "
     this.productModel.minimumStockQuantity = 0;
     this.productUpdateService.update(this.productModel)
                               .subscribe(product => { 

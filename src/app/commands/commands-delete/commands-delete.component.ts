@@ -33,14 +33,14 @@ export class CommandsDeleteComponent implements OnInit {
       this.dataSource = ELEMENT_DATA;
       console.log(this.dataSource);
     }, err => {
-      console.log('Erro ao listar as categorias', err);
+      console.log('Erro ao listar as comandas', err);
     })
   }
 
   public delete(id: number) {
     this.commandsDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('A categoria foi excluida com sucesso!','', {
+    this._snackBar.open('A comanda foi excluida com sucesso!','', {
       duration: 2000
     });
   }

@@ -8,10 +8,6 @@ import { ProfileModel } from 'src/interface/profile.interface';
 import { MatSelect } from '@angular/material/select';
 import { BuyerModel } from 'src/interface/buyer.interface';
 import { ProductModel } from 'src/interface/product.interface';
-import { UserIdService } from 'src/app/user-id.service';
-import { UserNameService } from 'src/app/user-name.service';
-import { StoreNameService } from 'src/app/store-name.service';
-import { StoreIdService } from 'src/app/store-id.service';
 
 let ELEMENT_DATA_PRODUCT: ProductModel[];
 let ELEMENT_DATA_BUYER: BuyerModel[];
@@ -39,11 +35,7 @@ export class OrderCreateComponent implements OnInit, AfterViewInit {
   selectedClient: BuyerModel = new BuyerModel();
 
   constructor(private orderCreateService: OrderCreateService,
-    private _snackBar: MatSnackBar, private readonly router: Router,
-    private storeNameService: StoreNameService,
-    private storeIdService: StoreIdService,
-    private userNameService: UserNameService,
-    private userIdService: UserIdService) {
+    private _snackBar: MatSnackBar, private readonly router: Router) {
     this.order = new OrderModel()
   }
 
@@ -108,13 +100,6 @@ export class OrderCreateComponent implements OnInit, AfterViewInit {
       orderModel.productName = this.productSelectedName;
       orderModel.productId = this.productSelectedID;
       orderModel.amount = parseInt(amount);
-      orderModel.userId = parseInt(this.userIdService.userID);
-      orderModel.userName = this.userNameService.userName;
-      orderModel.storeName = this.storeNameService.storeName;
-      orderModel.storeId = parseInt(this.storeIdService.storeId);
-
-      console.log(orderModel);
-
       this.orderCreateService.save(orderModel).subscribe(order => {
         this._snackBar.open('Pedido cadastrado com sucesso!','', {
           duration: 2000

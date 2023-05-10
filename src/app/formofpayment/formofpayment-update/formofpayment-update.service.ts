@@ -8,24 +8,24 @@ import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 })
 
 export class FormOfPaymentUpdateService {
-  private routeAws = 'https://localhost:7027/';
-  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+
+  private route = 'https://localhost:7027/';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.routeAws+'FormOfPayment');
+    return this.httpClient.get(this.route+'FormOfPayment');
 
   }
 
   public getById(id: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.routeAws}FormOfPayment/${id}`);
+    return this.httpClient.get<any>(`${this.route}FormOfPayment/${id}`);
   }
 
   public update(formOfPaymentModel: FormOfPaymentModel) {
     console.log(formOfPaymentModel);
-    return this.httpClient.put(`${this.routeAws}FormOfPayment`, formOfPaymentModel);
+    return this.httpClient.put(`${this.route}FormOfPayment`, formOfPaymentModel);
   }
 }

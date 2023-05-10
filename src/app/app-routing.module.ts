@@ -12,11 +12,6 @@ import { BuyerDeleteComponent } from './buyer/buyer-delete/buyer-delete.componen
 import { BuyerListComponent } from './buyer/buyer-list/buyer-list.component'
 import { BuyerUpdateComponent } from './buyer/buyer-update/buyer-update.component'
 
-import { StoreCreateComponent } from './store/store-create/store-create.component';
-import { StoreDeleteComponent } from './store/store-delete/store-delete.component';
-import { StoreListComponent } from './store/store-list/store-list.component';
-import { StoreUpdateComponent } from './store/store-update/store-update.component';
-
 import { ProfileCreateComponent } from './profile/profile-create/profile-create.component';
 import { ProfileListComponent } from './profile/profile-list/profile-list.component';
 import { ProfileDeleteComponent } from './profile/profile-delete/profile-delete.component';
@@ -63,10 +58,6 @@ export const routes: Routes = [
   { path: 'order-list', component: OrderListComponent },
   { path: 'order-delete', component: OrderDeleteComponent },
   { path: 'order-update', component: OrderUpdateComponent },
-  { path: 'store-create', component: StoreCreateComponent },
-  { path: 'store-delete', component: StoreDeleteComponent },
-  { path: 'store-list', component: StoreListComponent },
-  { path: 'store-update', component: StoreUpdateComponent },
   { path: 'profile-create', component: ProfileCreateComponent },
   { path: 'profile-delete', component: ProfileDeleteComponent },
   { path: 'profile-list', component: ProfileListComponent },

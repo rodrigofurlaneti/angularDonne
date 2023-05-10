@@ -9,21 +9,20 @@ import { UserModel } from 'src/interface/user.interface';
 
 export class UserCreateService {
 
-  private routeAws = 'https://localhost:7027/';
-  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private route = 'https://localhost:7027/';
 
   constructor(private http: HttpClient) { }
 
   save(user: UserModel) : Observable<any>{
-    return this.http.post<any>(this.routeAws+'User', user)
+    return this.http.post<any>(this.route+'User', user)
   }
 
   listProfile() : Observable<any>{
-    return this.http.get(this.routeAws+'Profile')
+    return this.http.get(this.route+'Profile')
   }
 
   listStore() : Observable<any>{
-    return this.http.get(this.routeAws+'Store')
+    return this.http.get(this.route+'Store')
   }
 
 }

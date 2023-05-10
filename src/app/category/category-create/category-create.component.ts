@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryCreateService } from './category-create.service';
 import { CategoryModel } from '../../../interface/category.interface';
-import { StoreNameService } from 'src/app/store-name.service';
-import { StoreIdService } from 'src/app/store-id.service';
 
 @Component({
   selector: 'category-create',
@@ -17,9 +15,8 @@ export class CategoryCreateComponent {
   categoryModel = new CategoryModel();
 
   constructor(private categoryCreateService: CategoryCreateService, 
-    private _snackBar: MatSnackBar,  private readonly router: Router,
-    private storeNameService: StoreNameService,
-    private storeIdService: StoreIdService,) { }
+    private _snackBar: MatSnackBar,  
+    private readonly router: Router) { }
 
   save() {
     
@@ -34,8 +31,16 @@ export class CategoryCreateComponent {
     //save
     if(this.categoryModel.categoryName != "")
     {
-      this.categoryModel.storeName = this.storeNameService.storeName;
-      this.categoryModel.storeId = parseInt(this.storeIdService.storeId);
+      // 👉️ User Login
+      const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
+      if (userIdLogin != null) {
+        this.categoryModel.userId = parseInt(userIdLogin.value);
+      }
+      const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
+      if (userIdLogin != null) {
+        this.categoryModel.userName = userNameLogin.value;
+      }
+
       this.categoryCreateService.save(this.categoryModel).subscribe(user => {
         this._snackBar.open('A categoria "'+ this.categoryModel.categoryName +'" foi cadastrada com sucesso!','', {
           duration: 2000

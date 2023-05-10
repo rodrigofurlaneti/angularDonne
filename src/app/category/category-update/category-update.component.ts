@@ -59,8 +59,6 @@ export class CategoryUpdateComponent implements OnInit {
     this.showUpdateButton();
     this.categoryUpdateService.getById(id)
                               .subscribe(category => { 
-                                this.categoryModel.storeId = category.storeId;
-                                this.categoryModel.storeName = category.storeName;
                                 this.categoryModel.categoryId = category.categoryId;
                                 this.categoryModel.categoryName = category.categoryName;
                                 this.isIdZero = false;

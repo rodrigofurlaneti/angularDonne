@@ -1,13 +1,9 @@
-import { Component, ViewChild, Renderer2, ElementRef } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommandsCreateService } from './commands-create.service';
 import { CommandsModel } from '../../../interface/commands.interface';
-import { StoreNameService } from 'src/app/store-name.service';
-import { StoreIdService } from 'src/app/store-id.service';
 import { MatSelect } from '@angular/material/select';
-import { UserNameService } from 'src/app/user-name.service';
-import { UserIdService } from 'src/app/user-id.service';
 import { BuyerModel } from 'src/interface/buyer.interface';
 import { OrderModel } from '../../../interface/order.interface';
 import { ProductModel } from 'src/interface/product.interface';
@@ -47,12 +43,8 @@ export class CommandsCreateComponent {
   commandsModel = new CommandsModel();
 
   constructor(private commandsCreateService: CommandsCreateService,
-    private _snackBar: MatSnackBar, private readonly router: Router,
-    private storeNameService: StoreNameService,
-    private storeIdService: StoreIdService,
-    private userNameService: UserNameService,
-    private userIdService: UserIdService,
-    private renderer: Renderer2) {
+    private _snackBar: MatSnackBar, 
+    private readonly router: Router) {
     this.order = new OrderModel()
   }
 
@@ -112,15 +104,9 @@ export class CommandsCreateComponent {
 
     //save
     if (this.selectedBuyerName.buyerName != "") {
-
-      this.commandsModel.storeName = this.storeNameService.storeName;
-      this.commandsModel.storeId = parseInt(this.storeIdService.storeId);
       this.commandsModel.buyerId = this.buyerIDSelect;
       this.commandsModel.buyerName = this.buyerNameSelect;
-      this.commandsModel.userId = parseInt(this.userIdService.userID);
-      this.commandsModel.userName = this.userNameService.userName;
       this.selectValueSelected = true;
-
       this.commandsCreateService.saveClient(this.commandsModel).subscribe(client => {
         this._snackBar.open('O novo cliente "' + this.commandsModel.buyerName + '" foi cadastrado com sucesso!', '', {
           duration: 2000
@@ -152,11 +138,6 @@ export class CommandsCreateComponent {
       orderModel.productName = this.productSelectedName;
       orderModel.productId = this.productSelectedID;
       orderModel.amount = order.quantity;
-      orderModel.userId = parseInt(this.userIdService.userID);
-      orderModel.userName = this.userNameService.userName;
-      orderModel.storeName = this.storeNameService.storeName;
-      orderModel.storeId = parseInt(this.storeIdService.storeId);
-
       this.commandsCreateService.saveCommand(orderModel).subscribe(command => {
         this._snackBar.open('O pedido foi salvo com sucesso!', '', {
           duration: 2000

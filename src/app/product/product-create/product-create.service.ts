@@ -8,16 +8,15 @@ import { ProductModel } from 'src/interface/product.interface';
 })
 export class ProductCreateService {
 
-  private routeAws = 'https://localhost:7027/';
-  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private route = 'https://localhost:7027/';
 
   constructor(private http: HttpClient) { }
 
   save(product: ProductModel) : Observable<any>{
-    return this.http.post<any>(this.routeAws+'Product', product)
+    return this.http.post<any>(this.route+'Product', product)
   }
 
   listCategory() : Observable<any>{
-    return this.http.get(this.routeAws+'Category')
+    return this.http.get(this.route+'Category')
   }
 }

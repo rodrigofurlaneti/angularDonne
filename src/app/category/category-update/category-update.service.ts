@@ -9,23 +9,22 @@ import { CategoryModel } from 'src/interface/category.interface';
 
 export class CategoryUpdateService {
 
-  private routeAws = 'https://localhost:7027/';
-  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private route = 'https://localhost:7027/';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.routeAws+'Category');
+    return this.httpClient.get(this.route+'Category');
 
   }
 
   public getById(id: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.routeAws}Category/${id}`);
+    return this.httpClient.get<any>(`${this.route}Category/${id}`);
   }
 
   public update(categoryModel: CategoryModel) {
-    return this.httpClient.put(`${this.routeAws}Category`, categoryModel);
+    return this.httpClient.put(`${this.route}Category`, categoryModel);
   }
 }

@@ -6,14 +6,8 @@ import { UserModel } from '../../../interface/user.interface';
 import { FormControl, NgForm } from '@angular/forms';
 import { ProfileModel } from 'src/interface/profile.interface';
 import { MatSelect } from '@angular/material/select';
-import { StoreModel } from 'src/interface/store.interface';
-import { UserIdService } from 'src/app/user-id.service';
-import { UserNameService } from 'src/app/user-name.service';
-import { StoreNameService } from 'src/app/store-name.service';
-import { StoreIdService } from 'src/app/store-id.service';
 
 let ELEMENT_DATA: ProfileModel[];
-let ELEMENT_DATA_STORE: StoreModel[];
 
 @Component({
   selector: 'user-create',
@@ -34,11 +28,7 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
   selectedProfile : ProfileModel = new ProfileModel();
 
   constructor(private userCreateService: UserCreateService, 
-    private _snackBar: MatSnackBar,  private readonly router: Router, 
-    private storeNameService: StoreNameService,
-    private storeIdService: StoreIdService,
-    private userNameService: UserNameService,
-    private userIdService: UserIdService) {
+    private _snackBar: MatSnackBar,  private readonly router: Router) {
       this.user = new UserModel()
     }
 
@@ -52,7 +42,6 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
     this.user = new UserModel();
     this.listProfile();
-    this.listStore();
   }
 
   ngAfterViewInit() {
@@ -71,23 +60,8 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
       })
     }
 
-    listStore() {
-      this.userCreateService.listStore().subscribe(list => {
-          ELEMENT_DATA_STORE = list;
-          this.dataSourceStore = ELEMENT_DATA_STORE;
-        }, err => {
-          console.log('Erro ao listar os perfis', err);
-        })
-      }
-
   save() {
-    console.log(this.user);
-    this.user.storeName = this.storeNameService.storeName;
-    this.user.storeId = parseInt(this.storeIdService.storeId);
-    this.user.profileName = this.user.profile.profileName;
-    this.user.profileId = this.user.profile.profileId;
-    this.user.storeId = parseInt(this.storeIdService.storeId);
-    this.user.storeName = this.storeNameService.storeName;
+
     if(this.user.userName != '' && this.user.userPassword != '')
     {
       this.userCreateService.save(this.user).subscribe(userResp => {
@@ -114,8 +88,6 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
   }
 
   dataSource = ELEMENT_DATA;
-
-  dataSourceStore = ELEMENT_DATA_STORE;
 
   clickedRows = new Set<ProfileModel>();
   

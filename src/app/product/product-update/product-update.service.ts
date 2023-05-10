@@ -8,29 +8,28 @@ import { ProductModel } from 'src/interface/product.interface';
 })
 
 export class ProductUpdateService {
-  private routeAws = 'https://localhost:7027/';
-  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private route = 'https://localhost:7027/';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.routeAws+'Product');
+    return this.httpClient.get(this.route+'Product');
 
   }
 
   public getById(id: number): Observable<any> {
     console.log(" identificação do GetByID: " + id);
-    return this.httpClient.get<any>(`${this.routeAws}Product/${id}`);
+    return this.httpClient.get<any>(`${this.route}Product/${id}`);
   }
 
   public update(productModel: ProductModel) {
     console.log(productModel);
-    return this.httpClient.put(`${this.routeAws}Product`, productModel);
+    return this.httpClient.put(`${this.route}Product`, productModel);
   }
 
   listCategory() : Observable<any>{
-    return this.httpClient.get(this.routeAws+'Category')
+    return this.httpClient.get(this.route+'Category')
   }
 }
