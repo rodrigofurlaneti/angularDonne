@@ -87,6 +87,7 @@ export class CategoryUpdateComponent implements OnInit {
     //save
     if(this.categoryModel.categoryName != "")
     {
+      this.authenticatedUser();
       this.categoryUpdateService.update(this.categoryModel)
                               .subscribe(category => { 
                                 this._snackBar.open('A categoria '+ this.categoryModel.categoryName +' foi atualizada com sucesso!', '',{
@@ -101,4 +102,18 @@ export class CategoryUpdateComponent implements OnInit {
                           });
     }
   }
+
+  public authenticatedUser()
+  {
+        // 👉️ User Login
+        const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
+        if (userIdLogin != null) {
+          this.categoryModel.userId = parseInt(userIdLogin.value);
+        }
+        const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
+        if (userIdLogin != null) {
+          this.categoryModel.userName = userNameLogin.value;
+        }
+  }
+
 }

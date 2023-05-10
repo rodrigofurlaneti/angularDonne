@@ -102,7 +102,7 @@ export class BuyerUpdateComponent implements OnInit {
     if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
     {
       this.buyerUpdateService.update(this.buyerModel).subscribe(buyer => { 
-        this._snackBar.open('O cliente'+ this.buyerModel.buyerName +', foi atualizado com sucesso!','', {
+        this._snackBar.open('O cliente '+ this.buyerModel.buyerName +', foi atualizado com sucesso!','', {
           duration: 2000
         });
         this.reply();

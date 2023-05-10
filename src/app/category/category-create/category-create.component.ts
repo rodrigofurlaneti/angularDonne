@@ -31,16 +31,7 @@ export class CategoryCreateComponent {
     //save
     if(this.categoryModel.categoryName != "")
     {
-      // 👉️ User Login
-      const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
-      if (userIdLogin != null) {
-        this.categoryModel.userId = parseInt(userIdLogin.value);
-      }
-      const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
-      if (userIdLogin != null) {
-        this.categoryModel.userName = userNameLogin.value;
-      }
-
+      this.authenticatedUser();
       this.categoryCreateService.save(this.categoryModel).subscribe(user => {
         this._snackBar.open('A categoria "'+ this.categoryModel.categoryName +'" foi cadastrada com sucesso!','', {
           duration: 2000
@@ -61,5 +52,18 @@ export class CategoryCreateComponent {
 
   categoryList(){
     this.router.navigate(['category-list']);
+  }
+
+  public authenticatedUser()
+  {
+        // 👉️ User Login
+        const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
+        if (userIdLogin != null) {
+          this.categoryModel.userId = parseInt(userIdLogin.value);
+        }
+        const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
+        if (userIdLogin != null) {
+          this.categoryModel.userName = userNameLogin.value;
+        }
   }
 }

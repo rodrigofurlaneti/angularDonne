@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { BuyerListService } from './buyer-list.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { BuyerModel } from 'src/interface/buyer.interface';
 
 let ELEMENT_DATA: BuyerModel[];
@@ -13,10 +12,9 @@ let ELEMENT_DATA: BuyerModel[];
 })
 export class BuyerListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['name', 'phone'];
 
   constructor(private buyerListService: BuyerListService,
-              private _snackBar: MatSnackBar, 
               private router: Router) { }
   
   ngOnInit(): void {

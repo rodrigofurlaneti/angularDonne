@@ -13,7 +13,7 @@ let ELEMENT_DATA: CategoryModel[];
 })
 export class CategoryListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['name', 'userName'];
 
   constructor(private categoryListService: CategoryListService,
               private _snackBar: MatSnackBar, 
@@ -27,7 +27,6 @@ export class CategoryListComponent implements OnInit {
     this.categoryListService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })
