@@ -21,7 +21,7 @@
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Nome categoria</mat-label>
-      <input id="profileName" name="profileName" value="{{profileModel.profileName}}" matInput>
+      <input id="profileName" name="profileName" [(ngModel)]="profileModel.profileName" matInput>
     </mat-form-field>
   </div>
 </ng-template>
@@ -31,7 +31,7 @@
       <div class="example-flex-container">
         <div class="example-button-container">
           <div class="example-label">Voltar
-            <button mat-raised-button mat-mini-fab matTooltip="Voltar para a pagina principal." (click)="reply()"
+            <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
               color="primary" aria-label="Example icon button with a menu icon">
               <mat-icon>reply_all</mat-icon>
             </button>
@@ -46,7 +46,7 @@
       <div class="example-flex-container">
         <div class="example-button-container">
           <div class="example-label">Atualizar
-            <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria." (click)="update()"
+            <button mat-raised-button mat-mini-fab matTooltip="Atualizar perfil" (click)="update()"
               color="primary" aria-label="Example icon button with a menu icon">
               <mat-icon>sync</mat-icon>
             </button>

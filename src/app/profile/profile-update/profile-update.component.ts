@@ -25,6 +25,8 @@ export class ProfileUpdateComponent implements OnInit {
   ids: number = 0;
 
   profileModel = new ProfileModel();
+
+    messageTime: number = 5000;
    
   constructor(private profileUpdateService: ProfileUpdateService,
     private _snackBar: MatSnackBar, 
@@ -75,14 +77,50 @@ export class ProfileUpdateComponent implements OnInit {
   }
 
   public update() {
-    this.profileModel.profileName = (<HTMLSelectElement>document.getElementById('profileName')).value;
-    this.profileUpdateService.update(this.profileModel)
-                              .subscribe(profile => { 
-                                this._snackBar.open('O perfil foi atualizado com sucesso!','', {
-                                  duration: 2000
-                                });
-                                this.reply();
 
-                              });
+    //checkFields
+    if(this.profileModel.profileName == "")
+    {
+      this._snackBar.open('O nome do perfil está vazio, necessário preencher!','', {
+        duration: this.messageTime
+      });
+    }
+    
+    //save
+    if(this.profileModel.profileName != ""){
+      this.authenticatedUser();
+      this.profileUpdateService.update(this.profileModel)
+                                .subscribe(profile => { 
+                                this.successMessage();
+                                this.reply();
+                           }, err => {
+                            this.errorMessage();
+                            console.log('Erro ao listar as categorias', err);
+                          });
+    }
+  }
+
+  public authenticatedUser(){
+        // 👉️ User Login
+        const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
+        if (userIdLogin != null) {
+          this.profileModel.userId = parseInt(userIdLogin.value);
+        }
+        const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
+        if (userIdLogin != null) {
+          this.profileModel.userName = userNameLogin.value;
+        }
+  }
+
+  public successMessage(){
+    this._snackBar.open('O perfil "'+ this.profileModel.profileName +'" foi atualizado com sucesso!','', {
+      duration: this.messageTime
+    });
+  }
+
+  public errorMessage(){
+    this._snackBar.open('Erro ao atualizar o perfil "'+ this.profileModel.profileName +'" !','', {
+      duration: this.messageTime
+    });
   }
 }

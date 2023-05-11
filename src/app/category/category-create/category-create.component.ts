@@ -26,7 +26,7 @@ export class CategoryCreateComponent {
     if(this.categoryModel.categoryName == "")
     {
       this._snackBar.open('O nome da categoria está vazio, precisa preencher!','', {
-        duration: 2000
+        duration: this.messageTime
       });
     }
 
