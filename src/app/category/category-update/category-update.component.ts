@@ -25,7 +25,9 @@ export class CategoryUpdateComponent implements OnInit {
   ids: number = 0;
 
   categoryModel = new CategoryModel();
-   
+  
+  messageTime: number = 5000;
+
   constructor(private categoryUpdateService: CategoryUpdateService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
@@ -79,8 +81,8 @@ export class CategoryUpdateComponent implements OnInit {
     //checkFields
     if(this.categoryModel.categoryName == "")
     {
-      this._snackBar.open('A categoria' + this.categoryModel.categoryName + 'foi atualizado com sucesso!','', {
-        duration: 2000
+      this._snackBar.open('O nome da categoria está vazio!','', {
+        duration: this.messageTime
       });
     }
 
@@ -90,21 +92,16 @@ export class CategoryUpdateComponent implements OnInit {
       this.authenticatedUser();
       this.categoryUpdateService.update(this.categoryModel)
                               .subscribe(category => { 
-                                this._snackBar.open('A categoria '+ this.categoryModel.categoryName +' foi atualizada com sucesso!', '',{
-                                  duration: 2000
-                                });
+                                this.successMessage();
                                 this.reply();
                            }, err => {
-                            this._snackBar.open('Erro ao atualizar a categoria '+ this.categoryModel.categoryName +', necessário refazer o procedimento!', '',{
-                              duration: 2000
-                            });
+                            this.errorMessage();
                             console.log('Erro ao listar as categorias', err);
                           });
     }
   }
 
-  public authenticatedUser()
-  {
+  public authenticatedUser(){
         // 👉️ User Login
         const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
         if (userIdLogin != null) {
@@ -114,6 +111,18 @@ export class CategoryUpdateComponent implements OnInit {
         if (userIdLogin != null) {
           this.categoryModel.userName = userNameLogin.value;
         }
+  }
+
+  public successMessage(){
+    this._snackBar.open('A categoria "'+ this.categoryModel.categoryName +'" foi atualizada com sucesso!','', {
+      duration: this.messageTime
+    });
+  }
+
+  public errorMessage(){
+    this._snackBar.open('Erro ao atualizar a categoria "'+ this.categoryModel.categoryName +'" !','', {
+      duration: this.messageTime
+    });
   }
 
 }

@@ -14,6 +14,8 @@ export class BuyerCreateComponent {
   
   buyerModel = new BuyerModel();
 
+  messageTime: number = 5000;
+
   constructor(private buyerCreateService: BuyerCreateService, 
     private _snackBar: MatSnackBar,
     private readonly router: Router) { }
@@ -24,39 +26,61 @@ export class BuyerCreateComponent {
     if(this.buyerModel.buyerName == "")
     {
       this._snackBar.open('Não está preenchido o campo nome do cliente!', 'Voltar', {
-        duration: 2000
+        duration: this.messageTime
       });
     }
     if(this.buyerModel.buyerAddress == "")
     {
       this._snackBar.open('Não está preenchido o campo endereço do cliente!', 'Voltar',{
-        duration: 2000
+        duration: this.messageTime
       });
     }
     if(this.buyerModel.buyerPhone == "")
     {
       this._snackBar.open('Não está preenchido o campo telefone do cliente!', 'Voltar',{
-        duration: 2000
+        duration: this.messageTime
       });
     }
 
     //save
     if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
     {
+      this.authenticatedUser();
       this.buyerCreateService.save(this.buyerModel).subscribe(buyer => {
-        this._snackBar.open('O cliente '+ this.buyerModel.buyerName +', foi cadastrado com sucesso!','',{
-          duration: 2000
-        });
+        this.successMessage;
         this.router.navigate(['buyer-list']);
         }, err => {
-          this._snackBar.open('Erro ao cadastrar o cliente '+this.buyerModel.buyerName+', necessário refazer o procedimento!','',{
-            duration: 2000
-          });
+          this.errorMessage();
         })
       }
     }
+
   reply(){
     this.router.navigate(['main']);
+  }
+
+  public authenticatedUser(){
+        // 👉️ User Login
+        const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
+        if (userIdLogin != null) {
+          this.buyerModel.userId = parseInt(userIdLogin.value);
+        }
+        const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
+        if (userIdLogin != null) {
+          this.buyerModel.userName = userNameLogin.value;
+        }
+  }
+
+  public successMessage(){
+    this._snackBar.open('O cliente "'+ this.buyerModel.buyerName +'" foi cadastrado com sucesso!','', {
+      duration: this.messageTime
+    });
+  }
+
+  public errorMessage(){
+    this._snackBar.open('Erro ao cadastrar o cliente "'+ this.buyerModel.buyerName +'" !','', {
+      duration: this.messageTime
+    });
   }
 }
 

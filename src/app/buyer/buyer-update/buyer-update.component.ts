@@ -25,6 +25,8 @@ export class BuyerUpdateComponent implements OnInit {
   ids: number = 0;
 
   buyerModel = new BuyerModel();
+
+  messageTime: number = 5000;
    
   constructor(private buyerUpdateService: BuyerUpdateService,
     private _snackBar: MatSnackBar, 
@@ -82,38 +84,56 @@ export class BuyerUpdateComponent implements OnInit {
     if(this.buyerModel.buyerName == "")
     {
       this._snackBar.open('Não está preenchido o campo nome do cliente!','', {
-        duration: 2000
+        duration: this.messageTime
       });
     }
     if(this.buyerModel.buyerAddress == "")
     {
       this._snackBar.open('Não está preenchido o campo endereço do cliente!','', {
-        duration: 2000
+        duration: this.messageTime
       });
     }
     if(this.buyerModel.buyerPhone == "")
     {
       this._snackBar.open('Não está preenchido o campo telefone do cliente!','', {
-        duration: 2000
+        duration: this.messageTime
       });
     }
 
     //update
     if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
     {
+      this.authenticatedUser();
       this.buyerUpdateService.update(this.buyerModel).subscribe(buyer => { 
-        this._snackBar.open('O cliente '+ this.buyerModel.buyerName +', foi atualizado com sucesso!','', {
-          duration: 2000
-        });
+        this.successMessage();
         this.reply();
       }, err => {
-        let message = 'Erro ao atualizar o cliente '+ this.buyerModel.buyerName +', necessário refazer o procedimento!';
-        this._snackBar.open(message,'', {
-          duration: 2000
-        });
-        console.log(message, err);
+        this.errorMessage();
       });
-
     }
+  }
+
+  public authenticatedUser(){
+    // 👉️ User Login
+    const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
+    if (userIdLogin != null) {
+      this.buyerModel.userId = parseInt(userIdLogin.value);
+    }
+    const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
+    if (userIdLogin != null) {
+      this.buyerModel.userName = userNameLogin.value;
+    }
+}
+
+  public successMessage(){
+    this._snackBar.open('O cliente "'+ this.buyerModel.buyerName +'" foi atualizado com sucesso!','', {
+      duration: this.messageTime
+    });
+  }
+
+  public errorMessage(){
+    this._snackBar.open('Erro ao atualizar o cliente "'+ this.buyerModel.buyerName +'" !','', {
+      duration: this.messageTime
+    });
   }
 }

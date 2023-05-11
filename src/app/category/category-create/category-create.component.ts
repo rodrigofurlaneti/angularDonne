@@ -14,6 +14,8 @@ export class CategoryCreateComponent {
 
   categoryModel = new CategoryModel();
 
+  messageTime: number = 5000;
+
   constructor(private categoryCreateService: CategoryCreateService, 
     private _snackBar: MatSnackBar,  
     private readonly router: Router) { }
@@ -33,14 +35,10 @@ export class CategoryCreateComponent {
     {
       this.authenticatedUser();
       this.categoryCreateService.save(this.categoryModel).subscribe(user => {
-        this._snackBar.open('A categoria "'+ this.categoryModel.categoryName +'" foi cadastrada com sucesso!','', {
-          duration: 2000
-        });
+        this.successMessage()
         this.categoryList();
       }, err => {
-        this._snackBar.open('Erro ao cadastrar a categoria "'+ this.categoryModel.categoryName +'" foi cadastrada com sucesso!','', {
-          duration: 2000
-        });
+        this.errorMessage()
         console.log('Erro ao cadastrar a categoria "'+ this.categoryModel.categoryName +'", necessário refazer o procedimento!', err);
       })
     }
@@ -54,8 +52,7 @@ export class CategoryCreateComponent {
     this.router.navigate(['category-list']);
   }
 
-  public authenticatedUser()
-  {
+  public authenticatedUser(){
         // 👉️ User Login
         const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
         if (userIdLogin != null) {
@@ -65,5 +62,17 @@ export class CategoryCreateComponent {
         if (userIdLogin != null) {
           this.categoryModel.userName = userNameLogin.value;
         }
+  }
+
+  public successMessage(){
+    this._snackBar.open('A categoria "'+ this.categoryModel.categoryName +'" foi cadastrada com sucesso!','', {
+      duration: this.messageTime
+    });
+  }
+
+  public errorMessage(){
+    this._snackBar.open('Erro ao cadastrar a categoria "'+ this.categoryModel.categoryName +'" !','', {
+      duration: this.messageTime
+    });
   }
 }
