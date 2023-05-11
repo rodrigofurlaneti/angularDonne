@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 
@@ -12,7 +12,7 @@ export class FormOfPaymentCreateService {
   
   constructor(private http: HttpClient) { }
 
-  save(formOfPaymentModel: FormOfPaymentModel) : Observable<any>{
-    return this.http.post<any>(this.route+'FormOfPayment', formOfPaymentModel)
+  save(formOfPayment: FormOfPaymentModel) : Observable<any>{
+    return this.http.post<any>(this.route+'FormOfPayment', formOfPayment)
   }
 }

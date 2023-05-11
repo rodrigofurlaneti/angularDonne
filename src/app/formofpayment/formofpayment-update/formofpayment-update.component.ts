@@ -6,7 +6,6 @@ import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 import { CategoryModel } from 'src/interface/category.interface';
 
 let ELEMENT_DATA: FormOfPaymentModel[];
-let ELEMENT_DATA_Category: CategoryModel[];
 
 @Component({
   selector: 'formofpayment-update',
@@ -17,10 +16,16 @@ let ELEMENT_DATA_Category: CategoryModel[];
 export class FormOfPaymentUpdateComponent implements OnInit {
 
   formOfPaymentModel = new FormOfPaymentModel();
+
   isIdZero = true;
+
   isIdGreaterThanZero = false;
+
   displayedColumns: string[] = ['name'];
+
   ids: number = 0;
+
+  messageTime: number = 5000;
 
   constructor(private formOfPaymentUpdateService: FormOfPaymentUpdateService,
     private _snackBar: MatSnackBar,
@@ -67,35 +72,51 @@ export class FormOfPaymentUpdateComponent implements OnInit {
 
   clickedRows = new Set<FormOfPaymentModel>();
 
-  dataSourceCategory = ELEMENT_DATA_Category;
-
   reply() {
     this.router.navigate(['main']);
   }
 
   public update() {
+
     //check fields
     if (this.formOfPaymentModel.formOfPaymentName == "") {
       this._snackBar.open('Não está preenchido o campo nome da forma de pagamento!','', {
-        duration: 2000
+        duration: this.messageTime
       });
     }
 
     //update
     if (this.formOfPaymentModel.formOfPaymentName != "") {
       this.formOfPaymentUpdateService.update(this.formOfPaymentModel).subscribe(formOfPayment => {
-        this._snackBar.open('O cliente "' + this.formOfPaymentModel.formOfPaymentName + '", foi atualizado com sucesso!','', {
-          duration: 2000
-        });
+        this.successMessage();
         this.reply();
       }, err => {
-        let message = 'Erro ao atualizar o cliente ' + this.formOfPaymentModel.formOfPaymentId + ', necessário refazer o procedimento!';
-        this._snackBar.open(message,'', {
-          duration: 2000
-        });
-        console.log(message, err);
+        this.errorMessage();
       });
-
     }
   }
+
+  public authenticatedUser(){
+    // 👉️ User Login
+    const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
+    if (userIdLogin != null) {
+      this.formOfPaymentModel.userId = parseInt(userIdLogin.value);
+    }
+    const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
+    if (userIdLogin != null) {
+      this.formOfPaymentModel.userName = userNameLogin.value;
+    }
+}
+
+public successMessage(){
+this._snackBar.open('A forma de pagamento "'+ this.formOfPaymentModel.formOfPaymentName +'" foi atualizada com sucesso!','', {
+  duration: this.messageTime
+});
+}
+
+public errorMessage(){
+this._snackBar.open('Erro ao atualizar a forma de pagamento "'+ this.formOfPaymentModel.formOfPaymentName +'" !','', {
+  duration: this.messageTime
+});
+}
 }

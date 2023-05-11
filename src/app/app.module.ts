@@ -28,6 +28,7 @@ import { CommandsListComponent } from './commands/commands-list/commands-list.co
 import { CommandsDeleteComponent } from './commands/commands-delete/commands-delete.component';
 
 //FormOfPayment
+import { FormOfPaymentCreateModule } from './formofpayment/formofpayment-create/formofpayment-create.module';
 import { FormOfPaymentCreateComponent } from './formofpayment/formofpayment-create/formofpayment-create.component';
 import { FormOfPaymentListComponent } from './formofpayment/formofpayment-list/formofpayment-list.component';
 import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-delete/formofpayment-delete.component';
@@ -139,6 +140,7 @@ import { FormsModule } from '@angular/forms';
     ProfileDeleteModule,
     ProfileListModule,
     ProfileUpdateModule,
+    FormOfPaymentCreateModule,
     HttpClientModule,
     MatNativeDateModule,
     MatIconModule,
