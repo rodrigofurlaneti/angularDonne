@@ -31,6 +31,8 @@ export class ProductCreateComponent {
 
   selectedCategory: CategoryModel = new CategoryModel();
 
+  messageTime: number = 5000;
+
   constructor(private productCreateService: ProductCreateService,
     private _snackBar: MatSnackBar, 
     private readonly router: Router) {
@@ -82,27 +84,13 @@ export class ProductCreateComponent {
   }
  
   save() {
-    if (this.productModel.productName == '') {
-      this._snackBar.open('Não está preenchido o campo nome do produto!','', {
-        duration: 2000
-      });
-    }
-    if (this.productModel.costPrice == '') {
-      this._snackBar.open('Não está preenchido o campo preço de custo do produto!','', {
-        duration: 2000
-      });
-    }
-    if (this.productModel.salePrice == '') {
-      this._snackBar.open('Não está preenchido o campo preço de venda do produto!','', {
-        duration: 2000
-      });
-    }
-    if (this.productModel.quantityStock == 0) {
-      this._snackBar.open('Não está preenchido o campo quantidade no estoque do produto!','', {
-        duration: 2000
-      });
-    }
+
+    //CheckFields
+    this.checkFields();
+
+    //save
     if (this.productModel.productName != '' && this.productModel.costPrice != '' && this.productModel.salePrice != '' && this.productModel.quantityStock != 0) {
+      this.authenticatedUser();
       this.productModel.categoryName = this.categoryNameSelect;
       this.productModel.categoryId = this.categoryIDSelect;
       this.productModel.costPrice = parseFloat(this.productModel.costPrice).toString(); //parseFloat(priceCost)
@@ -110,12 +98,10 @@ export class ProductCreateComponent {
       this.productModel.needToPrint = this.needToPrint;
       this.productModel.status = this.productStatus;
       this.productCreateService.save(this.productModel).subscribe(product => {
-        this._snackBar.open('Produto foi cadastrado com sucesso!','', {
-          duration: 2000
-        });
-        this.router.navigate(['product-list']);
+        this.successMessage();
+        this.productList();
       }, err => {
-        console.log('Erro ao adicionar o novo produto!', err);
+        this.errorMessage();
       })
     }
   }
@@ -126,6 +112,56 @@ export class ProductCreateComponent {
     this.router.navigate(['main']);
   }
 
+  public productList(){
+    this.router.navigate(['product-list']);
+  }
+
+  public checkFields(){
+    if (this.productModel.productName == '') {
+      this._snackBar.open('O nome do produto está vazio, precisa preencher!','', {
+        duration: this.messageTime
+      });
+    }
+    if (this.productModel.costPrice == '') {
+      this._snackBar.open('O preço de custo do produto está vazio, precisa preencher!','', {
+        duration: this.messageTime
+      });
+    }
+    if (this.productModel.salePrice == '') {
+      this._snackBar.open('O preço de venda do produto está vazio, preciso preencher!','', {
+        duration: this.messageTime
+      });
+    }
+    if (this.productModel.quantityStock == 0) {
+      this._snackBar.open('A quantidade no estoque do produto! está vazio, preciso preencher','', {
+        duration: this.messageTime
+      });
+    }
+  }
+
+  public authenticatedUser(){
+    // 👉️ User Login
+    const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
+    if (userIdLogin != null) {
+      this.productModel.userId = parseInt(userIdLogin.value);
+    }
+    const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
+    if (userIdLogin != null) {
+      this.productModel.userName = userNameLogin.value;
+    }
+}
+
+  public successMessage(){
+    this._snackBar.open('O produto "'+ this.productModel.productName +'" foi cadastrado com sucesso!','', {
+      duration: this.messageTime
+    });
+  }
+
+  public errorMessage(){
+    this._snackBar.open('Erro ao cadastrar o produto "'+ this.productModel.productName +'" !','', {
+      duration: this.messageTime
+  });
+    }
 }
 
 
