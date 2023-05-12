@@ -18,7 +18,7 @@ let ELEMENT_DATA_PRODUCT: ProductModel[];
   styleUrls: ['./command-create.component.css']
 })
 
-export class CommandsCreateComponent {
+export class CommandCreateComponent {
 
   orders: { productName: string, quantity: number, productId: number, }[] = [];
 

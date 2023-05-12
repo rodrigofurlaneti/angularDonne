@@ -11,7 +11,7 @@ let ELEMENT_DATA: CommandModel[];
   templateUrl: './command-list.component.html',
   styleUrls: ['./command-list.component.css']
 })
-export class CommandsListComponent implements OnInit {
+export class CommandListComponent implements OnInit {
 
   displayedColumns: string[] = ['name'];
 
@@ -27,7 +27,6 @@ export class CommandsListComponent implements OnInit {
     this.commandListService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })

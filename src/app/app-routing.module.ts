@@ -9,8 +9,13 @@ import { CategoryUpdateComponent } from './category/category-update/category-upd
 
 import { BuyerCreateComponent } from './buyer/buyer-create/buyer-create.component';
 import { BuyerDeleteComponent } from './buyer/buyer-delete/buyer-delete.component';
-import { BuyerListComponent } from './buyer/buyer-list/buyer-list.component'
-import { BuyerUpdateComponent } from './buyer/buyer-update/buyer-update.component'
+import { BuyerListComponent } from './buyer/buyer-list/buyer-list.component';
+import { BuyerUpdateComponent } from './buyer/buyer-update/buyer-update.component';
+
+import { CommandCreateComponent } from './command/command-create/command-create.component';
+import { CommandDeleteComponent } from './command/command-delete/command-delete.component';
+import { CommandListComponent } from './command/command-list/command-list.component';
+import { CommandUpdateComponent } from './command/command-update/command-update.component';
 
 import { ProfileCreateComponent } from './profile/profile-create/profile-create.component';
 import { ProfileListComponent } from './profile/profile-list/profile-list.component';
@@ -38,10 +43,6 @@ import { FormOfPaymentCreateComponent } from './formofpayment/formofpayment-crea
 import { FormOfPaymentListComponent } from './formofpayment/formofpayment-list/formofpayment-list.component';
 import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-delete/formofpayment-delete.component';
 import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-update/formofpayment-update.component';
-
-import { CommandsCreateComponent } from './commands/command-create/command-create.component';
-import { CommandsListComponent } from './commands/command-list/command-list.component';
-import { CommandsDeleteComponent } from './commands/command-delete/command-delete.component';
 
 export const routes: Routes = [
   { path: '', component: AppComponent },
@@ -74,9 +75,10 @@ export const routes: Routes = [
   { path: 'formofpayment-list', component: FormOfPaymentListComponent },
   { path: 'formofpayment-delete', component: FormOfPaymentDeleteComponent },
   { path: 'formofpayment-update', component: FormOfPaymentUpdateComponent },
-  { path: 'commands-create', component: CommandsCreateComponent },
-  { path: 'commands-list', component: CommandsListComponent },
-  { path: 'commands-delete', component:CommandsDeleteComponent },
+  { path: 'command-create', component: CommandCreateComponent },
+  { path: 'command-list', component: CommandListComponent },
+  { path: 'command-delete', component: CommandDeleteComponent },
+  { path: 'command-update', component: CommandUpdateComponent }
 ];
 
 @NgModule({

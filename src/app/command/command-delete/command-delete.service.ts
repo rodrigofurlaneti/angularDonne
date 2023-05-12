@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CommandsDeleteService {
+export class CommandDeleteService {
 
   private route = 'https://localhost:7027/';
 

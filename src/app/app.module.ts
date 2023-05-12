@@ -11,8 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 //Buyer
 import { BuyerCreateModule } from './buyer/buyer-create/buyer-create.module';
 import { BuyerCreateComponent } from './buyer/buyer-create/buyer-create.component';
+import { BuyerDeleteModule } from './buyer/buyer-delete/buyer-delete.module';
 import { BuyerDeleteComponent } from './buyer/buyer-delete/buyer-delete.component';
+import { BuyerListModule } from './buyer/buyer-list/buyer-list.module';
 import { BuyerListComponent } from './buyer/buyer-list/buyer-list.component';
+import { BuyerUpdateModule } from './buyer/buyer-update/buyer-update.module';
 import { BuyerUpdateComponent } from './buyer/buyer-update/buyer-update.component';
 
 //Category
@@ -22,10 +25,8 @@ import { CategoryDeleteComponent } from './category/category-delete/category-del
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { CategoryUpdateComponent } from './category/category-update/category-update.component';
 
-//Commands
-import { CommandCreateComponent } from './commands/command-create/command-create.component';
-import { CommandListComponent } from './commands/command-list/command-list.component';
-import { CommandDeleteComponent } from './commands/command-delete/command-delete.component';
+//Command
+import { CommandCreateModule } from './command/command-create/command-create.module';
 
 //FormOfPayment
 import { FormOfPaymentCreateModule } from './formofpayment/formofpayment-create/formofpayment-create.module';
@@ -120,10 +121,7 @@ import { FormsModule } from '@angular/forms';
     FormOfPaymentCreateComponent,
     FormOfPaymentListComponent,
     FormOfPaymentDeleteComponent,
-    FormOfPaymentUpdateComponent,
-    CommandCreateComponent,
-    CommandListComponent,
-    CommandDeleteComponent,
+    FormOfPaymentUpdateComponent
   ],
   imports: [
     CurrencyMaskModule,
@@ -135,6 +133,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     CdkAccordionModule,
     CategoryCreateModule,
+    CommandCreateModule,
     BuyerCreateModule,
     ProfileCreateModule,
     ProfileDeleteModule,

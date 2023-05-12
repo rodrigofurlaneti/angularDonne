@@ -154,14 +154,14 @@ export class MainComponent implements OnInit{
   }
 
   public activeCommandsCreate() {
-    this.router.navigate(['commands-create']);
+    this.router.navigate(['command-create']);
   }
 
   public activeCommandsList() {
-    this.router.navigate(['commands-list']);
+    this.router.navigate(['command-list']);
   }
   
   public activeCommandsDelete() {
-    this.router.navigate(['commands-delete']);
+    this.router.navigate(['command-delete']);
   }
 }
