@@ -16,7 +16,7 @@
   </div>
   <div class="ordercommand_display" *ngIf="selectValueSelected">
     <div class="contant">
-      <h3>Pedidos</h3> <span>Nº: {{ commandId }}</span>
+      <h3>Pedidos</h3> <span>Nº da comanda: {{ commandModel.commandId }}</span>
       <div class="order_container">
         <div class="order_row" *ngFor="let order of orders">
           <mat-form-field appearance="fill">

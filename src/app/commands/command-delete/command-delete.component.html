@@ -6,7 +6,7 @@
     <th mat-header-cell *matHeaderCellDef>Comandas</th>
     <td mat-cell (click)="delete(element.commandsId)" *matCellDef="let element">
       {{element.buyerName}}
-      <input type="hidden" id="commandsId" name="commandsId" [value]=element.commandsId>
+      <input type="hidden" id="commandId" name="commandId" [value]=element.commandId>
     </td>
   </ng-container>
 

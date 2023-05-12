@@ -23,9 +23,9 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { CategoryUpdateComponent } from './category/category-update/category-update.component';
 
 //Commands
-import { CommandsCreateComponent } from './commands/commands-create/commands-create.component';
-import { CommandsListComponent } from './commands/commands-list/commands-list.component';
-import { CommandsDeleteComponent } from './commands/commands-delete/commands-delete.component';
+import { CommandCreateComponent } from './commands/command-create/command-create.component';
+import { CommandListComponent } from './commands/command-list/command-list.component';
+import { CommandDeleteComponent } from './commands/command-delete/command-delete.component';
 
 //FormOfPayment
 import { FormOfPaymentCreateModule } from './formofpayment/formofpayment-create/formofpayment-create.module';
@@ -121,9 +121,9 @@ import { FormsModule } from '@angular/forms';
     FormOfPaymentListComponent,
     FormOfPaymentDeleteComponent,
     FormOfPaymentUpdateComponent,
-    CommandsCreateComponent,
-    CommandsListComponent,
-    CommandsDeleteComponent,
+    CommandCreateComponent,
+    CommandListComponent,
+    CommandDeleteComponent,
   ],
   imports: [
     CurrencyMaskModule,

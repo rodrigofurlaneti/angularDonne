@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { CommandsDeleteService } from './commands-delete.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CommandsModel } from 'src/interface/commands.interface';
+import { CommandModel } from 'src/interface/command.interface';
 
-let ELEMENT_DATA: CommandsModel[];
+let ELEMENT_DATA: CommandModel[];
 
 @Component({
-  selector: 'commands-delete',
-  templateUrl: './commands-delete.component.html',
-  styleUrls: ['./commands-delete.component.css']
+  selector: 'command-delete',
+  templateUrl: './command-delete.component.html',
+  styleUrls: ['./command-delete.component.css']
 })
 export class CommandsDeleteComponent implements OnInit {
 
@@ -46,7 +46,7 @@ export class CommandsDeleteComponent implements OnInit {
   }
 
   dataSource = ELEMENT_DATA;
-  clickedRows = new Set<CommandsModel>();
+  clickedRows = new Set<CommandModel>();
 
   reply(){
     this.router.navigate(['main']);

@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { CommandsListService } from './commands-list.service';
+import { CommandListService } from './command-list.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CommandsModel } from 'src/interface/commands.interface';
+import { CommandModel } from 'src/interface/command.interface';
 
-let ELEMENT_DATA: CommandsModel[];
+let ELEMENT_DATA: CommandModel[];
 
 @Component({
-  selector: 'commands-list',
-  templateUrl: './commands-list.component.html',
-  styleUrls: ['./commands-list.component.css']
+  selector: 'command-list',
+  templateUrl: './command-list.component.html',
+  styleUrls: ['./command-list.component.css']
 })
 export class CommandsListComponent implements OnInit {
 
   displayedColumns: string[] = ['name'];
 
-  constructor(private commandsListService: CommandsListService,
+  constructor(private commandListService: CommandListService,
               private _snackBar: MatSnackBar, 
               private router: Router) { }
   
@@ -24,7 +24,7 @@ export class CommandsListComponent implements OnInit {
   }
 
   list() {
-    this.commandsListService.list().subscribe(list => {
+    this.commandListService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
       console.log(this.dataSource);
@@ -34,7 +34,7 @@ export class CommandsListComponent implements OnInit {
   }
 
   dataSource = ELEMENT_DATA;
-  clickedRows = new Set<CommandsModel>();
+  clickedRows = new Set<CommandModel>();
 
   reply(){
     this.router.navigate(['main']);

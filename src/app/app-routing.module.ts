@@ -39,9 +39,9 @@ import { FormOfPaymentListComponent } from './formofpayment/formofpayment-list/f
 import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-delete/formofpayment-delete.component';
 import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-update/formofpayment-update.component';
 
-import { CommandsCreateComponent } from './commands/commands-create/commands-create.component';
-import { CommandsListComponent } from './commands/commands-list/commands-list.component';
-import { CommandsDeleteComponent } from './commands/commands-delete/commands-delete.component';
+import { CommandsCreateComponent } from './commands/command-create/command-create.component';
+import { CommandsListComponent } from './commands/command-list/command-list.component';
+import { CommandsDeleteComponent } from './commands/command-delete/command-delete.component';
 
 export const routes: Routes = [
   { path: '', component: AppComponent },
