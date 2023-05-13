@@ -1,16 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component, ViewChild } from '@angular/core';
+
 import { CommandCreateService } from './command-create.service';
 import { CommandModel } from '../../../interface/command.interface';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSelect } from '@angular/material/select';
+
 import { BuyerModel } from 'src/interface/buyer.interface';
-import { OrderModel } from '../../../interface/order.interface';
-import { ProductModel } from 'src/interface/product.interface';
 
-
-let ELEMENT_DATA_Buyer: BuyerModel[];
-let ELEMENT_DATA_PRODUCT: ProductModel[];
+let ELEMENT_DATA_BUYER: BuyerModel[];
 
 @Component({
   selector: 'command-create',
@@ -19,146 +18,63 @@ let ELEMENT_DATA_PRODUCT: ProductModel[];
 })
 
 export class CommandCreateComponent {
-
-  orders: { productName: string, quantity: number, productId: number, }[] = [];
-
-  dataSourceProducts = [
-    { productName: '' }];
-
-  selectValueSelected = false;
+  
+  commandModel = new CommandModel();
 
   buyerNameSelect: string = "";
-
-  buyerIDSelect: number = 0;
-
-  productSelectedName: string = "";
-
-  productSelectedID: number = 0;
-
-  order: OrderModel;
-
-  selectedBuyerName: BuyerModel = new BuyerModel();
-
-  commandModel = new CommandModel();
 
   messageTime: number = 5000;
 
   constructor(private commandCreateService: CommandCreateService,
     private _snackBar: MatSnackBar, 
-    private readonly router: Router) {
-    this.order = new OrderModel()
-  }
+    private readonly router: Router) {  }
 
   @ViewChild('matSelect')
   matSelect!: MatSelect;
 
   ngOnInit(): void {
     this.listBuyer();
-    this.listProducts();
-    this.addOrder();
-    this.order = new OrderModel();
-  }
-
-  addOrder() {
-    this.orders.push({ productName: '', quantity: 0, productId: 0, });
-    console.log("quantidade de pedidos:" + this.orders.length);
-  };
-
-  ngAfterViewInit() {
-    this.matSelect.valueChange.subscribe(obj => {
-      this.selectedBuyerName.buyerName = obj.buyerName;
-    });
-  }
-
-  change(event: any) {
-    this.buyerIDSelect = event.buyerId;
-    this.buyerNameSelect = event.buyerName;
-  }
-
-  changeProduct(product: ProductModel) {
-    console.log(product.productName);
-    this.productSelectedName = product.productName;
-    this.productSelectedID = product.productId;
   }
 
   listBuyer() {
     this.commandCreateService.listBuyer().subscribe(list => {
-      ELEMENT_DATA_Buyer = list;
-      this.dataSourceBuyer = ELEMENT_DATA_Buyer;
+      ELEMENT_DATA_BUYER = list;
+      this.dataSourceBuyer = ELEMENT_DATA_BUYER;
     }, err => {
-      console.log('Erro ao listar os perfis', err);
+      console.log('Erro ao listar os clientes', err);
     })
   }
 
-  listProducts() {
-    this.commandCreateService.listProducts().subscribe(list => {
-      ELEMENT_DATA_PRODUCT = list;
-      this.dataSourceProducts = ELEMENT_DATA_PRODUCT;
-    }, err => {
-      console.log('Erro ao listar os perfis', err);
-    })
+  changeBuyerToCommand(event: any) {
+    this.commandModel.buyerId = event.buyerId;
+    this.commandModel.buyerName = event.buyerName;
   }
 
-  saveClient() {
-
+  saveBuyerToCommand() {
     //checkFields
-    if (this.selectedBuyerName.buyerName == "") {
-      this._snackBar.open('O nome do client está vazio, precisa preencher!', '', {
-        duration: 2000
-      });
-    }
 
     //save
-    if (this.selectedBuyerName.buyerName != "") {
+    if (this.commandModel.buyerName != "") {
       this.authenticatedUser();
-      this.commandModel.buyerId = this.buyerIDSelect;
-      this.commandModel.buyerName = this.buyerNameSelect;
-      this.selectValueSelected = true;
-      this.commandCreateService.saveClient(this.commandModel).subscribe(client => {
-        this.commandModel.commandId = client;
+      this.commandCreateService.saveClient(this.commandModel).subscribe(buyerResponse => {
+        this.commandModel.commandId = buyerResponse;
         this.successMessage();
       }, err => {
         this._snackBar.open('Erro ao cadastrar o novo cliente "' + this.commandModel.buyerName + '" foi cadastrada com sucesso!', '', {
-          duration: 2000
+          duration: this.messageTime
         });
         console.log('Erro ao cadastrar o novo cliente "' + this.commandModel.buyerName + '", necessário refazer o procedimento!', err);
       })
     }
   }
 
-  saveCommand() {
+  dataSourceBuyer = ELEMENT_DATA_BUYER;
+
+  saveProductToCommand() {
     // Check fields
-    if (this.orders.length === 0) {
-      this._snackBar.open('Não há pedidos para salvar!', '', {
-        duration: 2000
-      });
-      return;
-    }
 
     // Save 
-    for (const order of this.orders) {
-      const orderModel = new OrderModel();
-      orderModel.clientName = this.buyerNameSelect;
-      orderModel.clientId = this.buyerIDSelect;
-      orderModel.productName = this.productSelectedName;
-      orderModel.productId = this.productSelectedID;
-      orderModel.amount = order.quantity;
-      this.commandCreateService.saveCommand(orderModel).subscribe(command => {
-        this._snackBar.open('O pedido foi salvo com sucesso!', '', {
-          duration: 2000
-        });
-      }, err => {
-        this._snackBar.open('Erro ao salvar o pedido, necessário refazer o procedimento!', '', {
-          duration: 2000
-        });
-        console.log('Erro ao salvar o pedido:', err);
-      });
-    }
-    this.orders = [];
-    this.commandsList();
   }
-
-  dataSourceBuyer = ELEMENT_DATA_Buyer;
 
   reply() {
     this.router.navigate(['main']);
@@ -180,15 +96,15 @@ export class CommandCreateComponent {
     }
 }
 
-public successMessage(){
-this._snackBar.open('A comanda "'+ this.commandModel.buyerName +'" foi cadastrado com sucesso!','', {
-  duration: this.messageTime
-});
-}
+  public successMessage(){
+    this._snackBar.open('A comanda "'+ this.commandModel.buyerName +'" foi cadastrado com sucesso!','', {
+    duration: this.messageTime
+    });
+  }
 
-public errorMessage(){
-this._snackBar.open('Erro ao cadastrar a comanda "'+ this.commandModel.buyerName +'" !','', {
-  duration: this.messageTime
-});
-}
+  public errorMessage(){
+    this._snackBar.open('Erro ao cadastrar a comanda "'+ this.commandModel.buyerName +'" !','', {
+      duration: this.messageTime
+    });
+  }
 }

@@ -19,6 +19,8 @@
 
     access: boolean = false;
 
+    messageTime: number = 5000;
+
     constructor(private appService: AppService,
                 private _snackBar: MatSnackBar,
                 private router: Router) {
@@ -55,8 +57,9 @@
         this.access = true;
         this.user.userId = userResp.userId;
         this.router.navigate(['/main']);
-        this._snackBar.open('Acesso autorizado com sucesso! Seja bem-vindo!','',);
-        console.log();
+        this._snackBar.open('Acesso autorizado com sucesso! Seja bem-vindo!','',{
+          duration: this.messageTime
+        });
       }
       }, err => {
         console.log('Erro autenticar o usuário', err);

@@ -27,6 +27,7 @@ import { CategoryUpdateComponent } from './category/category-update/category-upd
 
 //Command
 import { CommandCreateModule } from './command/command-create/command-create.module';
+import { CommandCreateComponent } from './command/command-create/command-create.component';
 
 //FormOfPayment
 import { FormOfPaymentCreateModule } from './formofpayment/formofpayment-create/formofpayment-create.module';
@@ -98,6 +99,7 @@ import { FormsModule } from '@angular/forms';
     CategoryUpdateComponent,
     CategoryListComponent,
     CategoryDeleteComponent,
+    CommandCreateComponent,
     BuyerCreateComponent,
     BuyerDeleteComponent,
     BuyerListComponent,

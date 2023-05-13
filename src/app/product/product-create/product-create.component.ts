@@ -19,8 +19,11 @@ let ELEMENT_DATA_Category: CategoryModel[];
 export class ProductCreateComponent {
 
   needToPrint: boolean = false;
+
   productStatus: boolean = false;
-  categoryNameSelect: string = " ";
+
+  categoryNameSelect: string = "";
+
   categoryIDSelect: number = 0;
 
   productModel = new ProductModel();
