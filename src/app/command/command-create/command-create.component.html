@@ -17,12 +17,23 @@
         <mat-icon>save_alt</mat-icon>
       </button>
     </mat-grid-tile>
-    <mat-grid-tile colspan="3">
-      <h3>Número da comanda: </h3>
+    <mat-grid-tile colspan="4">
+      <h3>Número da comanda: {{commandModel.commandId}}</h3>
     </mat-grid-tile>
-    <mat-grid-tile colspan="1">
-      <h3>{{commandModel.commandId}}</h3>
+    <mat-grid-tile>
+      <button
+      mat-raised-button
+      mat-mini-fab
+      matTooltip="Voltar"
+      (click)="reply()"
+      color="primary"
+      aria-label="Example icon button with a menu icon">
+      <mat-icon>reply_all</mat-icon>
+    </button>  
     </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
   </mat-grid-list>
 
 

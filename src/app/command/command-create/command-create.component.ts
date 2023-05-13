@@ -33,11 +33,11 @@ export class CommandCreateComponent {
   matSelect!: MatSelect;
 
   ngOnInit(): void {
-    this.listBuyer();
+    this.listBuyerCommand();
   }
 
-  listBuyer() {
-    this.commandCreateService.listBuyer().subscribe(list => {
+  listBuyerCommand() {
+    this.commandCreateService.listBuyerCommand().subscribe(list => {
       ELEMENT_DATA_BUYER = list;
       this.dataSourceBuyer = ELEMENT_DATA_BUYER;
     }, err => {

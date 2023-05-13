@@ -28,4 +28,8 @@ export class CommandCreateService {
   listBuyer() : Observable<any>{
     return this.http.get(this.route+'Buyer')
   }
+
+  listBuyerCommand() : Observable<any>{
+    return this.http.get(this.route+'BuyerCommand')
+  }
 }
