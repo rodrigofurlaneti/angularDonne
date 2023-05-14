@@ -156,6 +156,22 @@ footer {
   margin-left: 38%;
 }
 
+.zoom-wraper{
+  height: 50px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.zoom-wraper button{
+  object-fit: cover;
+  transition: transform 0.8s;
+  height: 100%;
+}
+
+.zoom-wraper:hover button{
+  transform: scale(1.5);
+}
+
 @media screen and (max-width: 720px) {
   footer img{
     width: 20%;

@@ -1,4 +1,7 @@
 <section>
+  <p class="titleAddCommand">
+    Adicionar uma nova comanda
+  </p>
   <mat-grid-list cols="4" rowHeight="50px" gutterSize="15px">
     <mat-grid-tile colspan="3">
       <mat-form-field appearance="fill">
@@ -18,7 +21,7 @@
       </button>
     </mat-grid-tile>
     <mat-grid-tile colspan="4">
-      <h3>Número da comanda: {{commandModel.commandId}}</h3>
+      <p class="titleAddCommand">Número da comanda: {{commandModel.commandId}}</p>
     </mat-grid-tile>
     <mat-grid-tile>
       <button

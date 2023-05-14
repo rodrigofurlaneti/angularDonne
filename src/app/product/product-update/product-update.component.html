@@ -1,7 +1,4 @@
 <input type="hidden" id="categoryIdModel" name="categoryIdModel" value="{{productModel.productId}}">
-
-
-
 <div class="container">
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
@@ -19,6 +16,9 @@
   </ng-template>
 
   <ng-template #isIdGreaterThanZero>
+    <p class="titleUpdateCategory">
+      Atualizar o produto
+    </p>
     <div>
       <div class="inputs">
       <mat-form-field appearance="fill">

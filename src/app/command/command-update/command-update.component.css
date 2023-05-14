@@ -1,3 +1,9 @@
+.titleUpdateCommand{
+  font-size: 1.475em;
+  font-family: "Trirong", serif;
+  text-align: center;
+}
+
 .demo-table {
     width: 100%;
   }

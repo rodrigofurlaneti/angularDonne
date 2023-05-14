@@ -2,7 +2,7 @@
 
 <button mat-button [matMenuTriggerFor]="menuCaregory" matTooltip="Categoria"> <mat-icon
     class="icon">dashboard </mat-icon><span class="user-type"> Categoria</span></button>
-<mat-menu #menuCaregory="matMenu" class="custom">
+<mat-menu #menuCaregory="matMenu" class="custom mat-menu">
   <button matTooltip="Adicionar nova categoria" [matTooltipPosition]="'right'"
     (click)="activeCategoryCreate()" mat-menu-item>
     <mat-icon>exposure_plus_1</mat-icon>

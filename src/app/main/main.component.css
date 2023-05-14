@@ -46,7 +46,9 @@
 button:hover {
   background-color: #8520b0 !important;
   color: #ffffff;
+  transform: scale(1.1);
   transition: 0.3s ease-in-out;
+  overflow-x:hidden;
 }
 
 .mat-menu-centered {

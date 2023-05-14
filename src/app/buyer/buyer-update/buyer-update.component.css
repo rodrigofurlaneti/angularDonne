@@ -1,3 +1,9 @@
+.titleUpdateBuyer{
+  font-size: 1.475em;
+  font-family: "Trirong", serif;
+  text-align: center;
+}
+
 .demo-table {
     width: 100%;
   }
@@ -67,6 +73,10 @@
   .example-flex-container{
     padding-top: 10px;
     padding-left: 20px;
+  }
+
+  .example-flex-container:hover{
+    transform: scale(1.2);
   }
 
   button {

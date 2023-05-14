@@ -1,7 +1,4 @@
 <input type="hidden" id="categoryIdModel" name="categoryIdModel" value="{{categoryModel.categoryId}}">
-
-
-
 <div class="container">
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
@@ -20,6 +17,9 @@
   </ng-template>
 
   <ng-template #isIdGreaterThanZero>
+    <p class="titleUpdateCategory">
+      Atualizar a categoria
+    </p>
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Nome categoria</mat-label>
@@ -34,7 +34,7 @@
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
-            <div class="example-label">Voltar
+            <div class="example-label titleUpdateCategory">Voltar
               <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
                 color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>reply_all</mat-icon>
@@ -49,7 +49,7 @@
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
-            <div class="example-label">Atualizar
+            <div class="example-label titleUpdateCategory">Atualizar
               <button mat-raised-button mat-mini-fab matTooltip="Atualizar categoria" (click)="update()"
                 color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>sync</mat-icon>

@@ -1,4 +1,7 @@
 <section>
+  <p class="titleAddBuyer">
+    Adicionar um novo cliente
+  </p>
   <mat-form-field appearance="fill">
     <mat-label>Nome do novo cliente</mat-label>
     <input id="buyerName" name="buyerName" [(ngModel)]="buyerModel.buyerName" matInput />
@@ -14,7 +17,7 @@
   <div class="example-button-row">
     <div class="example-flex-container">
       <div class="example-button-container">
-        <div class="example-label">
+        <div class="example-label titleAddBuyer">
           Voltar
           <button
             mat-raised-button
@@ -29,7 +32,7 @@
         </div>
       </div>
       <div class="example-button-container">
-        <div class="example-label">
+        <div class="example-label titleAddBuyer">
           Salvar
           <button
             mat-raised-button

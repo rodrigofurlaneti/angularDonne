@@ -63,7 +63,7 @@ export class ProductCreateComponent {
     })
   }
 
-  items = [{ selected: false, label: 'Precisa imprimir?' }];
+  items = [{ selected: false, label: '' }];
   status = [{ selected: false, label: 'Status do produto?' }];
 
   onChange(event: MatCheckboxChange) {

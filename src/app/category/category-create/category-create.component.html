@@ -1,4 +1,7 @@
 <section>
+  <p class="titleAddCategory">
+    Adicionar uma nova categoria
+  </p>
   <mat-form-field appearance="fill">
     <mat-label>Nome da nova categoria</mat-label>
     <input id="categoryName" name="categoryName" [(ngModel)]="categoryModel.categoryName" matInput />
@@ -6,7 +9,7 @@
   <div class="example-button-row">
     <div class="example-flex-container">
       <div class="example-button-container">
-        <div class="example-label">
+        <div class="example-label titleAddCategory">
           Voltar
           <button
             mat-raised-button
@@ -21,7 +24,7 @@
         </div>
       </div>
       <div class="example-button-container">
-        <div class="example-label">
+        <div class="example-label titleAddCategory">
           Salvar
           <button
             mat-raised-button

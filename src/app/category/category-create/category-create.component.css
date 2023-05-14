@@ -1,3 +1,8 @@
+.titleAddCategory{
+  font-size: 1.475em;
+  font-family: "Trirong", serif;
+  text-align: center;
+}
 section {
     display: flex;
     justify-content: center;
@@ -34,6 +39,9 @@ section {
     display: flex;
     justify-content: center;
     width: 120px;
+  }
+  .example-button-container:hover {
+    transform: scale(1.2);
   }
 
   .example-button {
