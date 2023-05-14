@@ -1,4 +1,7 @@
-<div class="container">
+<section>
+  <p class="titleAddUser">
+    Adicionar um novo cliente
+  </p>
   <mat-form-field appearance="fill">
     <mat-label>Nome da novo usuário</mat-label>
     <input id="userName" name="userName" matInput [(ngModel)]="user.userName">
@@ -18,21 +21,21 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-
-  <section>
     <div class="example-button-row">
       <div class="example-flex-container">
         <div class="example-button-container">
-          <div class="example-label">Voltar
-            <button mat-raised-button mat-mini-fab matTooltip="Voltar para a pagina principal." (click)="reply()"
+          <div class="example-label titleAddUser">
+            <div class="labelToButton">Voltar</div>
+            <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
               color="primary" aria-label="Example icon button with a menu icon">
               <mat-icon>reply_all</mat-icon>
             </button>
           </div>
         </div>
         <div class="example-button-container">
-          <div class="example-label">Salvar
-            <button mat-raised-button mat-mini-fab matTooltip="Salvar o novo perfil." (click)="save()" color="primary"
+          <div class="example-label titleAddUser">
+            <div class="labelToButton">Salvar</div>
+            <button mat-raised-button mat-mini-fab matTooltip="Salvar" (click)="save()" color="primary"
               aria-label="Example icon button with a menu icon">
               <mat-icon>save_alt</mat-icon>
             </button>
@@ -40,5 +43,4 @@
         </div>
       </div>
     </div>
-  </section>
-</div>
+</section>

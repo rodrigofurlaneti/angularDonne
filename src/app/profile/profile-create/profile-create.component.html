@@ -1,13 +1,17 @@
-<div class="container">
-<mat-form-field appearance="fill">
-  <mat-label>Nome da novo perfil</mat-label>
-  <input id="nameProfile" name="nameProfile" [(ngModel)]="profileModel.profileName" matInput>
-</mat-form-field>
 <section>
-  <div class="example-button-row">
+    <p class="titleAddProfile">
+      Adicionar um novo perfil
+    </p>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Nome da novo perfil</mat-label>
+      <input id="nameProfile" name="nameProfile" [(ngModel)]="profileModel.profileName" matInput>
+    </mat-form-field>
+    <div class="example-button-row">
     <div class="example-flex-container">
       <div class="example-button-container">
-        <div class="example-label">Voltar
+        <div class="example-label titleAddProfile">
+          <div class="labelToButton">Voltar</div>
           <button mat-raised-button
                 mat-mini-fab
                 matTooltip="Voltar"
@@ -19,18 +23,18 @@
         </div>  
       </div>
       <div class="example-button-container">
-        <div class="example-label">Salvar
+        <div class="example-label titleAddProfile">
+          <div class="labelToButton">Salvar</div>
           <button mat-raised-button
                 mat-mini-fab
-                matTooltip="Salvar novo perfil"
+                matTooltip="Salvar"
                 (click)="save()" 
                 color="primary" 
                 aria-label="Example icon button with a menu icon">
             <mat-icon>save_alt</mat-icon>
-          </button>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </section>
-</div>

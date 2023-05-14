@@ -3,6 +3,9 @@
   font-family: "Trirong", serif;
   text-align: center;
 }
+.labelToBButton{
+  padding-right: 0.5rem;
+}
 section {
     display: flex;
     justify-content: center;
