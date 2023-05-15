@@ -1,3 +1,13 @@
+.titleUpdateProfile{
+  font-size: 1.275em;
+  font-family: "Trirong", serif;
+  text-align: center;
+}
+
+.labelToButton{
+  padding-right: 0.5rem;
+}
+
 .container{
   display: flex;
   justify-content: center;
@@ -78,6 +88,16 @@
     padding-left: 20px;
   }
 
+  .example-flex-container:hover {
+    transform: scale(1.2);
+  }
+
   button {
     margin-right: 8px;
+  }
+
+  .btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }

@@ -1,7 +1,10 @@
-.titleUpdateCategory{
-  font-size: 1.875em;
+.titleUpdateProduct{
+  font-size: 1.475em;
   font-family: "Trirong", serif;
   text-align: center;
+}
+.labelToButton{
+  padding-right: 0.5rem;
 }
 
 .demo-table {
@@ -92,6 +95,11 @@
 
 }
 
+.btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
   .mat-row .mat-cell {
     font-size: 18px;
     cursor: pointer;
@@ -113,4 +121,8 @@
 
   button {
     margin-right: 8px;
+  }
+
+  .example-button-container:hover {
+    transform: scale(1.2);
   }

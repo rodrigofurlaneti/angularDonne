@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.labelToButton{
+  padding-right: 0.5rem;
+}
+
 .demo-table {
     width: 100%;
   }
@@ -77,6 +81,10 @@
     padding-left: 20px;
   }
 
+  .example-button-container:hover {
+    transform: scale(1.2);
+  }
+  
   button {
     margin-right: 8px;
   }

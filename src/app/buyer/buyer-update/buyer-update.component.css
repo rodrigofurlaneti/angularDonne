@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.labelToButton{
+  padding-right: 0.5rem;
+}
+
 .demo-table {
     width: 100%;
   }

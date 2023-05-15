@@ -1,59 +1,59 @@
 <div class="container">
-
-<input type="hidden" id="profileIdModel" name="profileIdModel" value="{{profileModel.profileId}}">
-
-<ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
-  <div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Nome da categoria</th>
-        <td mat-cell (click)="getById(element.profileId)" *matCellDef="let element">
-          {{element.profileName}}
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </div>
-</ng-template>
-
-<ng-template #isIdGreaterThanZero>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Nome categoria</mat-label>
-      <input id="profileName" name="profileName" [(ngModel)]="profileModel.profileName" matInput>
-    </mat-form-field>
-  </div>
-</ng-template>
-<div class="btns">
-  <section class="back_btn">
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <div class="example-label">Voltar
-            <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
-              color="primary" aria-label="Example icon button with a menu icon">
-              <mat-icon>reply_all</mat-icon>
-            </button>
+  <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Nome da categoria</th>
+          <td mat-cell (click)="getById(element.profileId)" *matCellDef="let element">
+            {{element.profileName}}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </ng-template>
+  <ng-template #isIdGreaterThanZero>
+    <p class="titleUpdateProfile">
+      Atualizar perfil
+    </p>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome categoria</mat-label>
+        <input id="profileName" name="profileName" [(ngModel)]="profileModel.profileName" matInput>
+      </mat-form-field>
+    </div>
+  </ng-template>
+  <div class="btns">
+    <section class="back_btn">
+      <div class="example-button-row">
+        <div class="example-flex-container">
+            <div class="example-button-container">
+              <div class="example-label titleUpdateProfile">
+                <div class="labelToButton">Voltar</div>
+                <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
+                  color="primary" aria-label="Example icon button with a menu icon">
+                  <mat-icon>reply_all</mat-icon>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="update_btn">
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <div class="example-label">Atualizar
-            <button mat-raised-button mat-mini-fab matTooltip="Atualizar perfil" (click)="update()"
-              color="primary" aria-label="Example icon button with a menu icon">
-              <mat-icon>sync</mat-icon>
-            </button>
+      </section>
+      <section class="update_btn">
+        <div class="example-button-row">
+          <div class="example-flex-container">
+            <div class="example-button-container">
+              <div class="example-label titleUpdateProfile">
+                <div class="labelToButton">Atualizar</div>
+                <button mat-raised-button mat-mini-fab matTooltip="Atualizar perfil" (click)="update()"
+                  color="primary" aria-label="Example icon button with a menu icon">
+                  <mat-icon>sync</mat-icon>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
-  </section>
-</div>
-</div>
+  </div>
