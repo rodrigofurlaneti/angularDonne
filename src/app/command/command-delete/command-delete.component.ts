@@ -13,7 +13,7 @@ let ELEMENT_DATA: CommandModel[];
 })
 export class CommandDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id','name'];
 
   status: string = '';
 
@@ -30,9 +30,8 @@ export class CommandDeleteComponent implements OnInit {
   public list() {
     this.commandDeleteService.list().subscribe(list => {
       ELEMENT_DATA = list;
-      this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
-    }, err => {
+      this.dataSourceCommand = ELEMENT_DATA;
+      }, err => {
       console.log('Erro ao listar as comandas', err);
     })
   }
@@ -45,7 +44,7 @@ export class CommandDeleteComponent implements OnInit {
     });
   }
 
-  dataSource = ELEMENT_DATA;
+  dataSourceCommand = ELEMENT_DATA;
   clickedRows = new Set<CommandModel>();
 
   reply(){

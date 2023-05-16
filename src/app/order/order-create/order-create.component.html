@@ -1,9 +1,12 @@
 <div class="container">
+  <p class="titleAddOrder">
+    Adicionar um novo pedido
+  </p>
   <mat-form-field appearance="fill">
-    <mat-label>Cliente</mat-label>
-    <mat-select #matSelect id="dropDownListBuyer" name="dropDownListBuyer" [(ngModel)]="order.clientName" (selectionChange)="change($event.value)">
-      <mat-option [value]="element" *ngFor="let element of dataSourceStore " >
-        {{ element.buyerName }}
+    <mat-label>Comanda</mat-label>
+    <mat-select #matSelect id="dropDownListCommand" name="dropDownListCommand" [(ngModel)]="order.commandId" (selectionChange)="change($event.value)">
+      <mat-option [value]="element" *ngFor="let element of dataSourceCommand" >
+        {{ element.commandId }} - {{ element.buyerName }}
        </mat-option>
     </mat-select>
   </mat-form-field>
@@ -24,7 +27,8 @@
   <div class="example-button-row">
     <div class="example-flex-container">
       <div class="example-button-container">
-        <div class="example-label">Voltar
+        <div class="example-label titleAddOrder">
+          <div class="labelToButton">Voltar</div>
           <button mat-raised-button
                 mat-mini-fab
                 matTooltip="Voltar para a pagina principal."
@@ -36,7 +40,8 @@
         </div>  
       </div>
       <div class="example-button-container">
-        <div class="example-label">Salvar
+        <div class="example-label titleAddOrder">
+          <div class="labelToButton">Salvar</div>
           <button mat-raised-button
                 mat-mini-fab
                 matTooltip="Salvar o novo perfil."

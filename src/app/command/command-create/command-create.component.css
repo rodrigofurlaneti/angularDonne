@@ -2,6 +2,8 @@
   font-size: 1.475em;
   font-family: "Trirong", serif;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
 }
 .labelToBButton{
   padding-right: 0.5rem;

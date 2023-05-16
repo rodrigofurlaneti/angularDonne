@@ -24,6 +24,10 @@ export class CommandCreateService {
   listProducts() : Observable<any>{
     return this.http.get(this.route+'Product')
   }
+
+  listCommand() : Observable<any>{
+    return this.http.get(this.route+'Command')
+  }
   
   listBuyer() : Observable<any>{
     return this.http.get(this.route+'Buyer')

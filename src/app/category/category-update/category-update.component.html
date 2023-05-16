@@ -1,10 +1,12 @@
-<input type="hidden" id="categoryIdModel" name="categoryIdModel" value="{{categoryModel.categoryId}}">
 <div class="container">
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
+    <p class="titleUpdateCategory">
+      Atualizar a categoria
+    </p>
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Nome da categoria</th>
+          <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell (click)="getById(element.categoryId)" *matCellDef="let element">
             {{element.categoryName}}
           </td>

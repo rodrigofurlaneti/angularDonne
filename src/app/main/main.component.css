@@ -1,3 +1,33 @@
+.titleMain{
+  font-size: 1.000em;
+  font-family: "Trirong", serif;
+  font-weight: bold;
+  letter-spacing: 0.1em
+}
+
+.titleSubMenu{
+  font-size: 1.100em;
+  font-family: "Trirong", serif;
+  font-weight: bold;
+  letter-spacing: 0.1em
+}
+
+.add{
+  color: greenyellow;
+}
+
+.update{
+  color: yellow;
+}
+
+.delete{
+  color: red;
+}
+
+.list{
+  color: blue;
+}
+
 :host {
   z-index: 1000;
   display: flex;
@@ -8,11 +38,12 @@
   left: 0;
   bottom: 0;
   height: 100%;
-  width: 320px;
+  width: 350px;
   background-color: #1b1b1b65;
   backdrop-filter: blur(10px);
   box-shadow: 2px 2px 8px #000;
   border-radius: 0px 8px 8px 0px;
+  overflow: hidden;
 }
   
 .matTooltipPosition{
@@ -21,18 +52,19 @@
 }
 
 .logofurlaneti{
-  width: 130px;
+  width: 200px;
   align-self: center;
 }
 
 .example-container .mat-form-field + .mat-form-field {
   margin-left: 8px;
+  overflow: hidden;
 }
 
 .mat-button {
   text-align: start;
   padding: 0.4rem;
-  width: 85%;
+  width: 75%;
   border-radius: 8px;
   border: none;
   color: #ffffff;
@@ -52,7 +84,7 @@ button:hover {
 }
 
 .mat-menu-centered {
-  width: 140px;
+  width: 180px;
 }
 
 .example-right-align {

@@ -3,14 +3,15 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderCreateService } from './order-create.service';
 import { OrderModel } from '../../../interface/order.interface';
-import { FormControl, NgForm } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { ProfileModel } from 'src/interface/profile.interface';
 import { MatSelect } from '@angular/material/select';
-import { BuyerModel } from 'src/interface/buyer.interface';
+import { CommandModel } from 'src/interface/command.interface';
 import { ProductModel } from 'src/interface/product.interface';
+import { CommandCreateService } from 'src/app/command/command-create/command-create.service';
 
 let ELEMENT_DATA_PRODUCT: ProductModel[];
-let ELEMENT_DATA_BUYER: BuyerModel[];
+let ELEMENT_DATA_COMMAND: CommandModel[];
 
 @Component({
   selector: 'order-create',
@@ -21,10 +22,12 @@ let ELEMENT_DATA_BUYER: BuyerModel[];
 export class OrderCreateComponent implements OnInit, AfterViewInit {
 
   clientSelected: string = " ";
-  clientSelectedID: number = 0;
-  productSelectedName: string = " ";
-  productSelectedID: number = 0;
 
+  clientSelectedID: number = 0;
+
+  productSelectedName: string = " ";
+
+  productSelectedID: number = 0;
 
   order: OrderModel;
 
@@ -32,10 +35,12 @@ export class OrderCreateComponent implements OnInit, AfterViewInit {
 
   disableSelect = new FormControl(false);
 
-  selectedClient: BuyerModel = new BuyerModel();
+  selectedCommand: CommandModel = new CommandModel();
 
   constructor(private orderCreateService: OrderCreateService,
-    private _snackBar: MatSnackBar, private readonly router: Router) {
+    private commandCreateService: CommandCreateService,
+    private _snackBar: MatSnackBar, 
+    private readonly router: Router) {
     this.order = new OrderModel()
   }
 
@@ -48,22 +53,22 @@ export class OrderCreateComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.order = new OrderModel();
-    this.listBuyer();
+    this.listCommand();
     this.listProducts();
   }
 
   ngAfterViewInit() {
     this.matSelect.valueChange.subscribe(obj => {
-      this.selectedClient.buyerName = obj.clientName;
+      this.selectedCommand.commandId = obj.commandId;
     });
   }
 
-  listBuyer() {
-    this.orderCreateService.listBuyer().subscribe(list => {
-      ELEMENT_DATA_BUYER = list;
-      this.dataSourceStore = ELEMENT_DATA_BUYER;
+  listCommand() {
+    this.commandCreateService.listCommand().subscribe(command => {
+      ELEMENT_DATA_COMMAND = command;
+      this.dataSourceCommand = ELEMENT_DATA_COMMAND;
     }, err => {
-      console.log('Erro ao listar os perfis', err);
+      console.log('Erro ao listar os pedidos', err);
     })
   }
 
@@ -111,7 +116,7 @@ export class OrderCreateComponent implements OnInit, AfterViewInit {
     }
   }
 
-  dataSourceStore = ELEMENT_DATA_BUYER;
+  dataSourceCommand = ELEMENT_DATA_COMMAND;
   dataSourceProducts = ELEMENT_DATA_PRODUCT;
 
   clickedRows = new Set<ProfileModel>();

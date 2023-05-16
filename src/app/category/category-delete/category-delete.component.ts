@@ -13,7 +13,7 @@ let ELEMENT_DATA: CategoryModel[];
 })
 export class CategoryDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id', 'name', 'userName'];
 
   status: string = '';
 

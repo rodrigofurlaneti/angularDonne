@@ -1,7 +1,9 @@
 .titleAddFormPayment{
-  font-size: 1.275em;
+  font-size: 1.000em;
   font-family: "Trirong", serif;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em
 }
 .labelToButton{
   padding-right: 0.5rem;

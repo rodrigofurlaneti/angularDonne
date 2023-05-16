@@ -12,7 +12,7 @@ export class CommandDeleteService {
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route+'Commands')
+    return this.http.get(this.route+'Command')
   }
 
   delete(id:number): Observable<any>{
@@ -21,7 +21,6 @@ export class CommandDeleteService {
     let options={
       headers:httpheaders
     };
-    console.log("id:" + id + "header:" + options);
-    return this.http.delete(this.route+'Commands/'+id, options)
+    return this.http.delete(this.route+'Command/'+id, options)
   }
 }

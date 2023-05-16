@@ -28,6 +28,11 @@ import { CategoryUpdateComponent } from './category/category-update/category-upd
 //Command
 import { CommandCreateModule } from './command/command-create/command-create.module';
 import { CommandCreateComponent } from './command/command-create/command-create.component';
+import { CommandDeleteModule } from './command/command-delete/command-delete.module';
+import { CommandDeleteComponent } from './command/command-delete/command-delete.component';
+import { CommandListModule } from './command/command-list/command-list.module';
+import { CommandListComponent } from './command/command-list/command-list.component';
+
 
 //FormOfPayment
 import { FormOfPaymentCreateModule } from './formofpayment/formofpayment-create/formofpayment-create.module';
@@ -100,6 +105,8 @@ import { FormsModule } from '@angular/forms';
     CategoryListComponent,
     CategoryDeleteComponent,
     CommandCreateComponent,
+    CommandDeleteComponent,
+    CommandListComponent,
     BuyerCreateComponent,
     BuyerDeleteComponent,
     BuyerListComponent,
@@ -136,6 +143,8 @@ import { FormsModule } from '@angular/forms';
     CdkAccordionModule,
     CategoryCreateModule,
     CommandCreateModule,
+    CommandDeleteModule,
+    CommandListModule,
     BuyerCreateModule,
     ProfileCreateModule,
     ProfileDeleteModule,

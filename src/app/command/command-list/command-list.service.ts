@@ -12,6 +12,6 @@ export class CommandListService {
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route+'Commands')
+    return this.http.get(this.route+'Command')
   }
 }

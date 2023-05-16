@@ -42,22 +42,6 @@ export class MainComponent implements OnInit{
     this.router.navigate(['category-update']);
   }
 
-  public activeStoreCreate() {
-    this.router.navigate(['store-create']);
-  }
-
-  public activeStoreDelete() {
-    this.router.navigate(['store-delete']);
-  }
-
-  public activeStoreList() {
-    this.router.navigate(['store-list']);
-  }
-
-  public activeStoreUpdate() {
-    this.router.navigate(['store-update']);
-  }
-
   public activeProfileCreate() {
     this.router.navigate(['profile-create']);
   }
@@ -153,15 +137,19 @@ export class MainComponent implements OnInit{
     this.router.navigate(['formofpayment-update']);
   }
 
-  public activeCommandsCreate() {
+  public activeCommandCreate() {
     this.router.navigate(['command-create']);
   }
 
-  public activeCommandsList() {
+  public activeCommandUpdate() {
+    this.router.navigate(['command-update']);
+  }
+
+  public activeCommandList() {
     this.router.navigate(['command-list']);
   }
   
-  public activeCommandsDelete() {
+  public activeCommandDelete() {
     this.router.navigate(['command-delete']);
   }
 }

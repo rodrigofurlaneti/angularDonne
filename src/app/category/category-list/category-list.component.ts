@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { CategoryListService } from './category-list.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryModel } from 'src/interface/category.interface';
 
 let ELEMENT_DATA: CategoryModel[];
@@ -11,12 +10,12 @@ let ELEMENT_DATA: CategoryModel[];
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.css']
 })
+
 export class CategoryListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'userName'];
+  displayedColumns: string[] = ['id', 'name', 'userName'];
 
   constructor(private categoryListService: CategoryListService,
-              private _snackBar: MatSnackBar, 
               private router: Router) { }
   
   ngOnInit(): void {
@@ -38,6 +37,7 @@ export class CategoryListComponent implements OnInit {
   reply(){
     this.router.navigate(['main']);
   }
+  
 }
 
 

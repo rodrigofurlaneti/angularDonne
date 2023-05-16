@@ -1,3 +1,23 @@
+.titleDeleteBuyer{
+  font-size: 1.475em;
+  font-family: "Trirong", serif;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.headerDeleteBuyer{
+  font-size: 1.175em;
+  font-family: "Trirong", serif;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.labelToButton{
+  padding-right: 0.5rem;
+}
+
 .demo-table {
     width: 100%;
   }
@@ -24,11 +44,10 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-  
     padding: 1rem;
     border: 2px solid #fff;
-    width: 360px;
-    max-height: 560px;
+    width: 50%;
+    height: 60%;
     overflow-y: auto;
     background-color: #1b1b1b65;
     backdrop-filter: blur(10px);
@@ -67,6 +86,10 @@
     background-color: #7B1FA2;
   }
 
+  .example-button-container:hover {
+    transform: scale(1.2);
+  }
+  
   .mat-table{
     background-color: transparent;
   }

@@ -13,7 +13,7 @@ let ELEMENT_DATA: BuyerModel[];
 })
 export class BuyerDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id', 'name'];
 
   status: string = '';
 
@@ -31,7 +31,6 @@ export class BuyerDeleteComponent implements OnInit {
     this.buyerDeleteService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })

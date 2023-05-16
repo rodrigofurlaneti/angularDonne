@@ -1,3 +1,13 @@
+.titleAddOrder{
+  font-size: 1.275em;
+  font-family: "Trirong", serif;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+.labelToButton{
+  padding-right: 0.5rem;
+}
 .container{
   display: flex;
   justify-content: center;
@@ -74,6 +84,9 @@ section {
     width: 120px;
   }
 
+  .example-button-container:hover {
+    transform: scale(1.2);
+  }
   .example-button {
     display: block;
     margin: 80px auto 400px;

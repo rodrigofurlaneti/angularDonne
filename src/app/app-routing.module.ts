@@ -15,7 +15,6 @@ import { BuyerUpdateComponent } from './buyer/buyer-update/buyer-update.componen
 import { CommandCreateComponent } from './command/command-create/command-create.component';
 import { CommandDeleteComponent } from './command/command-delete/command-delete.component';
 import { CommandListComponent } from './command/command-list/command-list.component';
-import { CommandUpdateComponent } from './command/command-update/command-update.component';
 
 import { ProfileCreateComponent } from './profile/profile-create/profile-create.component';
 import { ProfileListComponent } from './profile/profile-list/profile-list.component';
@@ -47,14 +46,21 @@ import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-upda
 export const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'main', component: MainComponent },
-  { path: 'category-create', component: CategoryCreateComponent },
-  { path: 'category-delete', component: CategoryDeleteComponent },
-  { path: 'category-list', component: CategoryListComponent },
-  { path: 'category-update', component: CategoryUpdateComponent },
   { path: 'buyer-create', component: BuyerCreateComponent },
   { path: 'buyer-delete', component: BuyerDeleteComponent },
   { path: 'buyer-list', component: BuyerListComponent },
   { path: 'buyer-update', component: BuyerUpdateComponent },
+  { path: 'category-create', component: CategoryCreateComponent },
+  { path: 'category-delete', component: CategoryDeleteComponent },
+  { path: 'category-list', component: CategoryListComponent },
+  { path: 'category-update', component: CategoryUpdateComponent },
+  { path: 'command-create', component: CommandCreateComponent },
+  { path: 'command-list', component: CommandListComponent },
+  { path: 'command-delete', component: CommandDeleteComponent },
+  { path: 'formofpayment-create', component: FormOfPaymentCreateComponent },
+  { path: 'formofpayment-list', component: FormOfPaymentListComponent },
+  { path: 'formofpayment-delete', component: FormOfPaymentDeleteComponent },
+  { path: 'formofpayment-update', component: FormOfPaymentUpdateComponent },
   { path: 'order-create', component: OrderCreateComponent },
   { path: 'order-list', component: OrderListComponent },
   { path: 'order-delete', component: OrderDeleteComponent },
@@ -63,22 +69,14 @@ export const routes: Routes = [
   { path: 'profile-delete', component: ProfileDeleteComponent },
   { path: 'profile-list', component: ProfileListComponent },
   { path: 'profile-update', component: ProfileUpdateComponent },
-  { path: 'user-create', component: UserCreateComponent },
-  { path: 'user-update', component: UserUpdateComponent },
-  { path: 'user-delete', component: UserDeleteComponent },
-  { path: 'user-list', component: UserListComponent },
   { path: 'product-create', component: ProductCreateComponent },
   { path: 'product-list', component: ProductListComponent },
   { path: 'product-delete', component: ProductDeleteComponent },
   { path: 'product-update', component: ProductUpdateComponent },
-  { path: 'formofpayment-create', component: FormOfPaymentCreateComponent },
-  { path: 'formofpayment-list', component: FormOfPaymentListComponent },
-  { path: 'formofpayment-delete', component: FormOfPaymentDeleteComponent },
-  { path: 'formofpayment-update', component: FormOfPaymentUpdateComponent },
-  { path: 'command-create', component: CommandCreateComponent },
-  { path: 'command-list', component: CommandListComponent },
-  { path: 'command-delete', component: CommandDeleteComponent },
-  { path: 'command-update', component: CommandUpdateComponent }
+  { path: 'user-create', component: UserCreateComponent },
+  { path: 'user-update', component: UserUpdateComponent },
+  { path: 'user-delete', component: UserDeleteComponent },
+  { path: 'user-list', component: UserListComponent },
 ];
 
 @NgModule({

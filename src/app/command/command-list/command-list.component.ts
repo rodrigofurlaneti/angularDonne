@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { CommandListService } from './command-list.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommandModel } from 'src/interface/command.interface';
 
 let ELEMENT_DATA: CommandModel[];
@@ -13,10 +12,9 @@ let ELEMENT_DATA: CommandModel[];
 })
 export class CommandListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id','name'];
 
   constructor(private commandListService: CommandListService,
-              private _snackBar: MatSnackBar, 
               private router: Router) { }
   
   ngOnInit(): void {

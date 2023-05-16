@@ -1,15 +1,26 @@
 <div class="container">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Nome da categoria</th>
-    <td mat-cell (click)="delete(element.categoryId)" *matCellDef="let element">
-      {{element.categoryName}}
-      <input type="hidden" id="categoryId" name="categoryId" [value]=element.categoryId>
+  <p class="titleDeleteCategory">
+    Categoria
+  </p>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Nº</th>
+    <td mat-cell (click)="delete(element.categoryId)" *matCellDef="let element" class="headerDeleteCategory">
+      {{element.categoryId}}
     </td>
   </ng-container>
-
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Nome da categoria</th>
+    <td mat-cell (click)="delete(element.categoryId)" *matCellDef="let element" class="headerDeleteCategory">
+      {{element.categoryName}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="userName">
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Usuário</th>
+    <td mat-cell (click)="delete(element.userName)" *matCellDef="let element" class="headerDeleteCategory">
+      {{element.userName}}
+    </td>
+  </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
@@ -18,7 +29,8 @@
   <div class="example-button-row">
     <div class="example-flex-container">
       <div class="example-button-container">
-        <div class="example-label">Voltar
+        <div class="example-label headerDeleteCategory">
+          <div class="labelToButton">Voltar</div>
           <button mat-raised-button
                 mat-mini-fab
                 matTooltip="Voltar"
