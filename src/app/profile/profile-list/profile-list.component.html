@@ -1,18 +1,18 @@
 <div class="container">
+  <p class="titleListProfile">
+    Perfil
+  </p>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> Nº </th>
-    <td mat-cell *matCellDef="let element"> {{element.profileId}} </td>
+    <th mat-header-cell *matHeaderCellDef class="headerListProfile">Nº</th>
+    <td mat-cell *matCellDef="let element" class="headerListProfile">{{element.profileId}}</td>
   </ng-container>
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Nome do perfil </th>
-      <td mat-cell *matCellDef="let element"> {{element.profileName}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef class="headerListProfile">Nome</th>
+    <td mat-cell *matCellDef="let element" class="headerListProfile">{{element.profileName}}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
         mat-row
         (click)="clickedRows.add(row)"
         [class.demo-row-is-clicked]="clickedRows.has(row)"

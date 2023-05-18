@@ -13,11 +13,13 @@ let ELEMENT_DATA: ProductModel[];
 })
 export class ProductDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id','name','quantityStock'];
 
   status: string = '';
 
   ids: number = 0;
+
+  messageTime: number = 5000;
 
   constructor(private productDeleteService: ProductDeleteService,
     private _snackBar: MatSnackBar, 
@@ -31,7 +33,6 @@ export class ProductDeleteComponent implements OnInit {
     this.productDeleteService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })
@@ -40,8 +41,8 @@ export class ProductDeleteComponent implements OnInit {
   public delete(id: number) {
     this.productDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
-    this._snackBar.open('Excluido a categoria com sucesso!','', {
-      duration: 2000
+    this._snackBar.open('Excluido o produto com sucesso!','', {
+      duration: this.messageTime
     });
   }
 

@@ -13,11 +13,13 @@ let ELEMENT_DATA: ProfileModel[];
 })
 export class ProfileDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id','name'];
 
   status: string = '';
 
   ids: number = 0;
+
+  messageTime: number = 5000;
 
   constructor(private profileDeleteService: ProfileDeleteService,
     private _snackBar: MatSnackBar, 
@@ -31,7 +33,6 @@ export class ProfileDeleteComponent implements OnInit {
     this.profileDeleteService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar os perfis', err);
     })
@@ -41,7 +42,7 @@ export class ProfileDeleteComponent implements OnInit {
     this.profileDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.router.navigate(['main']);
     this._snackBar.open('Excluido o perfil com sucesso!','', {
-      duration: 2000
+      duration: this.messageTime
     });
   }
 

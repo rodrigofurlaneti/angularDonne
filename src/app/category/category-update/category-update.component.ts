@@ -18,7 +18,7 @@ export class CategoryUpdateComponent implements OnInit {
 
   isIdGreaterThanZero = false;
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id', 'name'];
 
   status: string = '';
 

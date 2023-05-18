@@ -1,14 +1,34 @@
+.titleDeleteFormOfPayment{
+  font-size: 1.475em;
+  font-family: "Trirong", serif;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.headerDeleteFormOfPayment{
+  font-size: 1.175em;
+  font-family: "Trirong", serif;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.labelToButton{
+  padding-right: 0.5rem;
+}
+
 .demo-table {
     width: 100%;
   }
   
-  .mat-row .mat-cell {
+.mat-row .mat-cell {
     border-bottom: 1px solid transparent;
     border-top: 1px solid transparent;
     cursor: pointer;
   }
   
-  .mat-row:hover .mat-cell {
+.mat-row:hover .mat-cell {
     border-color: currentColor;
   }
   
@@ -24,11 +44,11 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-  
+    overflow: hidden;
     padding: 1rem;
     border: 2px solid #fff;
-    width: 360px;
-    max-height: 560px;
+    width: 40%;
+    max-height: 60%;
     overflow-y: auto;
     background-color: #1b1b1b65;
     backdrop-filter: blur(10px);
@@ -45,6 +65,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .example-button-container:hover {
+    transform: scale(1.2);
   }
 
   .mat-elevation-z8{

@@ -2,12 +2,21 @@
   font-size: 1.475em;
   font-family: "Trirong", serif;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.headerUpdateCategory{
+  font-size: 1.075em;
+  font-family: "Trirong", serif;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
 }
 
 .labelToButton{
   padding-right: 0.5rem;
 }
-
 .demo-table {
     width: 100%;
   }

@@ -5,9 +5,19 @@
   font-weight: bold;
   letter-spacing: 0.1em;
 }
+
+.headerAddProduct{
+  font-size: 1.175em;
+  font-family: "Trirong", serif;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
 .labelToButton{
   padding-right: 0.5rem;
 }
+
 section {
     display: flex;
     flex-direction: column;

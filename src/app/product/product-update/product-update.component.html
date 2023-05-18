@@ -1,11 +1,19 @@
-<input type="hidden" id="categoryIdModel" name="categoryIdModel" value="{{productModel.productId}}">
 <div class="container">
+  <p class="titleUpdateProduct">
+    Atualizar
+  </p>
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="headerUpdateProduct">Nº</th>
+          <td mat-cell (click)="getById(element.productId)" *matCellDef="let element" class="headerUpdateProduct">
+            {{element.productId}}
+          </td>
+        </ng-container>
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Nome do produto</th>
-          <td mat-cell (click)="getById(element.productId)" *matCellDef="let element">
+          <th mat-header-cell *matHeaderCellDef class="headerUpdateProduct"> Nome do produto</th>
+          <td mat-cell (click)="getById(element.productId)" *matCellDef="let element" class="headerUpdateProduct">
             {{element.productName}}
           </td>
         </ng-container>
@@ -17,7 +25,7 @@
 
   <ng-template #isIdGreaterThanZero>
     <p class="titleUpdateProduct">
-      Atualizar o produto
+      Produto
     </p>
     <div>
       <div class="inputs">
@@ -71,7 +79,7 @@
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
-            <div class="example-label titleUpdateProduct">
+            <div class="example-label headerUpdateProduct">
               <div class="labelToButton">Voltar</div>
               <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
                 color="primary" aria-label="Example icon button with a menu icon">
@@ -87,7 +95,7 @@
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
-            <div class="example-label titleUpdateProduct">
+            <div class="example-label headerUpdateProduct">
               <div class="labelToButton">Atualizar</div>
               <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria." (click)="update()"
                 color="primary" aria-label="Example icon button with a menu icon">

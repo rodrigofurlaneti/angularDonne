@@ -13,7 +13,7 @@ let ELEMENT_DATA: FormOfPaymentModel[];
 })
 export class FormOfPaymentDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id', 'name'];
 
   status: string = '';
 

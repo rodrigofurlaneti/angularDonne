@@ -1,12 +1,18 @@
 <div class="container">
+  <p class="titleDeleteFormOfPayment">
+    Forma de pagamento
+  </p>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-
-
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteFormOfPayment">Nº</th>
+    <td mat-cell (click)="delete(element.formOfPaymentId)" *matCellDef="let element" class="headerDeleteFormOfPayment">
+      {{element.formOfPaymentId}}
+    </td>
+  </ng-container>
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Nome do produto</th>
-    <td mat-cell (click)="delete(element.formOfPaymentId)" *matCellDef="let element">
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteFormOfPayment">Nome</th>
+    <td mat-cell (click)="delete(element.formOfPaymentId)" *matCellDef="let element" class="headerDeleteFormOfPayment">
       {{element.formOfPaymentName}}
-      <input type="hidden" id="formOfPaymentId" name="formOfPaymentId" [value]=element.formOfPaymentId>
     </td>
   </ng-container>
 
@@ -18,7 +24,8 @@
   <div class="example-button-row">
     <div class="example-flex-container">
       <div class="example-button-container">
-        <div class="example-label">Voltar
+        <div class="example-label headerDeleteFormOfPayment">
+          <div class="labelToButton">Voltar</div>
           <button mat-raised-button
                 mat-mini-fab
                 matTooltip="Voltar"

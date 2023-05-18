@@ -13,10 +13,9 @@ let ELEMENT_DATA: ProfileModel[];
 })
 export class ProfileListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id','name'];
 
   constructor(private profileListService: ProfileListService,
-              private _snackBar: MatSnackBar, 
               private router: Router) { }
   
   ngOnInit(): void {
@@ -27,7 +26,6 @@ export class ProfileListComponent implements OnInit {
     this.profileListService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar os perfis', err);
     })

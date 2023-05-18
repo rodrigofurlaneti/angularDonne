@@ -2,6 +2,16 @@
   font-size: 1.475em;
   font-family: "Trirong", serif;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.headerUpdateBuyer{
+  font-size: 1.175em;
+  font-family: "Trirong", serif;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
 }
 
 .labelToButton{
@@ -19,7 +29,7 @@
 
   padding: 1rem;
   border: 2px solid #fff;
-  width: 360px;
+  width: 75%;
   background-color: #1b1b1b65;
   backdrop-filter: blur(10px);
   box-shadow: 2px 2px 8px #000;

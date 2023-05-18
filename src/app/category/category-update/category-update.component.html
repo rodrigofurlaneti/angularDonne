@@ -1,13 +1,19 @@
 <div class="container">
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <p class="titleUpdateCategory">
-      Atualizar a categoria
+      Atualizar
     </p>
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="titleUpdateCategory headerUpdateCategory">Nº</th>
+          <td mat-cell (click)="getById(element.categoryId)" *matCellDef="let element" class="headerUpdateCategory">
+            {{element.categoryId}}
+          </td>
+        </ng-container>
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell (click)="getById(element.categoryId)" *matCellDef="let element">
+          <th mat-header-cell *matHeaderCellDef class="titleUpdateCategory headerUpdateCategory">Categorias</th>
+          <td mat-cell (click)="getById(element.categoryId)" *matCellDef="let element" class="headerUpdateCategory">
             {{element.categoryName}}
           </td>
         </ng-container>
@@ -36,7 +42,7 @@
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
-            <div class="example-label titleUpdateCategory">
+            <div class="example-label headerUpdateCategory">
               <div class="labelToButton">Voltar</div>
               <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
                 color="primary" aria-label="Example icon button with a menu icon">
@@ -52,7 +58,7 @@
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
-            <div class="example-label titleUpdateCategory">
+            <div class="example-label headerUpdateCategory">
               <div class="labelToBButton">Atualizar</div>
               <button mat-raised-button mat-mini-fab matTooltip="Atualizar categoria" (click)="update()"
                 color="primary" aria-label="Example icon button with a menu icon">

@@ -1,15 +1,26 @@
 <div class="container">
+  <p class="titleDeleteProduct">
+    Excluir
+  </p>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Nome do produto</th>
-    <td mat-cell (click)="delete(element.productId)" *matCellDef="let element">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteProduct">Nº</th>
+    <td mat-cell (click)="delete(element.productId)" *matCellDef="let element" class="headerDeleteProduct">
       {{element.productName}}
-      <input type="hidden" id="productId" name="productId" [value]=element.productId>
     </td>
   </ng-container>
-
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteProduct">Nome do produto</th>
+    <td mat-cell (click)="delete(element.productId)" *matCellDef="let element" class="headerDeleteProduct">
+      {{element.productName}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="quantityStock">
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteProduct">Quantidade</th>
+    <td mat-cell (click)="delete(element.productId)" *matCellDef="let element" class="headerDeleteProduct">
+      {{element.quantityStock}}
+    </td>
+  </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
@@ -18,7 +29,8 @@
   <div class="example-button-row">
     <div class="example-flex-container">
       <div class="example-button-container">
-        <div class="example-label">Voltar
+        <div class="example-label headerDeleteProduct">
+          <div class="labelToButton">Voltar</div>
           <button mat-raised-button
                 mat-mini-fab
                 matTooltip="Voltar para a pagina principal."

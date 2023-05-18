@@ -13,10 +13,9 @@ let ELEMENT_DATA: ProductModel[];
 })
 export class ProductListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id','name','quantityStock'];
 
   constructor(private productListService: ProductListService,
-              private _snackBar: MatSnackBar, 
               private router: Router) { }
   
   ngOnInit(): void {

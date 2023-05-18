@@ -87,6 +87,10 @@ button:hover {
   width: 180px;
 }
 
+.mat-submenu {
+  width: 250px;
+}
+
 .example-right-align {
   text-align: right;
 }

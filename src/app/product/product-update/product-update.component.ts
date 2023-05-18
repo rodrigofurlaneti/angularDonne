@@ -28,7 +28,7 @@ export class ProductUpdateComponent implements OnInit {
 
   isIdGreaterThanZero = false;
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id', 'name'];
 
   ids: number = 0;
 

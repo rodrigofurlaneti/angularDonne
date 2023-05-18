@@ -1,31 +1,30 @@
 <img class="logofurlaneti" src="assets/logo_footer.webp" alt="" />
-
 <button mat-button [matMenuTriggerFor]="menuCaregory" matTooltip="Categoria"> <mat-icon
     class="icon">category</mat-icon><span class="user-type titleMain">
       Categoria
-    </span></button>
+    </span>
+  </button>
 <mat-menu #menuCaregory="matMenu" class="custom mat-menu">
-  <button matTooltip="Adicionar nova categoria" [matTooltipPosition]="'right'"
-    (click)="activeCategoryCreate()" mat-menu-item>
-    <mat-icon class="add">exposure_plus_1</mat-icon>
-    <span class="titleSubMenu">Adicionar</span>
-
-  </button>
-  <button matTooltip="Atualizar categoria" [matTooltipPosition]="'right'"
-    (click)="activeCategoryUpdate()" mat-menu-item>
-    <mat-icon class="update">sync</mat-icon>
-    <span class="titleSubMenu">Atualizar</span>
-  </button>
-  <button matTooltip="Excluir categoria" [matTooltipPosition]="'right'" (click)="activeCategoryDelete()"
-    mat-menu-item>
-    <mat-icon class="delete">delete_forever</mat-icon>
-    <span class="titleSubMenu">Excluir</span>
-  </button>
-  <button matTooltip="Listar categorias" [matTooltipPosition]="'right'"
-    (click)="activeCategoryList()" mat-menu-item>
-    <mat-icon class="list">view_headline</mat-icon>
-    <span class="titleSubMenu">Listar</span>
-  </button>
+    <button matTooltip="Adicionar nova categoria" [matTooltipPosition]="'right'"
+      (click)="activeCategoryCreate()" mat-menu-item>
+      <mat-icon class="add">exposure_plus_1</mat-icon>
+      <span class="titleSubMenu">Adicionar</span>
+    </button>
+    <button matTooltip="Atualizar categoria" [matTooltipPosition]="'right'"
+      (click)="activeCategoryUpdate()" mat-menu-item>
+      <mat-icon class="update">sync</mat-icon>
+      <span class="titleSubMenu">Atualizar</span>
+    </button>
+    <button matTooltip="Excluir categoria" [matTooltipPosition]="'right'" (click)="activeCategoryDelete()"
+      mat-menu-item>
+      <mat-icon class="delete">delete_forever</mat-icon>
+      <span class="titleSubMenu">Excluir</span>
+    </button>
+    <button matTooltip="Listar categorias" [matTooltipPosition]="'right'"
+      (click)="activeCategoryList()" mat-menu-item>
+      <mat-icon class="list">view_headline</mat-icon>
+      <span class="titleSubMenu">Listar</span>
+    </button>
 </mat-menu>
 
 <button mat-button [matMenuTriggerFor]="menuBuyer" matTooltip="Cliente"> <mat-icon class="icon">

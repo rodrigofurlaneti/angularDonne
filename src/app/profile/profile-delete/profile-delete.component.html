@@ -1,11 +1,18 @@
 <div class="container">
+  <p class="titleDeleteProfile">
+    Excluir
+  </p>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteProfile">Nº</th>
+    <td mat-cell (click)="delete(element.profileId)" *matCellDef="let element" class="headerDeleteProfile">
+      {{element.profileId}}
+    </td>
+  </ng-container>
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Nome do perfil</th>
-    <td mat-cell (click)="delete(element.profileId)" *matCellDef="let element">
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteProfile">Nome do perfil</th>
+    <td mat-cell (click)="delete(element.profileId)" *matCellDef="let element" class="headerDeleteProfile">
       {{element.profileName}}
-      <input type="hidden" id="profileId" name="profileId" [value]=element.profileId>
     </td>
   </ng-container>
 
@@ -16,7 +23,8 @@
   <section>
     <div class="example-flex-container">
       <div class="example-button-container">
-        <div class="example-label">Voltar
+        <div class="example-label headerDeleteProfile">
+          <div class="labelToButton">Voltar</div>
           <button mat-raised-button
                   mat-mini-fab
                   matTooltip="Voltar" 
