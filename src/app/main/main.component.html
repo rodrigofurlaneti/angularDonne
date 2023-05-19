@@ -74,6 +74,11 @@
   <mat-icon class="list">view_headline</mat-icon>
   <span class="titleMain">Listar</span>
 </button>
+<button matTooltip="Listar pedidos da comanda" [matTooltipPosition]="'right'"
+  (click)="activeCommandOrderList()" mat-menu-item>
+  <mat-icon class="list">view_headline</mat-icon>
+  <span class="titleMain">Listar pedidos da comanda</span>
+</button>
 </mat-menu>
 
 <button mat-button [matMenuTriggerFor]="menuFormOfPaymentCreate" matTooltip="Forma de pagamento"> <mat-icon
@@ -210,5 +215,18 @@
   (click)="activeUserList()" mat-menu-item>
   <mat-icon class="list">view_headline</mat-icon>
   <span class="titleMain">Listar</span>
+</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="menuAbout" matTooltip="Painel de controle"> <mat-icon
+  class="icon">settings</mat-icon> <span class="user-type titleMain">
+    Painel de controle
+  </span>
+</button>
+<mat-menu #menuAbout="matMenu" class="custom">
+<button matTooltip="Sobre nós" [matTooltipPosition]="'right'"
+  (click)="activeAbout()" mat-menu-item>
+  <mat-icon class="add">settings</mat-icon>
+  <span class="titleMain">Sobre nós</span>
 </button>
 </mat-menu>

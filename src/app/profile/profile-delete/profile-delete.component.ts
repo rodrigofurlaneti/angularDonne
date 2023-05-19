@@ -13,7 +13,7 @@ let ELEMENT_DATA: ProfileModel[];
 })
 export class ProfileDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','name'];
+  displayedColumns: string[] = ['name'];
 
   status: string = '';
 

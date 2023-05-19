@@ -13,7 +13,7 @@ let ELEMENT_DATA: ProfileModel[];
 })
 export class ProfileListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','name'];
+  displayedColumns: string[] = ['name'];
 
   constructor(private profileListService: ProfileListService,
               private router: Router) { }

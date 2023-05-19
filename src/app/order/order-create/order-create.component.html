@@ -4,7 +4,7 @@
   </p>
   <mat-form-field appearance="fill">
     <mat-label>Comanda</mat-label>
-    <mat-select #matSelect id="dropDownListCommand" name="dropDownListCommand" [(ngModel)]="order.commandId" (selectionChange)="change($event.value)">
+    <mat-select #matSelect id="dropDownListCommand" name="dropDownListCommand" [(ngModel)]="orderModel.buyerName" (selectionChange)="changeCommand($event.value)">
       <mat-option [value]="element" *ngFor="let element of dataSourceCommand" >
         {{ element.commandId }} - {{ element.buyerName }}
        </mat-option>
@@ -12,15 +12,15 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Produto</mat-label>
-    <mat-select #matSelect id="dropDownListProduct" name="dropDownListProduct" [(ngModel)]="order.productName" (selectionChange)="changeProduct($event.value)">
-      <mat-option [value]="element" *ngFor="let element of dataSourceProducts " >
-        {{ element.productName  }}
+    <mat-select #matSelect id="dropDownListProduct" name="dropDownListProduct" [(ngModel)]="orderModel.productName" (selectionChange)="changeProduct($event.value)">
+      <mat-option [value]="element" *ngFor="let element of dataSourceProduct" >
+        {{ element.productName }}
        </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Quantidade</mat-label>
-    <input type="number" id="orderAmount" name="orderAmount" matInput />
+    <input type="number" id="orderAmount" name="orderAmount" matInput [(ngModel)]="orderModel.amount"/>
   </mat-form-field>
 
 <section>

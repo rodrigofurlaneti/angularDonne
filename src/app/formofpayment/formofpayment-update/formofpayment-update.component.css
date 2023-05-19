@@ -1,7 +1,17 @@
-.titleUpdateFormPayment{
+.titleUpdateFormOfPayment{
   font-size: 1.275em;
   font-family: "Trirong", serif;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.headerUpdateFormOfPayment{
+  font-size: 1.075em;
+  font-family: "Trirong", serif;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
 }
 
 .labelToButton{

@@ -8,6 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+//About
+import { AboutComponent } from './about/about.component';
+import { AboutModule } from './about/about.module';
+
 //Buyer
 import { BuyerCreateModule } from './buyer/buyer-create/buyer-create.module';
 import { BuyerCreateComponent } from './buyer/buyer-create/buyer-create.component';
@@ -32,6 +36,8 @@ import { CommandDeleteModule } from './command/command-delete/command-delete.mod
 import { CommandDeleteComponent } from './command/command-delete/command-delete.component';
 import { CommandListModule } from './command/command-list/command-list.module';
 import { CommandListComponent } from './command/command-list/command-list.component';
+import { CommandSearchModule } from './command/command-search/command-search.module';
+import { CommandSearchComponent } from './command/command-search/command-search.component';
 
 
 //FormOfPayment
@@ -98,6 +104,7 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
+    AboutComponent,
     AppComponent,
     MainComponent,
     CategoryCreateComponent,
@@ -107,6 +114,7 @@ import { FormsModule } from '@angular/forms';
     CommandCreateComponent,
     CommandDeleteComponent,
     CommandListComponent,
+    CommandSearchComponent,
     BuyerCreateComponent,
     BuyerDeleteComponent,
     BuyerListComponent,
@@ -136,6 +144,7 @@ import { FormsModule } from '@angular/forms';
     CurrencyMaskModule,
     NgxMaskModule.forRoot(),
     AppRoutingModule,
+    AboutModule,
     BrowserModule,
     BrowserAnimationsModule,
     BrowserAnimationsModule,
@@ -145,6 +154,7 @@ import { FormsModule } from '@angular/forms';
     CommandCreateModule,
     CommandDeleteModule,
     CommandListModule,
+    CommandSearchModule,
     BuyerCreateModule,
     ProfileCreateModule,
     ProfileDeleteModule,

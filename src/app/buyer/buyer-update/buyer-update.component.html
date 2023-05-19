@@ -1,32 +1,16 @@
 <div class="container">
+  <p class="titleUpdateBuyer">
+    Atualizar
+  </p>
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
-    <p class="titleUpdateBuyer">
-      Atualizar
-    </p>
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef>
-            <div class="headerUpdateBuyer">Nº</div>
-          </th>
-          <td mat-cell (click)="getById(element.buyerId)" *matCellDef="let element">
-            <div class="headerUpdateBuyer">{{element.buyerId}}</div>
-          </td>
-        </ng-container>
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>
-            <div class="headerUpdateBuyer">Nome do Cliente</div>
+            <div class="headerUpdateBuyer">Nome</div>
           </th>
           <td mat-cell (click)="getById(element.buyerId)" *matCellDef="let element">
             <div class="headerUpdateBuyer">{{element.buyerName}}</div>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="phone">
-          <th mat-header-cell *matHeaderCellDef>
-            <div class="headerUpdateBuyer">Telefone</div>
-          </th>
-          <td mat-cell (click)="getById(element.buyerId)" *matCellDef="let element">
-            <div class="headerUpdateBuyer">{{element.buyerPhone}}</div>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -38,9 +22,6 @@
 
   <ng-template #isIdGreaterThanZero>
     <div>
-      <p class="titleUpdateBuyer">
-        Atualizar o cliente
-      </p>
       <mat-form-field appearance="fill">
         <mat-label>Nome do cliente</mat-label>
         <input id="clientName" name="clientName" [(ngModel)]="buyerModel.buyerName" matInput>
@@ -88,7 +69,5 @@
         </div>
       </div>
     </section>
-
-
   </div>
 </div>

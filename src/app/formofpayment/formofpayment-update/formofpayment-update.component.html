@@ -1,10 +1,13 @@
 <div class="container">
+  <p class="titleUpdateFormOfPayment">
+    Atualizar
+  </p>
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Nome da forma de pagamento</th>
-          <td mat-cell (click)="getById(element.formOfPaymentId)" *matCellDef="let element">
+          <th mat-header-cell *matHeaderCellDef class="headerUpdateFormOfPayment">Nome</th>
+          <td mat-cell (click)="getById(element.formOfPaymentId)" *matCellDef="let element" class="headerUpdateFormOfPayment">
             {{element.formOfPaymentName}}
           </td>
         </ng-container>
@@ -16,9 +19,6 @@
   </ng-template>
 
   <ng-template #isIdGreaterThanZero>
-    <p class="titleUpdateFormPayment">
-      Atualizar a forma de pagamento
-    </p>
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Nome forma de pagamento:</mat-label>

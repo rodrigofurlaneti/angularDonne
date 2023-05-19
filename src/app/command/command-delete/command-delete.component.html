@@ -1,14 +1,17 @@
 <div class="container">
+  <p class="titleDeleteCommand">
+    Comanda
+  </p>
     <table mat-table [dataSource]="dataSourceCommand" class="mat-elevation-z8 demo-table">
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Número da comanda</th>
-        <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef class="headerDeleteCommand">Número da comanda</th>
+        <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element" class="headerDeleteCommand">
           {{element.commandId}}
         </td>
       </ng-container>
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Nome do cliente</th>
-        <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef class="headerDeleteCommand">Nome do cliente</th>
+        <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element" class="headerDeleteCommand">
           {{element.buyerName}}
         </td>
       </ng-container>

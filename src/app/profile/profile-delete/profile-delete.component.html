@@ -3,12 +3,6 @@
     Excluir
   </p>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef class="headerDeleteProfile">Nº</th>
-    <td mat-cell (click)="delete(element.profileId)" *matCellDef="let element" class="headerDeleteProfile">
-      {{element.profileId}}
-    </td>
-  </ng-container>
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef class="headerDeleteProfile">Nome do perfil</th>
     <td mat-cell (click)="delete(element.profileId)" *matCellDef="let element" class="headerDeleteProfile">

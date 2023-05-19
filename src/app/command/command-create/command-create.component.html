@@ -2,8 +2,11 @@
   <p class="titleAddCommand">
     Adicionar uma nova comanda
   </p>
-  <mat-grid-list cols="4" rowHeight="50px" gutterSize="15px">
+  <mat-grid-list cols="3" rowHeight="50px" gutterSize="15px">
     <mat-grid-tile colspan="3">
+      <p class="headerAddCommand">Número da comanda: {{commandModel.commandId}}</p>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
       <mat-form-field appearance="fill">
         <mat-label>Cliente</mat-label>
         <mat-select #matSelect id="dropDownListBuyer" name="dropDownListBuyer" (selectionChange)="changeBuyerToCommand($event.value)">
@@ -13,28 +16,24 @@
         </mat-select>
       </mat-form-field>
     </mat-grid-tile>
-    <mat-grid-tile colspan="1">  
-      <button mat-mini-fab color="primary" 
-              aria-label="Example icon button with a menu icon" 
-              (click)="saveBuyerToCommand()">
-        <mat-icon>save_alt</mat-icon>
-      </button>
+    <mat-grid-tile class="buttonToLabel">
+      <div class="labelToButton headerAddCommand">Salvar</div>  
+      <div style="padding-left: 0.5rem;">
+        <button mat-raised-button mat-mini-fab matTooltip="Salvar" color="primary" aria-label="Example icon button with a menu icon" 
+          (click)="saveBuyerToCommand()">
+          <mat-icon>save_alt</mat-icon>
+        </button>
+      </div>
     </mat-grid-tile>
-    <mat-grid-tile colspan="4">
-      <p class="titleAddCommand">Número da comanda: {{commandModel.commandId}}</p>
+    <mat-grid-tile class="buttonToLabel">
+      <div class="labelToButton headerAddCommand">Voltar</div>
+      <div style="padding-left: 0.5rem;">
+        <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary"
+          aria-label="Example icon button with a menu icon">
+          <mat-icon>reply_all</mat-icon>
+        </button>
+      </div>  
     </mat-grid-tile>
-    <mat-grid-tile>
-      <button
-      mat-raised-button
-      mat-mini-fab
-      matTooltip="Voltar"
-      (click)="reply()"
-      color="primary"
-      aria-label="Example icon button with a menu icon">
-      <mat-icon>reply_all</mat-icon>
-    </button>  
-    </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
   </mat-grid-list>

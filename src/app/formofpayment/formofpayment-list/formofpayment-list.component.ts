@@ -13,7 +13,7 @@ let ELEMENT_DATA: FormOfPaymentModel[];
 })
 export class FormOfPaymentListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['name'];
 
   constructor(private formOfPaymentListService: FormOfPaymentListService,
               private _snackBar: MatSnackBar, 

@@ -13,7 +13,7 @@ let ELEMENT_DATA: BuyerModel[];
 })
 export class BuyerDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['name'];
 
   status: string = '';
 

@@ -5,9 +5,23 @@
   font-weight: bold;
   letter-spacing: 0.1em;
 }
-.labelToBButton{
+
+.headerAddCommand{
+  font-size: 1.175em;
+  font-family: "Trirong", serif;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.labelToCommand{
   padding-right: 0.5rem;
 }
+
+.buttonToLabel:hover {
+  transform: scale(1.2);
+}
+
 section {
     display: flex;
     justify-content: center;

@@ -29,7 +29,8 @@
 
   padding: 1rem;
   border: 2px solid #fff;
-  width: 75%;
+  width: auto;
+  height: auto;
   background-color: #1b1b1b65;
   backdrop-filter: blur(10px);
   box-shadow: 2px 2px 8px #000;

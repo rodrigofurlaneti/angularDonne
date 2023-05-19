@@ -38,7 +38,7 @@
   left: 0;
   bottom: 0;
   height: 100%;
-  width: 350px;
+  width: 22%;
   background-color: #1b1b1b65;
   backdrop-filter: blur(10px);
   box-shadow: 2px 2px 8px #000;
@@ -85,10 +85,6 @@ button:hover {
 
 .mat-menu-centered {
   width: 180px;
-}
-
-.mat-submenu {
-  width: 250px;
 }
 
 .example-right-align {

@@ -1,0 +1,84 @@
+<div class="container">
+    <p class="titleSearchCommand">
+      Comanda
+    </p>
+    <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
+      <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Número da comanda</th>
+          <td mat-cell *matCellDef="let element" class="headerSearchCommand" (click)="listCommandOrdersByIdNumber(element.commandId)">
+            {{element.commandId}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Nome do cliente</th>
+          <td mat-cell *matCellDef="let element" class="headerSearchCommand" (click)="listCommandOrdersByIdNumber(element.commandId)">
+            {{element.buyerName}}
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      
+      <section>
+        <div class="example-button-row">
+          <div class="example-flex-container">
+            <div class="example-button-container">
+              <div class="example-label">Voltar
+                <button mat-raised-button
+                      mat-mini-fab
+                      matTooltip="Voltar"
+                      (click)="reply()" 
+                       color="primary" 
+                      aria-label="Example icon button with a menu icon">
+                  <mat-icon>reply_all</mat-icon>
+                </button>
+              </div>  
+            </div>
+            </div>
+        </div>
+      </section>
+      </div>
+  </ng-template>
+
+  <ng-template #isIdGreaterThanZero>
+    <table mat-table [dataSource]="dataSourceCommandOrder" class="mat-elevation-z8 demo-table">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Número da comanda</th>
+        <td mat-cell *matCellDef="let element" class="headerSearchCommand">
+          {{element.commandId}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Nome do cliente</th>
+        <td mat-cell *matCellDef="let element" class="headerSearchCommand">
+          {{element.buyerName}}
+        </td>
+      </ng-container>        
+      <ng-container matColumnDef="product">
+        <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Produto</th>
+        <td mat-cell *matCellDef="let element" class="headerSearchCommand">
+          {{element.productName}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Quantidade</th>
+        <td mat-cell *matCellDef="let element" class="headerSearchCommand">
+          {{element.amount}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="salePrice">
+        <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Valor unidade</th>
+        <td mat-cell *matCellDef="let element" class="headerSearchCommand">
+          {{element.salePrice}}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsCommandOrder"></tr>
+      <tr mat-row (click)="clickedRowsCommandOrder.add(row)" [class.demo-row-is-clicked]="clickedRowsCommandOrder.has(row)" *matRowDef="let row; columns: displayedColumnsCommandOrder;"></tr>
+    </table>
+    <h3 class="titleSearchCommand">Valor total: R$ </h3>
+  </ng-template>
+</div>

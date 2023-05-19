@@ -5,7 +5,6 @@
     <th mat-header-cell *matHeaderCellDef>Nome do perfil</th>
     <td mat-cell (click)="delete(element.userId)" *matCellDef="let element">
       {{element.userName}}
-      <input type="hidden" id="userId" name="userId" [value]=element.userId>
     </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

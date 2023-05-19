@@ -13,7 +13,7 @@ let ELEMENT_DATA: ProductModel[];
 })
 export class ProductListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','name','quantityStock'];
+  displayedColumns: string[] = ['name','quantityStock'];
 
   constructor(private productListService: ProductListService,
               private router: Router) { }
@@ -26,7 +26,6 @@ export class ProductListComponent implements OnInit {
     this.productListService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })

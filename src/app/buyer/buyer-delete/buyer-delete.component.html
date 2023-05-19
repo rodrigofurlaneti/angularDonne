@@ -3,14 +3,8 @@
     Cliente
   </p>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef class="headerDeleteBuyer">Nº</th>
-    <td mat-cell (click)="delete(element.buyerId)" *matCellDef="let element" class="headerDeleteBuyer">
-      {{element.buyerId}}
-    </td>
-  </ng-container>
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef class="headerDeleteBuyer">Nome do cliente</th>
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteBuyer">Nome</th>
     <td mat-cell (click)="delete(element.buyerId)" *matCellDef="let element" class="headerDeleteBuyer">
       {{element.buyerName}}
     </td>

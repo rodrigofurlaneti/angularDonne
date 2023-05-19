@@ -13,7 +13,7 @@ let ELEMENT_DATA: ProductModel[];
 })
 export class ProductDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','name','quantityStock'];
+  displayedColumns: string[] = ['name','quantityStock'];
 
   status: string = '';
 

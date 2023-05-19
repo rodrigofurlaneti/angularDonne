@@ -3,22 +3,10 @@
     Categoria
   </p>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Nº</th>
-    <td mat-cell (click)="delete(element.categoryId)" *matCellDef="let element" class="headerDeleteCategory">
-      {{element.categoryId}}
-    </td>
-  </ng-container>
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Nome da categoria</th>
+    <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Nome</th>
     <td mat-cell (click)="delete(element.categoryId)" *matCellDef="let element" class="headerDeleteCategory">
       {{element.categoryName}}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="userName">
-    <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Usuário</th>
-    <td mat-cell (click)="delete(element.userName)" *matCellDef="let element" class="headerDeleteCategory">
-      {{element.userName}}
     </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

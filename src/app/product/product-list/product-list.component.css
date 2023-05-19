@@ -52,8 +52,9 @@
 
   padding: 1rem;
   border: 2px solid #fff;
-  width: 40%;
-  max-height: 60%;
+  width: auto;
+  max-height: auto;
+  overflow: hidden;
   overflow-y: auto;
   background-color: #1b1b1b65;
   backdrop-filter: blur(10px);

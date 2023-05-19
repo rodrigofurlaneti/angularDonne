@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { OrderListService } from './order-list.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderModel } from 'src/interface/order.interface';
 
 let ELEMENT_DATA: OrderModel[];
@@ -13,10 +12,9 @@ let ELEMENT_DATA: OrderModel[];
 })
 export class OrderListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['id','command','buyer','product','amount'];
 
   constructor(private orderListService: OrderListService,
-              private _snackBar: MatSnackBar, 
               private router: Router) { }
   
   ngOnInit(): void {
@@ -29,7 +27,7 @@ export class OrderListComponent implements OnInit {
       this.dataSource = ELEMENT_DATA;
       console.log(this.dataSource);
     }, err => {
-      console.log('Erro ao listar os perfis', err);
+      console.log('Erro ao listar os pedidos', err);
     })
   }
 

@@ -13,7 +13,7 @@ let ELEMENT_DATA: CategoryModel[];
 
 export class CategoryListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'userName'];
+  displayedColumns: string[] = ['name'];
 
   constructor(private categoryListService: CategoryListService,
               private router: Router) { }

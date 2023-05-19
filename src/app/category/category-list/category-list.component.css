@@ -45,11 +45,11 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  overflow: hidden;
   padding: 1rem;
   border: 2px solid #fff;
-  width: 60%;
-  height: 50%;
+  width: auto;
+  height: auto;
+  overflow: hidden;
   overflow-y: auto;
   background-color: #1b1b1b65;
   backdrop-filter: blur(10px);

@@ -18,14 +18,7 @@
 
 <ng-template #isIdGreaterThanZero>
   <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Nome do novo Cliente</mat-label>
-      <mat-select placeholder="{{orderModel.clientName}}" #matSelect id="dropDownListBuyer" name="dropDownListBuyer" [(ngModel)]="orderModel.clientName" (selectionChange)="change($event.value)" class="clientName">
-        <mat-option [value]="element" *ngFor="let element of dataSourceStore " >
-          {{ element.buyerName }}
-         </mat-option>
-      </mat-select>
-    </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>Novo produto</mat-label>
       <mat-select placeholder="{{orderModel.productName}}" #matSelect id="dropDownListProduct" name="dropDownListProduct" [(ngModel)]="orderModel.productName" (selectionChange)="changeProduct($event.value)" class="productName" >

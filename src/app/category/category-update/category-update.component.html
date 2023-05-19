@@ -1,18 +1,12 @@
 <div class="container">
+  <p class="titleUpdateCategory">
+    Atualizar
+  </p>
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
-    <p class="titleUpdateCategory">
-      Atualizar
-    </p>
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef class="titleUpdateCategory headerUpdateCategory">Nº</th>
-          <td mat-cell (click)="getById(element.categoryId)" *matCellDef="let element" class="headerUpdateCategory">
-            {{element.categoryId}}
-          </td>
-        </ng-container>
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef class="titleUpdateCategory headerUpdateCategory">Categorias</th>
+          <th mat-header-cell *matHeaderCellDef class="titleUpdateCategory headerUpdateCategory">Categoria</th>
           <td mat-cell (click)="getById(element.categoryId)" *matCellDef="let element" class="headerUpdateCategory">
             {{element.categoryName}}
           </td>
@@ -25,9 +19,6 @@
   </ng-template>
 
   <ng-template #isIdGreaterThanZero>
-    <p class="titleUpdateCategory">
-      Atualizar a categoria
-    </p>
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Nome categoria</mat-label>

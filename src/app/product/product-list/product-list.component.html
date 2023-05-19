@@ -3,10 +3,6 @@
     Produtos
   </p>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef class="headerListProduct">Nº</th>
-    <td mat-cell *matCellDef="let element" class="headerListProduct">{{element.productId}}</td>
-  </ng-container>
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef class="headerListProduct">Nome do produto</th>
     <td mat-cell *matCellDef="let element" class="headerListProduct">{{element.productName}}</td>

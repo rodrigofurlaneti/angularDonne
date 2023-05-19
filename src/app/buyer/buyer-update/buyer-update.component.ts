@@ -18,7 +18,7 @@ export class BuyerUpdateComponent implements OnInit {
 
   isIdGreaterThanZero = false;
 
-  displayedColumns: string[] = ['id', 'name', 'phone'];
+  displayedColumns: string[] = ['name'];
 
   status: string = '';
 

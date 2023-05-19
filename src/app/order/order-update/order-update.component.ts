@@ -108,13 +108,9 @@ export class OrderUpdateComponent implements OnInit {
                                 console.log(this.productSelectedName + " + " + order.productName);
                                 this.orderID = id;
                                 this.orderModel.orderId = id;
-                                this.orderModel.clientName = order.clientName;
                                 this.orderModel.productName = order.productName;
                                 this.orderModel.amount = order.amount;
-                                this.orderModel.clientId = order.clientId;
                                 this.orderModel.productId = order.productId;
-                                this.orderModel.storeId = order.storeId;
-                                this.orderModel.storeName = order.storeName;
                                 this.orderModel.userId = order.userId;
                                 this.orderModel.userName = order.userName;
                                 this.orderModel.dateInsert = order.dateInsert;
@@ -137,10 +133,8 @@ export class OrderUpdateComponent implements OnInit {
   }
 
   public update() {
-    this.orderModel.clientName = this.clientSelected;
     this.orderModel.productName = this.productSelectedName;
     this.orderModel.productId = this.productSelectedID;
-    this.orderModel.clientId = this.clientSelectedID;
     this.orderModel.orderId = this.orderID;
     this.orderModel.amount = parseInt((<HTMLSelectElement>document.getElementById('orderAmount')).value);
     this.orderUpdateService.update(this.orderModel)
