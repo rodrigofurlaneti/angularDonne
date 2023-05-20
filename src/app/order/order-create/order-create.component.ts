@@ -29,6 +29,8 @@ export class OrderCreateComponent implements OnInit {
 
   orderModel= new OrderModel();
 
+  messageTime: number = 5000;
+
   constructor(private orderCreateService: OrderCreateService,
     private commandCreateService: CommandCreateService,
     private _snackBar: MatSnackBar, 
@@ -66,20 +68,24 @@ export class OrderCreateComponent implements OnInit {
   changeProduct(event: any) {
     this.productSelectedID = event.productId;
     this.productSelected = event.productName;
+    this.orderCreateService.getProductById(this.productSelectedID)
+        .subscribe(productResponse => { 
+          this.orderModel.salePrice = productResponse.salePrice;
+          console.log(this.orderModel.salePrice);
+        });
   }
 
   save() {
-    console.log(this.orderModel);
+    this.authenticatedUser();
     this.orderModel.productName = this.productSelected;
     this.orderModel.productId = this.productSelectedID;
     this.orderModel.buyerName = this.commandSelected;
     this.orderModel.commandId = this.commandSelectedID;
     this.orderCreateService.save(this.orderModel).subscribe(order => {
-      this._snackBar.open('Pedido cadastrado com sucesso!','', {
-        duration: 2000
-      });
-        this.router.navigate(['order-list']);
+      this.successMessage();
+      this.orderList();
         }, err => {
+          this.errorMessage();
           console.log('Erro ao adicionar um novo pedido!', err);
         })
   }
@@ -88,6 +94,39 @@ export class OrderCreateComponent implements OnInit {
   dataSourceProduct = ELEMENT_DATA_PRODUCT;
 
   clickedRows = new Set<ProfileModel>();
+
+  public authenticatedUser(){
+    // 👉️ User Login
+    const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
+    if (userIdLogin != null) {
+      this.orderModel.userId = parseInt(userIdLogin.value);
+    }
+    const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
+    if (userIdLogin != null) {
+      this.orderModel.userName = userNameLogin.value;
+    }
+}
+
+  public successMessage(){
+    this._snackBar.open('O pedido "'+ this.orderModel.orderId +'" foi cadastrado com sucesso!','', {
+    duration: this.messageTime
+    });
+  }
+
+  public errorMessage(){
+    this._snackBar.open('Erro ao cadastrar o pedido "'+ this.orderModel.orderId +'" !','', {
+      duration: this.messageTime
+    });
+  }
+
+  orderList(){
+    this.router.navigate(['order-list']);
+  }
+
+  calculate(){
+    var totalValue = parseFloat(this.orderModel.salePrice) * this.orderModel.amount;
+    this.orderModel.totalSalePrice = totalValue.toString();
+  }
 
   reply() {
     this.router.navigate(['main']);

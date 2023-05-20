@@ -35,7 +35,7 @@ export class CategoryCreateComponent {
     {
       this.authenticatedUser();
       this.categoryCreateService.save(this.categoryModel).subscribe(user => {
-        this.successMessage()
+        this.successMessage();
         this.categoryList();
       }, err => {
         this.errorMessage()

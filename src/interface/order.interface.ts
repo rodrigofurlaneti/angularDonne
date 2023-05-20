@@ -4,7 +4,9 @@ export interface IOrderInterface {
     buyerName: string;
     productId: number;
     productName: string;
+    salePrice: string;
     amount: number;
+    totalSalePrice: string;
     userId: number;
     userName: string;
     dateInsert: Date;
@@ -16,7 +18,9 @@ export class OrderModel implements IOrderInterface {
     buyerName: string = ""; 
     productId: number = 0;
     productName: string = "";
+    salePrice: string = "";
     amount: number = 0;
+    totalSalePrice: string = "";
     userId: number = 0;
     userName: string = "";
     dateInsert: Date = new Date;

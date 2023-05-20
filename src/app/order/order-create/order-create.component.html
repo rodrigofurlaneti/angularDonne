@@ -13,14 +13,22 @@
   <mat-form-field appearance="fill">
     <mat-label>Produto</mat-label>
     <mat-select #matSelect id="dropDownListProduct" name="dropDownListProduct" [(ngModel)]="orderModel.productName" (selectionChange)="changeProduct($event.value)">
-      <mat-option [value]="element" *ngFor="let element of dataSourceProduct" >
+      <mat-option [value]="element" *ngFor="let element of dataSourceProduct">
         {{ element.productName }}
        </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
+    <mat-label>Valor unitário</mat-label>
+    <input type="text" id="salePrice" name="salePrice" matInput [(ngModel)]="orderModel.salePrice"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Quantidade</mat-label>
-    <input type="number" id="orderAmount" name="orderAmount" matInput [(ngModel)]="orderModel.amount"/>
+    <input type="number" id="orderAmount" name="orderAmount" matInput [(ngModel)]="orderModel.amount" (ngModelChange)="calculate()"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Valor total do pedido</mat-label>
+    <input type="text" id="TotalSalePrice" name="totalSalePrice" matInput [(ngModel)]="orderModel.totalSalePrice" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }"/>
   </mat-form-field>
 
 <section>

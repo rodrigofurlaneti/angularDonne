@@ -25,4 +25,7 @@ export class OrderCreateService {
     return this.http.get(this.route+'Buyer')
   }
 
+  public getProductById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.route}Product/${id}`);
+  }
 }

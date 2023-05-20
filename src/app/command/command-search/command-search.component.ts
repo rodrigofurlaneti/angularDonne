@@ -22,7 +22,7 @@ export class CommandSearchComponent {
 
   displayedColumns: string[] = ['id','name'];
 
-  displayedColumnsCommandOrder: string[] = ['id','name','product','amount','salePrice'];
+  displayedColumnsCommandOrder: string[] = ['id','name','product','amount','salePrice','totalSalePrice'];
 
   commandOrderModel = new CommandOrderModel();
 

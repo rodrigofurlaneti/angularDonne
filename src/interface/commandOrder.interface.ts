@@ -6,6 +6,8 @@ export interface ICommandOrderInterface {
     productName: string;
     amount: number;
     salePrice: string;
+    totalSalePrice: string;
+    totalCommand: string;
 }
 export class CommandOrderModel implements ICommandOrderInterface {
     commandId: number = 0;
@@ -15,5 +17,7 @@ export class CommandOrderModel implements ICommandOrderInterface {
     productName: string = '';
     amount: number = 0;
     salePrice: string = '';
+    totalSalePrice: string = '';
+    totalCommand: string = '';
     constructor(){}
   }

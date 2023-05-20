@@ -33,6 +33,7 @@ export class CommandListComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   clickedRows = new Set<CommandModel>();
 
+  
   reply(){
     this.router.navigate(['main']);
   }
