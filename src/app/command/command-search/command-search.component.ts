@@ -22,9 +22,15 @@ export class CommandSearchComponent {
 
   displayedColumns: string[] = ['id','name'];
 
-  displayedColumnsCommandOrder: string[] = ['id','name','product','amount','salePrice','totalSalePrice'];
+  displayedColumnsCommandOrder: string[] = ['product','amount','salePrice','totalSalePrice'];
 
   commandOrderModel = new CommandOrderModel();
+
+  totalCommand = 0.00;
+
+  buyerName:string = '';
+
+  commandId:number = 0;
 
   constructor(private commandSearchService: CommandSearchService,
     private _snackBar: MatSnackBar, 
@@ -45,26 +51,22 @@ export class CommandSearchComponent {
 
   public listCommandOrdersByIdNumber(id: number) {
      this.commandSearchService.listCommandOrdersByIdNumber(id)
-                              .subscribe(list => { 
-                                console.log(list);
-                                let len = list.length;
+                              .subscribe(listResponse => { 
+                                let len = listResponse.length;
                                 if(len > 0){
                                   for (let i = 0; i <= len; i++) {
-                                    this.commandOrderModel.commandId = list[i].commandId;
-                                    this.commandOrderModel.buyerId = list[i].buyerId;
-                                    this.commandOrderModel.buyerName = list[i].buyerName;
-                                    this.commandOrderModel.productId = list[i].productId;
-                                    this.commandOrderModel.productName = list[i].productName;
-                                    this.commandOrderModel.amount = list[i].amount;
-                                    this.commandOrderModel.salePrice = list[i].salePrice;
-                                    this.isIdZero = false;
-                                    this.isIdGreaterThanZero = true;
-                                    console.log(this.commandOrderModel);
-                                    ELEMENT_DATA_COMMAND_ORDER = list;
-                                    this.dataSourceCommandOrder = ELEMENT_DATA_COMMAND_ORDER;
+                                    if(listResponse[i] !== undefined){
+                                      this.commandId = listResponse[i].commandId;
+                                      this.buyerName = listResponse[i].buyerName;
+                                      this.totalCommand = parseFloat(listResponse[i].totalSalePrice) + this.totalCommand;
+                                      this.commandOrderModel.totalCommand = this.totalCommand.toFixed(2).toString(); 
+                                      this.isIdZero = false;
+                                      this.isIdGreaterThanZero = true;
+                                      ELEMENT_DATA_COMMAND_ORDER = listResponse;
+                                      this.dataSourceCommandOrder = ELEMENT_DATA_COMMAND_ORDER;
+                                    }
                                   }
                                 }
-
                              });
   }
 
