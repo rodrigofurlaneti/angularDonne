@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class CategoryListService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Category';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route+'Category')
+    return this.http.get(this.route)
   }
 }

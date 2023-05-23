@@ -8,11 +8,11 @@ import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 })
 export class FormOfPaymentCreateService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/FormOfPayment';
   
   constructor(private http: HttpClient) { }
 
   save(formOfPayment: FormOfPaymentModel) : Observable<any>{
-    return this.http.post<any>(this.route+'FormOfPayment', formOfPayment)
+    return this.http.post<any>(this.route, formOfPayment)
   }
 }
