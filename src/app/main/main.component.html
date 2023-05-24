@@ -108,6 +108,24 @@
 </button>
 </mat-menu>
 
+<button mat-button [matMenuTriggerFor]="menuPayment" matTooltip="Pagamento"> <mat-icon
+  class="icon">paid</mat-icon><span class="user-type titleMain">
+    Pagamento
+  </span>
+</button>
+<mat-menu #menuPayment="matMenu" class="custom">
+<button matTooltip="Adicionar novo pagamento" [matTooltipPosition]="'right'"
+  (click)="activePaymentCreate()" mat-menu-item>
+  <mat-icon class="add">exposure_plus_1</mat-icon>
+  <span class="titleMain">Adicionar</span>
+</button>
+<button matTooltip="Listar pedidos" [matTooltipPosition]="'right'"
+  (click)="activePaymentList()" mat-menu-item>
+  <mat-icon class="list">view_headline</mat-icon>
+  <span class="titleMain">Listar</span>
+</button>
+</mat-menu>
+
 <button mat-button [matMenuTriggerFor]="menuOrder" matTooltip="Pedido"> <mat-icon
   class="icon">border_color</mat-icon><span class="user-type titleMain">
     Pedido

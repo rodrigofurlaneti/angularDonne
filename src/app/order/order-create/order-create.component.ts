@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderCreateService } from './order-create.service';
@@ -6,7 +6,9 @@ import { OrderModel } from '../../../interface/order.interface';
 import { ProfileModel } from 'src/interface/profile.interface';
 import { CommandModel } from 'src/interface/command.interface';
 import { ProductModel } from 'src/interface/product.interface';
-import { CommandCreateService } from 'src/app/command/command-create/command-create.service';
+import { CommandListService } from 'src/app/command/command-list/command-list.service';
+import { ProductListService } from 'src/app/product/product-list/product-list.service';
+import { ProductUpdateService } from 'src/app/product/product-update/product-update.service';
 
 let ELEMENT_DATA_PRODUCT: ProductModel[];
 let ELEMENT_DATA_COMMAND: CommandModel[];
@@ -32,7 +34,9 @@ export class OrderCreateComponent implements OnInit {
   messageTime: number = 5000;
 
   constructor(private orderCreateService: OrderCreateService,
-    private commandCreateService: CommandCreateService,
+    private productListService: ProductListService,
+    private productUpdateService: ProductUpdateService,
+    private commandListService: CommandListService,
     private _snackBar: MatSnackBar, 
     private readonly router: Router) {
   }
@@ -43,20 +47,20 @@ export class OrderCreateComponent implements OnInit {
   }
 
   listCommand() {
-    this.commandCreateService.listCommand().subscribe(command => {
+    this.commandListService.list().subscribe(command => {
       ELEMENT_DATA_COMMAND = command;
       this.dataSourceCommand = ELEMENT_DATA_COMMAND;
     }, err => {
-      console.log('Erro ao listar os pedidos', err);
+      console.log('Erro ao listar as comandas ', err);
     })
   }
 
   listProducts() {
-    this.orderCreateService.listProducts().subscribe(list => {
+    this.productListService.list().subscribe(list => {
       ELEMENT_DATA_PRODUCT = list;
       this.dataSourceProduct = ELEMENT_DATA_PRODUCT;
     }, err => {
-      console.log('Erro ao listar os perfis', err);
+      console.log('Erro ao listar os produtos ', err);
     })
   }
 
@@ -68,7 +72,7 @@ export class OrderCreateComponent implements OnInit {
   changeProduct(event: any) {
     this.productSelectedID = event.productId;
     this.productSelected = event.productName;
-    this.orderCreateService.getProductById(this.productSelectedID)
+    this.productUpdateService.getById(this.productSelectedID)
         .subscribe(productResponse => { 
           this.orderModel.salePrice = productResponse.salePrice;
           console.log(this.orderModel.salePrice);

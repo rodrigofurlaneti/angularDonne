@@ -19,12 +19,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <section>
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
-            <div class="example-label headerListCategory">
-              <div class="labelToButton">Voltar</div>
+            <div class="example-label headerListCommand">
+              <div class="labelToCommand">Voltar</div>
               <button mat-raised-button
                     mat-mini-fab
                     matTooltip="Voltar"
@@ -37,7 +36,6 @@
           </div>
           </div>
       </div>
-    </section>
 </section>
     
     

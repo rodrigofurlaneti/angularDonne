@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommandModel } from 'src/interface/command.interface';
 import { CommandOrderModel } from 'src/interface/commandOrder.interface';
 
-let ELEMENT_DATA: CommandModel[];
+let ELEMENT_DATA_COMMAND: CommandModel[];
 let ELEMENT_DATA_COMMAND_ORDER: CommandOrderModel[];
 
 @Component({
@@ -42,8 +42,8 @@ export class CommandSearchComponent {
 
   public list() {
     this.commandSearchService.list().subscribe(list => {
-      ELEMENT_DATA = list;
-      this.dataSource = ELEMENT_DATA;
+      ELEMENT_DATA_COMMAND = list;
+      this.dataSource = ELEMENT_DATA_COMMAND;
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })
@@ -70,7 +70,7 @@ export class CommandSearchComponent {
                              });
   }
 
-  dataSource = ELEMENT_DATA;
+  dataSource = ELEMENT_DATA_COMMAND;
   clickedRows = new Set<CommandModel>();
 
   dataSourceCommandOrder = ELEMENT_DATA_COMMAND_ORDER;

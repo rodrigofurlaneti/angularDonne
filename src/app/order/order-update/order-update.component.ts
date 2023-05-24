@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderModel } from 'src/interface/order.interface';
 import { BuyerModel } from 'src/interface/buyer.interface';
 import { ProductModel } from 'src/interface/product.interface';
+import { BuyerListService } from 'src/app/buyer/buyer-list/buyer-list.service';
+import { ProductListService } from 'src/app/product/product-list/product-list.service';
 
 let ELEMENT_DATA: OrderModel[];
 let ELEMENT_DATA_PRODUCT: ProductModel[];
@@ -39,6 +41,8 @@ export class OrderUpdateComponent implements OnInit {
   orderModel = new OrderModel();
 
   constructor(private orderUpdateService: OrderUpdateService,
+    private buyerListService: BuyerListService,
+    private productListService: ProductListService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
@@ -60,7 +64,7 @@ export class OrderUpdateComponent implements OnInit {
   }
 
   listBuyer() {
-    this.orderUpdateService.listBuyer().subscribe(list => {
+    this.buyerListService.list().subscribe(list => {
       ELEMENT_DATA_BUYER = list;
       this.dataSourceStore = ELEMENT_DATA_BUYER;
     }, err => {
@@ -69,7 +73,7 @@ export class OrderUpdateComponent implements OnInit {
   }
 
   listProducts() {
-    this.orderUpdateService.listProducts().subscribe(list => {
+    this.productListService.list().subscribe(list => {
       ELEMENT_DATA_PRODUCT = list;
       this.dataSourceProducts = ELEMENT_DATA_PRODUCT;
     }, err => {
@@ -105,7 +109,6 @@ export class OrderUpdateComponent implements OnInit {
     this.orderUpdateService.getById(id)
                               .subscribe(order => { 
                                 this.productSelectedName = order.productName;
-                                console.log(this.productSelectedName + " + " + order.productName);
                                 this.orderID = id;
                                 this.orderModel.orderId = id;
                                 this.orderModel.productName = order.productName;

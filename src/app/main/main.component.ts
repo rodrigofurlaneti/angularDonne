@@ -160,4 +160,12 @@ export class MainComponent implements OnInit{
   public activeAbout() {
     this.router.navigate(['about']);
   }
+
+  public activePaymentCreate() {
+    this.router.navigate(['payment-create']);
+  }
+
+  public activePaymentList() {
+    this.router.navigate(['payment-list']);
+  }
 }

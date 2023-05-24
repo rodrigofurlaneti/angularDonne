@@ -20,6 +20,9 @@ import { CommandDeleteComponent } from './command/command-delete/command-delete.
 import { CommandListComponent } from './command/command-list/command-list.component';
 import { CommandSearchComponent } from './command/command-search/command-search.component';
 
+import { PaymentCreateComponent } from './payment/payment-create/payment-create.component';
+import { PaymentListComponent } from './payment/payment-list/payment-list.component';
+
 import { ProfileCreateComponent } from './profile/profile-create/profile-create.component';
 import { ProfileListComponent } from './profile/profile-list/profile-list.component';
 import { ProfileDeleteComponent } from './profile/profile-delete/profile-delete.component';
@@ -71,6 +74,8 @@ export const routes: Routes = [
   { path: 'order-list', component: OrderListComponent },
   { path: 'order-delete', component: OrderDeleteComponent },
   { path: 'order-update', component: OrderUpdateComponent },
+  { path: 'payment-create', component: PaymentCreateComponent },
+  { path: 'payment-list', component: PaymentListComponent },
   { path: 'profile-create', component: ProfileCreateComponent },
   { path: 'profile-delete', component: ProfileDeleteComponent },
   { path: 'profile-list', component: ProfileListComponent },

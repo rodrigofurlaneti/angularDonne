@@ -6,6 +6,7 @@ import { UserModel } from '../../../interface/user.interface';
 import { FormControl, NgForm } from '@angular/forms';
 import { ProfileModel } from 'src/interface/profile.interface';
 import { MatSelect } from '@angular/material/select';
+import { ProfileListService } from 'src/app/profile/profile-list/profile-list.service';
 
 let ELEMENT_DATA: ProfileModel[];
 
@@ -28,6 +29,7 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
   selectedProfile : ProfileModel = new ProfileModel();
 
   constructor(private userCreateService: UserCreateService, 
+    private profileListService: ProfileListService,
     private _snackBar: MatSnackBar,  private readonly router: Router) {
       this.user = new UserModel()
     }
@@ -52,7 +54,7 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
 }
 
   listProfile() {
-    this.userCreateService.listProfile().subscribe(list => {
+    this.profileListService.list().subscribe(list => {
         ELEMENT_DATA = list;
         this.dataSource = ELEMENT_DATA;
       }, err => {

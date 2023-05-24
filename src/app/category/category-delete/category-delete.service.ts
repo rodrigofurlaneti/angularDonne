@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class CategoryDeleteService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Category';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route+'Category')
+    return this.http.get(this.route)
   }
 
   delete(id:number): Observable<any>{
@@ -21,6 +21,6 @@ export class CategoryDeleteService {
     let options={
       headers:httpheaders
     };
-    return this.http.delete(this.route+'Category/'+id, options)
+    return this.http.delete(this.route+'/'+id, options)
   }
 }

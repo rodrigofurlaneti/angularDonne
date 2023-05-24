@@ -13,6 +13,14 @@
     font-weight: bold;
     letter-spacing: 0.1em;
   }
+
+  .subHeaderSearchCommand{
+    font-size: 1.075em;
+    font-family: "Trirong", serif;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+  }
   
   .labelToCommand{
     padding-right: 0.5rem;

@@ -8,13 +8,12 @@ import { UserModel } from 'src/interface/user.interface';
 })
 export class AppService {
 
-  private routeAws = 'https://localhost:7027/';
-  //'http://ec2-34-236-215-167.compute-1.amazonaws.com/';
+  private route = 'https://localhost:7027/User';
 
   constructor(private http: HttpClient) { }
 
   appService(user: UserModel) : Observable<any>{
-    return this.http.get(this.routeAws+'User/'+user.userName)
+    return this.http.get(this.route+'/'+user.userName)
   }
 }
 

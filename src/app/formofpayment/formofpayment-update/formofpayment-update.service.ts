@@ -9,23 +9,22 @@ import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 
 export class FormOfPaymentUpdateService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/FormOfPayment';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.route+'FormOfPayment');
+    return this.httpClient.get(this.route);
 
   }
 
   public getById(id: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.route}FormOfPayment/${id}`);
+    return this.httpClient.get<any>(this.route+'/'+id);
   }
 
   public update(formOfPaymentModel: FormOfPaymentModel) {
-    console.log(formOfPaymentModel);
-    return this.httpClient.put(`${this.route}FormOfPayment`, formOfPaymentModel);
+    return this.httpClient.put(this.route, formOfPaymentModel);
   }
 }

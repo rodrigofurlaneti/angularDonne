@@ -8,28 +8,21 @@ import { ProductModel } from 'src/interface/product.interface';
 })
 
 export class ProductUpdateService {
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Product';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.route+'Product');
-
+    return this.httpClient.get(this.route);
   }
 
   public getById(id: number): Observable<any> {
-    console.log(" identificação do GetByID: " + id);
-    return this.httpClient.get<any>(`${this.route}Product/${id}`);
+    return this.httpClient.get<any>(this.route+'/'+id);
   }
 
   public update(productModel: ProductModel) {
-    console.log(productModel);
-    return this.httpClient.put(`${this.route}Product`, productModel);
-  }
-
-  listCategory() : Observable<any>{
-    return this.httpClient.get(this.route+'Category')
+    return this.httpClient.put(this.route, productModel);
   }
 }

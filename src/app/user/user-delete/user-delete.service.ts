@@ -9,12 +9,12 @@ import { ConditionalExpr } from '@angular/compiler';
 })
 export class UserDeleteService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/User';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route+'User')
+    return this.http.get(this.route)
   }
 
   delete(id:number): Observable<any>{
@@ -23,6 +23,6 @@ export class UserDeleteService {
     let options={
       headers:httpheaders
     };
-    return this.http.delete(this.route+'User/'+id, options)
+    return this.http.delete(this.route+'/'+id, options)
   }
 }

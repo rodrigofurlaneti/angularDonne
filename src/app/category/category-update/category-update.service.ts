@@ -9,22 +9,22 @@ import { CategoryModel } from 'src/interface/category.interface';
 
 export class CategoryUpdateService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Category';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.route+'Category');
+    return this.httpClient.get(this.route);
 
   }
 
   public getById(id: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.route}Category/${id}`);
+    return this.httpClient.get<any>(this.route+'/'+id);
   }
 
   public update(categoryModel: CategoryModel) {
-    return this.httpClient.put(`${this.route}Category`, categoryModel);
+    return this.httpClient.put(this.route, categoryModel);
   }
 }

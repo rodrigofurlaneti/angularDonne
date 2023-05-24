@@ -56,6 +56,12 @@ import { OrderCreateComponent } from './order/order-create/order-create.componen
 import { OrderDeleteComponent } from './order/order-delete/order-delete.component';
 import { OrderUpdateComponent } from './order/order-update/order-update.component';
 
+//Payment
+import { PaymentCreateComponent } from './payment/payment-create/payment-create.component';
+import { PaymentCreateModule } from './payment/payment-create/payment-create.module';
+import { PaymentListComponent } from './payment/payment-list/payment-list.component';
+import { PaymentListModule } from './payment/payment-list/payment-list.module';
+
 //Product
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
@@ -123,6 +129,8 @@ import { FormsModule } from '@angular/forms';
     OrderListComponent,
     OrderDeleteComponent,
     OrderUpdateComponent,
+    PaymentCreateComponent,
+    PaymentListComponent,
     ProfileCreateComponent,
     ProfileDeleteComponent,
     ProfileListComponent,
@@ -156,6 +164,8 @@ import { FormsModule } from '@angular/forms';
     CommandListModule,
     CommandSearchModule,
     BuyerCreateModule,
+    PaymentCreateModule,
+    PaymentListModule,
     ProfileCreateModule,
     ProfileDeleteModule,
     ProfileListModule,

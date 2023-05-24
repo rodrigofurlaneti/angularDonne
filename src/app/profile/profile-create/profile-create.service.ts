@@ -8,12 +8,12 @@ import { ProfileModel } from 'src/interface/profile.interface';
 })
 export class ProfileCreateService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Profile';
 
   constructor(private http: HttpClient) { }
 
   save(profile: ProfileModel) : Observable<any>{
-    return this.http.post<any>(this.route+'Profile', profile)
+    return this.http.post<any>(this.route, profile)
   }
 
 }

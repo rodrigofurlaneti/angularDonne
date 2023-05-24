@@ -9,20 +9,12 @@ import { UserModel } from 'src/interface/user.interface';
 
 export class UserCreateService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/User';
 
   constructor(private http: HttpClient) { }
 
   save(user: UserModel) : Observable<any>{
-    return this.http.post<any>(this.route+'User', user)
-  }
-
-  listProfile() : Observable<any>{
-    return this.http.get(this.route+'Profile')
-  }
-
-  listStore() : Observable<any>{
-    return this.http.get(this.route+'Store')
+    return this.http.post<any>(this.route, user)
   }
 
 }

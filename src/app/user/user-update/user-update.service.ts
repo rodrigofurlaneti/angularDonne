@@ -9,27 +9,23 @@ import { UserModel } from 'src/interface/user.interface';
 
 export class UserUpdateService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/User';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.route+'User');
+    return this.httpClient.get(this.route);
 
-  }
-
-  public listProfile() : Observable<any>{
-    return this.httpClient.get(this.route+'Profile');
   }
 
   public getById(id: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.route}User/${id}`);
+    return this.httpClient.get<any>(this.route+'/'+id);
   }
 
   public update(userModel: UserModel) {
     console.log(userModel);
-    return this.httpClient.put(this.route+'User/', userModel);
+    return this.httpClient.put(this.route, userModel);
   }
 }

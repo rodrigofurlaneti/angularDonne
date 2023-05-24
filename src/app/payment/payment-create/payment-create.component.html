@@ -1,0 +1,66 @@
+<section>
+    <p class="titleAddPayment">
+      Adicionar um novo pagamento
+    </p>
+    <mat-form-field appearance="fill">
+        <mat-label>Comanda</mat-label>
+        <mat-select #matSelect id="dropDownListCommand" name="dropDownListCommand" [(ngModel)]="paymentModel.commandId" (selectionChange)="changeCommand($event.value)">
+          <mat-option [value]="element" *ngFor="let element of dataSourceCommand" >
+            {{ element.commandId }} - {{ element.buyerName }}
+           </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Forma de pagamento</mat-label>
+        <mat-select #matSelect id="dropDownListFormOfPayment" name="dropDownListFormOfPayment" [(ngModel)]="paymentModel.formOfPaymentName" (selectionChange)="changeFormOfPayment($event.value)">
+          <mat-option [value]="element" *ngFor="let element of dataSourceFormOfPayment" >
+            {{ element.formOfPaymentId }} - {{ element.formOfPaymentName }}
+           </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Valor</mat-label>
+    <input id="paymentAmount" name="paymentAmount" [(ngModel)]="paymentModel.paymentAmount" matInput />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Tipo de pagamento</mat-label>
+        <mat-select [(value)]="selectedPaymentType" [(ngModel)]="paymentModel.paymentType">
+          <mat-option value="Total">Total</mat-option>
+          <mat-option value="Parcial">Parcial</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <div class="example-button-container">
+          <div class="example-label headerAddPayment">
+            <div class="labelToButton">Voltar</div>
+            <button
+              mat-raised-button
+              mat-mini-fab
+              matTooltip="Voltar"
+              (click)="reply()"
+              color="primary"
+              aria-label="Example icon button with a menu icon"
+            >
+              <mat-icon>reply_all</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="example-button-container">
+          <div class="example-label headerAddCategory">
+            <div class="labelToButton">Salvar</div>
+            <button
+              mat-raised-button
+              mat-mini-fab
+              matTooltip="Salvar nova categoria"
+              (click)="save()"
+              color="primary"
+              aria-label="Example icon button with a menu icon">
+              <mat-icon>save_alt</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

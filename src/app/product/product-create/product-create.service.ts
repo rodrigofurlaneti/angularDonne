@@ -8,15 +8,12 @@ import { ProductModel } from 'src/interface/product.interface';
 })
 export class ProductCreateService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Product';
 
   constructor(private http: HttpClient) { }
 
   save(product: ProductModel) : Observable<any>{
-    return this.http.post<any>(this.route+'Product', product)
+    return this.http.post<any>(this.route, product)
   }
 
-  listCategory() : Observable<any>{
-    return this.http.get(this.route+'Category')
-  }
 }

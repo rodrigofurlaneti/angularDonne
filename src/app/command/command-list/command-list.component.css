@@ -41,7 +41,7 @@
   padding-left: 20px;
 }
 
-.section{
+section{
   display: flex;
   justify-content: center;
   flex-direction: column;

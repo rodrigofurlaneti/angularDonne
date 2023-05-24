@@ -4,6 +4,7 @@ import { UserUpdateService } from './user-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserModel } from 'src/interface/user.interface';
 import { ProfileModel } from 'src/interface/profile.interface';
+import { ProfileListService } from 'src/app/profile/profile-list/profile-list.service';
 
 let ELEMENT_DATA: UserModel[];
 let ELEMENT_DATA_PROFILE: ProfileModel[];
@@ -31,6 +32,7 @@ export class UserUpdateComponent implements OnInit {
   userModel = new UserModel();
 
   constructor(private userUpdateService: UserUpdateService,
+    private profileListService: ProfileListService,
     private _snackBar: MatSnackBar,
     private router: Router) { }
 
@@ -60,7 +62,7 @@ export class UserUpdateComponent implements OnInit {
   }
 
   listProfile() {
-    this.userUpdateService.listProfile().subscribe(list => {
+    this.profileListService.list().subscribe(list => {
       ELEMENT_DATA_PROFILE = list;
       this.dataSourceProfile = ELEMENT_DATA_PROFILE;
     }, err => {

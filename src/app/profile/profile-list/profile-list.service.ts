@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class ProfileListService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Profile';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route+'Profile')
+    return this.http.get(this.route)
   }
 }

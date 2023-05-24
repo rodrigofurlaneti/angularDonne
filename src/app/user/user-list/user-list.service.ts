@@ -8,11 +8,11 @@ import { UserModel } from 'src/interface/user.interface';
 })
 export class UserListService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/User';
   
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route+'User')
+    return this.http.get(this.route)
   }
 }

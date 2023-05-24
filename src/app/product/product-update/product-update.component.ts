@@ -5,9 +5,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductModel } from 'src/interface/product.interface';
 import { CategoryModel } from 'src/interface/category.interface';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { CategoryListService } from 'src/app/category/category-list/category-list.service';
 
 let ELEMENT_DATA: ProductModel[];
-let ELEMENT_DATA_Category: CategoryModel[];
+let ELEMENT_DATA_CATEGORY: CategoryModel[];
 
 @Component({
   selector: 'product-update',
@@ -35,6 +36,7 @@ export class ProductUpdateComponent implements OnInit {
   productModel = new ProductModel();
    
   constructor(private productUpdateService: ProductUpdateService,
+    private categoryListService: CategoryListService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
@@ -55,11 +57,11 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   listCategory() {
-    this.productUpdateService.listCategory().subscribe(list => {
-      ELEMENT_DATA_Category = list;
-      this.dataSourceCategory = ELEMENT_DATA_Category;
+    this.categoryListService.list().subscribe(list => {
+      ELEMENT_DATA_CATEGORY = list;
+      this.dataSourceCategory = ELEMENT_DATA_CATEGORY;
     }, err => {
-      console.log('Erro ao listar os perfis', err);
+      console.log('Erro ao listar as categorias ', err);
     })
   }
 
@@ -131,7 +133,7 @@ export class ProductUpdateComponent implements OnInit {
 
   clickedRows = new Set<ProductModel>();
 
-  dataSourceCategory = ELEMENT_DATA_Category;
+  dataSourceCategory = ELEMENT_DATA_CATEGORY;
 
   reply(){
     this.router.navigate(['main']);

@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class FormOfPaymentListService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/FormOfPayment';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route+'FormOfPayment')
+    return this.http.get(this.route)
   }
 }

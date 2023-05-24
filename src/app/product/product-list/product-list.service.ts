@@ -9,11 +9,11 @@ import { ProductModel } from 'src/interface/product.interface';
 })
 export class ProductListService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Product';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route+'Product')
+    return this.http.get(this.route)
   }
 }

@@ -9,23 +9,12 @@ import { OrderModel } from 'src/interface/order.interface';
 
 export class OrderCreateService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Order';
 
   constructor(private http: HttpClient) { }
 
   save(order: OrderModel) : Observable<any>{
-    return this.http.post<any>(this.route+'Order', order)
+    return this.http.post<any>(this.route, order)
   }
 
-  listProducts() : Observable<any>{
-    return this.http.get(this.route+'Product')
-  }
-
-  listBuyer() : Observable<any>{
-    return this.http.get(this.route+'Buyer')
-  }
-
-  public getProductById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.route}Product/${id}`);
-  }
 }

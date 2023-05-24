@@ -9,31 +9,15 @@ import { OrderModel } from 'src/interface/order.interface';
 })
 export class CommandCreateService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Command';
 
   constructor(private http: HttpClient) { }
 
   saveClient(command: CommandModel) : Observable<any>{
-    return this.http.post<any>(this.route+'Command', command)
-  }
-
-  saveCommand(order: OrderModel) : Observable<any>{
-    return this.http.post<any>(this.route+'Order', order)
-  }
-
-  listProducts() : Observable<any>{
-    return this.http.get(this.route+'Product')
+    return this.http.post<any>(this.route, command)
   }
 
   listCommand() : Observable<any>{
-    return this.http.get(this.route+'Command')
-  }
-  
-  listBuyer() : Observable<any>{
-    return this.http.get(this.route+'Buyer')
-  }
-
-  listBuyerCommand() : Observable<any>{
-    return this.http.get(this.route+'BuyerCommand')
+    return this.http.get(this.route)
   }
 }

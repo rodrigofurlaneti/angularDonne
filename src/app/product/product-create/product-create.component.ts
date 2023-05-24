@@ -7,8 +7,9 @@ import { MatSelect } from '@angular/material/select';
 import { FormControl } from '@angular/forms';
 import { Component, ViewChild } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { CategoryListService } from 'src/app/category/category-list/category-list.service';
 
-let ELEMENT_DATA_Category: CategoryModel[];
+let ELEMENT_DATA_CATEGORY: CategoryModel[];
 
 @Component({
   selector: 'product-create',
@@ -37,6 +38,7 @@ export class ProductCreateComponent {
   messageTime: number = 5000;
 
   constructor(private productCreateService: ProductCreateService,
+    private categoryListService: CategoryListService,
     private _snackBar: MatSnackBar, 
     private readonly router: Router) {
   }
@@ -55,9 +57,9 @@ export class ProductCreateComponent {
   }
 
   listCategory() {
-    this.productCreateService.listCategory().subscribe(list => {
-      ELEMENT_DATA_Category = list;
-      this.dataSourceCategory = ELEMENT_DATA_Category;
+    this.categoryListService.list().subscribe(list => {
+      ELEMENT_DATA_CATEGORY = list;
+      this.dataSourceCategory = ELEMENT_DATA_CATEGORY;
     }, err => {
       console.log('Erro ao listar os perfis', err);
     })
@@ -109,7 +111,7 @@ export class ProductCreateComponent {
     }
   }
 
-  dataSourceCategory = ELEMENT_DATA_Category;
+  dataSourceCategory = ELEMENT_DATA_CATEGORY;
 
   reply() {
     this.router.navigate(['main']);
@@ -163,8 +165,8 @@ export class ProductCreateComponent {
   public errorMessage(){
     this._snackBar.open('Erro ao cadastrar o produto "'+ this.productModel.productName +'" !','', {
       duration: this.messageTime
-  });
-    }
+    });
+  }
 }
 
 

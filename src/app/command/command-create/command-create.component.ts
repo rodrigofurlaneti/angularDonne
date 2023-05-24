@@ -1,13 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, ViewChild } from '@angular/core';
-
 import { CommandCreateService } from './command-create.service';
 import { CommandModel } from '../../../interface/command.interface';
-
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSelect } from '@angular/material/select';
-
 import { BuyerModel } from 'src/interface/buyer.interface';
+import { BuyerListService } from 'src/app/buyer/buyer-list/buyer-list.service';
 
 let ELEMENT_DATA_BUYER: BuyerModel[];
 
@@ -26,6 +24,7 @@ export class CommandCreateComponent {
   messageTime: number = 5000;
 
   constructor(private commandCreateService: CommandCreateService,
+    private buyerListService: BuyerListService,
     private _snackBar: MatSnackBar, 
     private readonly router: Router) {  }
 
@@ -33,11 +32,11 @@ export class CommandCreateComponent {
   matSelect!: MatSelect;
 
   ngOnInit(): void {
-    this.listBuyerCommand();
+    this.listBuyer();
   }
 
-  listBuyerCommand() {
-    this.commandCreateService.listBuyerCommand().subscribe(list => {
+  listBuyer() {
+    this.buyerListService.listBuyerStatus(0).subscribe(list => {
       ELEMENT_DATA_BUYER = list;
       this.dataSourceBuyer = ELEMENT_DATA_BUYER;
     }, err => {
@@ -69,12 +68,6 @@ export class CommandCreateComponent {
   }
 
   dataSourceBuyer = ELEMENT_DATA_BUYER;
-
-  saveProductToCommand() {
-    // Check fields
-
-    // Save 
-  }
 
   reply() {
     this.router.navigate(['main']);

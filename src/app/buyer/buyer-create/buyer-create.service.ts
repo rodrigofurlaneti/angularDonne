@@ -8,12 +8,12 @@ import { BuyerModel } from 'src/interface/buyer.interface';
 })
 export class BuyerCreateService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Buyer';
 
   constructor(private http: HttpClient) { }
 
   save(buyer: BuyerModel) : Observable<any>{
-    return this.http.post<any>(this.route+'Buyer', buyer)
+    return this.http.post<any>(this.route, buyer)
   }
 
 }

@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class CommandDeleteService {
 
-  private route = 'https://localhost:7027/';
+  private route = 'https://localhost:7027/Command';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route+'Command')
+    return this.http.get(this.route)
   }
 
   delete(id:number): Observable<any>{
@@ -21,6 +21,6 @@ export class CommandDeleteService {
     let options={
       headers:httpheaders
     };
-    return this.http.delete(this.route+'Command/'+id, options)
+    return this.http.delete(this.route+'/'+id, options)
   }
 }
