@@ -80,7 +80,6 @@ export class PaymentCreateComponent implements OnInit{
     this.paymentModel.commandId = this.commandSelectedID;
     this.paymentModel.formOfPaymentId = this.formOfPaymentSelectedID;
     this.paymentModel.formOfPaymentName = this.formOfPaymentSelected;
-    console.log(this.paymentModel);
     //checkFields
     if(this.paymentModel.commandId == 0)
     {

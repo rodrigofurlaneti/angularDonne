@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { CommandSearchService } from './command-search.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommandModel } from 'src/interface/command.interface';
 import { CommandOrderModel } from 'src/interface/commandOrder.interface';
 
@@ -33,7 +32,6 @@ export class CommandSearchComponent {
   commandId:number = 0;
 
   constructor(private commandSearchService: CommandSearchService,
-    private _snackBar: MatSnackBar, 
     private readonly router: Router) {  }
 
   ngOnInit(): void {

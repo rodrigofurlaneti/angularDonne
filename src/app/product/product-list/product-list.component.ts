@@ -13,7 +13,7 @@ let ELEMENT_DATA: ProductModel[];
 })
 export class ProductListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name','quantityStock'];
+  displayedColumns: string[] = ['name','quantityStock', 'totalValueCostOfInventory', 'totalValueSaleStock'];
 
   constructor(private productListService: ProductListService,
               private router: Router) { }
