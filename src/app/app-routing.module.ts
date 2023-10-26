@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { AboutComponent } from './about/about.component';
-import { AboutModule } from './about/about.module';
 
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
 import { CategoryDeleteComponent } from './category/category-delete/category-delete.component';
