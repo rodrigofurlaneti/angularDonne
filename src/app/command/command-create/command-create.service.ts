@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CommandModel } from 'src/interface/command.interface';
-import { OrderModel } from 'src/interface/order.interface';
 
 @Injectable({
   providedIn: 'root'

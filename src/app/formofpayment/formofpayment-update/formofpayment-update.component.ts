@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormOfPaymentUpdateService } from './formofpayment-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
-import { CategoryModel } from 'src/interface/category.interface';
 
 let ELEMENT_DATA: FormOfPaymentModel[];
 

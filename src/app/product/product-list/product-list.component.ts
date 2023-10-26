@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { ProductListService } from './product-list.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductModel } from 'src/interface/product.interface';
 
 let ELEMENT_DATA: ProductModel[];

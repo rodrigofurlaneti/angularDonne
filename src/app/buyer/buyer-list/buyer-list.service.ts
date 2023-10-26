@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BuyerModel } from 'src/interface/buyer.interface';
-
 
 @Injectable({
   providedIn: 'root'

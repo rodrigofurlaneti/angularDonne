@@ -15,11 +15,8 @@ import { AboutModule } from './about/about.module';
 //Buyer
 import { BuyerCreateModule } from './buyer/buyer-create/buyer-create.module';
 import { BuyerCreateComponent } from './buyer/buyer-create/buyer-create.component';
-import { BuyerDeleteModule } from './buyer/buyer-delete/buyer-delete.module';
 import { BuyerDeleteComponent } from './buyer/buyer-delete/buyer-delete.component';
-import { BuyerListModule } from './buyer/buyer-list/buyer-list.module';
 import { BuyerListComponent } from './buyer/buyer-list/buyer-list.component';
-import { BuyerUpdateModule } from './buyer/buyer-update/buyer-update.module';
 import { BuyerUpdateComponent } from './buyer/buyer-update/buyer-update.component';
 
 //Category
