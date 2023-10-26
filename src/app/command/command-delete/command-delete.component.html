@@ -3,6 +3,7 @@
     Comanda
   </p>
     <table mat-table [dataSource]="dataSourceCommand" class="mat-elevation-z8 demo-table">
+      <caption>Comanda</caption>
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef class="headerDeleteCommand">Número da comanda</th>
         <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element" class="headerDeleteCommand">
@@ -39,5 +40,4 @@
       </div>
     </section>
     </div>
-    
     

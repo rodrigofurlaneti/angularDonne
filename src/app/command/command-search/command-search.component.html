@@ -49,6 +49,7 @@
       <h4 class="subHeaderSearchCommand">Número da comanda: {{commandId}} - Nome do cliente: {{buyerName}}</h4>
     </div>
     <table mat-table [dataSource]="dataSourceCommandOrder" class="mat-elevation-z8 demo-table">
+      <caption>Comanda</caption>
       <ng-container matColumnDef="product">
         <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Produto</th>
         <td mat-cell *matCellDef="let element" class="headerSearchCommand">
