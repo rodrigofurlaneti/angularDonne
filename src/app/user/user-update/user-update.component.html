@@ -4,6 +4,7 @@
 <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
   <div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+      <caption>Usuário</caption>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Nome dos usuários</th>
         <td mat-cell (click)="getById(element.userId)" *matCellDef="let element">

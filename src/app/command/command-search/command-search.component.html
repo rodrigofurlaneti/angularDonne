@@ -4,22 +4,23 @@
     </p>
     <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
       <div>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Número da comanda</th>
-          <td mat-cell *matCellDef="let element" class="headerSearchCommand" (click)="listCommandOrdersByIdNumber(element.commandId)">
-            {{element.commandId}}
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Nome do cliente</th>
-          <td mat-cell *matCellDef="let element" class="headerSearchCommand" (click)="listCommandOrdersByIdNumber(element.commandId)">
-            {{element.buyerName}}
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+          <caption>Comanda</caption>
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Número da comanda</th>
+            <td mat-cell *matCellDef="let element" class="headerSearchCommand" (click)="listCommandOrdersByIdNumber(element.commandId)">
+              {{element.commandId}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef class="headerSearchCommand">Nome do cliente</th>
+            <td mat-cell *matCellDef="let element" class="headerSearchCommand" (click)="listCommandOrdersByIdNumber(element.commandId)">
+              {{element.buyerName}}
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
       
       <section>
         <div class="example-button-row">

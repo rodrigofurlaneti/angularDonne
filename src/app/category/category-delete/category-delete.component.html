@@ -3,15 +3,16 @@
     Categoria
   </p>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Nome</th>
-    <td mat-cell (click)="delete(element.categoryId)" *matCellDef="let element" class="headerDeleteCategory">
-      {{element.categoryName}}
-    </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <caption>Categoria</caption>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Nome</th>
+      <td mat-cell (click)="delete(element.categoryId)" *matCellDef="let element" class="headerDeleteCategory">
+        {{element.categoryName}}
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
 <section>
   <div class="example-button-row">
