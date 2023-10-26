@@ -1,14 +1,14 @@
 <div class="container">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Nome do perfil</th>
-    <td mat-cell (click)="delete(element.userId)" *matCellDef="let element">
-      {{element.userName}}
-    </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <caption>Perfil</caption>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nome do perfil</th>
+      <td mat-cell (click)="delete(element.userId)" *matCellDef="let element">
+        {{element.userName}}
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
   <section>
