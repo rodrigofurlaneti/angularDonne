@@ -80,7 +80,7 @@
     cursor: pointer;
   }
   
-  .mat-row:hover .mat-cell {
+  .mat-row:hover > .mat-cell {
     border-color: currentColor;
   }
   
