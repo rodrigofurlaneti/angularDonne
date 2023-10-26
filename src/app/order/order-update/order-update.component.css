@@ -46,9 +46,11 @@
   font-size: 18px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
 }
 
-.mat-row:hover .mat-cell {
+.mat-row:hover > .mat-cell {
   border-color: currentColor;
   background-color: #7B1FA2;
 }
@@ -59,16 +61,6 @@
 
 .demo-table {
     width: 100%;
-  }
-  
-  .mat-row .mat-cell {
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
-    cursor: pointer;
-  }
-  
-  .mat-row:hover > .mat-cell {
-    border-color: currentColor;
   }
   
   .demo-row-is-clicked {

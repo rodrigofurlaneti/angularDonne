@@ -47,7 +47,7 @@ export class BuyerCreateComponent {
     {
       this.authenticatedUser();
       this.buyerCreateService.save(this.buyerModel).subscribe(buyer => {
-        //this.successMessage;
+
         this.router.navigate(['buyer-list']);
         }, err => {
           this.errorMessage();
