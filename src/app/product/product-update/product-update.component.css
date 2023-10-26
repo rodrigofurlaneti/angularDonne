@@ -103,11 +103,6 @@
 
 }
 
-.btns{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
   .mat-row .mat-cell {
     font-size: 18px;
     cursor: pointer;
