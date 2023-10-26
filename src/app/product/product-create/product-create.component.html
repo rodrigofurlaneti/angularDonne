@@ -23,13 +23,15 @@
     <mat-label>Valor da venda do produto</mat-label>
     <input id="salePrice" name="salePrice" matInput [(ngModel)]="productModel.salePrice" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
   </mat-form-field>
-
-  <div class="input3row">
-    <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill">
       <mat-label>Quantidade no estoque</mat-label>
       <input id="quantityStock" name="quantityStock" matInput [(ngModel)]="productModel.quantityStock" type="number" (ngModelChange)="calculate()" />
-  </mat-form-field>
+    </mat-form-field>
     <mat-form-field appearance="fill">
+      <mat-label>Quantidade minima no estoque</mat-label>
+      <input id="minimumStockQuantity" name="minimumStockQuantity" matInput [(ngModel)]="productModel.minimumStockQuantity" type="number" />
+    </mat-form-field>
+  <mat-form-field appearance="fill">
       <mat-label>Total custo</mat-label>
       <input id="totalPriceCost" name="totalPriceCost" matInput [(ngModel)]="productModel.totalValueCostOfInventory" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" readonly/>
     </mat-form-field>
@@ -37,8 +39,6 @@
       <mat-label>Total venda</mat-label>
       <input id="totalSalePrice" name="totalSalePrice" matInput [(ngModel)]="productModel.totalValueSaleStock" currencyMask  [options]="{ prefix: '', thousands: '.', decimal: ',' }" readonly/>
     </mat-form-field>
-  </div>
-
   </div>
   <div class="checkboxs">
     <div class="example-section" *ngFor="let item of items">

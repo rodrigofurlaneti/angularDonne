@@ -146,7 +146,6 @@ export class ProductUpdateComponent implements OnInit {
     this.productModel.categoryId = this.categoryIDSelect;
     this.productModel.costPrice = parseFloat(this.productModel.costPrice).toString();
     this.productModel.salePrice = parseFloat(this.productModel.salePrice).toString();
-    this.productModel.quantityStock = this.productModel.quantityStock;
     this.productModel.needToPrint = this.needToPrint;
     this.productModel.status = this.productStatus;
 

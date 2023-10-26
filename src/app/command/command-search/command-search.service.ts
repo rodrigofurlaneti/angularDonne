@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class CommandSearchService {
 
   private route = 'https://localhost:7027/Command';
+  private routeList = 'https://localhost:7027/CommandOrder';
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +17,7 @@ export class CommandSearchService {
   }
   
   listCommandOrdersByIdNumber(id: number) : Observable<any>{
-    let url = this.route+'/'+id;
+    let url = this.routeList+'/'+id;
     const body = {};
     const options = {
       headers: new HttpHeaders({
