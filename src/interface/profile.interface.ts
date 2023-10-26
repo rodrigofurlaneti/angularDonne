@@ -13,5 +13,4 @@ export class ProfileModel implements IProfileInterface {
     dateUpdate: Date = new Date();
     userId: number = 0;
     userName: string = '';
-    constructor(){}
   }

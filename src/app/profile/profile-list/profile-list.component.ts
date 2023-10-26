@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { ProfileListService } from './profile-list.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProfileModel } from 'src/interface/profile.interface';
 
 let ELEMENT_DATA: ProfileModel[];

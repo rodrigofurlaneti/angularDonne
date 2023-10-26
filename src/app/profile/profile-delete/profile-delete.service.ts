@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProfileModel } from 'src/interface/profile.interface';
-import { ConditionalExpr } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'

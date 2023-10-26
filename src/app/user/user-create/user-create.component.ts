@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserCreateService } from './user-create.service';
 import { UserModel } from '../../../interface/user.interface';
-import { FormControl, NgForm } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { ProfileModel } from 'src/interface/profile.interface';
 import { MatSelect } from '@angular/material/select';
 import { ProfileListService } from 'src/app/profile/profile-list/profile-list.service';

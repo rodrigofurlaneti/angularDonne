@@ -25,5 +25,4 @@ export class OrderModel implements IOrderInterface {
     userName: string = "";
     dateInsert: Date = new Date;
     dateUpdate: Date = new Date;
-    constructor(){}
   }

@@ -13,5 +13,4 @@ export class UserModel implements IUserInterface {
     profileId: number = 0;
     profileName: string = ' ';
     status: boolean = true;
-    constructor(){}
   }

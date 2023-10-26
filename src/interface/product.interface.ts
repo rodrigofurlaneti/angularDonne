@@ -33,5 +33,4 @@ export class ProductModel implements IProductInterface {
     userId: number = 0;
     userName: string = '';
     status: boolean = false;
-    constructor(){}
   }

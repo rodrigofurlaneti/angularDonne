@@ -19,5 +19,4 @@ export class CommandOrderModel implements ICommandOrderInterface {
     salePrice: string = '';
     totalSalePrice: string = '';
     totalCommand: string = '';
-    constructor(){}
   }
