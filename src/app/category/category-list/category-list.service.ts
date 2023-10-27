@@ -8,10 +8,11 @@ import { Observable } from 'rxjs';
 export class CategoryListService {
 
   private route = 'https://localhost:7027/Category';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Category';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route)
+    return this.http.get(this.routeAzure)
   }
 }

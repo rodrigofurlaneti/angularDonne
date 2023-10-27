@@ -10,22 +10,23 @@ import { UserModel } from 'src/interface/user.interface';
 export class UserUpdateService {
 
   private route = 'https://localhost:7027/User';
+  private routeAzure = 'https://apidonne.azurewebsites.net/User';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.route);
+    return this.httpClient.get(this.routeAzure);
 
   }
 
   public getById(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.route+'/'+id);
+    return this.httpClient.get<any>(this.routeAzure+'/'+id);
   }
 
   public update(userModel: UserModel) {
     console.log(userModel);
-    return this.httpClient.put(this.route, userModel);
+    return this.httpClient.put(this.routeAzure, userModel);
   }
 }

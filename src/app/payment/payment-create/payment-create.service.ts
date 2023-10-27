@@ -9,11 +9,12 @@ import { PaymentModel } from 'src/interface/payment.interface';
 export class PaymentCreateService {
 
   private route = 'https://localhost:7027/Payment';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Payment';
 
   constructor(private http: HttpClient) { }
 
   save(payment: PaymentModel) : Observable<any>{
-    return this.http.post<any>(this.route, payment)
+    return this.http.post<any>(this.routeAzure, payment)
   }
 
 }

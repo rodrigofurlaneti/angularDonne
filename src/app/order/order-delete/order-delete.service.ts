@@ -8,11 +8,12 @@ import { Observable } from 'rxjs';
 export class OrderDeleteService {
 
   private route = 'https://localhost:7027/Order';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Order';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route)
+    return this.http.get(this.routeAzure)
   }
 
   delete(id:number): Observable<any>{
@@ -21,6 +22,6 @@ export class OrderDeleteService {
     let options={
       headers:httpheaders
     };
-    return this.http.delete(this.route+'/'+id, options)
+    return this.http.delete(this.routeAzure+'/'+id, options)
   }
 }

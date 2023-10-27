@@ -10,11 +10,12 @@ import { OrderModel } from 'src/interface/order.interface';
 export class OrderCreateService {
 
   private route = 'https://localhost:7027/Order';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Order';
 
   constructor(private http: HttpClient) { }
 
   save(order: OrderModel) : Observable<any>{
-    return this.http.post<any>(this.route, order)
+    return this.http.post<any>(this.routeAzure, order)
   }
 
 }

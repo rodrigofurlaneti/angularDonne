@@ -8,10 +8,11 @@ import { Observable } from 'rxjs';
 export class ProfileListService {
 
   private route = 'https://localhost:7027/Profile';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Profile';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route)
+    return this.http.get(this.routeAzure)
   }
 }

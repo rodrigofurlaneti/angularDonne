@@ -9,11 +9,12 @@ import { CategoryModel } from 'src/interface/category.interface';
 export class CategoryCreateService {
 
   private route = 'https://localhost:7027/Category';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Category';
 
   constructor(private http: HttpClient) { }
 
   save(category: CategoryModel) : Observable<any>{
-    return this.http.post<any>(this.route, category)
+    return this.http.post<any>(this.routeAzure, category)
   }
 
 }

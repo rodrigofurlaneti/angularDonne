@@ -8,16 +8,18 @@ import { Observable } from 'rxjs';
 export class CommandSearchService {
 
   private route = 'https://localhost:7027/Command';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Command';
   private routeList = 'https://localhost:7027/CommandOrder';
+  private routeListAzure = 'https://apidonne.azurewebsites.net/CommandOrder';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.route)
+    return this.http.get(this.routeAzure)
   }
   
   listCommandOrdersByIdNumber(id: number) : Observable<any>{
-    let url = this.routeList+'/'+id;
+    let url = this.routeListAzure+'/'+id;
     const body = {};
     const options = {
       headers: new HttpHeaders({

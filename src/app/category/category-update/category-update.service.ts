@@ -10,21 +10,22 @@ import { CategoryModel } from 'src/interface/category.interface';
 export class CategoryUpdateService {
 
   private route = 'https://localhost:7027/Category';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Category';
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.route);
+    return this.httpClient.get(this.routeAzure);
 
   }
 
   public getById(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.route+'/'+id);
+    return this.httpClient.get<any>(this.routeAzure+'/'+id);
   }
 
   public update(categoryModel: CategoryModel) {
-    return this.httpClient.put(this.route, categoryModel);
+    return this.httpClient.put(this.routeAzure, categoryModel);
   }
 }

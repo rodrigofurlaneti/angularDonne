@@ -9,11 +9,12 @@ import { BuyerModel } from 'src/interface/buyer.interface';
 export class BuyerCreateService {
 
   private route = 'https://localhost:7027/Buyer';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Buyer';
 
   constructor(private http: HttpClient) { }
 
   save(buyer: BuyerModel) : Observable<any>{
-    return this.http.post<any>(this.route, buyer)
+    return this.http.post<any>(this.routeAzure, buyer)
   }
 
 }

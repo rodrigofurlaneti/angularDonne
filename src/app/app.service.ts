@@ -9,11 +9,12 @@ import { UserModel } from 'src/interface/user.interface';
 export class AppService {
 
   private route = 'https://localhost:7027/User';
+  private routeAzure = 'https://apidonne.azurewebsites.net/User';
 
   constructor(private http: HttpClient) { }
 
   appService(user: UserModel) : Observable<any>{
-    return this.http.get(this.route+'/'+user.userName)
+    return this.http.get(this.routeAzure+'/'+user.userName)
   }
 }
 

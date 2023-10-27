@@ -9,14 +9,15 @@ import { CommandModel } from 'src/interface/command.interface';
 export class CommandCreateService {
 
   private route = 'https://localhost:7027/Command';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Command';
 
   constructor(private http: HttpClient) { }
 
   saveClient(command: CommandModel) : Observable<any>{
-    return this.http.post<any>(this.route, command)
+    return this.http.post<any>(this.routeAzure, command)
   }
 
   listCommand() : Observable<any>{
-    return this.http.get(this.route)
+    return this.http.get(this.routeAzure)
   }
 }

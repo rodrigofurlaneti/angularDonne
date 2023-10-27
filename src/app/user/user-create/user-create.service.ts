@@ -10,11 +10,12 @@ import { UserModel } from 'src/interface/user.interface';
 export class UserCreateService {
 
   private route = 'https://localhost:7027/User';
+  private routeAzure = 'https://apidonne.azurewebsites.net/User';
 
   constructor(private http: HttpClient) { }
 
   save(user: UserModel) : Observable<any>{
-    return this.http.post<any>(this.route, user)
+    return this.http.post<any>(this.routeAzure, user)
   }
 
 }

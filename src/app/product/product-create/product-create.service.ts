@@ -9,11 +9,12 @@ import { ProductModel } from 'src/interface/product.interface';
 export class ProductCreateService {
 
   private route = 'https://localhost:7027/Product';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Product';
 
   constructor(private http: HttpClient) { }
 
   save(product: ProductModel) : Observable<any>{
-    return this.http.post<any>(this.route, product)
+    return this.http.post<any>(this.routeAzure, product)
   }
 
 }
