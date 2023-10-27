@@ -23,8 +23,7 @@ export class MainComponent implements OnInit{
 
   constructor(private router: Router) {  }
    
-  ngOnInit(): void {
-  }
+  ngOnInit(): void{};
 
   public activeCategoryCreate() {
     this.router.navigate(['category-create']);
