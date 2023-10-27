@@ -128,7 +128,7 @@ export class OrderCreateComponent implements OnInit {
   }
 
   calculate(){
-    var totalValue = parseFloat(this.orderModel.salePrice) * this.orderModel.amount;
+    let totalValue = parseFloat(this.orderModel.salePrice) * this.orderModel.amount;
     this.orderModel.totalSalePrice = totalValue.toString();
   }
 

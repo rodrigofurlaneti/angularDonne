@@ -82,9 +82,9 @@ export class ProductCreateComponent {
   }
 
   calculate(){
-    var totalValueCostOfInventory = parseFloat(this.productModel.costPrice) * this.productModel.quantityStock;
+    let totalValueCostOfInventory = parseFloat(this.productModel.costPrice) * this.productModel.quantityStock;
     this.productModel.totalValueCostOfInventory = totalValueCostOfInventory.toString();
-    var totalValueSaleStock = parseFloat(this.productModel.salePrice) * this.productModel.quantityStock;
+    let totalValueSaleStock = parseFloat(this.productModel.salePrice) * this.productModel.quantityStock;
     this.productModel.totalValueSaleStock = totalValueSaleStock.toString();
   }
  
