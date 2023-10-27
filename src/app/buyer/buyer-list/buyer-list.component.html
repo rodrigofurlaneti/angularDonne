@@ -1,9 +1,6 @@
 <div class="container">
-  <p class="titleListBuyer">
-    Cliente
-  </p>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <caption>Cliente</caption>
+    <caption class="titleListBuyer">Cliente</caption>
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef class="headerListBuyer">Número</th>
       <td mat-cell *matCellDef="let element" class="headerListBuyer">{{element.buyerId}}</td>
