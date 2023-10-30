@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { ProductShoppingListService } from './product-shoppinglist.service';
-import { ShoppingListModel } from 'src/interface/shoppinglist.interface';
+import { ShoppingListModel } from 'src/interface/shoppingList.interface';
 
 let ELEMENT_DATA: ShoppingListModel[];
 
