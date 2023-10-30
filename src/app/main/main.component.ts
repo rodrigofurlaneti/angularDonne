@@ -112,6 +112,11 @@ export class MainComponent implements OnInit{
   public activeProductList() {
     this.router.navigate(['product-list']);
   }
+
+  public activeProductShoppingList() {
+    this.router.navigate(['product-shoppinglist']);
+  }
+
   public activeProductDelete() {
     this.router.navigate(['product-delete']);
   }

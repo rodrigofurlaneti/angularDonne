@@ -40,6 +40,7 @@ import { OrderDeleteComponent } from './order/order-delete/order-delete.componen
 
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductShoppingListComponent } from './product/product-shoppinglist/product-shoppinglist.component';
 import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
 import { OrderUpdateComponent } from './order/order-update/order-update.component';
@@ -81,6 +82,7 @@ export const routes: Routes = [
   { path: 'profile-update', component: ProfileUpdateComponent },
   { path: 'product-create', component: ProductCreateComponent },
   { path: 'product-list', component: ProductListComponent },
+  { path: 'product-shoppinglist', component: ProductShoppingListComponent },
   { path: 'product-delete', component: ProductDeleteComponent },
   { path: 'product-update', component: ProductUpdateComponent },
   { path: 'user-create', component: UserCreateComponent },

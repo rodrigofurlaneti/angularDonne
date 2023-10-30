@@ -62,6 +62,7 @@ import { PaymentListModule } from './payment/payment-list/payment-list.module';
 //Product
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductShoppingListComponent } from './product/product-shoppinglist/product-shoppinglist.component';
 import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
 
@@ -138,6 +139,7 @@ import { FormsModule } from '@angular/forms';
     UserUpdateComponent,
     ProductCreateComponent,
     ProductListComponent,
+    ProductShoppingListComponent,
     ProductDeleteComponent,
     ProductUpdateComponent,
     FormOfPaymentCreateComponent,

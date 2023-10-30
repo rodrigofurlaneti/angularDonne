@@ -1,0 +1,57 @@
+<div class="container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <caption class="titleListProduct">Produto</caption>
+    <ng-container matColumnDef="productId">
+      <th mat-header-cell *matHeaderCellDef class="headerListProduct" matTooltip="Id produto">Produto</th>
+      <td mat-cell *matCellDef="let element" class="headerListProduct">{{element.productId}}</td>
+    </ng-container>
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef class="headerListProduct" matTooltip="Nome produto">Nome produto</th>
+      <td mat-cell *matCellDef="let element" class="headerListProduct">{{element.productName}}</td>
+    </ng-container>
+    <ng-container matColumnDef="categoryId">
+      <th mat-header-cell *matHeaderCellDef class="headerListProduct" matTooltip="id categoria">Categoria</th>
+      <td mat-cell *matCellDef="let element" class="headerListProduct">{{element.categoriaId}}</td>
+    </ng-container>
+    <ng-container matColumnDef="categoryName">
+      <th mat-header-cell *matHeaderCellDef class="headerListProduct" matTooltip="Nome da categoria">Categoria</th>
+      <td mat-cell *matCellDef="let element" class="headerListProduct">{{element.categoryName}}</td>
+    </ng-container>
+    <ng-container matColumnDef="costPrice">
+      <th mat-header-cell *matHeaderCellDef class="headerListProduct" matTooltip="Valor custo por unidade">Custo un.</th>
+      <td mat-cell *matCellDef="let element" class="headerListProduct">{{element.costPrice}}</td>
+    </ng-container>
+    <ng-container matColumnDef="quantityToBuy">
+      <th mat-header-cell *matHeaderCellDef class="headerListProduct" matTooltip="Quantidade a comprar">Quantidade a comprar</th>
+      <td mat-cell *matCellDef="let element" class="headerListProduct">{{element.quantityToBuy}}</td>
+    </ng-container>
+    <ng-container matColumnDef="totalValueOfLastPurchase">
+      <th mat-header-cell *matHeaderCellDef class="headerListProduct" matTooltip="Valor total a comprar">Valor total a comprar</th>
+      <td mat-cell *matCellDef="let element" class="headerListProduct">{{element.totalValueOfLastPurchase}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <section>
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <div class="example-button-container">
+          <div class="example-label headerListProduct">
+            <div class="labelToButton">Voltar</div> 
+            <button mat-raised-button
+                  mat-mini-fab
+                  matTooltip="Voltar para a pagina principal."
+                  (click)="reply()" 
+                   color="primary" 
+                  aria-label="Example icon button with a menu icon">
+            </button>
+          </div>  
+        </div>
+        </div>
+    </div>
+  </section>
+</div>
