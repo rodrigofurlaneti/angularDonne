@@ -1,7 +1,4 @@
-<div class="container">
-  <p class="titleDeleteCategory">
-    Categoria
-  </p>
+<div class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
     <caption>Categoria</caption>
     <ng-container matColumnDef="name">
@@ -14,7 +11,7 @@
     <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-<section>
+<section class="btn-center">
   <div class="example-button-row">
     <div class="example-flex-container">
       <div class="example-button-container">

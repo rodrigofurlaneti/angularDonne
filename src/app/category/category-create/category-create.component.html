@@ -1,42 +1,23 @@
-<section>
-  <p class="titleAddCategory">
-    Adicionar uma nova categoria
-  </p>
-  <mat-form-field appearance="fill">
-    <mat-label>Nome da nova categoria</mat-label>
-    <input id="categoryName" name="categoryName" [(ngModel)]="categoryModel.categoryName" matInput />
-  </mat-form-field>
-  <div class="example-button-row">
-    <div class="example-flex-container">
-      <div class="example-button-container">
-        <div class="example-label headerAddCategory">
-          <div class="labelToButton">Voltar</div>
-          <button
-            mat-raised-button
-            mat-mini-fab
-            matTooltip="Voltar"
-            (click)="reply()"
-            color="primary"
-            aria-label="Example icon button with a menu icon"
-          >
-            <mat-icon>reply_all</mat-icon>
-          </button>
-        </div>
-      </div>
-      <div class="example-button-container">
-        <div class="example-label headerAddCategory">
-          <div class="labelToButton">Salvar</div>
-          <button
-            mat-raised-button
-            mat-mini-fab
-            matTooltip="Salvar nova categoria"
-            (click)="save()"
-            color="primary"
-            aria-label="Example icon button with a menu icon">
-            <mat-icon>save_alt</mat-icon>
-          </button>
-        </div>
-      </div>
+<section class="center">
+  <mat-card>
+    <mat-card-content>Adicionar uma nova categoria</mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome da nova categoria</mat-label>
+        <input matInput placeholder="Nome da categoria" id="categoryName" name="categoryName" [(ngModel)]="categoryModel.categoryName" matInput />
+      </mat-form-field>
+    </form>
+    <div class="btn-center">
+      <div>Voltar</div>
+      <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+        <mat-icon>reply_all</mat-icon>
+      </button>
     </div>
-  </div>
+    <div class="btn-center">
+      <div>Salvar</div>
+      <button mat-raised-button mat-mini-fab matTooltip="Salvar nova categoria" (click)="save()" color="primary" aria-label="Salvar">
+        <mat-icon>save_alt</mat-icon>
+      </button>
+    </div>
+  </mat-card>
 </section>

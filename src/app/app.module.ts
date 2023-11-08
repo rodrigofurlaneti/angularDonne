@@ -88,22 +88,22 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
 
 //Material
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatIconModule } from '@angular/material/icon'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { NgxMaskModule } from 'ngx-mask'
 import { CurrencyMaskModule } from "ng2-currency-mask";
-
-
+import { MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -188,7 +188,12 @@ import { FormsModule } from '@angular/forms';
     UserDeleteModule,
     UserListModule,
     UserUpdateModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTreeModule,
+    MatProgressBarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
