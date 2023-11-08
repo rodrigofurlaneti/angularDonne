@@ -12,7 +12,7 @@ let ELEMENT_DATA: BuyerModel[];
 })
 export class BuyerListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','name','phone','address'];
+  displayedColumns: string[] = ['id','name'];
 
   constructor(private buyerListService: BuyerListService,
               private router: Router) { }

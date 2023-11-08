@@ -7,17 +7,21 @@
         <input matInput placeholder="Nome da categoria" id="categoryName" name="categoryName" [(ngModel)]="categoryModel.categoryName" matInput />
       </mat-form-field>
     </form>
-    <div class="btn-center">
-      <div>Voltar</div>
-      <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
-        <mat-icon>reply_all</mat-icon>
-      </button>
+    <div class="wrapper">
+      <div>
+        <div>Voltar</div>
+        <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+          <mat-icon>reply_all</mat-icon>
+        </button>
+      </div>
+    <div>
     </div>
-    <div class="btn-center">
-      <div>Salvar</div>
-      <button mat-raised-button mat-mini-fab matTooltip="Salvar nova categoria" (click)="save()" color="primary" aria-label="Salvar">
-        <mat-icon>save_alt</mat-icon>
-      </button>
+      <div>
+        <div>Salvar</div>
+        <button mat-raised-button mat-mini-fab matTooltip="Salvar nova categoria" (click)="save()" color="primary" aria-label="Salvar">
+          <mat-icon>save_alt</mat-icon>
+        </button>
+      </div>
     </div>
   </mat-card>
 </section>

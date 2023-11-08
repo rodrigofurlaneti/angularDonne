@@ -2,9 +2,13 @@
 
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-    
-    <button style="color: white;" mat-icon-button disabled></button>
-    <a routerLink={{node.path}} routerLinkActive="mat-accent">
+    <button mat-icon-button disabled></button>
+    <span>
+      <mat-icon class="icon">
+        {{node.icon}}
+      </mat-icon>
+    </span>
+    <a style="color: white;" routerLink={{node.path}} routerLinkActive="mat-accent">
     {{node.item}}</a>
   </mat-tree-node>
   <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>

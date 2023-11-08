@@ -1,12 +1,7 @@
-<div class="container">
-  <p class="titleDeleteBuyer">
-    Cliente
-  </p>
+<section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <caption>Cliente</caption>
-
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef class="headerDeleteBuyer">Nome</th>
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nome</th>
       <td mat-cell (click)="delete(element.buyerId)" *matCellDef="let element" class="headerDeleteBuyer">
         {{element.buyerName}}
       </td>
@@ -14,25 +9,16 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
-<section>
-  <div class="example-button-row">
-    <div class="example-flex-container">
-      <div class="example-button-container">
-        <div class="example-label headerDeleteBuyer">
-          <div class="labelToButton">Voltar</div>
-          <button mat-raised-button
-                mat-mini-fab
-                matTooltip="Voltar"
-                (click)="reply()" 
-                 color="primary" 
-                aria-label="Example icon button with a menu icon">
-            <mat-icon>reply_all</mat-icon>
-          </button>
-        </div>  
-      </div>
-      </div>
+  <div class="btn-center">
+    <div class="lbl-voltar">Voltar</div>
+    <button mat-raised-button
+          mat-mini-fab
+          matTooltip="Voltar"
+          (click)="reply()" 
+           color="primary" 
+          aria-label="Example icon button with a menu icon">
+      <mat-icon>reply_all</mat-icon>
+    </button>
   </div>
 </section>
-</div>
 

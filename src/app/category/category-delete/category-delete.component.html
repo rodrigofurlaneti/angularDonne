@@ -1,8 +1,7 @@
-<div class="center">
+<section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <caption>Categoria</caption>
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Nome</th>
+      <th mat-header-cell *matHeaderCellDef class="headerDeleteCategory">Categoria</th>
       <td mat-cell (click)="delete(element.categoryId)" *matCellDef="let element" class="headerDeleteCategory">
         {{element.categoryName}}
       </td>
@@ -10,25 +9,15 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
-<section class="btn-center">
-  <div class="example-button-row">
-    <div class="example-flex-container">
-      <div class="example-button-container">
-        <div class="example-label headerDeleteCategory">
-          <div class="labelToButton">Voltar</div>
-          <button mat-raised-button
-                mat-mini-fab
+  <div class="btn-center">
+    <div class="lbl-voltar">Voltar</div>
+      <button mat-raised-button mat-mini-fab
                 matTooltip="Voltar"
                 (click)="reply()" 
                  color="primary" 
                 aria-label="Example icon button with a menu icon">
             <mat-icon>reply_all</mat-icon>
-          </button>
-        </div>  
-      </div>
-      </div>
-  </div>
-</section>
-</div>
+      </button>
+    </div>
+  </section>
 

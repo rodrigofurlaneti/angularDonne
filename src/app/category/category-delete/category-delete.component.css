@@ -8,3 +8,11 @@
   margin-right: auto;
   width: 50%;
 }
+
+.lbl-voltar{
+  font-weight: bold;
+  font-style: oblique;
+  color: darkmagenta;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}

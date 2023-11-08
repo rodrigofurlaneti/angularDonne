@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 interface FoodNode {
   name: string;
   path: string;
+  icon: string;
   children?: FoodNode[];
 }
 
@@ -15,6 +16,7 @@ export class DynamicFlatNode {
   constructor(
     public item: string,
     public path: string,
+    public icon: string,
     public level = 1,
     public expandable = false,
     public isLoading = false,
@@ -27,18 +29,18 @@ export class DynamicDatabase {
   dataMap = new Map<string, FoodNode[]>([
     ['Categoria', 
       [
-        { name:'Adicionar', path:'/category-create'},
-        { name:'Atualizar', path:'/category-update'},
-        { name:'Excluir', path:'/category-delete'},
-        { name:'Listar', path:'/category-list'},
+        { name:'Adicionar', path:'/category-create', icon:'exposure_plus_1'},
+        { name:'Atualizar', path:'/category-update', icon:'sync'},
+        { name:'Excluir', path:'/category-delete', icon:'delete_forever'},
+        { name:'Listar', path:'/category-list', icon:'view_headline'},
       ]
     ],
     ['Cliente', 
       [
-        { name:'Adicionar', path:'category-create'},
-        { name:'Atualizar', path:'category-update'},
-        { name:'Excluir', path:'category-delete'},
-        { name:'Listar', path:'category-list'},
+        { name:'Adicionar', path:'/buyer-create', icon:'exposure_plus_1'},
+        { name:'Atualizar', path:'/buyer-update', icon:'sync'},
+        { name:'Excluir', path:'/buyer-delete', icon:'delete_forever'},
+        { name:'Listar', path:'/buyer-list', icon:'view_headline'},
       ]
     ],
   
@@ -49,7 +51,7 @@ export class DynamicDatabase {
 
   /** Initial data from database */
   initialData(): DynamicFlatNode[] {
-    return this.rootLevelNodes.map(foodNode => new DynamicFlatNode(foodNode, foodNode, 0, true));
+    return this.rootLevelNodes.map(foodNode => new DynamicFlatNode(foodNode, foodNode, foodNode, 0, true));
   }
 
   getChildren(node: string): FoodNode[] | undefined {
@@ -121,7 +123,7 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
     setTimeout(() => {
       if (expand) {
         const nodes = children.map(
-          foodNode => new DynamicFlatNode(foodNode.name, foodNode.path, node.level + 1, this._database.isExpandable(foodNode.name)),
+          foodNode => new DynamicFlatNode(foodNode.name, foodNode.path, foodNode.icon, node.level + 1, this._database.isExpandable(foodNode.name)),
         );
         console.log(nodes);
         this.data.splice(index + 1, 0, ...nodes);

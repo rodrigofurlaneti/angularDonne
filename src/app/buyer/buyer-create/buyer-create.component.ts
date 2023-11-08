@@ -47,8 +47,8 @@ export class BuyerCreateComponent {
     {
       this.authenticatedUser();
       this.buyerCreateService.save(this.buyerModel).subscribe(buyer => {
-
-        this.router.navigate(['buyer-list']);
+        this.successMessage();
+        this.buyerList();
         }, err => {
           this.errorMessage();
         })
@@ -57,6 +57,10 @@ export class BuyerCreateComponent {
 
   reply(){
     this.router.navigate(['main']);
+  }
+
+  buyerList(){
+    this.router.navigate(['buyer-list']);
   }
 
   public authenticatedUser(){

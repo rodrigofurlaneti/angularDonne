@@ -44,7 +44,7 @@ export class BuyerUpdateComponent implements OnInit {
 
   showUpdateButton() {
     const updateBtn = document.querySelector('.update_btn') as HTMLButtonElement;
-    updateBtn.style.display = 'block';
+    updateBtn.style.display = 'none';
   }
 
   list() {

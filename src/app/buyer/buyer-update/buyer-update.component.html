@@ -1,14 +1,10 @@
-<div class="container">
-  <p class="titleUpdateBuyer">
-    Atualizar
-  </p>
+<section class="center">
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-        <caption>Cliente</caption>
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>
-            <div class="headerUpdateBuyer">Nome</div>
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">
+            Cliente
           </th>
           <td mat-cell (click)="getById(element.buyerId)" *matCellDef="let element">
             <div class="headerUpdateBuyer">{{element.buyerName}}</div>
@@ -22,38 +18,48 @@
   </ng-template>
 
   <ng-template #isIdGreaterThanZero>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Nome do cliente</mat-label>
-        <input id="clientName" name="clientName" [(ngModel)]="buyerModel.buyerName" matInput>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Telefone</mat-label>
-        <input id="buyerPhone" name="buyerPhone" [(ngModel)]="buyerModel.buyerPhone" matInput mask='00 00000-0000' placeholder="DDD + numero de telefone"/>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Endereço</mat-label>
-        <input id="buyerAddress" name="buyerAddress" [(ngModel)]="buyerModel.buyerAddress" matInput />
-      </mat-form-field>
-    </div>
-  </ng-template>
-
-  <div class="btns">
-    <section class="back_btn">
-      <div class="example-button-row">
-        <div class="example-flex-container">
-          <div class="example-button-container">
-            <div class="example-label headerUpdateBuyer">
-              <div class="labelToButton">Voltar</div>
-              <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
-                color="primary" aria-label="Example icon button with a menu icon">
-                <mat-icon>reply_all</mat-icon>
-              </button>
-            </div>
+    <mat-card style="width: 35vh;">
+      <mat-card-content>Atualizar cliente</mat-card-content>
+        <form class="example-form">
+          <mat-grid-list cols="1" rowHeight="5vh">
+            <mat-grid-tile>
+              <mat-form-field style="width: 100%;" class="example-full-width">
+                <mat-label>Nome do novo cliente</mat-label>
+                <input matInput placeholder="Nome do cliente" id="buyerName" name="buyerName" [(ngModel)]="buyerModel.buyerName" matInput />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field style="width: 100%;" class="example-full-width">
+                <mat-label>Telefone</mat-label>
+                <input matInput placeholder="Telefone do cliente" id="buyerPhone" name="buyerPhone" [(ngModel)]="buyerModel.buyerPhone" matInput mask='00 00000-0000' placeholder="DDD + numero de telefone"/>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field style="width: 100%;" class="example-full-width">
+                <mat-label>Endereço</mat-label>
+                <input matInput placeholder="Endereço do cliente" id="buyerAddress" name="buyerAddress" [(ngModel)]="buyerModel.buyerAddress" matInput />
+              </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </form>
+        <div class="wrapper">
+          <div>
+            <div>Voltar</div>
+            <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+          </div>
+        <div>
+        </div>
+          <div>
+            <div>Atualizar</div>
+            <button mat-raised-button mat-mini-fab matTooltip="Atualizar cliente" (click)="update()" color="primary" aria-label="Atualizar">
+              <mat-icon>sync</mat-icon>
+            </button>
           </div>
         </div>
-      </div>
-    </section>
+      </mat-card>
+  </ng-template>
 
     <section class="update_btn">
       <div class="example-button-row">
@@ -70,5 +76,5 @@
         </div>
       </div>
     </section>
-  </div>
-</div>
+</section>
+
