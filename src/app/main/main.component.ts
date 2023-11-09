@@ -43,10 +43,27 @@ export class DynamicDatabase {
         { name:'Listar', path:'/buyer-list', icon:'view_headline'},
       ]
     ],
+
+    ['Comanda', 
+      [
+        { name:'Adicionar', path:'/command-create', icon:'exposure_plus_1'},
+        { name:'Atualizar', path:'/command-update', icon:'sync'},
+        { name:'Excluir', path:'/command-delete', icon:'delete_forever'},
+        { name:'Listar', path:'/command-list', icon:'view_headline'},
+      ]
+    ],
+    ['Forma de pagamento', 
+    [
+      { name:'Adicionar', path:'/formofpayment-create', icon:'exposure_plus_1'},
+      { name:'Atualizar', path:'/formofpayment-update', icon:'sync'},
+      { name:'Excluir', path:'/formofpayment-delete', icon:'delete_forever'},
+      { name:'Listar', path:'/formofpayment-list', icon:'view_headline'},
+    ]
+  ],
   
   ]);
 
-  rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'F.Pagamento', 'Caixa', 
+  rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Forma de pagamento', 'Caixa', 
   'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle'];
 
   /** Initial data from database */

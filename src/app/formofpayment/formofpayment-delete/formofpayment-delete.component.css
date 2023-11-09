@@ -1,88 +1,18 @@
-.titleDeleteFormOfPayment{
-  font-size: 1.475em;
-  font-family: "Trirong", serif;
-  text-align: center;
+.center{
+  padding-top: 25vh;
+}
+
+.btn-center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.lbl-voltar{
   font-weight: bold;
-  letter-spacing: 0.1em;
+  font-style: oblique;
+  color: darkmagenta;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }
-
-.headerDeleteFormOfPayment{
-  font-size: 1.175em;
-  font-family: "Trirong", serif;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-}
-
-.labelToButton{
-  padding-right: 0.5rem;
-}
-
-.demo-table {
-    width: 100%;
-  }
-  
-.mat-row .mat-cell {
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
-    cursor: pointer;
-    font-size: 18px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .mat-row:hover > .mat-cell {
-    border-color: currentColor;
-    background-color: #7B1FA2;
-  }
-  
-  .demo-row-is-clicked {
-    font-weight: bold;
-  }
-  .example-flex-container{
-    padding-top: 10px;
-    padding-left: 20px;
-  }
-
-  .container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    overflow: hidden;
-    padding: 1rem;
-    border: 2px solid #fff;
-    width: 40%;
-    max-height: 60%;
-    overflow-y: auto;
-    background-color: #1b1b1b65;
-    backdrop-filter: blur(10px);
-    box-shadow: 2px 2px 8px #000;
-    border-radius: 8px;
-    margin: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .example-label{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .example-button-container:hover {
-    transform: scale(1.2);
-  }
-
-  .mat-elevation-z8{
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  }
-
-  .mat-form-field{
-    display: block;
-  
-  }
-
-  .mat-table{
-    background-color: transparent;
-  }
