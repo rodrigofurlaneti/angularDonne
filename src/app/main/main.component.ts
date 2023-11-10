@@ -181,7 +181,6 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
         const nodes = children.map(
           foodNode => new DynamicFlatNode(foodNode.name, foodNode.path, foodNode.icon, node.level + 1, this._database.isExpandable(foodNode.name)),
         );
-        console.log(nodes);
         this.data.splice(index + 1, 0, ...nodes);
       } else {
         let count = 0;

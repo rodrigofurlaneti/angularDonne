@@ -1,94 +1,31 @@
-.titleAddProduct{
-  font-size: 1.475em;
-  font-family: "Trirong", serif;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 0.1em;
+.center{
+  padding-top: 5vh;
 }
-
-.headerAddProduct{
-  font-size: 1.175em;
-  font-family: "Trirong", serif;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 0.1em;
+.wrapper {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  display: grid;
+  grid-template-columns: 5vh 5vh 5vh;
 }
-
-.labelToButton{
-  padding-right: 0.5rem;
+.checkbox{
+  display: block;
+  margin-left: 1vh;
+  margin-right: auto;
+  width: 50%;
+  display: grid;
+  grid-template-columns: 20vh 20vh;
 }
-
-section {
-    display: flex;
-    flex-direction: column;
-
-    padding: 1rem;
-    border: 2px solid #fff;
-    width: 418px;
-    max-height: 560px;
-    overflow-y: auto;
-    background-color: #1b1b1b65;
-    backdrop-filter: blur(10px);
-    box-shadow: 2px 2px 8px #000;
-    border-radius: 8px;
-    margin: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .inputs{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-    
-  .checkboxs{
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .input3row{
-    display: flex;
-    gap: 1rem;
-  }
-
-  .input3row .mat-form-field{
-    width: 128px;
-  }
-
-  .example-label {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-  }
-      
-  .example-flex-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .example-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
-  }
-
-  .example-button-container:hover {
-    transform: scale(1.2);
-  }
-
-  .example-button {
-    display: block;
-    margin: 80px auto 400px;
-  }
-  
-  .example-container {
-    height: 200px;
-    overflow: auto;
-    border: 1px solid #ccc;
-  }
+.line {
+  display: block;
+  margin-left: 1vh;
+  margin-right: auto;
+  width: 50%;
+  display: grid;
+  grid-template-columns: 40vh;
+}
+.card{
+  height: 52vh;
+  width: 40vh;
+}

@@ -79,7 +79,6 @@ export class ProductUpdateComponent implements OnInit {
   change(event: any) {
     this.categoryIDSelect = event.categoryId;
     this.categoryNameSelect = event.categoryName;
-    console.log(event.categoryName);
   }
 
   calculate(){
@@ -93,7 +92,7 @@ export class ProductUpdateComponent implements OnInit {
     this.productUpdateService.list().subscribe(list => {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
+
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })
@@ -151,7 +150,7 @@ export class ProductUpdateComponent implements OnInit {
 
     this.productModel.totalValueCostOfInventory = (this.productModel.quantityStock * parseFloat(this.productModel.costPrice)).toString();
     this.productModel.totalValueSaleStock = (this.productModel.quantityStock * parseFloat(this.productModel.salePrice)).toString();
-    this.productModel.minimumStockQuantity = 0;
+    this.productModel.minimumStockQuantity = this.productModel.minimumStockQuantity;
     this.productUpdateService.update(this.productModel)
                               .subscribe(product => { 
                                 this._snackBar.open('Categoria atualizada com sucesso!','', {

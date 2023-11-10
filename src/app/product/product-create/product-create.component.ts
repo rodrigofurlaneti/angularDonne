@@ -102,6 +102,7 @@ export class ProductCreateComponent {
       this.productModel.salePrice = parseFloat(this.productModel.salePrice).toString(); //parseFloat(priceSale)
       this.productModel.needToPrint = this.needToPrint;
       this.productModel.status = this.productStatus;
+      console.log(this.productModel);
       this.productCreateService.save(this.productModel).subscribe(product => {
         this.successMessage();
         this.productList();
