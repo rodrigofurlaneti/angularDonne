@@ -23,12 +23,25 @@
   margin-right: auto;
   width: 50%;
   display: grid;
-  grid-template-columns: 40vh;
+  grid-template-columns: 20vh 5vh 20vh;
 }
 .card{
   height: auto;
   width: auto;
 }
 .update_btn{
-  padding-left: 2vh;
+  padding-left: 5vh;
+  font-weight: bold;
+  font-style: oblique;
+  color: darkmagenta;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.lbl-voltar{
+  font-weight: bold;
+  font-style: oblique;
+  color: darkmagenta;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }

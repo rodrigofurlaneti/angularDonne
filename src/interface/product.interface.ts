@@ -15,6 +15,8 @@ export interface IProductInterface {
     userId: number;
     userName: string;
     status: boolean;
+    quantityToBuy: number;
+    totalValueOfLastPurchase: string;
 }
 export class ProductModel implements IProductInterface {
     productId: number = 0;    
@@ -33,4 +35,6 @@ export class ProductModel implements IProductInterface {
     userId: number = 0;
     userName: string = '';
     status: boolean = false;
+    quantityToBuy: number = 0;
+    totalValueOfLastPurchase: string = " ";
   }

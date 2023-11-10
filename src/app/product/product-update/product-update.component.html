@@ -3,9 +3,15 @@
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Nome do produto</th>
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nome do produto</th>
           <td mat-cell (click)="getById(element.productId)" *matCellDef="let element">
             {{element.productName}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">Categoria</th>
+          <td style="padding-left: 2vh;" mat-cell (click)="getById(element.productId)" *matCellDef="let element">
+            {{element.categoryName}}
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -19,48 +25,73 @@
     <mat-card class="card">
       <mat-card-content style="text-align: center;">Atualizar cliente</mat-card-content>
         <form class="example-form">
-          <mat-form-field appearance="fill" class="line">
-            <mat-label>Nome do novo produto</mat-label>
-            <input matInput placeholder="Nome da produto" id="nameProduct" name="nameProduct" [(ngModel)]="productModel.productName" matInput/>
-          </mat-form-field>
-          <mat-form-field appearance="fill" class="line">
-            <mat-label>Categoria do produto</mat-label>
-            <mat-select #matSelect id="dropDownListCategory" name="dropDownListCategory" [(ngModel)]="productModel.categoryName" (selectionChange)="change($event.value)">
-              <mat-option [value]="element" *ngFor="let element of dataSourceCategory">
-                {{ element.categoryName }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="fill" class="line">
-            <mat-label>Valor do custo do Produto</mat-label>
-            <input matInput placeholder="Valor do preço de custo" id="costPrice" name="costPrice" matInput [(ngModel)]="productModel.costPrice" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
-          </mat-form-field>
-          <mat-form-field appearance="fill" class="line">
-            <mat-label>Valor da venda do produto</mat-label>
-            <input matInput placeholder="Valor do preço de venda" id="salePrice" name="salePrice" matInput [(ngModel)]="productModel.salePrice" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
-          </mat-form-field>
-          <mat-form-field appearance="fill" class="line">
+          <div class="line">
+            <mat-form-field appearance="fill">
+              <mat-label>Nome produto</mat-label>
+              <input matInput matTooltip="Nome do produto" placeholder="Nome da produto" id="nameProduct" name="nameProduct" [(ngModel)]="productModel.productName" matInput/>
+            </mat-form-field>
+            <div></div>
+            <mat-form-field appearance="fill">
+            <div></div>
+            <mat-label>Categoria</mat-label>
+              <mat-select placeholder="Selecione a categoria" matTooltip="Categoria" #matSelect id="dropDownListCategory" 
+              name="dropDownListCategory" (selectionChange)="change()" [(ngModel)]="categoryObj">
+                <mat-option [value]="element" *ngFor="let element of dataSourceCategory">
+                  {{ element.categoryName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="line">
+            <mat-form-field appearance="fill">
+              <mat-label>Valor do custo</mat-label>
+              <input matTooltip="Valor do custo" matInput placeholder="Valor do preço de custo" id="costPrice" name="costPrice" matInput [(ngModel)]="productModel.costPrice" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
+            </mat-form-field>
+            <div></div>
+            <mat-form-field appearance="fill">
+              <mat-label>Valor da venda</mat-label>
+              <input matTooltip="Valor de venda" matInput placeholder="Valor do preço de venda" id="salePrice" name="salePrice" matInput [(ngModel)]="productModel.salePrice" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" (ngModelChange)="calculate()" />
+            </mat-form-field>
+          </div>
+          <div class="line">
+            <mat-form-field appearance="fill">
               <mat-label>Quantidade no estoque</mat-label>
-              <input style="text-align: right;" id="quantityStock" name="quantityStock" matInput [(ngModel)]="productModel.quantityStock" type="number" (ngModelChange)="calculate()" />
+              <input matTooltip="Quantidade no estoque" style="text-align: right;" id="quantityStock" name="quantityStock" matInput [(ngModel)]="productModel.quantityStock" type="number" (ngModelChange)="calculate()" />
             </mat-form-field>
-            <mat-form-field appearance="fill" class="line">
+            <div></div>
+            <mat-form-field appearance="fill">
               <mat-label>Quantidade minima no estoque</mat-label>
-              <input style="text-align: right;" matInput placeholder="Quantidade minimo no estoque" id="minimumStockQuantity" name="minimumStockQuantity" matInput [(ngModel)]="productModel.minimumStockQuantity" type="number" />
+              <input matTooltip="Quantidade minima no estoque" style="text-align: right;" matInput placeholder="Quantidade minimo no estoque" id="minimumStockQuantity" name="minimumStockQuantity" matInput [(ngModel)]="productModel.minimumStockQuantity" type="number" (ngModelChange)="calculateQuantityToBuy()"/>
             </mat-form-field>
-          <mat-form-field appearance="fill" class="line">
+          </div>
+          <div class="line">
+            <mat-form-field appearance="fill">
+              <mat-label>Quantidade comprar</mat-label>
+              <input matTooltip="Quantidade para comprar" style="text-align: right;" matInput placeholder="Quantidade para compra" id="quantityToBuy" name="quantityToBuy" matInput [(ngModel)]="productModel.quantityToBuy" type="number" />
+            </mat-form-field>
+            <div></div>
+            <mat-form-field appearance="fill">
+              <mat-label>Valor para comprar</mat-label>
+              <input matTooltip="Valor para comprar" style="text-align: right;" matInput placeholder="Valor para compra" id="totalValueOfLastPurchase" name="totalValueOfLastPurchase" matInput [(ngModel)]="productModel.totalValueOfLastPurchase"/>
+            </mat-form-field>
+          </div>
+          <div class="line">
+            <mat-form-field appearance="fill">
               <mat-label>Total custo</mat-label>
-              <input matInput placeholder="Valor do total preço de custo" id="totalPriceCost" name="totalPriceCost" matInput [(ngModel)]="productModel.totalValueCostOfInventory" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" readonly/>
+              <input matTooltip="Total custo" matInput placeholder="Valor do total preço de custo" id="totalPriceCost" name="totalPriceCost" matInput [(ngModel)]="productModel.totalValueCostOfInventory" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" readonly/>
             </mat-form-field>
-            <mat-form-field appearance="fill" class="line">
+            <div></div>
+            <mat-form-field appearance="fill">
               <mat-label>Total venda</mat-label>
-              <input matInput placeholder="Valor total do preço de venda" id="totalSalePrice" name="totalSalePrice" matInput [(ngModel)]="productModel.totalValueSaleStock" currencyMask  [options]="{ prefix: '', thousands: '.', decimal: ',' }" readonly/>
+              <input matTooltip="Total venda" matInput placeholder="Valor total do preço de venda" id="totalSalePrice" name="totalSalePrice" matInput [(ngModel)]="productModel.totalValueSaleStock" currencyMask  [options]="{ prefix: '', thousands: '.', decimal: ',' }" readonly/>
             </mat-form-field>
+          </div>
             <div class="checkbox">
               <div>
-                <mat-checkbox class="example-margin" id="needToPrint" name="needToPrint" [(ngModel)]="needToPrint">Imprimir</mat-checkbox>
+                <mat-checkbox matTooltip="Imprimir" class="example-margin" id="needToPrint" name="needToPrint" [(ngModel)]="needToPrint">Imprimir</mat-checkbox>
               </div>
               <div>
-                <mat-checkbox class="example-margin" id="productStatus" name="productStatus" [(ngModel)]="productStatus">Ativo</mat-checkbox>
+                <mat-checkbox matTooltip="Status" class="example-margin" id="productStatus" name="productStatus" [(ngModel)]="productStatus">Ativo</mat-checkbox>
               </div>
             </div>
         </form>
@@ -68,7 +99,7 @@
   </ng-template>
   <div class="wrapper">
     <div>
-      <div>Voltar</div>
+      <div class="lbl-voltar">Voltar</div>
       <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
         <mat-icon>reply_all</mat-icon>
       </button>

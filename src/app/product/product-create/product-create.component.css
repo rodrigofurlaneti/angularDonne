@@ -23,9 +23,17 @@
   margin-right: auto;
   width: 50%;
   display: grid;
-  grid-template-columns: 40vh;
+  grid-template-columns: 20vh 5vh 20vh;
 }
 .card{
   height: 52vh;
   width: 40vh;
+}
+
+.lbl-voltar{
+  font-weight: bold;
+  font-style: oblique;
+  color: darkmagenta;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }

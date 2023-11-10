@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { ProductUpdateService } from './product-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,6 +21,7 @@ export class ProductUpdateComponent implements OnInit {
   selectedValue: string = " ";
   needToPrint: boolean = false;
   productStatus: boolean = false;
+  categoryObj: CategoryModel = new CategoryModel();
   categoryNameSelect: string = " ";
   categoryIDSelect: number = 0;
   productID: number = 0;
@@ -29,7 +30,7 @@ export class ProductUpdateComponent implements OnInit {
 
   isIdGreaterThanZero = false;
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['name', 'category'];
 
   ids: number = 0;
 
@@ -76,9 +77,9 @@ export class ProductUpdateComponent implements OnInit {
     this.productStatus = event.checked;
   }
 
-  change(event: any) {
-    this.categoryIDSelect = event.categoryId;
-    this.categoryNameSelect = event.categoryName;
+  change() {
+      this.categoryIDSelect = this.categoryObj.categoryId;
+      this.categoryNameSelect = this.categoryObj.categoryName;
   }
 
   calculate(){
@@ -86,6 +87,21 @@ export class ProductUpdateComponent implements OnInit {
     this.productModel.totalValueCostOfInventory = totalValueCostOfInventory.toString();
     let totalValueSaleStock = parseFloat(this.productModel.salePrice) * this.productModel.quantityStock;
     this.productModel.totalValueSaleStock = totalValueSaleStock.toString();
+  }
+
+  calculateQuantityToBuy(){
+    if(this.productModel.quantityStock < this.productModel.minimumStockQuantity)
+    {
+      let quantityToBuy = this.productModel.quantityStock - this.productModel.minimumStockQuantity;
+      this.productModel.quantityToBuy = quantityToBuy;
+      let totalValueOfLastPurchase = quantityToBuy * parseFloat(this.productModel.costPrice);
+      this.productModel.totalValueOfLastPurchase = totalValueOfLastPurchase.toString();
+    }
+    if(this.productModel.quantityStock >= this.productModel.minimumStockQuantity)
+    {
+      this.productModel.totalValueOfLastPurchase = '0';
+      this.productModel.quantityToBuy = 0;
+    }
   }
 
   list() {
@@ -102,8 +118,8 @@ export class ProductUpdateComponent implements OnInit {
     this.showUpdateButton();
     this.productUpdateService.getById(id)
                               .subscribe(product => { 
-                                this.categoryNameSelect = product.categoryName;
                                 this.categoryIDSelect = product.categoryId;
+                                this.categoryNameSelect = product.categoryName;
                                 this.selectedValue = product.categoryId;
                                 this.productModel.productId = product.productId;
                                 this.productModel.productName = product.productName;
@@ -122,6 +138,8 @@ export class ProductUpdateComponent implements OnInit {
                                 this.productModel.productId = product.id;
                                 this.needToPrint = product.needToPrint;
                                 this.productStatus = product.status;
+                                this.productModel.quantityToBuy = product.quantityToBuy;
+                                this.productModel.totalValueOfLastPurchase = product.totalValueOfLastPurchase;
                                 this.productID = id;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
@@ -147,13 +165,15 @@ export class ProductUpdateComponent implements OnInit {
     this.productModel.salePrice = parseFloat(this.productModel.salePrice).toString();
     this.productModel.needToPrint = this.needToPrint;
     this.productModel.status = this.productStatus;
-
     this.productModel.totalValueCostOfInventory = (this.productModel.quantityStock * parseFloat(this.productModel.costPrice)).toString();
     this.productModel.totalValueSaleStock = (this.productModel.quantityStock * parseFloat(this.productModel.salePrice)).toString();
     this.productModel.minimumStockQuantity = this.productModel.minimumStockQuantity;
+    this.productModel.quantityToBuy = this.productModel.quantityToBuy;
+    this.productModel.totalValueOfLastPurchase = this.productModel.totalValueOfLastPurchase;
+    this.productModel;
     this.productUpdateService.update(this.productModel)
                               .subscribe(product => { 
-                                this._snackBar.open('Categoria atualizada com sucesso!','', {
+                                this._snackBar.open('Produto atualizado com sucesso!','', {
                                   duration: 2000
                                 });
                                 this.reply();

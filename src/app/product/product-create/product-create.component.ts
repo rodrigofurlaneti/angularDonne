@@ -87,6 +87,21 @@ export class ProductCreateComponent {
     let totalValueSaleStock = parseFloat(this.productModel.salePrice) * this.productModel.quantityStock;
     this.productModel.totalValueSaleStock = totalValueSaleStock.toString();
   }
+
+  calculateQuantityToBuy(){
+    if(this.productModel.quantityStock < this.productModel.minimumStockQuantity)
+    {
+      let quantityToBuy = this.productModel.quantityStock - this.productModel.minimumStockQuantity;
+      this.productModel.quantityToBuy = quantityToBuy;
+      let totalValueOfLastPurchase = quantityToBuy * parseFloat(this.productModel.costPrice);
+      this.productModel.totalValueOfLastPurchase = totalValueOfLastPurchase.toString();
+    }
+    if(this.productModel.quantityStock >= this.productModel.minimumStockQuantity)
+    {
+      this.productModel.totalValueOfLastPurchase = '0';
+      this.productModel.quantityToBuy = 0;
+    }
+  }
  
   save() {
 
@@ -102,7 +117,8 @@ export class ProductCreateComponent {
       this.productModel.salePrice = parseFloat(this.productModel.salePrice).toString(); //parseFloat(priceSale)
       this.productModel.needToPrint = this.needToPrint;
       this.productModel.status = this.productStatus;
-      console.log(this.productModel);
+      this.productModel.quantityToBuy = this.productModel.quantityToBuy;
+      this.productModel.totalValueOfLastPurchase = parseFloat(this.productModel.totalValueOfLastPurchase).toString(); 
       this.productCreateService.save(this.productModel).subscribe(product => {
         this.successMessage();
         this.productList();
