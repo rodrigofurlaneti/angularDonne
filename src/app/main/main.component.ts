@@ -53,17 +53,56 @@ export class DynamicDatabase {
       ]
     ],
     ['Forma de pagamento', 
-    [
-      { name:'Adicionar', path:'/formofpayment-create', icon:'exposure_plus_1'},
-      { name:'Atualizar', path:'/formofpayment-update', icon:'sync'},
-      { name:'Excluir', path:'/formofpayment-delete', icon:'delete_forever'},
-      { name:'Listar', path:'/formofpayment-list', icon:'view_headline'},
-    ]
-  ],
-  
+      [
+        { name:'Adicionar', path:'/formofpayment-create', icon:'exposure_plus_1'},
+        { name:'Atualizar', path:'/formofpayment-update', icon:'sync'},
+        { name:'Excluir', path:'/formofpayment-delete', icon:'delete_forever'},
+        { name:'Listar', path:'/formofpayment-list', icon:'view_headline'},
+      ],
+    ],
+    ['Pagamento', 
+      [
+        { name:'Adicionar', path:'/payment-create', icon:'exposure_plus_1'},
+        { name:'Atualizar', path:'/payment-update', icon:'sync'},
+        { name:'Excluir', path:'/payment-delete', icon:'delete_forever'},
+        { name:'Listar', path:'/payment-list', icon:'view_headline'},
+      ],
+    ],
+    ['Pedido', 
+      [
+        { name:'Adicionar', path:'/order-create', icon:'exposure_plus_1'},
+        { name:'Atualizar', path:'/order-update', icon:'sync'},
+        { name:'Excluir', path:'/order-delete', icon:'delete_forever'},
+        { name:'Listar', path:'/order-list', icon:'view_headline'},
+      ],
+    ],
+    ['Perfil', 
+      [
+        { name:'Adicionar', path:'/profile-create', icon:'exposure_plus_1'},
+        { name:'Atualizar', path:'/profile-update', icon:'sync'},
+        { name:'Excluir', path:'/profile-delete', icon:'delete_forever'},
+        { name:'Listar', path:'/profile-list', icon:'view_headline'},
+      ],
+    ],
+    ['Produto', 
+      [
+        { name:'Adicionar', path:'/product-create', icon:'exposure_plus_1'},
+        { name:'Atualizar', path:'/product-update', icon:'sync'},
+        { name:'Excluir', path:'/product-delete', icon:'delete_forever'},
+        { name:'Listar', path:'/product-list', icon:'view_headline'},
+      ],
+    ],
+    ['Usuário', 
+      [
+        { name:'Adicionar', path:'/user-create', icon:'exposure_plus_1'},
+        { name:'Atualizar', path:'/user-update', icon:'sync'},
+        { name:'Excluir', path:'/user-delete', icon:'delete_forever'},
+        { name:'Listar', path:'/user-list', icon:'view_headline'},
+      ],
+    ],
   ]);
 
-  rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Forma de pagamento', 'Caixa', 
+  rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Forma de pagamento', 'Pagamento', 
   'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle'];
 
   /** Initial data from database */

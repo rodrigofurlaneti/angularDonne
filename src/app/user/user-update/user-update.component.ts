@@ -31,6 +31,8 @@ export class UserUpdateComponent implements OnInit {
 
   userModel = new UserModel();
 
+  showPassword: boolean = false;
+
   constructor(private userUpdateService: UserUpdateService,
     private profileListService: ProfileListService,
     private _snackBar: MatSnackBar,

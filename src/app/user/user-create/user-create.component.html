@@ -1,46 +1,40 @@
-<section>
-  <p class="titleAddUser">
-    Adicionar um novo cliente
-  </p>
-  <mat-form-field appearance="fill">
-    <mat-label>Nome da novo usuário</mat-label>
-    <input id="userName" name="userName" matInput [(ngModel)]="user.userName">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Senha</mat-label>
-    <input id="userPassword" name="userPassword" matInput [(ngModel)]="user.userPassword"
-      [type]="showPassword ? 'text' : 'password'">
-    <mat-icon matSuffix (click)="showPassword = !showPassword">{{showPassword ? 'visibility_off' :
-      'visibility'}}</mat-icon>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Perfil do novo usuário</mat-label>
-    <mat-select #matSelect id="dropDownListProfile" name="dropDownListProfile">
-      <mat-option [value]="element" *ngFor="let element of dataSource">
-        {{ element.profileName }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <div class="example-label titleAddUser">
-            <div class="labelToButton">Voltar</div>
-            <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
-              color="primary" aria-label="Example icon button with a menu icon">
-              <mat-icon>reply_all</mat-icon>
-            </button>
-          </div>
-        </div>
-        <div class="example-button-container">
-          <div class="example-label titleAddUser">
-            <div class="labelToButton">Salvar</div>
-            <button mat-raised-button mat-mini-fab matTooltip="Salvar" (click)="save()" color="primary"
-              aria-label="Example icon button with a menu icon">
-              <mat-icon>save_alt</mat-icon>
-            </button>
-          </div>
-        </div>
+<section class="center">
+  <mat-card class="card">
+    <mat-card-content style="text-align: center;">Adicionar um novo usuário</mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="line" appearance="fill">
+        <mat-label>Nome da novo usuário</mat-label>
+        <input matInput placeholder="Nome do usuário" id="userName" name="userName" matInput [(ngModel)]="user.userName">
+      </mat-form-field>
+      <mat-form-field class="line" appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput placeholder="Senha" id="userPassword" name="userPassword" matInput [(ngModel)]="user.userPassword" [type]="showPassword ? 'text' : 'password'">
+        <mat-icon style="padding-left: 1vh;" matSuffix (click)="showPassword = !showPassword">{{showPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="line" appearance="fill">
+        <mat-label>Perfil do novo usuário</mat-label>
+        <mat-select #matSelect id="dropDownListProfile" name="dropDownListProfile">
+          <mat-option [value]="element" *ngFor="let element of dataSource">
+            {{ element.profileName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <div class="wrapper">
+      <div>
+        <div>Voltar</div>
+        <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+          <mat-icon>reply_all</mat-icon>
+        </button>
+      </div>
+    <div>
+    </div>
+      <div>
+        <div>Salvar</div>
+        <button mat-raised-button mat-mini-fab matTooltip="Salvar nova categoria" (click)="save()" color="primary" aria-label="Salvar">
+          <mat-icon>save_alt</mat-icon>
+        </button>
       </div>
     </div>
+  </mat-card>
 </section>

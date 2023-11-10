@@ -1,35 +1,23 @@
-<div class="container">
-  <p class="titleDeleteProfile">
-    Excluir
-  </p>
+<section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <caption>Perfil</caption>
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef class="headerDeleteProfile">Nome do perfil</th>
-      <td mat-cell (click)="delete(element.profileId)" *matCellDef="let element" class="headerDeleteProfile">
+      <th mat-header-cell *matHeaderCellDef>Nome do perfil</th>
+      <td mat-cell (click)="delete(element.profileId)" *matCellDef="let element">
         {{element.profileName}}
       </td>
     </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
-
   </table>
-  <section>
-    <div class="example-flex-container">
-      <div class="example-button-container">
-        <div class="example-label headerDeleteProfile">
-          <div class="labelToButton">Voltar</div>
-          <button mat-raised-button
-                  mat-mini-fab
-                  matTooltip="Voltar" 
-                  (click)="reply()" 
-                  color="primary" 
-                  aria-label="Example icon button with a menu icon">
+  <div class="btn-center">
+    <div class="lbl-voltar">Voltar</div>
+      <button mat-raised-button mat-mini-fab
+                matTooltip="Voltar"
+                (click)="reply()" 
+                 color="primary" 
+                aria-label="Example icon button with a menu icon">
             <mat-icon>reply_all</mat-icon>
-          </button>
-        </div>
-      </div>
+      </button>
     </div>
   </section>
-</div>
+
