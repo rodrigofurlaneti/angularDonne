@@ -1,43 +1,36 @@
-<section>
-  <p class="titleAddCommand">
-    Adicionar uma nova comanda
-  </p>
-  <mat-grid-list cols="3" rowHeight="50px" gutterSize="15px">
-    <mat-grid-tile colspan="3">
-      <p class="headerAddCommand">Número da comanda: {{commandModel.commandId}}</p>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="2">
-      <mat-form-field appearance="fill">
-        <mat-label>Cliente</mat-label>
-        <mat-select #matSelect id="dropDownListBuyer" name="dropDownListBuyer" (selectionChange)="changeBuyerToCommand($event.value)">
-          <mat-option [value]="element" *ngFor="let element of dataSourceBuyer">
-            {{ element.buyerName }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile class="buttonToLabel">
-      <div class="labelToButton headerAddCommand">Salvar</div>  
-      <div style="padding-left: 0.5rem;">
-        <button mat-raised-button mat-mini-fab matTooltip="Salvar" color="primary" aria-label="Example icon button with a menu icon" 
-          (click)="saveBuyerToCommand()">
-          <mat-icon>save_alt</mat-icon>
-        </button>
+<section class="center">
+  <mat-card class="card">
+    <mat-card-content style="text-align: center;">Adicionar uma nova comanda</mat-card-content>
+    <form class="example-form">
+      <div class="line-button">
+        <p style="text-align: center;">Número da comanda: {{commandModel.commandId}}</p>
       </div>
-    </mat-grid-tile>
-    <mat-grid-tile class="buttonToLabel">
-      <div class="labelToButton headerAddCommand">Voltar</div>
-      <div style="padding-left: 0.5rem;">
-        <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary"
-          aria-label="Example icon button with a menu icon">
-          <mat-icon>reply_all</mat-icon>
-        </button>
-      </div>  
-    </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-  </mat-grid-list>
-
-
+      <div class="line-button">
+        <mat-form-field appearance="fill">
+          <mat-label>Cliente</mat-label>
+            <mat-select #matSelect id="dropDownListBuyer" name="dropDownListBuyer" (selectionChange)="changeBuyerToCommand($event.value)">
+              <mat-option [value]="element" *ngFor="let element of dataSourceBuyer">
+                  {{ element.buyerName }}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+          <div style="padding-left: 3vh;">  
+          <div>Salvar</div>  
+            <button mat-raised-button mat-mini-fab matTooltip="Salvar" color="primary" aria-label="Example icon button with a menu icon" 
+              (click)="saveBuyerToCommand()">
+              <mat-icon>save_alt</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="line">
+            <div class="labelToButton headerAddCommand">Voltar</div>
+            <div style="padding-left: 0.5rem;">
+              <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary"
+              aria-label="Example icon button with a menu icon">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+          </div>  
+        </div>
+    </form>
+  </mat-card>
 </section>
-
