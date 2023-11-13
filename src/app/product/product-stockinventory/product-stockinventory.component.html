@@ -1,0 +1,30 @@
+<section class="center">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" style="text-align:  center;">
+    <ng-container matColumnDef="totalValueCostOfInventory">
+      <th mat-header-cell *matHeaderCellDef matTooltip="Total preço de custo estoque" style="text-align:  center;">Total preço de custo estoque</th>
+      <td mat-cell *matCellDef="let element" style="text-align:  center;">{{element.totalValueCostOfInventory}}</td>
+    </ng-container>
+    <ng-container matColumnDef="totalValueSaleStock">
+      <th mat-header-cell *matHeaderCellDef matTooltip="Total valor de venda do estoque" style="padding-left: 5vh; center;">Total valor de venda do estoque</th>
+      <td mat-cell *matCellDef="let element" style="text-align:  center;">{{element.totalValueSaleStock}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  
+    <div class="btn-center">
+            <div class="lbl-voltar">Voltar</div>
+            <button mat-raised-button
+                  mat-mini-fab
+                  matTooltip="Voltar"
+                  (click)="reply()" 
+                   color="primary" 
+                  aria-label="Example icon button with a menu icon">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+    </div>
+  </section>

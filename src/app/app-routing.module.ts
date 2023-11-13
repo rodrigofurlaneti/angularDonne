@@ -43,6 +43,8 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductShoppingListComponent } from './product/product-shoppinglist/product-shoppinglist.component';
 import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
+import { ProductStockInventoryComponent } from './product/product-stockinventory/product-stockinventory.component';
+
 import { OrderUpdateComponent } from './order/order-update/order-update.component';
 
 import { FormOfPaymentCreateComponent } from './formofpayment/formofpayment-create/formofpayment-create.component';
@@ -85,6 +87,7 @@ export const routes: Routes = [
   { path: 'product-shoppinglist', component: ProductShoppingListComponent },
   { path: 'product-delete', component: ProductDeleteComponent },
   { path: 'product-update', component: ProductUpdateComponent },
+  { path: 'product-stockinventory', component: ProductStockInventoryComponent },
   { path: 'user-create', component: UserCreateComponent },
   { path: 'user-update', component: UserUpdateComponent },
   { path: 'user-delete', component: UserDeleteComponent },

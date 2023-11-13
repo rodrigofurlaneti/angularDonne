@@ -65,6 +65,8 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductShoppingListComponent } from './product/product-shoppinglist/product-shoppinglist.component';
 import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
+import { ProductStockInventoryComponent } from './product/product-stockinventory/product-stockinventory.component';
+
 
 //Profile
 import { ProfileCreateModule } from './profile/profile-create/profile-create.module';
@@ -142,6 +144,7 @@ import { FormsModule } from '@angular/forms';
     ProductShoppingListComponent,
     ProductDeleteComponent,
     ProductUpdateComponent,
+    ProductStockInventoryComponent,
     FormOfPaymentCreateComponent,
     FormOfPaymentListComponent,
     FormOfPaymentDeleteComponent,
