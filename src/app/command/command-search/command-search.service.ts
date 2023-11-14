@@ -19,7 +19,6 @@ export class CommandSearchService {
   }
   
   listCommandOrdersByIdNumber(id: number) : Observable<any>{
-    let url = this.routeListAzure+'/'+id;
-    return this.http.get(url);
+    return this.http.get(this.routeListAzure+'/'+id);
   }
 }

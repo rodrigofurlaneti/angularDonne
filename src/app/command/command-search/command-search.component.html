@@ -4,14 +4,14 @@
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
           <caption>Comanda</caption>
           <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef>Número da comanda</th>
-            <td mat-cell *matCellDef="let element" (click)="listCommandOrdersByIdNumber(element.commandId)">
+            <th mat-header-cell *matHeaderCellDef class="txt-center">Número da comanda</th>
+            <td mat-cell *matCellDef="let element" class="txt-center" (click)="listCommandOrdersByIdNumber(element.commandId)">
               {{element.commandId}}
             </td>
           </ng-container>
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Nome do cliente</th>
-            <td mat-cell *matCellDef="let element" (click)="listCommandOrdersByIdNumber(element.commandId)">
+            <th mat-header-cell *matHeaderCellDef class="txt-center">Nome do cliente</th>
+            <td mat-cell *matCellDef="let element" class="txt-center" (click)="listCommandOrdersByIdNumber(element.commandId)">
               {{element.buyerName}}
             </td>
           </ng-container>
@@ -42,47 +42,52 @@
   </ng-template>
 
   <ng-template #isIdGreaterThanZero>
-    <div style="padding-top: 20px;">
-      <h4 class="subHeaderSearchCommand">Número da comanda: {{commandId}} - Nome do cliente: {{buyerName}}</h4>
-    </div>
+    <mat-card>
+      <mat-card-content>
+        <h3 class="txt-center lbl">Comanda</h3>
+        <h4 class="txt-center lbl">Número da comanda: {{commandId}}</h4>
+        <h4 class="txt-center lbl">Nome do cliente: {{buyerName}}</h4>
+      </mat-card-content>
+    </mat-card>
     <table mat-table [dataSource]="dataSourceCommandOrder" class="mat-elevation-z8 demo-table">
-      <caption>Comanda</caption>
       <ng-container matColumnDef="product">
-        <th mat-header-cell *matHeaderCellDef>Produto</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef class="txt-center">Produto</th>
+        <td mat-cell *matCellDef="let element" class="txt-center">
           {{element.productName}}
         </td>
       </ng-container>
       <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef>Quantidade</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef class="txt-center">Quantidade</th>
+        <td mat-cell *matCellDef="let element" class="txt-center">
           {{element.amount}}
         </td>
       </ng-container>
-      <ng-container matColumnDef="salePrice">
-        <th mat-header-cell *matHeaderCellDef>Valor unidade</th>
-        <td mat-cell *matCellDef="let element">
+      <ng-container matColumnDef="salePrice" class="txt-center">
+        <th mat-header-cell *matHeaderCellDef class="txt-center">Valor unidade</th>
+        <td mat-cell *matCellDef="let element" class="txt-center">
           {{element.salePrice}}
         </td>
       </ng-container>
-      <ng-container matColumnDef="totalSalePrice">
-        <th mat-header-cell *matHeaderCellDef>Valor Total</th>
-        <td mat-cell *matCellDef="let element">
+      <ng-container matColumnDef="totalSalePrice" class="txt-center">
+        <th mat-header-cell *matHeaderCellDef class="txt-center">Valor Total</th>
+        <td mat-cell *matCellDef="let element" class="txt-center">
           {{element.totalSalePrice}}
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumnsCommandOrder"></tr>
       <tr mat-row (click)="clickedRowsCommandOrder.add(row)" [class.demo-row-is-clicked]="clickedRowsCommandOrder.has(row)" *matRowDef="let row; columns: displayedColumnsCommandOrder;"></tr>
     </table>
-    <div style="padding-top: 50px;">
-      <h3>Valor total: R$ {{totalCommand}}</h3>
-    </div>
+    <mat-card>
+      <mat-card-content>
+        <h3 class="txt-center lbl">Valor total: R$ {{totalCommand}}</h3>
+      </mat-card-content>
+    </mat-card>
     <section>
-      <div class="example-button-row">
+      <div class="example-button-row txt-center lbl-voltar">
         <div class="example-flex-container">
           <div class="example-button-container">
             <div class="example-label headerSearchCommand">
-              <div class="labelToCommand">Voltar</div>
+              <div class="txt-center lbl-voltar">Voltar</div>
               <button mat-raised-button
                     mat-mini-fab
                     matTooltip="Voltar"
