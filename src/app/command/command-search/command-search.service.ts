@@ -20,12 +20,6 @@ export class CommandSearchService {
   
   listCommandOrdersByIdNumber(id: number) : Observable<any>{
     let url = this.routeListAzure+'/'+id;
-    const body = {};
-    const options = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      }),
-    };
-    return this.http.patch<any>(url, body, options);
+    return this.http.get(url);
   }
 }
