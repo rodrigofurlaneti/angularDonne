@@ -42,6 +42,7 @@ export class CommandSearchComponent {
     this.commandSearchService.list().subscribe(list => {
       ELEMENT_DATA_COMMAND = list;
       this.dataSource = ELEMENT_DATA_COMMAND;
+      console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })

@@ -47,8 +47,8 @@ export class DynamicDatabase {
     ['Comanda', 
       [
         { name:'Adicionar', path:'/command-create', icon:'exposure_plus_1'},
-        { name:'Atualizar', path:'/command-update', icon:'sync'},
         { name:'Excluir', path:'/command-delete', icon:'delete_forever'},
+        { name:'Filtrar', path:'/command-search', icon:'search'},
         { name:'Listar', path:'/command-list', icon:'view_headline'},
       ]
     ],

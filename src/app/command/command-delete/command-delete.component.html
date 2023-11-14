@@ -1,18 +1,15 @@
-<div class="container">
-  <p class="titleDeleteCommand">
-    Comanda
-  </p>
-    <table mat-table [dataSource]="dataSourceCommand" class="mat-elevation-z8 demo-table">
-      <caption>Comanda</caption>
+<section class="center">
+  <table mat-table [dataSource]="dataSourceCommand" class="mat-elevation-z8 demo-table">
+    <caption>Comanda</caption>
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef class="headerDeleteCommand">Número da comanda</th>
-        <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element" class="headerDeleteCommand">
+        <th mat-header-cell *matHeaderCellDef>Número da comanda</th>
+        <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element">
           {{element.commandId}}
         </td>
       </ng-container>
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef class="headerDeleteCommand">Nome do cliente</th>
-        <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element" class="headerDeleteCommand">
+        <th mat-header-cell *matHeaderCellDef>Nome do cliente</th>
+        <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element">
           {{element.buyerName}}
         </td>
       </ng-container>
@@ -21,23 +18,16 @@
       <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     
-    <section>
-      <div class="example-button-row">
-        <div class="example-flex-container">
-          <div class="example-button-container">
-            <div class="example-label">Voltar
-              <button mat-raised-button
-                    mat-mini-fab
-                    matTooltip="Voltar"
-                    (click)="reply()" 
-                     color="primary" 
-                    aria-label="Example icon button with a menu icon">
-                <mat-icon>reply_all</mat-icon>
-              </button>
-            </div>  
-          </div>
-          </div>
-      </div>
-    </section>
-    </div>
+    <div class="btn-center">
+      <div class="lbl-voltar">Voltar</div>
+      <button mat-raised-button
+            mat-mini-fab
+            matTooltip="Voltar"
+            (click)="reply()" 
+             color="primary" 
+            aria-label="Example icon button with a menu icon">
+        <mat-icon>reply_all</mat-icon>
+      </button>
+</div>
+</section>
     

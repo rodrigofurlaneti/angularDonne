@@ -26,7 +26,7 @@ export class CommandListComponent implements OnInit {
       ELEMENT_DATA = list;
       this.dataSource = ELEMENT_DATA;
     }, err => {
-      console.log('Erro ao listar as categorias', err);
+      console.log('Erro ao listar as comandas!', err);
     })
   }
 
