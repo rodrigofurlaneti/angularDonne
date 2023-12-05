@@ -37,29 +37,46 @@ export class BuyerCreateComponent {
   get messageErro() { return this._messageErro; }
   set messageErro(value) { this._messageErro = value; }
 
+  //Property MessageBuyerName
+  private _messageBuyerName: string = '';
+  get messageBuyerName() { return this._messageBuyerName; }
+  set messageBuyerName(value) { this._messageBuyerName = value; }
 
+  //Property MessageBuyerName
+  private _messageBuyerAddress: string = '';
+  get messageBuyerAddress() { return this._messageBuyerAddress; }
+  set messageBuyerAddress(value) { this._messageBuyerAddress = value; }
+    
+  //Property MessageBuyerName
+  private _messageBuyerPhone: string = '';
+  get messageBuyerPhone() { return this._messageBuyerPhone; }
+  set messageBuyerPhone(value) { this._messageBuyerPhone = value; }
+  
   constructor(private buyerCreateService: BuyerCreateService, 
     private _snackBar: MatSnackBar,
     private readonly router: Router) { }
 
   save() {
-    
+
     //check fields
     if(this.buyerModel.buyerName == "")
     {
-      this._snackBar.open('Não está preenchido o campo nome do cliente!', 'Voltar', {
+      this.messageBuyerName = 'Não está preenchido o campo nome do cliente!';
+      this._snackBar.open(this.messageBuyerName, 'Voltar', {
         duration: this.messageTime
       });
     }
     if(this.buyerModel.buyerAddress == "")
     {
-      this._snackBar.open('Não está preenchido o campo endereço do cliente!', 'Voltar',{
+      this.messageBuyerAddress = 'Não está preenchido o campo endereço do cliente!'; 
+      this._snackBar.open(this.messageBuyerAddress, 'Voltar',{
         duration: this.messageTime
       });
     }
     if(this.buyerModel.buyerPhone == "")
     {
-      this._snackBar.open('Não está preenchido o campo telefone do cliente!', 'Voltar',{
+      this.messageBuyerPhone = 'Não está preenchido o campo telefone do cliente!'; 
+      this._snackBar.open(this.messageBuyerPhone, 'Voltar',{
         duration: this.messageTime
       });
     }

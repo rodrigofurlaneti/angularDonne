@@ -61,7 +61,7 @@ describe('BuyerCreateComponent', () => {
     it('Property private => BuyerModel => TypeOf', () => {
         //Arrange
         var objBuyerModel: BuyerModel = new BuyerModel()
-        objBuyerModel.buyerAddress = faker.address.streetAddress();
+        objBuyerModel.buyerAddress = faker.location.streetAddress();
         objBuyerModel.buyerId = faker.number.int().toString();
         objBuyerModel.buyerName = faker.person.fullName();
         objBuyerModel.buyerPhone = faker.phone.number().toString();
@@ -150,6 +150,39 @@ describe('BuyerCreateComponent', () => {
         expect(typeof(component.routerString)).toBe(expectedValueTypeOf);
     });
 
+    it('Property private => MessageBuyerAddress => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'string';
+
+        //Act
+        component.messageBuyerAddress = expectedValueTypeOf;
+        
+        //Assert
+        expect(typeof(component.messageBuyerAddress)).toBe(expectedValueTypeOf);
+    });
+
+    it('Property private => MessageBuyerName => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'string';
+
+        //Act
+        component.messageBuyerName = expectedValueTypeOf;
+        
+        //Assert
+        expect(typeof(component.messageBuyerName)).toBe(expectedValueTypeOf);
+    });
+
+    it('Property private => MessageBuyerPhone => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'string';
+
+        //Act
+        component.messageBuyerPhone = expectedValueTypeOf;
+        
+        //Assert
+        expect(typeof(component.messageBuyerPhone)).toBe(expectedValueTypeOf);
+    });
+
     it('Method => BuyerList => TypeOf', () => {
         //Arrange
         let expectedValueTypeOf: string = 'function';
@@ -211,7 +244,6 @@ describe('BuyerCreateComponent', () => {
 
         //Act
         var result = component.errorMessage;
-        console.log(result)
 
         //Assert
         expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -223,9 +255,8 @@ describe('BuyerCreateComponent', () => {
         var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
         spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
 
-        //Act
+        //Act/
         var result = component.errorMessage;
-        console.log(component.messageErro);
 
         //Assert
         expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -272,5 +303,75 @@ describe('BuyerCreateComponent', () => {
         //Assert
         expect(spyOnComponent).toHaveBeenCalledTimes(0);
         expect(component.routerString).toBe(routerString);
+    });
+
+    it('Method => Save => BuyerName => Empty', () => {
+        //Arrange
+        let messageBuyerName: string = 'Não está preenchido o campo nome do cliente!';
+        var spyOnComponent = spyOn(component, 'save').and.callThrough();
+        var objBuyerModel: BuyerModel = new BuyerModel()
+        objBuyerModel.buyerName = '';
+        spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
+        spyOnProperty(component, 'messageBuyerName', 'get').and.returnValue(messageBuyerName);
+        
+        //Act
+        var result = component.save;
+
+        //Assert
+        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(component.messageBuyerName).toBe(messageBuyerName);
+    });
+
+    it('Method => Save => BuyerAddress => Empty', () => {
+        //Arrange
+        let messageBuyerAddress: string = 'Não está preenchido o campo endereço do cliente!'; 
+        var spyOnComponent = spyOn(component, 'save').and.callThrough();
+        var objBuyerModel: BuyerModel = new BuyerModel()
+        objBuyerModel.buyerName = faker.person.fullName();
+        objBuyerModel.buyerAddress = '';
+        spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
+        spyOnProperty(component, 'messageBuyerAddress', 'get').and.returnValue(messageBuyerAddress);
+        
+        //Act
+        var result = component.save;
+
+        //Assert
+        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(component.messageBuyerAddress).toBe(messageBuyerAddress);
+    });
+
+    it('Method => Save => BuyerPhone => Empty', () => {
+        //Arrange
+        let messageBuyerPhone: string = 'Não está preenchido o campo telefone do cliente!'; 
+        var spyOnComponent = spyOn(component, 'save').and.callThrough();
+        var objBuyerModel: BuyerModel = new BuyerModel()
+        objBuyerModel.buyerName = faker.person.fullName();
+        objBuyerModel.buyerAddress = faker.address.streetAddress();
+        objBuyerModel.buyerPhone = '';
+        spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
+        spyOnProperty(component, 'messageBuyerPhone', 'get').and.returnValue(messageBuyerPhone);
+        
+        //Act
+        var result = component.save;
+
+        //Assert
+        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(component.messageBuyerPhone).toBe(messageBuyerPhone);
+    });
+
+    it('Method => Save => BuyerModel => Populate', () => {
+        //Arrange
+        var spyOnComponent = spyOn(component, 'save').and.callThrough();
+        var objBuyerModel: BuyerModel = new BuyerModel()
+        objBuyerModel.buyerName = faker.person.fullName();
+        objBuyerModel.buyerAddress = faker.location.streetAddress();
+        objBuyerModel.buyerPhone = faker.phone.number();
+        spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
+        
+        //Act
+        var result = component.save();
+
+        //Assert
+        expect(spyOnComponent).toHaveBeenCalledTimes(1);
     });
 });
