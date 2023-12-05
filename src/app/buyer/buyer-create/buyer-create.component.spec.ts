@@ -95,6 +95,15 @@ describe('BuyerCreateComponent', () => {
         expect(component.messageTime).toBe(expectedValue);
     });
 
+    it('Property private => MessageTime => Empty', () => {
+        //Arrange
+        let expectedValue: number = 3000;
+
+        //Act
+        //Assert
+        expect(component.messageTime).toBe(expectedValue);
+    });
+
     it('Property private => MessageTime => TypeOf', () => {
         //Arrange
         let expectedValue: number = 3000;

@@ -12,10 +12,16 @@ import { BuyerModel } from '../../../interface/buyer.interface';
 
 export class BuyerCreateComponent {
   
-  buyerModel = new BuyerModel();
+  //Property BuyerModel
+  private _buyerModel = new BuyerModel();
+  get buyerModel() { return this._buyerModel; }
+  set buyerModel(value) { this._buyerModel = value; }
 
-  messageTime: number = 5000;
-
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+  
   constructor(private buyerCreateService: BuyerCreateService, 
     private _snackBar: MatSnackBar,
     private readonly router: Router) { }
