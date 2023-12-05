@@ -6,6 +6,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BuyerModel } from 'src/interface/buyer.interface';
 import { faker } from '@faker-js/faker';
+import { of } from 'rxjs';
 
 describe('BuyerCreateComponent', () => {
     let component: BuyerCreateComponent;
@@ -114,5 +115,129 @@ describe('BuyerCreateComponent', () => {
         
         //Assert
         expect(typeof(component.messageTime)).toBe(expectedValueTypeOf);
+    });
+
+    it('Method => BuyerList => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'function';
+
+        //Act
+        var result = component.buyerList;
+
+        //Assert
+        expect(typeof(result)).toBe(expectedValueTypeOf);
+    });
+
+    it('Method => Reply => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'function';
+
+        //Act
+        var result = component.reply;
+
+        //Assert
+        expect(typeof(result)).toBe(expectedValueTypeOf);
+    });
+
+    it('Method => Save => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'function';
+
+        //Act
+        var result = component.save;
+
+        //Assert
+        expect(typeof(result)).toBe(expectedValueTypeOf);
+    });
+
+    it('Method => SuccessMessage => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'function';
+
+        //Act
+        var result = component.successMessage;
+
+        //Assert
+        expect(typeof(result)).toBe(expectedValueTypeOf);
+    });
+
+    it('Method => AuthenticatedUser => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'function';
+
+        //Act
+        var result = component.authenticatedUser;
+
+        //Assert
+        expect(typeof(result)).toBe(expectedValueTypeOf);
+    });
+
+    it('Method => ErrorMessage => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'function';
+
+        //Act
+        var result = component.errorMessage;
+        console.log(result)
+
+        //Assert
+        expect(typeof(result)).toBe(expectedValueTypeOf);
+    });
+
+    it('Method => ErrorMessage', () => {
+        //Arrange
+        let messageErro: string = 'Erro ao cadastrar o cliente';
+        var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+        spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
+
+        //Act
+        var result = component.errorMessage;
+        console.log(component.messageErro);
+
+        //Assert
+        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(component.messageErro).toBe(messageErro);
+    });
+
+    it('Method => SuccessMessage', () => {
+        //Arrange
+        let messageSuccess: string = 'O cliente foi cadastrado com sucesso!';
+        var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
+        spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(messageSuccess);
+
+        //Act
+        var result = component.successMessage;
+
+        //Assert
+        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(component.messageSuccess).toBe(messageSuccess);
+    });
+
+    it('Method => Reply', () => {
+        //Arrange
+        let routerString: string = 'main';
+        var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+        spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
+
+        //Act
+        var result = component.reply;
+
+        //Assert
+        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(component.routerString).toBe(routerString);
+    });
+
+    it('Method => BuyerList', () => {
+        //Arrange
+        let routerString: string = 'buyer-list';
+        var spyOnComponent = spyOn(component, 'buyerList').and.callThrough();
+        spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
+
+        //Act
+        var result = component.buyerList;
+
+        //Assert
+        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(component.routerString).toBe(routerString);
     });
 });
