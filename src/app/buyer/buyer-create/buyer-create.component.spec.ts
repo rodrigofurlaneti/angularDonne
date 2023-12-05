@@ -117,6 +117,39 @@ describe('BuyerCreateComponent', () => {
         expect(typeof(component.messageTime)).toBe(expectedValueTypeOf);
     });
 
+    it('Property private => MessageSuccess => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'string';
+
+        //Act
+        component.messageSuccess = expectedValueTypeOf;
+        
+        //Assert
+        expect(typeof(component.messageSuccess)).toBe(expectedValueTypeOf);
+    });
+
+    it('Property private => MessageErro => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'string';
+
+        //Act
+        component.messageErro = expectedValueTypeOf;
+        
+        //Assert
+        expect(typeof(component.messageErro)).toBe(expectedValueTypeOf);
+    });
+
+    it('Property private => RouterString => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'string';
+
+        //Act
+        component.routerString = expectedValueTypeOf;
+        
+        //Assert
+        expect(typeof(component.routerString)).toBe(expectedValueTypeOf);
+    });
+
     it('Method => BuyerList => TypeOf', () => {
         //Arrange
         let expectedValueTypeOf: string = 'function';
