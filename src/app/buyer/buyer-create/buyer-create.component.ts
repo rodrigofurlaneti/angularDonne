@@ -12,6 +12,7 @@ import { BuyerModel } from '../../../interface/buyer.interface';
 
 export class BuyerCreateComponent {
   
+  //#region [Properties]
   //Property BuyerModel
   private _buyerModel = new BuyerModel();
   get buyerModel() { return this._buyerModel; }
@@ -52,9 +53,17 @@ export class BuyerCreateComponent {
   get messageBuyerPhone() { return this._messageBuyerPhone; }
   set messageBuyerPhone(value) { this._messageBuyerPhone = value; }
   
+  //#endregion
+
+  //#region [Constructor]
+  
   constructor(private buyerCreateService: BuyerCreateService, 
     private _snackBar: MatSnackBar,
     private readonly router: Router) { }
+  
+  //#endregion
+
+  //#region [Methods]
 
   save() {
 
@@ -129,6 +138,8 @@ export class BuyerCreateComponent {
       duration: this.messageTime
     });
   }
+
+  //#endregion
 }
 
 
