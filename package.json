@@ -12,7 +12,9 @@
     "namedColors":{
       "Properties": "rgba(79, 44, 115, 0.5)",
       "Constructor": "rgba(255, 165, 0, 0.15)",
-      "Methods": "rgba(46, 204, 113, 0.15)"
+      "Methods": "rgba(46, 204, 113, 0.15)",
+      "Should": "rgba(255, 165, 0, 0.15)",
+      "BeforeEach": "rgba(255, 0, 0, 0.15)"
     }
   },
   "private": true,

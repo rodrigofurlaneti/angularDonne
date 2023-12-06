@@ -24,6 +24,8 @@ describe('BuyerCreateComponent', () => {
         {path: '**', redirectTo: 'themen', pathMatch: 'full'}
       ];
 
+    // #region [BeforeEach]
+
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [BuyerCreateComponent],
@@ -42,9 +44,21 @@ describe('BuyerCreateComponent', () => {
         fixture.detectChanges();
     }));
 
-    it('Should create => Buyer create component', () => {
-        expect(component).toBeTruthy();
+    // #endregion
+
+    // #region [Should]
+
+    describe('Should', () => {
+
+        it('Create => Buyer create component', () => {
+            expect(component).toBeTruthy();
+        });
+
     });
+
+    // #endregion
+
+    //#region [Properties]
 
     describe('Property private', () => {
 
@@ -171,6 +185,10 @@ describe('BuyerCreateComponent', () => {
         });
     });
 
+    //#endregion
+
+    // #region [Methods]
+    
     describe('Methods', () => {
 
         describe('Save', () => {
@@ -471,6 +489,7 @@ describe('BuyerCreateComponent', () => {
             });
 
         })
-       
     });
+
+    // #endregion
 });

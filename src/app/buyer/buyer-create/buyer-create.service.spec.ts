@@ -10,6 +10,8 @@ describe('BuyerCreateComponent', () => {
     let service: BuyerCreateService;
     let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
+    // #region [BeforeEach]
+
     beforeEach(() => {
         let httpClientSpyObj = jasmine.createSpyObj('HttpClient', ['post']);
         TestBed.configureTestingModule({
@@ -22,9 +24,19 @@ describe('BuyerCreateComponent', () => {
         httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
     });
 
-    it('should be created', () => {
-        expect(service).toBeTruthy();
+    // #endregion
+
+    // #region [Should]
+
+    describe('Should be', () => {
+        it('Created', () => {
+            expect(service).toBeTruthy();
+        });
     });
+
+    // #endregion
+
+    // #region [Methods]
 
     describe('Method => Save', () => {
         it('with success', () => {
@@ -47,4 +59,6 @@ describe('BuyerCreateComponent', () => {
           expect(httpClientSpy.post).toHaveBeenCalledTimes(1);
         });
       });
+
+      // #endregion
 });
