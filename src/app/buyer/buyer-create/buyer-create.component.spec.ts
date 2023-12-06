@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { BuyerCreateComponent } from './buyer-create.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -6,16 +6,28 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BuyerModel } from 'src/interface/buyer.interface';
 import { faker } from '@faker-js/faker';
-import { of } from 'rxjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import {Router, Routes} from '@angular/router';
+import { MainComponent } from 'src/app/main/main.component';
+import { BuyerListComponent } from '../buyer-list/buyer-list.component';
 
 describe('BuyerCreateComponent', () => {
     let component: BuyerCreateComponent;
     let fixture: ComponentFixture<BuyerCreateComponent>;
+    let router: Router;
+    const routes: Routes = [
+        {path: 'main', component: MainComponent},
+        {path: 'buyer-list', component: BuyerListComponent},
+        {path: '**', redirectTo: 'themen', pathMatch: 'full'}
+      ];
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [BuyerCreateComponent],
             imports: [
+                RouterTestingModule.withRoutes(routes),
+                BrowserAnimationsModule,
                 HttpClientTestingModule, 
                 MatDialogModule,
                 MatSnackBarModule
@@ -24,6 +36,7 @@ describe('BuyerCreateComponent', () => {
         }).compileComponents();
         fixture = TestBed.createComponent(BuyerCreateComponent);
         component = fixture.componentInstance;
+        router = TestBed.inject(Router);
         fixture.detectChanges();
     }));
 
@@ -205,6 +218,87 @@ describe('BuyerCreateComponent', () => {
         expect(typeof(result)).toBe(expectedValueTypeOf);
     });
 
+    it('Method => Reply => RouterString', fakeAsync(() => {
+        //Arrange
+        let expectedValue: string = 'main';
+        var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+        var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+        spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
+        
+        //Act
+        component.reply();
+
+        //Assert
+        expect(component.routerString).toBe(expectedValue);
+        expect(spyOnComponent).toHaveBeenCalledTimes(1);
+        expect(spyOnRouter).toHaveBeenCalledTimes(1);
+    }));
+
+    it('Method => BuyerList => RouterString', fakeAsync(() => {
+        //Arrange
+        let expectedValue: string = 'buyer-list';
+        var spyOnComponent = spyOn(component, 'buyerList').and.callThrough();
+        var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+        spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
+        
+        //Act
+        component.buyerList();
+
+        //Assert
+        expect(component.routerString).toBe(expectedValue);
+        expect(spyOnComponent).toHaveBeenCalledTimes(1);
+        expect(spyOnRouter).toHaveBeenCalledTimes(1);
+    }));
+
+    it('Method => SuccessMessage => MessageSuccess', () => {
+        //Arrange
+        let expectedValue: string = 'O cliente foi cadastrado com sucesso!';
+        var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
+        spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValue);
+        
+        //Act
+        component.successMessage();
+
+        //Assert
+        expect(component.messageSuccess).toBe(expectedValue);
+        expect(spyOnComponent).toHaveBeenCalledTimes(1);
+    });
+
+    it('Method => ErrorMessage => MessageErro', () => {
+        //Arrange
+        let expectedValue: string = 'Erro ao cadastrar o cliente!';
+        var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+        spyOnProperty(component, 'messageErro', 'get').and.returnValue(expectedValue);
+        
+        //Act
+        component.errorMessage();
+
+        //Assert
+        expect(component.messageErro).toBe(expectedValue);
+        expect(spyOnComponent).toHaveBeenCalledTimes(1);
+    });
+
+    it('Method => AuthenticatedUser => UserIdLogin', () => {
+        //Arrange
+        let userIdLogin: string = faker.number.int().toString();
+        var element = document.createElement('input');
+        element.id = 'userIdLogin';
+        element.name = 'userIdLogin';
+        element.value = userIdLogin;
+        element.type="hidden";
+        document.getElementById = jasmine.createSpy('userIdLogin').and.returnValue(element);
+        var objBuyerModel: BuyerModel = new BuyerModel();
+        objBuyerModel.buyerId = userIdLogin;
+        var spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
+        spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
+        
+        //Act
+        component.authenticatedUser();
+
+        //Assert
+        expect(spyOnComponent).toHaveBeenCalledTimes(1);
+    });
+
     it('Method => Save => TypeOf', () => {
         //Arrange
         let expectedValueTypeOf: string = 'function';
@@ -277,19 +371,19 @@ describe('BuyerCreateComponent', () => {
         expect(component.messageSuccess).toBe(messageSuccess);
     });
 
-    it('Method => Reply', () => {
+    it('Method => Reply', fakeAsync(() => {
         //Arrange
         let routerString: string = 'main';
         var spyOnComponent = spyOn(component, 'reply').and.callThrough();
         spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
 
         //Act
-        var result = component.reply;
+        component.reply();
 
         //Assert
-        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(spyOnComponent).toHaveBeenCalledTimes(1);
         expect(component.routerString).toBe(routerString);
-    });
+    }));
 
     it('Method => BuyerList', () => {
         //Arrange
@@ -315,10 +409,10 @@ describe('BuyerCreateComponent', () => {
         spyOnProperty(component, 'messageBuyerName', 'get').and.returnValue(messageBuyerName);
         
         //Act
-        var result = component.save;
+        component.save();
 
         //Assert
-        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(spyOnComponent).toHaveBeenCalledTimes(1);
         expect(component.messageBuyerName).toBe(messageBuyerName);
     });
 
@@ -333,10 +427,10 @@ describe('BuyerCreateComponent', () => {
         spyOnProperty(component, 'messageBuyerAddress', 'get').and.returnValue(messageBuyerAddress);
         
         //Act
-        var result = component.save;
+        component.save();
 
         //Assert
-        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(spyOnComponent).toHaveBeenCalledTimes(1);
         expect(component.messageBuyerAddress).toBe(messageBuyerAddress);
     });
 
@@ -352,10 +446,10 @@ describe('BuyerCreateComponent', () => {
         spyOnProperty(component, 'messageBuyerPhone', 'get').and.returnValue(messageBuyerPhone);
         
         //Act
-        var result = component.save;
+        component.save();
 
         //Assert
-        expect(spyOnComponent).toHaveBeenCalledTimes(0);
+        expect(spyOnComponent).toHaveBeenCalledTimes(1);
         expect(component.messageBuyerPhone).toBe(messageBuyerPhone);
     });
 
@@ -369,9 +463,16 @@ describe('BuyerCreateComponent', () => {
         spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
         
         //Act
-        var result = component.save();
+        component.save();
 
         //Assert
         expect(spyOnComponent).toHaveBeenCalledTimes(1);
+        expect(component.buyerModel.buyerName).toBe(objBuyerModel.buyerName);
+        expect(component.buyerModel.buyerAddress).toBe(objBuyerModel.buyerAddress);
+        expect(component.buyerModel.buyerPhone).toBe(objBuyerModel.buyerPhone);
     });
 });
+
+function setAttributes(element: HTMLElement, arg1: { style: string; id: string; }) {
+    throw new Error('Function not implemented.');
+}

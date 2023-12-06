@@ -65,8 +65,8 @@ export class BuyerCreateComponent {
 
   //#region [Methods]
 
-  save() {
-
+  save():void {
+    console.log(this.buyerModel);
     //check fields
     if(this.buyerModel.buyerName == "")
     {
@@ -103,7 +103,7 @@ export class BuyerCreateComponent {
       }
     }
 
-  reply(){
+  reply():void{
     this.routerString = 'main';
     this.router.navigate([this.routerString]);
   }
@@ -113,7 +113,7 @@ export class BuyerCreateComponent {
     this.router.navigate([this.routerString]);
   }
 
-  public authenticatedUser(){
+  authenticatedUser():void{
         // 👉️ User Login
         const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
         if (userIdLogin != null) {
@@ -125,14 +125,14 @@ export class BuyerCreateComponent {
         }
   }
 
-  public successMessage(){
+  successMessage():void{
     this.messageSuccess = 'O cliente foi cadastrado com sucesso!';
     this._snackBar.open(this.messageSuccess + this.buyerModel.buyerName ,'', {
       duration: this.messageTime
     });
   }
 
-  public errorMessage():void{
+  errorMessage():void{
     this.messageErro = 'Erro ao cadastrar o cliente!';
     this._snackBar.open(this.messageErro + this.buyerModel.buyerName,'', {
       duration: this.messageTime
