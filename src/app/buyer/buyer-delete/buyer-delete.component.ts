@@ -4,8 +4,6 @@ import { BuyerDeleteService } from './buyer-delete.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BuyerModel } from 'src/interface/buyer.interface';
 
-let ELEMENT_DATA: BuyerModel[];
-
 @Component({
   selector: 'buyer-delete',
   templateUrl: './buyer-delete.component.html',
@@ -13,41 +11,89 @@ let ELEMENT_DATA: BuyerModel[];
 })
 export class BuyerDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  //#region [Properties]
+  //Property Status
+  private _status: string = '';
+  get status() { return this._status; }
+  set status(value) { this._status = value; }
 
-  status: string = '';
+  //Property Ids
+  private _ids: number = 0;
+  get ids() { return this._ids; }
+  set ids(value) { this._ids = value; }
 
-  ids: number = 0;
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
 
+  //Property DataSource
+  private _dataSource: BuyerModel[] = [];
+  get dataSource() { return this._dataSource; }
+  set dataSource(value) { this._dataSource = value; }
+
+  //Property ClickedRows
+  private _clickedRows = new Set<BuyerModel>();
+  get clickedRows() { return this._clickedRows; }
+  set clickedRows(value) { this._clickedRows = value; }
+
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+
+  // #endregion
+
+  //#region [Constructor]
+  
   constructor(private buyerDeleteService: BuyerDeleteService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
+    // #endregion
+
+  // #region [Methods]
   ngOnInit(): void {
     this.list();
   }
 
-  public list() {
+  list():void {
+    this.messageErro = 'Erro ao listar os clientes!';
     this.buyerDeleteService.list().subscribe(list => {
-      ELEMENT_DATA = list;
-      this.dataSource = ELEMENT_DATA;
+      this.dataSource = list;
     }, err => {
-      console.log('Erro ao listar as categorias', err);
+      console.log(this.messageErro, err);
     })
   }
 
-  public delete(id: number) {
+  delete(id: number):void {
+    this.messageSuccess = 'O cliente foi excluido com sucesso!'
     this.buyerDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
-    this.router.navigate(['main']);
-    this._snackBar.open('O cliente foi excluido com sucesso!','', {
-      duration: 2000
+    this.reply();
+    this._snackBar.open(this.messageSuccess,'', {
+      duration: this.messageTime
     });
   }
 
-  dataSource = ELEMENT_DATA;
-  clickedRows = new Set<BuyerModel>();
-
   reply(){
-    this.router.navigate(['main']);
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
+  
+  // #endregion
 }

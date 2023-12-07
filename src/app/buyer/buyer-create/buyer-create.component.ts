@@ -43,12 +43,12 @@ export class BuyerCreateComponent {
   get messageBuyerName() { return this._messageBuyerName; }
   set messageBuyerName(value) { this._messageBuyerName = value; }
 
-  //Property MessageBuyerName
+  //Property MessageBuyerAddress
   private _messageBuyerAddress: string = '';
   get messageBuyerAddress() { return this._messageBuyerAddress; }
   set messageBuyerAddress(value) { this._messageBuyerAddress = value; }
     
-  //Property MessageBuyerName
+  //Property MessageBuyerPhone
   private _messageBuyerPhone: string = '';
   get messageBuyerPhone() { return this._messageBuyerPhone; }
   set messageBuyerPhone(value) { this._messageBuyerPhone = value; }
