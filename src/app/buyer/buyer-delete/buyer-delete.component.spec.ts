@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -11,7 +11,7 @@ import { BuyerListComponent } from '../buyer-list/buyer-list.component';
 import { BuyerDeleteComponent } from './buyer-delete.component';
 import { faker } from '@faker-js/faker';
 import { BuyerModel } from 'src/interface/buyer.interface';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { BuyerDeleteService } from './buyer-delete.service';
 
 describe('BuyerDeleteComponent', () => {
@@ -205,6 +205,8 @@ describe('BuyerDeleteComponent', () => {
                     expect(spyOnComponent).toHaveBeenCalledTimes(1);
                     expect(component.list).toHaveBeenCalled();
                 });
+
+                
             });
 
             describe('Delete', () => {
@@ -258,6 +260,8 @@ describe('BuyerDeleteComponent', () => {
                     expect(spyOnComponent).toHaveBeenCalledTimes(1);
                     expect(component.delete).toHaveBeenCalled();
                 });
+
+
             });
         });
     

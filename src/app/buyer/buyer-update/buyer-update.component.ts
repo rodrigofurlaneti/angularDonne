@@ -14,24 +14,83 @@ let ELEMENT_DATA: BuyerModel[];
 
 export class BuyerUpdateComponent implements OnInit {
 
-  isIdZero = true;
+  //#region [Properties]
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
 
-  isIdGreaterThanZero = false;
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
 
-  displayedColumns: string[] = ['name'];
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
 
-  status: string = '';
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
 
-  ids: number = 0;
+  //Property MessageBuyerName
+  private _messageBuyerName: string = '';
+  get messageBuyerName() { return this._messageBuyerName; }
+  set messageBuyerName(value) { this._messageBuyerName = value; }
+  
+  //Property MessageBuyerAddress
+  private _messageBuyerAddress: string = '';
+  get messageBuyerAddress() { return this._messageBuyerAddress; }
+  set messageBuyerAddress(value) { this._messageBuyerAddress = value; }
+      
+  //Property MessageBuyerPhone
+  private _messageBuyerPhone: string = '';
+  get messageBuyerPhone() { return this._messageBuyerPhone; }
+  set messageBuyerPhone(value) { this._messageBuyerPhone = value; }
 
-  buyerModel = new BuyerModel();
+  //Property BuyerModel
+  private _buyerModel = new BuyerModel();
+  get buyerModel() { return this._buyerModel; }
+  set buyerModel(value) { this._buyerModel = value; }
 
-  messageTime: number = 5000;
-   
+  //Property IsIdZero
+  private _isIdZero: boolean = true;
+  get isIdZero() { return this._isIdZero; }
+  set isIdZero(value) { this._isIdZero = value; }
+
+  //Property IsIdGreaterThanZero
+  private _isIdGreaterThanZero: boolean = false;
+  get isIdGreaterThanZero() { return this._isIdGreaterThanZero; }
+  set isIdGreaterThanZero(value) { this._isIdGreaterThanZero = value; }
+
+  //Property Status
+  private _status: string = '';
+  get status() { return this._status; }
+  set status(value) { this._status = value; }
+
+  //Property Ids
+  private _ids: number = 0;
+  get ids() { return this._ids; }
+  set ids(value) { this._ids = value; }
+
+  // #endregion
+
+  //#region [Constructor]
   constructor(private buyerUpdateService: BuyerUpdateService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
+  //#endregion
+  
+  //#region [Methods]
+
   ngOnInit(): void {
     this.list();   
     this.hideUpdateButton(); 
@@ -75,7 +134,8 @@ export class BuyerUpdateComponent implements OnInit {
   clickedRows = new Set<BuyerModel>();
 
   reply(){
-    this.router.navigate(['main']);
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
 
   public update() {
@@ -126,14 +186,18 @@ export class BuyerUpdateComponent implements OnInit {
 }
 
   public successMessage(){
-    this._snackBar.open('O cliente "'+ this.buyerModel.buyerName +'" foi atualizado com sucesso!','', {
+    this.messageSuccess = 'O cliente foi atualizado com sucesso!';
+    this._snackBar.open(this.messageSuccess,'', {
       duration: this.messageTime
     });
   }
 
   public errorMessage(){
-    this._snackBar.open('Erro ao atualizar o cliente "'+ this.buyerModel.buyerName +'" !','', {
+    this.messageErro = 'Erro ao atualizar o cliente!'
+    this._snackBar.open(this.messageErro,'', {
       duration: this.messageTime
     });
   }
+
+  // #endregion
 }

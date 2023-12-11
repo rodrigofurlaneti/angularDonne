@@ -74,12 +74,16 @@ export class BuyerDeleteComponent implements OnInit {
 
   list():void {
     this.messageErro = 'Erro ao listar os clientes!';
-    this.buyerDeleteService.list().subscribe(list => {
-      this.dataSource = list;
-    }, err => {
-      console.log(this.messageErro, err);
-    })
-  }
+    this.buyerDeleteService.list().subscribe((list) => {
+        this.dataSource = list;
+    },
+      (err) => {
+        this._snackBar.open(this.messageErro,'', {
+          duration: this.messageTime
+        });
+        console.log(this.messageErro, err);
+      })
+    }
 
   delete(id: number):void {
     this.messageSuccess = 'O cliente foi excluido com sucesso!'
