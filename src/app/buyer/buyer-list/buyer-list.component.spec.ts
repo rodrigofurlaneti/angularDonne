@@ -10,11 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
+import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BuyerListService } from './buyer-list.service';
 
 describe('BuyerlistComponent', () => {
     let component: BuyerListComponent;
     let fixture: ComponentFixture<BuyerListComponent>;
     let router: Router;
+    let service: BuyerListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'buyer-list', component: BuyerListComponent},
@@ -38,6 +42,7 @@ describe('BuyerlistComponent', () => {
         fixture = TestBed.createComponent(BuyerListComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
+        service = TestBed.inject(BuyerListService);
         fixture.detectChanges();
     }));
 
@@ -106,6 +111,19 @@ describe('BuyerlistComponent', () => {
                 //Assert
                 expect(typeof(component.routerString)).toBe(expectedValueTypeOf);
             });
+
+            it('DataSource => TypeOf', () => {
+                //Arrange
+                let expectedValueTypeOf: string = 'object';
+                let expectedValue: BuyerModel[] = [];
+        
+                //Act
+                component.dataSource = expectedValue;
+                
+                //Assert
+                expect(typeof(component.dataSource)).toBe(expectedValueTypeOf);
+                expect(component.dataSource).toEqual(expectedValue);
+            });
         });
         
         // #endregion
@@ -120,6 +138,30 @@ describe('BuyerlistComponent', () => {
             it('List => Success', () => {
                 //Arrange
                 var spyOnComponent = spyOn(component, 'list').and.callThrough();
+
+                //Act
+                component.list();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.list).toHaveBeenCalled();
+            });
+
+            it('List => Success => Subscribe', () => {
+                //Arrange
+                var objBuyerModel: BuyerModel = new BuyerModel()
+                objBuyerModel.buyerAddress = faker.location.streetAddress();
+                objBuyerModel.buyerName = faker.person.fullName();
+                objBuyerModel.buyerPhone = faker.phone.number().toString();
+                objBuyerModel.dateInsert = faker.date.anytime();
+                objBuyerModel.dateUpdate = faker.date.anytime();
+                objBuyerModel.userId = faker.number.int();
+                objBuyerModel.userName = faker.person.fullName();
+                var spyOnComponent = spyOn(component, 'list').and.callThrough();
+                var getSpy = spyOn(service, 'list').and.returnValue(of(objBuyerModel));
+                service.list().subscribe((data) => {
+                    expect(data).toEqual(objBuyerModel);
+                });
 
                 //Act
                 component.list();

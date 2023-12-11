@@ -12,10 +12,12 @@ import { BuyerDeleteComponent } from './buyer-delete.component';
 import { faker } from '@faker-js/faker';
 import { BuyerModel } from 'src/interface/buyer.interface';
 import { of } from 'rxjs';
+import { BuyerDeleteService } from './buyer-delete.service';
 
 describe('BuyerDeleteComponent', () => {
     let component: BuyerDeleteComponent;
     let fixture: ComponentFixture<BuyerDeleteComponent>;
+    let service: BuyerDeleteService;
     let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
@@ -40,6 +42,7 @@ describe('BuyerDeleteComponent', () => {
         fixture = TestBed.createComponent(BuyerDeleteComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
+        service = TestBed.inject(BuyerDeleteService);
         fixture.detectChanges();
     }));
 
@@ -145,6 +148,19 @@ describe('BuyerDeleteComponent', () => {
                 //Assert
                 expect(typeof(component.routerString)).toBe(expectedValueTypeOf);
             });
+
+            it('MessageTime => TypeOf', () => {
+                //Arrange
+                let expectedValueTypeOf: string = 'number';
+                let expectedValue: number = 3000;
+
+                //Act
+                component.messageTime = expectedValue;
+                
+                //Assert
+                expect(typeof(component.messageTime)).toBe(expectedValueTypeOf);
+                expect(component.messageTime).toEqual(expectedValue);
+            });
         });
         
         // #endregion
@@ -158,6 +174,30 @@ describe('BuyerDeleteComponent', () => {
                     //Arrange
                     var spyOnComponent = spyOn(component, 'list').and.callThrough();
 
+                    //Act
+                    component.list();
+            
+                    //Assert
+                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                    expect(component.list).toHaveBeenCalled();
+                });
+
+                it('List => Success => Subscribe', () => {
+                    //Arrange
+                    var objBuyerModel: BuyerModel = new BuyerModel()
+                    objBuyerModel.buyerAddress = faker.location.streetAddress();
+                    objBuyerModel.buyerName = faker.person.fullName();
+                    objBuyerModel.buyerPhone = faker.phone.number().toString();
+                    objBuyerModel.dateInsert = faker.date.anytime();
+                    objBuyerModel.dateUpdate = faker.date.anytime();
+                    objBuyerModel.userId = faker.number.int();
+                    objBuyerModel.userName = faker.person.fullName();
+                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
+                    var getSpy = spyOn(service, 'list').and.returnValue(of(objBuyerModel));
+                    service.list().subscribe((data) => {
+                        expect(data).toEqual(objBuyerModel);
+                    });
+    
                     //Act
                     component.list();
             
@@ -189,6 +229,32 @@ describe('BuyerDeleteComponent', () => {
                     //Assert
                     expect(component.messageSuccess).toBe(expectedValueMessageSuccess);
                     expect(component.status).toBe(expectedValueStatus);
+                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                    expect(component.delete).toHaveBeenCalled();
+                });
+
+                it('Delete => Success => Subscribe', () => {
+                    //Arrange
+                    let buyerId : number = faker.number.int();
+                    var objBuyerModel : BuyerModel = new BuyerModel()
+                    objBuyerModel.buyerAddress = faker.location.streetAddress();
+                    objBuyerModel.buyerName = faker.person.fullName();
+                    objBuyerModel.buyerPhone = faker.phone.number().toString();
+                    objBuyerModel.dateInsert = faker.date.anytime();
+                    objBuyerModel.dateUpdate = faker.date.anytime();
+                    objBuyerModel.userId = faker.number.int();
+                    objBuyerModel.userName = faker.person.fullName();
+                    objBuyerModel.buyerId = buyerId.toFixed();
+                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
+                    var getSpy = spyOn(service, 'delete').and.returnValue(of(objBuyerModel));
+                    service.delete(buyerId).subscribe((data) => {
+                        expect(data).toEqual(objBuyerModel);
+                    });
+    
+                    //Act
+                    component.delete(buyerId);
+            
+                    //Assert
                     expect(spyOnComponent).toHaveBeenCalledTimes(1);
                     expect(component.delete).toHaveBeenCalled();
                 });
