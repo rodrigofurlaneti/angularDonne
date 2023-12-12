@@ -12,24 +12,65 @@ import { CategoryModel } from '../../../interface/category.interface';
 
 export class CategoryCreateComponent {
 
-  categoryModel = new CategoryModel();
+  //#region [Properties]
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+  
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+  
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+  
+  //Property CategoryModel
+  private _categoryModel = new CategoryModel();
+  get categoryModel() { return this._categoryModel; }
+  set categoryModel(value) { this._categoryModel = value; }
 
-  messageTime: number = 5000;
+  //Property MessageCategoryName
+  private _messageCategoryName : string = '';
+  get messageCategoryName() { return this._messageCategoryName; }
+  set messageCategoryName(value) { this._messageCategoryName = value; }
+
+  
+  // #endregion
+
+  // #region [Constructor]
 
   constructor(private categoryCreateService: CategoryCreateService, 
     private _snackBar: MatSnackBar,  
     private readonly router: Router) { }
 
-  save() {
-    
-    //checkFields
-    if(this.categoryModel.categoryName == "")
+  // #endregion
+
+  // #region [Methods]
+
+  public checkFields(objCategoryModel: CategoryModel):CategoryModel{
+    if(objCategoryModel.categoryName == "")
     {
-      this._snackBar.open('O nome da categoria está vazio, precisa preencher!','', {
+      this._messageCategoryName = 'Não está preenchido o campo nome da categoria!'; 
+      this._snackBar.open(this.messageCategoryName,'', {
         duration: this.messageTime
       });
     }
+    return objCategoryModel;
+  }
 
+  save() {
+    
+    this.categoryModel = this.checkFields(this.categoryModel);
+    
     //save
     if(this.categoryModel.categoryName != "")
     {
@@ -44,12 +85,14 @@ export class CategoryCreateComponent {
     }
   }
 
-  reply(){
-    this.router.navigate(['main']);
+  reply() : void{
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
 
-  categoryList(){
-    this.router.navigate(['category-list']);
+  categoryList() : void{
+    this.routerString = 'category-list';
+    this.router.navigate([this.routerString]);
   }
 
   public authenticatedUser(){
@@ -65,14 +108,18 @@ export class CategoryCreateComponent {
   }
 
   public successMessage(){
-    this._snackBar.open('A categoria "'+ this.categoryModel.categoryName +'" foi cadastrada com sucesso!','', {
+    this.messageSuccess = 'A categoria foi cadastrada com sucesso!'; 
+    this._snackBar.open(this.messageSuccess,'', {
       duration: this.messageTime
     });
   }
 
   public errorMessage(){
-    this._snackBar.open('Erro ao cadastrar a categoria "'+ this.categoryModel.categoryName +'" !','', {
+    this.messageErro = 'Erro ao cadastrar a categoria!';
+    this._snackBar.open(this.messageErro,'', {
       duration: this.messageTime
     });
   }
+
+  // #endregion
 }

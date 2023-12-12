@@ -11,8 +11,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import {Router, Routes} from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { BuyerListComponent } from '../buyer-list/buyer-list.component';
-import { of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
 describe('BuyerCreateComponent', () => {
     let component: BuyerCreateComponent;

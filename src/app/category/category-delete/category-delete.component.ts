@@ -4,50 +4,97 @@ import { CategoryDeleteService } from './category-delete.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryModel } from 'src/interface/category.interface';
 
-let ELEMENT_DATA: CategoryModel[];
-
 @Component({
   selector: 'category-delete',
   templateUrl: './category-delete.component.html',
   styleUrls: ['./category-delete.component.css']
 })
+
 export class CategoryDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  //#region [Properties]
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+  
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+  
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
 
-  status: string = '';
+  //Property Status
+  private _status: string = '';
+  get status() { return this._status; }
+  set status(value) { this._status = value; }
 
-  ids: number = 0;
+  //Property Ids
+  private _ids: number = 0;
+  get ids() { return this._ids; }
+  set ids(value) { this._ids = value; }
+
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
+
+  //Property DataSource
+  private _dataSource: CategoryModel[] = [];
+  get dataSource() { return this._dataSource; }
+  set dataSource(value) { this._dataSource = value; }
+
+  //Property ClickedRows
+  private _clickedRows = new Set<CategoryModel>();
+  get clickedRows() { return this._clickedRows; }
+  set clickedRows(value) { this._clickedRows = value; }
+
+  // #endregion
+
+  // #region [Constructor]
 
   constructor(private categoryDeleteService: CategoryDeleteService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
+  // #endregion
+
+  // #region [Methods]
+
   ngOnInit(): void {
     this.list();
   }
 
   public list() {
     this.categoryDeleteService.list().subscribe(list => {
-      ELEMENT_DATA = list;
-      this.dataSource = ELEMENT_DATA;
+      this.dataSource = list;
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })
   }
 
+  reply():void{
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
+  }
+
   public delete(id: number) {
+    this.messageSuccess = 'A categoria foi excluída com sucesso!';
     this.categoryDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
-    this.router.navigate(['main']);
-    this._snackBar.open('A categoria foi excluída com sucesso!', '', {
-      duration: 2000
+    this.reply();
+    this._snackBar.open(this.messageSuccess, '', {
+      duration: this._messageTime
     });
   }
 
-  dataSource = ELEMENT_DATA;
-  clickedRows = new Set<CategoryModel>();
-
-  reply(){
-    this.router.navigate(['main']);
-  }
+  // #endregion
 }

@@ -53,7 +53,7 @@ export class BuyerCreateComponent {
   get messageBuyerPhone() { return this._messageBuyerPhone; }
   set messageBuyerPhone(value) { this._messageBuyerPhone = value; }
   
-  //#endregion
+  // #endregion
 
   //#region [Constructor]
   
@@ -114,15 +114,16 @@ export class BuyerCreateComponent {
   }
 
   authenticatedUser():void{
-        // 👉️ User Login
-        const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
-        if (userIdLogin != null) {
-          this.buyerModel.userId = parseInt(userIdLogin.value);
-        }
-        const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
-        if (userIdLogin != null) {
-          this.buyerModel.userName = userNameLogin.value;
-        }
+    // 👉️ User Login
+    const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
+    if (userIdLogin != null)
+    {
+      this.buyerModel.userId = parseInt(userIdLogin.value);
+    }
+    const userNameLogin = <HTMLElement>document.getElementById('userNameLogin')as HTMLInputElement;
+    if (userIdLogin != null) {
+      this.buyerModel.userName = userNameLogin.value;
+    }
   }
 
   successMessage():void{
@@ -141,7 +142,3 @@ export class BuyerCreateComponent {
 
   //#endregion
 }
-
-
-
-

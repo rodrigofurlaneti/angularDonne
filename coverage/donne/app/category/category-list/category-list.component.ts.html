@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for app/buyer/buyer-list/buyer-list.component.ts</title>
+    <title>Code coverage report for app/category/category-list/category-list.component.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">app/buyer/buyer-list</a> buyer-list.component.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">app/category/category-list</a> category-list.component.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96% </span>
+                <span class="strong">92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/25</span>
+                <span class='fraction'>23/25</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96% </span>
+                <span class="strong">92% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/25</span>
+                <span class='fraction'>23/25</span>
             </div>
         
             
@@ -124,16 +124,8 @@
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,9 +161,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -179,18 +169,14 @@
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -199,35 +185,32 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { BuyerListService } from './buyer-list.service';
-import { BuyerModel } from 'src/interface/buyer.interface';
+import { CategoryListService } from './category-list.service';
+import { CategoryModel } from 'src/interface/category.interface';
 &nbsp;
 @Component({
-  selector: 'buyer-list',
-  templateUrl: './buyer-list.component.html',
-  styleUrls: ['./buyer-list.component.css']
+  selector: 'category-list',
+  templateUrl: './category-list.component.html',
+  styleUrls: ['./category-list.component.css']
 })
-export class BuyerListComponent implements OnInit {
+&nbsp;
+export class CategoryListComponent implements OnInit {
 &nbsp;
   //#region [Properties]
   //Property DisplayedColumns
-  private _displayedColumns: string[] = ['id','name'];
+  private _displayedColumns: string[] = ['name'];
   get displayedColumns() { return this._displayedColumns; }
   set displayedColumns(value) { this._displayedColumns = value; }
 &nbsp;
   //Property DataSource
-  private _dataSource: BuyerModel[] = [];
+  private _dataSource: CategoryModel[] = [];
   get dataSource() { return this._dataSource; }
   set dataSource(value) { this._dataSource = value; }
 &nbsp;
   //Property ClickedRows
-  private _clickedRows = new Set&lt;BuyerModel&gt;();
+  private _clickedRows = new Set&lt;CategoryModel&gt;();
   get clickedRows() { return this._clickedRows; }
   set clickedRows(value) { this._clickedRows = value; }
   
@@ -243,37 +226,27 @@ export class BuyerListComponent implements OnInit {
   
   // #endregion
 &nbsp;
-  // #region [Constructor]
-&nbsp;
-  constructor(private buyerListService: BuyerListService,
+  constructor(private categoryListService: CategoryListService,
               private router: Router) { }
   
-  // #endregion
-&nbsp;
-  // #region [Methods]
-&nbsp;
   ngOnInit(): void {
     this.list();
   }
 &nbsp;
   list() {
-    this.messageErro = 'Erro ao listar os clientes!';
-    this.buyerListService.list().subscribe(list =&gt; {
+    this.categoryListService.list().subscribe(list =&gt; {
       this.dataSource = list;
     }, <span class="fstat-no" title="function not covered" >err </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >      this.messageErro = 'Erro ao listar as categorias';</span>
 <span class="cstat-no" title="statement not covered" >      console.log(this.messageErro, err);</span>
     })
   }
 &nbsp;
-  reply(){
+  reply():void{
     this.routerString = 'main';
     this.router.navigate([this.routerString]);
   }
-  // #endregion
-}
-&nbsp;
-&nbsp;
-&nbsp;</pre></td></tr></table></pre>
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

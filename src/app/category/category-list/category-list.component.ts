@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { CategoryListService } from './category-list.service';
 import { CategoryModel } from 'src/interface/category.interface';
 
-let ELEMENT_DATA: CategoryModel[];
-
 @Component({
   selector: 'category-list',
   templateUrl: './category-list.component.html',
@@ -13,7 +11,33 @@ let ELEMENT_DATA: CategoryModel[];
 
 export class CategoryListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  //#region [Properties]
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
+
+  //Property DataSource
+  private _dataSource: CategoryModel[] = [];
+  get dataSource() { return this._dataSource; }
+  set dataSource(value) { this._dataSource = value; }
+
+  //Property ClickedRows
+  private _clickedRows = new Set<CategoryModel>();
+  get clickedRows() { return this._clickedRows; }
+  set clickedRows(value) { this._clickedRows = value; }
+  
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+  
+  // #endregion
 
   constructor(private categoryListService: CategoryListService,
               private router: Router) { }
@@ -24,20 +48,15 @@ export class CategoryListComponent implements OnInit {
 
   list() {
     this.categoryListService.list().subscribe(list => {
-      ELEMENT_DATA = list;
-      this.dataSource = ELEMENT_DATA;
+      this.dataSource = list;
     }, err => {
-      console.log('Erro ao listar as categorias', err);
+      this.messageErro = 'Erro ao listar as categorias';
+      console.log(this.messageErro, err);
     })
   }
 
-  dataSource = ELEMENT_DATA;
-  clickedRows = new Set<CategoryModel>();
-
-  reply(){
-    this.router.navigate(['main']);
+  reply():void{
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
-  
 }
-
-
