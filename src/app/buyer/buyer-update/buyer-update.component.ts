@@ -108,11 +108,9 @@ export class BuyerUpdateComponent implements OnInit {
 
   list() {
     this.buyerUpdateService.list().subscribe(list => {
-      ELEMENT_DATA = list;
-      this.dataSource = ELEMENT_DATA;
-      console.log(this.dataSource);
+      this.dataSource = list;
     }, err => {
-      console.log('Erro ao listar as categorias', err);
+      console.log('Erro ao listar os clientes!', err);
     })
   }
 
@@ -140,27 +138,10 @@ export class BuyerUpdateComponent implements OnInit {
 
   public update() {
 
-    //check fields
-    if(this.buyerModel.buyerName == "")
-    {
-      this._snackBar.open('Não está preenchido o campo nome do cliente!','', {
-        duration: this.messageTime
-      });
-    }
-    if(this.buyerModel.buyerAddress == "")
-    {
-      this._snackBar.open('Não está preenchido o campo endereço do cliente!','', {
-        duration: this.messageTime
-      });
-    }
-    if(this.buyerModel.buyerPhone == "")
-    {
-      this._snackBar.open('Não está preenchido o campo telefone do cliente!','', {
-        duration: this.messageTime
-      });
-    }
+    this.buyerModel = this.checkFields(this.buyerModel);
 
     //update
+    console.log(this.buyerModel);
     if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
     {
       this.authenticatedUser();
@@ -173,6 +154,32 @@ export class BuyerUpdateComponent implements OnInit {
     }
   }
 
+  public checkFields(objBuyerModel : BuyerModel) : BuyerModel
+  {
+    if(objBuyerModel.buyerName == "")
+    {
+      this.messageBuyerName = 'Não está preenchido o campo nome do cliente!';
+      this._snackBar.open(this.messageBuyerName,'', {
+        duration: this.messageTime
+      });
+    }
+    if(objBuyerModel.buyerAddress == "")
+    {
+      this.messageBuyerAddress = 'Não está preenchido o campo endereço do cliente!'; 
+      this._snackBar.open(this.messageBuyerAddress,'', {
+        duration: this.messageTime
+      });
+    }
+    if(objBuyerModel.buyerPhone == "")
+    {
+      this.messageBuyerPhone = 'Não está preenchido o campo telefone do cliente!';
+      this._snackBar.open(this.messageBuyerPhone,'', {
+        duration: this.messageTime
+      });
+    }
+    return objBuyerModel;
+  }
+
   public authenticatedUser(){
     // 👉️ User Login
     const userIdLogin = <HTMLElement>document.getElementById('userIdLogin')as HTMLInputElement;
@@ -183,7 +190,7 @@ export class BuyerUpdateComponent implements OnInit {
     if (userIdLogin != null) {
       this.buyerModel.userName = userNameLogin.value;
     }
-}
+  }
 
   public successMessage(){
     this.messageSuccess = 'O cliente foi atualizado com sucesso!';
