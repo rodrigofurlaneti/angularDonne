@@ -4,8 +4,6 @@ import { CategoryUpdateService } from './category-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryModel } from 'src/interface/category.interface';
 
-let ELEMENT_DATA: CategoryModel[];
-
 @Component({
   selector: 'category-update',
   templateUrl: './category-update.component.html',
@@ -14,24 +12,89 @@ let ELEMENT_DATA: CategoryModel[];
 
 export class CategoryUpdateComponent implements OnInit {
 
-  isIdZero = true;
+  //#region [Properties]
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
 
-  isIdGreaterThanZero = false;
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
 
-  displayedColumns: string[] = ['name'];
-
-  status: string = '';
-
-  ids: number = 0;
-
-  categoryModel = new CategoryModel();
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
   
-  messageTime: number = 5000;
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+
+  //Property MessageBuyerName
+  private _messageBuyerName: string = '';
+  get messageBuyerName() { return this._messageBuyerName; }
+  set messageBuyerName(value) { this._messageBuyerName = value; }
+  
+  //Property MessageBuyerAddress
+  private _messageBuyerAddress: string = '';
+  get messageBuyerAddress() { return this._messageBuyerAddress; }
+  set messageBuyerAddress(value) { this._messageBuyerAddress = value; }
+      
+  //Property MessageBuyerPhone
+  private _messageBuyerPhone: string = '';
+  get messageBuyerPhone() { return this._messageBuyerPhone; }
+  set messageBuyerPhone(value) { this._messageBuyerPhone = value; }
+
+  //Property CategoryModel
+  private _categoryModel = new CategoryModel();
+  get categoryModel() { return this._categoryModel; }
+  set categoryModel(value) { this._categoryModel = value; }
+
+  //Property IsIdZero
+  private _isIdZero: boolean = true;
+  get isIdZero() { return this._isIdZero; }
+  set isIdZero(value) { this._isIdZero = value; }
+
+  //Property IsIdGreaterThanZero
+  private _isIdGreaterThanZero: boolean = false;
+  get isIdGreaterThanZero() { return this._isIdGreaterThanZero; }
+  set isIdGreaterThanZero(value) { this._isIdGreaterThanZero = value; }
+
+  //Property Status
+  private _status: string = '';
+  get status() { return this._status; }
+  set status(value) { this._status = value; }
+
+  //Property Ids
+  private _ids: number = 0;
+  get ids() { return this._ids; }
+  set ids(value) { this._ids = value; }
+
+  //Property DataSource
+  private _dataSource: CategoryModel[] = [];
+  get dataSource() { return this._dataSource; }
+  set dataSource(value) { this._dataSource = value; }
+
+  // #endregion
+
+  // #region [Constructor]
 
   constructor(private categoryUpdateService: CategoryUpdateService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
+  // #endregion
+
+  // #region [Methods]
+
   ngOnInit(): void {
     this.list();    
     this.hideUpdateButton();
@@ -49,8 +112,7 @@ export class CategoryUpdateComponent implements OnInit {
 
   list() {
     this.categoryUpdateService.list().subscribe(list => {
-      ELEMENT_DATA = list;
-      this.dataSource = ELEMENT_DATA;
+      this.dataSource = list;
       console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar as categorias', err);
@@ -68,23 +130,16 @@ export class CategoryUpdateComponent implements OnInit {
                               });
   }
 
-  dataSource = ELEMENT_DATA;
-
   clickedRows = new Set<CategoryModel>();
 
-  reply(){
-    this.router.navigate(['main']);
+  reply():void{
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
 
   public update() {
     
-    //checkFields
-    if(this.categoryModel.categoryName == "")
-    {
-      this._snackBar.open('O nome da categoria está vazio!','', {
-        duration: this.messageTime
-      });
-    }
+    this.categoryModel = this.checkFields(this.categoryModel);
 
     //save
     if(this.categoryModel.categoryName != "")
@@ -99,6 +154,18 @@ export class CategoryUpdateComponent implements OnInit {
                             console.log('Erro ao listar as categorias', err);
                           });
     }
+  }
+
+  public checkFields(objCategoryModel : CategoryModel) : CategoryModel
+  {
+    if(objCategoryModel.categoryName == "")
+    {
+      this.messageErro = 'Não está preenchido o campo nome da categoria!';
+      this._snackBar.open(this.messageErro,'', {
+        duration: this.messageTime
+      });
+    }
+    return objCategoryModel;
   }
 
   public authenticatedUser(){
@@ -124,5 +191,5 @@ export class CategoryUpdateComponent implements OnInit {
       duration: this.messageTime
     });
   }
-
+  // #endregion
 }

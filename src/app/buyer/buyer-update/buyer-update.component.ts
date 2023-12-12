@@ -141,7 +141,6 @@ export class BuyerUpdateComponent implements OnInit {
     this.buyerModel = this.checkFields(this.buyerModel);
 
     //update
-    console.log(this.buyerModel);
     if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
     {
       this.authenticatedUser();
