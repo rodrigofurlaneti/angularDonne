@@ -11,10 +11,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import {Router, Routes} from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { ProfileListComponent } from '../profile-list/profile-list.component';
+import { ProfileCreateService } from './profile-create.service';
+import { ProfileCreateMockService } from '../../../../test/profile-create-mock.service'; 
 
 describe('ProfileCreateComponent', () => {
     let component: ProfileCreateComponent;
     let fixture: ComponentFixture<ProfileCreateComponent>;
+    let service: ProfileCreateService;
     let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
@@ -26,6 +29,7 @@ describe('ProfileCreateComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ProfileCreateComponent],
+            providers: [{provide: ProfileCreateService, useClass: ProfileCreateMockService }],
             imports: [
                 RouterTestingModule.withRoutes(routes),
                 BrowserAnimationsModule,
@@ -38,6 +42,7 @@ describe('ProfileCreateComponent', () => {
         fixture = TestBed.createComponent(ProfileCreateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
+        service = TestBed.inject(ProfileCreateService);
         fixture.detectChanges();
     }));
 
@@ -179,6 +184,57 @@ describe('ProfileCreateComponent', () => {
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.messageProfileName).toBe(messageProfileName);
+            });
+
+            it('Save => ProfileName => Populate', () => {
+                //Arrange
+                let messageProfileName: string = 'Não está preenchido o campo nome do perfil!';
+                var spyOnComponent = spyOn(component, 'save').and.callThrough();
+                var objProfileModel: ProfileModel = new ProfileModel()
+                objProfileModel.profileName = faker.person.fullName();
+                spyOnProperty(component, 'profileModel', 'get').and.returnValue(objProfileModel);
+                spyOnProperty(component, 'messageProfileName', 'get').and.returnValue(messageProfileName);
+                
+                //Act
+                component.save();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.messageProfileName).toBe(messageProfileName);
+            });
+
+            it('Save => Success => Subscribe', () => {
+                //Arrange
+                var objProfileModel: ProfileModel = new ProfileModel()
+                objProfileModel.userId = 1;
+                objProfileModel.userName = 'Administrador';
+                objProfileModel.profileId = 1;
+                objProfileModel.profileName = 'Administrador';
+                objProfileModel.dateUpdate = faker.date.anytime();
+                objProfileModel.dateInsert = faker.date.anytime();
+                var spyOnComponent = spyOn(component, 'save').and.callThrough();
+
+                const response = [
+                    {
+                        "profileId": "1",
+                        "profileName": "Administrador",
+                        "dateInsert": "",
+                        "dateUpdate": "",
+                        "userId": "1",
+                        "userName": "Administrador"
+                    }
+                ];
+                
+                service.save(objProfileModel).subscribe((data) => {
+                    expect(data).toEqual(response);
+                });
+
+                //Act
+                component.save();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.save).toHaveBeenCalled();
             });
 
             it('Save => TypeOf', () => {

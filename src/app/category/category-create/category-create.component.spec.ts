@@ -11,12 +11,14 @@ import { MainComponent } from 'src/app/main/main.component';
 import { CategoryModel } from 'src/interface/category.interface';
 import { faker } from '@faker-js/faker';
 import { CategoryListComponent } from '../category-list/category-list.component';
-import { BuyerModel } from 'src/interface/buyer.interface';
+import { CategoryCreateService } from './category-create.service';
+import { CategoryCreateMockService } from 'test/category-create-mock.service';
 
 describe('CategoryCreateComponent', () => {
     let component: CategoryCreateComponent;
     let fixture: ComponentFixture<CategoryCreateComponent>;
     let router: Router;
+    let service: CategoryCreateService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'category-list', component: CategoryListComponent}
@@ -27,6 +29,7 @@ describe('CategoryCreateComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [CategoryCreateComponent],
+            providers: [{provide: CategoryCreateService, useClass: CategoryCreateMockService }],
             imports: [
                 RouterTestingModule.withRoutes(routes),
                 BrowserAnimationsModule,
@@ -39,6 +42,7 @@ describe('CategoryCreateComponent', () => {
         fixture = TestBed.createComponent(CategoryCreateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
+        service = TestBed.inject(CategoryCreateService);
         fixture.detectChanges();
     }));
 
@@ -177,6 +181,41 @@ describe('CategoryCreateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.categoryModel.categoryName).toBe(objCategoryModel.categoryName);
             });
+
+            it('Save => Success => Subscribe', () => {
+                //Arrange
+                var objCategoryModel: CategoryModel = new CategoryModel()
+                objCategoryModel.userId = 1;
+                objCategoryModel.userName = 'Administrador';
+                objCategoryModel.categoryId = 1;
+                objCategoryModel.categoryName = 'Administrador';
+                objCategoryModel.dateUpdate = faker.date.anytime();
+                objCategoryModel.dateInsert = faker.date.anytime();
+                var spyOnComponent = spyOn(component, 'save').and.callThrough();
+
+                const response = [
+                    {
+                        "categoryId": "1",
+                        "categoryName": "Administrador",
+                        "dateInsert": "",
+                        "dateUpdate": "",
+                        "userId": "1",
+                        "userName": "Administrador"
+                    }
+                ];
+                
+                service.save(objCategoryModel).subscribe((data) => {
+                    expect(data).toEqual(response);
+                });
+
+                //Act
+                component.save();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.save).toHaveBeenCalled();
+            });
+
         });
 
         describe('Reply', () => {

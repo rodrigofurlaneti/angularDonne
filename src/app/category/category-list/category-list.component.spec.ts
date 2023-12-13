@@ -13,7 +13,7 @@ import { MainComponent } from 'src/app/main/main.component';
 import { of } from 'rxjs';
 import { CategoryListService } from './category-list.service';
 
-describe('CategorylistComponent', () => {
+describe('CategoryListComponent', () => {
     let component: CategoryListComponent;
     let fixture: ComponentFixture<CategoryListComponent>;
     let router: Router;
