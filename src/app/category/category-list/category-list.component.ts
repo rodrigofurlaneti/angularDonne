@@ -39,10 +39,16 @@ export class CategoryListComponent implements OnInit {
   
   // #endregion
 
+  // #region [Constructor]
+
   constructor(private categoryListService: CategoryListService,
               private router: Router) { }
   
-  ngOnInit(): void {
+  // #endregion
+
+  // #region [Methods]
+
+  ngOnInit() : void {
     this.list();
   }
 
@@ -59,4 +65,6 @@ export class CategoryListComponent implements OnInit {
     this.routerString = 'main';
     this.router.navigate([this.routerString]);
   }
+
+  // #endregion
 }

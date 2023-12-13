@@ -1,33 +1,35 @@
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
-import { CategoryListComponent } from './category-list.component';
+import { ProfileListComponent } from './profile-list.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { CategoryModel } from 'src/interface/category.interface';
+import { ProfileModel } from 'src/interface/profile.interface';
 import { faker } from '@faker-js/faker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { of } from 'rxjs';
-import { CategoryListService } from './category-list.service';
+import { ProfileListService } from './profile-list.service';
+import { ProfileListMockService } from '../../../../test/profile-list-mock.service'; 
 
-describe('CategoryListComponent', () => {
-    let component: CategoryListComponent;
-    let fixture: ComponentFixture<CategoryListComponent>;
+describe('ProfileListComponent', () => {
+    let component: ProfileListComponent;
+    let fixture: ComponentFixture<ProfileListComponent>;
     let router: Router;
-    let service: CategoryListService;
+    let service: ProfileListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
-        {path: 'category-list', component: CategoryListComponent}
+        {path: 'profile-list', component: ProfileListComponent}
       ];
 
     // #region [BeforeEach]
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [CategoryListComponent],
+            declarations: [ProfileListComponent],
+            providers: [{provide: ProfileListService, useClass: ProfileListMockService }],
             imports: [
                 RouterTestingModule.withRoutes(routes),
                 BrowserAnimationsModule,
@@ -37,10 +39,10 @@ describe('CategoryListComponent', () => {
             ],
             schemas: [ NO_ERRORS_SCHEMA ]
         }).compileComponents();
-        fixture = TestBed.createComponent(CategoryListComponent);
+        fixture = TestBed.createComponent(ProfileListComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(CategoryListService);
+        service = TestBed.inject(ProfileListService);
         fixture.detectChanges();
     }));
 
@@ -50,7 +52,7 @@ describe('CategoryListComponent', () => {
 
     describe('Should', () => {
 
-        it('list => Category list component', () => {
+        it('list => Profile list component', () => {
             expect(component).toBeTruthy();
         });
 
@@ -58,17 +60,17 @@ describe('CategoryListComponent', () => {
 
     // #endregion
 
-    //#region [Properties]
+           //#region [Properties]
 
-    describe('Property private', () => {
+           describe('Property private', () => {
 
-    it('DisplayedColumns => TypeOf', () => {
-        //Arrange
-        let expectedValueTypeOf: string = 'object';
-        let objDisplayedColumns: string[] = ['name'];
+            it('DisplayedColumns => TypeOf', () => {
+                //Arrange
+                let expectedValueTypeOf: string = 'object';
+                let objDisplayedColumns: string[] = ['name'];
 
-        //Act
-        component.displayedColumns = objDisplayedColumns;
+                //Act
+                component.displayedColumns = objDisplayedColumns;
                 
                 //Assert
                 expect(typeof(component.displayedColumns)).toBe(expectedValueTypeOf);
@@ -78,7 +80,7 @@ describe('CategoryListComponent', () => {
             it('ClickedRows => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'object';
-                let objClickedRows: Set<CategoryModel> = new Set<CategoryModel>();
+                let objClickedRows: Set<ProfileModel> = new Set<ProfileModel>();
 
                 //Act
                 component.clickedRows = objClickedRows;
@@ -113,7 +115,7 @@ describe('CategoryListComponent', () => {
             it('DataSource => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'object';
-                let expectedValue: CategoryModel[] = [];
+                let expectedValue: ProfileModel[] = [];
         
                 //Act
                 component.dataSource = expectedValue;
@@ -147,17 +149,17 @@ describe('CategoryListComponent', () => {
 
             it('List => Success => Subscribe', () => {
                 //Arrange
-                var objCategoryModel: CategoryModel = new CategoryModel()
-                objCategoryModel.categoryId = faker.number.int();
-                objCategoryModel.categoryName = faker.person.fullName();
-                objCategoryModel.dateInsert = faker.date.anytime();
-                objCategoryModel.dateUpdate = faker.date.anytime();
-                objCategoryModel.userId = faker.number.int();
-                objCategoryModel.userName = faker.person.fullName();
+                var objProfileModel: ProfileModel = new ProfileModel()
+                objProfileModel.profileId = faker.number.int();
+                objProfileModel.profileName = faker.person.fullName();
+                objProfileModel.dateInsert = faker.date.anytime();
+                objProfileModel.dateUpdate = faker.date.anytime();
+                objProfileModel.userId = faker.number.int();
+                objProfileModel.userName = faker.person.fullName();
                 var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                var getSpy = spyOn(service, 'list').and.returnValue(of(objCategoryModel));
+                var getSpy = spyOn(service, 'list').and.returnValue(of(objProfileModel));
                 service.list().subscribe((data) => {
-                    expect(data).toEqual(objCategoryModel);
+                    expect(data).toEqual(objProfileModel);
                 });
 
                 //Act

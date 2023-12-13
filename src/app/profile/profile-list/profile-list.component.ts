@@ -12,11 +12,43 @@ let ELEMENT_DATA: ProfileModel[];
 })
 export class ProfileListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  //#region [Properties]
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
+
+  //Property DataSource
+  private _dataSource: ProfileModel[] = [];
+  get dataSource() { return this._dataSource; }
+  set dataSource(value) { this._dataSource = value; }
+
+  //Property ClickedRows
+  private _clickedRows = new Set<ProfileModel>();
+  get clickedRows() { return this._clickedRows; }
+  set clickedRows(value) { this._clickedRows = value; }
+  
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+  
+  // #endregion
+
+  // #region [Constructor]
 
   constructor(private profileListService: ProfileListService,
               private router: Router) { }
   
+  // #endregion
+  
+  // #region [Methods]
+
   ngOnInit(): void {
     this.list();
   }
@@ -30,10 +62,10 @@ export class ProfileListComponent implements OnInit {
     })
   }
 
-  dataSource = ELEMENT_DATA;
-  clickedRows = new Set<ProfileModel>();
-
-  reply(){
-    this.router.navigate(['main']);
+  reply() : void{
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
+
+  // #endregion
 }
