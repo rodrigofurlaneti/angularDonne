@@ -19,8 +19,7 @@ describe('CategoryCreateComponent', () => {
     let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
-        {path: 'category-list', component: CategoryListComponent},
-        {path: '**', redirectTo: 'themen', pathMatch: 'full'}
+        {path: 'category-list', component: CategoryListComponent}
       ];
 
     // #region [BeforeEach]
@@ -162,6 +161,21 @@ describe('CategoryCreateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.messageCategoryName).toBe(messageCategoryName);
                 expect(typeof(result)).toBe(expectedValueTypeOf);
+            });
+
+            it('Save => CategoryModel => Populate', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'save').and.callThrough();
+                var objCategoryModel: CategoryModel = new CategoryModel()
+                objCategoryModel.categoryName = faker.person.fullName();
+                spyOnProperty(component, 'categoryModel', 'get').and.returnValue(objCategoryModel);
+                
+                //Act
+                component.save();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.categoryModel.categoryName).toBe(objCategoryModel.categoryName);
             });
         });
 

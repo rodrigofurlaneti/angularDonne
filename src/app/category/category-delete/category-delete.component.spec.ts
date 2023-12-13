@@ -21,8 +21,7 @@ describe('CategoryDeleteComponent', () => {
     let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
-        {path: 'Category-list', component: CategoryListComponent},
-        {path: '**', redirectTo: 'themen', pathMatch: 'full'}
+        {path: 'category-list', component: CategoryListComponent}
       ];
 
           // #region [BeforeEach]

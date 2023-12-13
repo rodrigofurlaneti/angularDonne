@@ -21,8 +21,7 @@ describe('CategoryUpdateComponent', () => {
     let service: CategoryUpdateService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
-        {path: 'Category-Update', component: CategoryUpdateComponent},
-        {path: '**', redirectTo: 'themen', pathMatch: 'full'}
+        {path: 'category-update', component: CategoryUpdateComponent}
       ];
 
     // #region [BeforeEach]

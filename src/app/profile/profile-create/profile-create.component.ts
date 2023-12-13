@@ -12,23 +12,63 @@ import { ProfileModel } from '../../../interface/profile.interface';
 
 export class ProfileCreateComponent {
 
-  profileModel = new ProfileModel();
+  //#region [Properties]
+  //Property ProfileModel
+  private _profileModel = new ProfileModel();
+  get profileModel() { return this._profileModel; }
+  set profileModel(value) { this._profileModel = value; }
 
-  messageTime: number = 5000;
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+
+  //Property MessageBuyerName
+  private _messageProfileName: string = '';
+  get messageProfileName() { return this._messageProfileName; }
+  set messageProfileName(value) { this._messageProfileName = value; }
+
+  // #endregion
+
+  // #region [Constructor]
 
   constructor(private profileCreateService: ProfileCreateService, 
     private _snackBar: MatSnackBar,  
     private readonly router: Router) { }
+  // #endregion
 
-  save() {
+  // #region [Methods]
 
-    //checkFields
-    if(this.profileModel.profileName == "")
+  checkFields(profileModel : ProfileModel) : ProfileModel
+  {
+    if(profileModel.profileName == "")
     {
-      this._snackBar.open('O nome do perfil está vazio, precisa preencher!','', {
+      this.messageProfileName = 'Não está preenchido o campo nome do perfil!';
+      this._snackBar.open(this.messageProfileName,'', {
       duration: this.messageTime
       });
     }
+    return profileModel
+  }
+
+  save() {
+
+    this.profileModel = this.checkFields(this.profileModel);
     
     //save
     if(this.profileModel.profileName != '')
@@ -44,12 +84,14 @@ export class ProfileCreateComponent {
     }
   }
 
-  reply(){
-    this.router.navigate(['main']);
+  reply() : void {
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
 
-  profileList(){
-    this.router.navigate(['profile-list']);
+  profileList() : void {
+    this.routerString = 'profile-list';
+    this.router.navigate([this.routerString]);
   }
 
   public authenticatedUser(){
@@ -65,16 +107,20 @@ export class ProfileCreateComponent {
   }
 
   public successMessage(){
-    this._snackBar.open('O perfil "'+ this.profileModel.profileName +'" foi cadastrado com sucesso!','', {
+    this.messageSuccess = 'O perfil foi cadastrado com sucesso!';
+    this._snackBar.open(this.messageSuccess,'', {
       duration: this.messageTime
     });
   }
 
   public errorMessage(){
-    this._snackBar.open('Erro ao cadastrar o perfil "'+ this.profileModel.profileName +'" !','', {
+    this.messageErro = 'Erro ao cadastrar o perfil!';
+    this._snackBar.open(this.messageErro,'', {
       duration: this.messageTime
     });
   }
+
+  // #endregion
 }
 
 

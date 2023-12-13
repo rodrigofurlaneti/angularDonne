@@ -21,8 +21,7 @@ describe('BuyerUpdateComponent', () => {
     let service: BuyerUpdateService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
-        {path: 'buyer-Update', component: BuyerUpdateComponent},
-        {path: '**', redirectTo: 'themen', pathMatch: 'full'}
+        {path: 'buyer-update', component: BuyerUpdateComponent}
       ];
 
     // #region [BeforeEach]

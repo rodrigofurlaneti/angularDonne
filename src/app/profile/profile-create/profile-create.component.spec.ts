@@ -1,31 +1,31 @@
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
-import { BuyerCreateComponent } from './buyer-create.component';
+import { ProfileCreateComponent } from './profile-create.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { BuyerModel } from 'src/interface/buyer.interface';
+import { ProfileModel } from 'src/interface/profile.interface';
 import { faker } from '@faker-js/faker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import {Router, Routes} from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { BuyerListComponent } from '../buyer-list/buyer-list.component';
+import { ProfileListComponent } from '../profile-list/profile-list.component';
 
-describe('BuyerCreateComponent', () => {
-    let component: BuyerCreateComponent;
-    let fixture: ComponentFixture<BuyerCreateComponent>;
+describe('ProfileCreateComponent', () => {
+    let component: ProfileCreateComponent;
+    let fixture: ComponentFixture<ProfileCreateComponent>;
     let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
-        {path: 'buyer-list', component: BuyerListComponent}
+        {path: 'profile-list', component: ProfileListComponent}
       ];
 
     // #region [BeforeEach]
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [BuyerCreateComponent],
+            declarations: [ProfileCreateComponent],
             imports: [
                 RouterTestingModule.withRoutes(routes),
                 BrowserAnimationsModule,
@@ -35,7 +35,7 @@ describe('BuyerCreateComponent', () => {
             ],
             schemas: [ NO_ERRORS_SCHEMA ]
         }).compileComponents();
-        fixture = TestBed.createComponent(BuyerCreateComponent);
+        fixture = TestBed.createComponent(ProfileCreateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
         fixture.detectChanges();
@@ -47,7 +47,7 @@ describe('BuyerCreateComponent', () => {
 
     describe('Should', () => {
 
-        it('Create => Buyer create component', () => {
+        it('Create => Profile create component', () => {
             expect(component).toBeTruthy();
         });
 
@@ -59,38 +59,32 @@ describe('BuyerCreateComponent', () => {
 
     describe('Property private', () => {
 
-        it('BuyerModel => TypeOf', () => {
+        it('ProfileModel => TypeOf', () => {
             //Arrange
-            var objBuyerModel: BuyerModel = new BuyerModel()
-            objBuyerModel.buyerAddress = faker.address.streetAddress();
-            objBuyerModel.buyerId = faker.number.int().toString();
-            objBuyerModel.buyerName = faker.person.fullName();
-            objBuyerModel.buyerPhone = faker.phone.number().toString();
-            objBuyerModel.dateInsert = faker.date.anytime();
-            objBuyerModel.dateUpdate = faker.date.anytime();
-            objBuyerModel.userId = faker.number.int();
-            objBuyerModel.userName = faker.person.fullName();
-    
+            var objProfileModel: ProfileModel = new ProfileModel()
+            objProfileModel.profileId = faker.number.int();
+            objProfileModel.profileName = faker.person.fullName();
+            objProfileModel.dateInsert = faker.date.anytime();
+            objProfileModel.dateUpdate = faker.date.anytime();
+            objProfileModel.userId = faker.number.int();
+            objProfileModel.userName = faker.person.fullName();
+            
             //Act
-            component.buyerModel = objBuyerModel;
+            component.profileModel = objProfileModel;
             
             //Assert
-            expect(component.buyerModel.buyerAddress).toBe(objBuyerModel.buyerAddress);
-            expect(component.buyerModel.buyerId).toBe(objBuyerModel.buyerId);
-            expect(component.buyerModel.buyerName).toBe(objBuyerModel.buyerName);
-            expect(component.buyerModel.buyerPhone).toBe(objBuyerModel.buyerPhone);
-            expect(component.buyerModel.dateInsert).toBe(objBuyerModel.dateInsert);
-            expect(component.buyerModel.dateUpdate).toBe(objBuyerModel.dateUpdate);
-            expect(component.buyerModel.userId).toBe(objBuyerModel.userId);
-            expect(component.buyerModel.userName).toBe(objBuyerModel.userName);
-            expect(typeof(component.buyerModel.buyerAddress)).toBe('string');
-            expect(typeof(component.buyerModel.buyerId)).toBe('string');
-            expect(typeof(component.buyerModel.buyerName)).toBe('string');
-            expect(typeof(component.buyerModel.buyerPhone)).toBe('string');
-            expect(typeof(component.buyerModel.dateInsert)).toBe('object');
-            expect(typeof(component.buyerModel.dateUpdate)).toBe('object');
-            expect(typeof(component.buyerModel.userId)).toBe('number');
-            expect(typeof(component.buyerModel.userName)).toBe('string');
+            expect(component.profileModel.profileId).toBe(objProfileModel.profileId);
+            expect(component.profileModel.profileName).toBe(objProfileModel.profileName);
+            expect(component.profileModel.dateInsert).toBe(objProfileModel.dateInsert);
+            expect(component.profileModel.dateUpdate).toBe(objProfileModel.dateUpdate);
+            expect(component.profileModel.userId).toBe(objProfileModel.userId);
+            expect(component.profileModel.userName).toBe(objProfileModel.userName);
+            expect(typeof(component.profileModel.userId)).toBe('number');
+            expect(typeof(component.profileModel.profileName)).toBe('string');
+            expect(typeof(component.profileModel.dateInsert)).toBe('object');
+            expect(typeof(component.profileModel.dateUpdate)).toBe('object');
+            expect(typeof(component.profileModel.userId)).toBe('number');
+            expect(typeof(component.profileModel.userName)).toBe('string');
         });
 
         it('MessageTime => TypeOf', () => {
@@ -148,37 +142,17 @@ describe('BuyerCreateComponent', () => {
             expect(typeof(component.routerString)).toBe(expectedValueTypeOf);
         });
 
-        it('MessageBuyerAddress => TypeOf', () => {
+        it('MessageProfileName => TypeOf', () => {
             //Arrange
             let expectedValueTypeOf: string = 'string';
-    
-            //Act
-            component.messageBuyerAddress = expectedValueTypeOf;
-            
-            //Assert
-            expect(typeof(component.messageBuyerAddress)).toBe(expectedValueTypeOf);
-        });
+            let expectedValue: string = 'Não está preenchido o campo nome do perfil!';
 
-        it('MessageBuyerName => TypeOf', () => {
-            //Arrange
-            let expectedValueTypeOf: string = 'string';
-    
             //Act
-            component.messageBuyerName = expectedValueTypeOf;
+            component.messageProfileName = expectedValue;
             
             //Assert
-            expect(typeof(component.messageBuyerName)).toBe(expectedValueTypeOf);
-        });
-    
-        it('MessageBuyerPhone => TypeOf', () => {
-            //Arrange
-            let expectedValueTypeOf: string = 'string';
-    
-            //Act
-            component.messageBuyerPhone = expectedValueTypeOf;
-            
-            //Assert
-            expect(typeof(component.messageBuyerPhone)).toBe(expectedValueTypeOf);
+            expect(typeof(component.messageProfileName)).toBe(expectedValueTypeOf);
+            expect(component.messageProfileName).toBe(expectedValue);
         });
     });
 
@@ -190,77 +164,21 @@ describe('BuyerCreateComponent', () => {
 
         describe('Save', () => {
 
-            it('Save => BuyerName => Empty', () => {
+            it('Save => ProfileName => Empty', () => {
                 //Arrange
-                let messageBuyerName: string = 'Não está preenchido o campo nome do cliente!';
+                let messageProfileName: string = 'Não está preenchido o campo nome do perfil!';
                 var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objBuyerModel: BuyerModel = new BuyerModel()
-                objBuyerModel.buyerName = '';
-                spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
-                spyOnProperty(component, 'messageBuyerName', 'get').and.returnValue(messageBuyerName);
+                var objProfileModel: ProfileModel = new ProfileModel()
+                objProfileModel.profileName = '';
+                spyOnProperty(component, 'profileModel', 'get').and.returnValue(objProfileModel);
+                spyOnProperty(component, 'messageProfileName', 'get').and.returnValue(messageProfileName);
                 
                 //Act
                 component.save();
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.messageBuyerName).toBe(messageBuyerName);
-            });
-        
-            it('Save => BuyerAddress => Empty', () => {
-                //Arrange
-                let messageBuyerAddress: string = 'Não está preenchido o campo endereço do cliente!'; 
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objBuyerModel: BuyerModel = new BuyerModel()
-                objBuyerModel.buyerName = faker.person.fullName();
-                objBuyerModel.buyerAddress = '';
-                spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
-                spyOnProperty(component, 'messageBuyerAddress', 'get').and.returnValue(messageBuyerAddress);
-                
-                //Act
-                component.save();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.messageBuyerAddress).toBe(messageBuyerAddress);
-            });
-        
-            it('Save => BuyerPhone => Empty', () => {
-                //Arrange
-                let messageBuyerPhone: string = 'Não está preenchido o campo telefone do cliente!'; 
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objBuyerModel: BuyerModel = new BuyerModel()
-                objBuyerModel.buyerName = faker.person.fullName();
-                objBuyerModel.buyerAddress = faker.address.streetAddress();
-                objBuyerModel.buyerPhone = '';
-                spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
-                spyOnProperty(component, 'messageBuyerPhone', 'get').and.returnValue(messageBuyerPhone);
-                
-                //Act
-                component.save();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.messageBuyerPhone).toBe(messageBuyerPhone);
-            });
-        
-            it('Save => BuyerModel => Populate', () => {
-                //Arrange
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objBuyerModel: BuyerModel = new BuyerModel()
-                objBuyerModel.buyerName = faker.person.fullName();
-                objBuyerModel.buyerAddress = faker.location.streetAddress();
-                objBuyerModel.buyerPhone = faker.phone.number();
-                spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
-                
-                //Act
-                component.save();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.buyerModel.buyerName).toBe(objBuyerModel.buyerName);
-                expect(component.buyerModel.buyerAddress).toBe(objBuyerModel.buyerAddress);
-                expect(component.buyerModel.buyerPhone).toBe(objBuyerModel.buyerPhone);
+                expect(component.messageProfileName).toBe(messageProfileName);
             });
 
             it('Save => TypeOf', () => {
@@ -276,28 +194,28 @@ describe('BuyerCreateComponent', () => {
 
         });
 
-        describe('BuyerList', () => {
+        describe('ProfileList', () => {
 
-            it('BuyerList => TypeOf', () => {
+            it('ProfileList => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.buyerList;
+                var result = component.profileList;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
             });
 
-            it('BuyerList => RouterString', fakeAsync(() => {
+            it('ProfileList => RouterString', fakeAsync(() => {
                 //Arrange
-                let expectedValue: string = 'buyer-list';
-                var spyOnComponent = spyOn(component, 'buyerList').and.callThrough();
+                let expectedValue: string = 'profile-list';
+                var spyOnComponent = spyOn(component, 'profileList').and.callThrough();
                 var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
-                component.buyerList();
+                component.profileList();
         
                 //Assert
                 expect(component.routerString).toBe(expectedValue);
@@ -305,14 +223,14 @@ describe('BuyerCreateComponent', () => {
                 expect(spyOnRouter).toHaveBeenCalledTimes(1);
             }));
 
-            it('BuyerList', () => {
+            it('ProfileList', () => {
                 //Arrange
-                let routerString: string = 'buyer-list';
-                var spyOnComponent = spyOn(component, 'buyerList').and.callThrough();
+                let routerString: string = 'profile-list';
+                var spyOnComponent = spyOn(component, 'profileList').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
-                var result = component.buyerList;
+                var result = component.profileList;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -455,17 +373,17 @@ describe('BuyerCreateComponent', () => {
 
             it('AuthenticatedUser => UserIdLogin', () => {
                 //Arrange
-                let userIdLogin: string = faker.number.int().toString();
+                let userIdLogin: number = faker.number.int();
                 var element = document.createElement('input');
                 element.id = 'userIdLogin';
                 element.name = 'userIdLogin';
-                element.value = userIdLogin;
+                element.value = userIdLogin.toString();
                 element.type="hidden";
                 document.getElementById = jasmine.createSpy('userIdLogin').and.returnValue(element);
-                var objBuyerModel: BuyerModel = new BuyerModel();
-                objBuyerModel.buyerId = userIdLogin;
+                var objProfileModel: ProfileModel = new ProfileModel();
+                objProfileModel.userId = userIdLogin;
                 var spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
-                spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
+                spyOnProperty(component, 'profileModel', 'get').and.returnValue(objProfileModel);
                 
                 //Act
                 component.authenticatedUser();

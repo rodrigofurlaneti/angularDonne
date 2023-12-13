@@ -20,8 +20,7 @@ describe('CategorylistComponent', () => {
     let service: CategoryListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
-        {path: 'Category-list', component: CategoryListComponent},
-        {path: '**', redirectTo: 'themen', pathMatch: 'full'}
+        {path: 'category-list', component: CategoryListComponent}
       ];
 
     // #region [BeforeEach]
