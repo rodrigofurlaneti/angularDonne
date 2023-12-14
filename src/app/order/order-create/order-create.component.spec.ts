@@ -19,14 +19,18 @@ import { ProductListMockService } from 'test/product-list-mock.service';
 import { CommandListService } from 'src/app/command/command-list/command-list.service';
 import { CommandListMockService } from 'test/command-list-mock.service';
 import { CommandModel } from 'src/interface/command.interface';
+import { ProductUpdateService } from 'src/app/product/product-update/product-update.service';
+import { ProductUpdateMockService } from 'test/product-update-mock.service';
 
 describe('OrderCreateComponent', () => {
     let component: OrderCreateComponent;
     let fixture: ComponentFixture<OrderCreateComponent>;
     let router: Router;
     let service: OrderCreateService;
+    let orderCreateService: OrderCreateService;
     let productListService: ProductListService;
     let commandListService: CommandListService;
+    let productUpdateService: ProductUpdateService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'order-list', component: OrderListComponent}
@@ -40,7 +44,9 @@ describe('OrderCreateComponent', () => {
             providers: [
                 { provide: OrderCreateService, useClass: OrderCreateMockService },
                 { provide: ProductListService, useClass: ProductListMockService },
-                { provide: CommandListService, useClass: CommandListMockService }
+                { provide: CommandListService, useClass: CommandListMockService },
+                { provide: ProductUpdateService, useClass: ProductUpdateMockService }
+            
             ],
             imports: [
                 RouterTestingModule.withRoutes(routes),
@@ -55,7 +61,9 @@ describe('OrderCreateComponent', () => {
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
         service = TestBed.inject(OrderCreateService);
+        orderCreateService = TestBed.inject(OrderCreateService);
         productListService = TestBed.inject(ProductListService);
+        productUpdateService = TestBed.inject(ProductUpdateService);
         commandListService = TestBed.inject(CommandListService);
         fixture.detectChanges();
     }));
@@ -445,6 +453,110 @@ describe('OrderCreateComponent', () => {
                 expect(component.listProducts).toHaveBeenCalled();
             });
         })
+
+        describe('ChangeCommand', () => {
+
+            it('ChangeCommand => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'changeCommand').and.callThrough();
+                const event = { target: { value: 'commandId' }};
+
+                //Act
+                component.changeCommand(event);
+
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.changeCommand).toHaveBeenCalled();
+            })
+        })
+
+        describe('ChangeProduct', () => {
+
+            it('ChangeProduct => Success => Subscribe', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'changeProduct').and.callThrough();
+                const event = { target: { value: 'commandId' }};
+                const response = [
+                    {
+                        "productId": 1,
+                        "productName": "Produto",
+                        "categoryId": "1",
+                        "categoryName": "Categoria",
+                        "costPrice": "10.00",
+                        "salePrice": "20.00",
+                        "quantityStock": 10,
+                        "minimumStockQuantity": 5,
+                        "totalValueCostOfInventory": "100.00",
+                        "totalValueSaleStock": "200.00",
+                        "dateInsert": "",
+                        "dateUpdate": "",
+                        "needToPrint": true,
+                        "userId": 1,
+                        "userName": "Administrador",
+                        "status": true,
+                        "quantityToBuy": 5,
+                        "totalValueOfLastPurchase": "50.00"
+                    }
+                ];
+                
+                productUpdateService.getById(1).subscribe((data) => {
+                    expect(data).toEqual(response);
+                });
+
+                //Act
+                component.changeProduct(event);
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.changeProduct).toHaveBeenCalled();
+            })
+        })
+
+        describe('Save', () => {
+
+            it('Save => Success => Subscribe', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'save').and.callThrough();
+                var order: OrderModel = new OrderModel();
+                order.amount = 1;
+                order.buyerName = 'Administrador';
+                order.commandId = 1;
+                order.orderId = 1;
+                order.productId = 1;
+                order.productName = "Produto";
+                order.salePrice = "20.00";
+                order.totalSalePrice = "20.00";
+                order.userId = 1;
+                order.userName = "Administrador";
+                const response = [
+                    {
+                        "amount": 1,
+                        "buyerName": "Produto",
+                        "commandId": 1,
+                        "orderId": 1,
+                        "productId": 1,
+                        "productName": "Produto",
+                        "salePrice": "20.00",
+                        "totalSalePrice":  "20.00",
+                        "userId": 1,
+                        "userName": "Administrador"
+                    }
+                ];
+                
+                orderCreateService.save(order).subscribe((data) => {
+                    expect(data).toEqual(response);
+                });
+
+                //Act
+                component.save();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.save).toHaveBeenCalled();
+            })
+        })
+
+        
     });
 
     // #endregion

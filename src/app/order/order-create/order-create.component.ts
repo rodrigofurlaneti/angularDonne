@@ -122,7 +122,6 @@ export class OrderCreateComponent implements OnInit {
     this.productUpdateService.getById(this.productSelectedID)
         .subscribe(productResponse => { 
           this.orderModel.salePrice = productResponse.salePrice;
-          console.log(this.orderModel.salePrice);
         });
   }
 

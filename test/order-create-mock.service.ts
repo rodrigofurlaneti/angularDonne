@@ -6,11 +6,15 @@ export class OrderCreateMockService extends OrderCreateService
 {
     response = [
         {
-            "orderId": "1",
-            "orderName": "Administrador",
-            "dateInsert": "",
-            "dateUpdate": "",
-            "userId": "1",
+            "amount": 1,
+            "buyerName": "Produto",
+            "commandId": 1,
+            "orderId": 1,
+            "productId": 1,
+            "productName": "Produto",
+            "salePrice": "20.00",
+            "totalSalePrice":  "20.00",
+            "userId": 1,
             "userName": "Administrador"
         }
     ];
