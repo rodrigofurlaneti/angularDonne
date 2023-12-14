@@ -66,7 +66,7 @@ describe('BuyerCreateComponent', () => {
 
         it('BuyerModel => TypeOf', () => {
             //Arrange
-            var objBuyerModel: BuyerModel = new BuyerModel()
+            let objBuyerModel: BuyerModel = new BuyerModel()
             objBuyerModel.buyerAddress = faker.address.streetAddress();
             objBuyerModel.buyerId = faker.number.int().toString();
             objBuyerModel.buyerName = faker.person.fullName();
@@ -198,8 +198,8 @@ describe('BuyerCreateComponent', () => {
             it('Save => BuyerName => Empty', () => {
                 //Arrange
                 let messageBuyerName: string = 'Não está preenchido o campo nome do cliente!';
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objBuyerModel: BuyerModel = new BuyerModel()
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let objBuyerModel: BuyerModel = new BuyerModel()
                 objBuyerModel.buyerName = '';
                 spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
                 spyOnProperty(component, 'messageBuyerName', 'get').and.returnValue(messageBuyerName);
@@ -215,8 +215,8 @@ describe('BuyerCreateComponent', () => {
             it('Save => BuyerAddress => Empty', () => {
                 //Arrange
                 let messageBuyerAddress: string = 'Não está preenchido o campo endereço do cliente!'; 
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objBuyerModel: BuyerModel = new BuyerModel()
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let objBuyerModel: BuyerModel = new BuyerModel()
                 objBuyerModel.buyerName = faker.person.fullName();
                 objBuyerModel.buyerAddress = '';
                 spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
@@ -233,8 +233,8 @@ describe('BuyerCreateComponent', () => {
             it('Save => BuyerPhone => Empty', () => {
                 //Arrange
                 let messageBuyerPhone: string = 'Não está preenchido o campo telefone do cliente!'; 
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objBuyerModel: BuyerModel = new BuyerModel()
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let objBuyerModel: BuyerModel = new BuyerModel()
                 objBuyerModel.buyerName = faker.person.fullName();
                 objBuyerModel.buyerAddress = faker.address.streetAddress();
                 objBuyerModel.buyerPhone = '';
@@ -251,8 +251,8 @@ describe('BuyerCreateComponent', () => {
         
             it('Save => BuyerModel => Populate', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objBuyerModel: BuyerModel = new BuyerModel()
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let objBuyerModel: BuyerModel = new BuyerModel()
                 objBuyerModel.buyerName = faker.person.fullName();
                 objBuyerModel.buyerAddress = faker.location.streetAddress();
                 objBuyerModel.buyerPhone = faker.phone.number();
@@ -270,7 +270,7 @@ describe('BuyerCreateComponent', () => {
 
             it('Save => Success => Subscribe', () => {
                 //Arrange
-                var objBuyerModel: BuyerModel = new BuyerModel()
+                let objBuyerModel: BuyerModel = new BuyerModel()
                 objBuyerModel.userId = 1;
                 objBuyerModel.userName = 'Administrador';
                 objBuyerModel.buyerId = '1';
@@ -279,7 +279,7 @@ describe('BuyerCreateComponent', () => {
                 objBuyerModel.buyerAddress = 'Rua Teste, 12345, Jardim Teste';
                 objBuyerModel.dateUpdate = faker.date.anytime();
                 objBuyerModel.dateInsert = faker.date.anytime();
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
 
                 const response = [
                     {
@@ -351,7 +351,7 @@ describe('BuyerCreateComponent', () => {
             it('BuyerList', () => {
                 //Arrange
                 let routerString: string = 'buyer-list';
-                var spyOnComponent = spyOn(component, 'buyerList').and.callThrough();
+                let spyOnComponent = spyOn(component, 'buyerList').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -380,8 +380,8 @@ describe('BuyerCreateComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -396,7 +396,7 @@ describe('BuyerCreateComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -414,7 +414,7 @@ describe('BuyerCreateComponent', () => {
             it('SuccessMessage => MessageSuccess', () => {
                 //Arrange
                 let expectedValue: string = 'O cliente foi cadastrado com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
                 spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -439,7 +439,7 @@ describe('BuyerCreateComponent', () => {
             it('SuccessMessage', () => {
                 //Arrange
                 let messageSuccess: string = 'O cliente foi cadastrado com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
                 spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(messageSuccess);
         
                 //Act
@@ -456,7 +456,7 @@ describe('BuyerCreateComponent', () => {
             it('ErrorMessage => MessageErro', () => {
                 //Arrange
                 let expectedValue: string = 'Erro ao cadastrar o cliente!';
-                var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -481,7 +481,7 @@ describe('BuyerCreateComponent', () => {
             it('ErrorMessage', () => {
                 //Arrange
                 let messageErro: string = 'Erro ao cadastrar o cliente';
-                var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
         
                 //Act/
@@ -505,9 +505,9 @@ describe('BuyerCreateComponent', () => {
                 element.value = userIdLogin;
                 element.type="hidden";
                 document.getElementById = jasmine.createSpy('userIdLogin').and.returnValue(element);
-                var objBuyerModel: BuyerModel = new BuyerModel();
+                let objBuyerModel: BuyerModel = new BuyerModel();
                 objBuyerModel.buyerId = userIdLogin;
-                var spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
+                let spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
                 spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
                 
                 //Act

@@ -390,8 +390,6 @@ describe('OrderCreateComponent', () => {
             it('ListCommand => Success => Subscribe', () => {
                 //Arrange
                 var spyOnComponent = spyOn(component, 'listCommand').and.callThrough();
-                var com: CommandModel = new CommandModel(); 
-                com.userName
                 const response = [
                     {
                         "amount": "1",
