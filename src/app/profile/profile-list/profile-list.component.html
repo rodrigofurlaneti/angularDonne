@@ -1,5 +1,8 @@
 <section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <caption>
+      Perfil
+    </caption>
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nome</th>
       <td mat-cell *matCellDef="let element">{{element.profileName}}</td>

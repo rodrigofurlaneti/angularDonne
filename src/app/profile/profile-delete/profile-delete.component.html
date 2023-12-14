@@ -1,5 +1,8 @@
 <section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <caption>
+      Perfil
+    </caption>
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Nome do perfil</th>
       <td mat-cell (click)="delete(element.profileId)" *matCellDef="let element">

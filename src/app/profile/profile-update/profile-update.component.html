@@ -2,6 +2,9 @@
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <caption>
+          Perfil
+        </caption>
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nome do perfil</th>
             <td mat-cell (click)="getById(element.profileId)" *matCellDef="let element">
