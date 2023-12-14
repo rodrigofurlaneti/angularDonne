@@ -1,6 +1,6 @@
 <div class="container">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <caption>Cliente - Pedido</caption>
+    <caption>Pedido</caption>
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nome do Cliente / Ordem do Pedido </th>
       <td mat-cell (click)="delete(element.orderId)" *matCellDef="let element">

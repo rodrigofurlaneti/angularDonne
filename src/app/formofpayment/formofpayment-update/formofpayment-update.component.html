@@ -2,6 +2,9 @@
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <caption>
+          Forma de pagamento
+        </caption>
         <caption>Forma de Pagamento</caption>
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Nome</th>

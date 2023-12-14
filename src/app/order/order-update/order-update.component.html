@@ -4,7 +4,7 @@
 <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
   <div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-      <caption>Pedidos</caption>
+      <caption>Pedido</caption>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Pedidos</th>
         <td mat-cell (click)="getById(element.orderId)" *matCellDef="let element">
