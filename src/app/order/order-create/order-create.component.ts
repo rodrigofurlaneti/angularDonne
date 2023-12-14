@@ -21,17 +21,60 @@ let ELEMENT_DATA_COMMAND: CommandModel[];
 
 export class OrderCreateComponent implements OnInit {
 
-  commandSelected: string = "";
+    //#region [Properties]
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+  
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+  
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+  
+  //Property OrderModel
+  private _orderModel = new OrderModel();
+  get orderModel() { return this._orderModel; }
+  set orderModel(value) { this._orderModel = value; }
 
-  commandSelectedID: number = 0;
+  //Property CommandSelected
+  private _commandSelected: string = "";
+  get commandSelected() { return this._commandSelected; }
+  set commandSelected(value) { this._commandSelected = value; }
 
-  productSelected: string = "";
+  //Property CommandSelectedID 
+  private _commandSelectedID: number = 0;
+  get commandSelectedID() { return this._commandSelectedID; }
+  set commandSelectedID(value) { this._commandSelectedID = value; }
 
-  productSelectedID: number = 0;
+  //Property ProductSelected 
+  private _productSelected: string = "";
+  get productSelected() { return this._productSelected; }
+  set productSelected(value) { this._productSelected = value; }
 
-  orderModel= new OrderModel();
+  //Property ProductSelectedID
+  private _productSelectedID: number = 0;
+  get productSelectedID() { return this._productSelectedID; }
+  set productSelectedID(value) { this._productSelectedID = value; }
 
-  messageTime: number = 5000;
+  //Property ProductSelectedID
+  private _totalValue: number = 0;
+  get totalValue() { return this._totalValue; }
+  set totalValue(value) { this._totalValue = value; }
+
+  // #endregion
+
+  // #region [Constructor]
 
   constructor(private orderCreateService: OrderCreateService,
     private productListService: ProductListService,
@@ -40,6 +83,10 @@ export class OrderCreateComponent implements OnInit {
     private _snackBar: MatSnackBar, 
     private readonly router: Router) {
   }
+
+  // #endregion
+
+  // #region [Methods]
 
   ngOnInit(): void {
     this.listCommand();
@@ -112,27 +159,33 @@ export class OrderCreateComponent implements OnInit {
 }
 
   public successMessage(){
-    this._snackBar.open('O pedido "'+ this.orderModel.orderId +'" foi cadastrado com sucesso!','', {
+    this.messageSuccess = 'O pedido foi cadastrado com sucesso!';
+    this._snackBar.open(this.messageSuccess,'', {
     duration: this.messageTime
     });
   }
 
   public errorMessage(){
-    this._snackBar.open('Erro ao cadastrar o pedido "'+ this.orderModel.orderId +'" !','', {
+    this.messageErro = 'Erro ao cadastrar o pedido!';
+    this._snackBar.open(this.messageErro,'', {
       duration: this.messageTime
     });
   }
 
   orderList(){
+    this.routerString = 'order-list';
     this.router.navigate(['order-list']);
   }
 
   calculate(){
-    let totalValue = parseFloat(this.orderModel.salePrice) * this.orderModel.amount;
-    this.orderModel.totalSalePrice = totalValue.toString();
+    this.totalValue = parseFloat(this.orderModel.salePrice) * this.orderModel.amount;
+    this.orderModel.totalSalePrice = this.totalValue.toString();
   }
 
   reply() {
-    this.router.navigate(['main']);
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
+
+  // #endregion
 }
