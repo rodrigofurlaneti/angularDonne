@@ -13,12 +13,20 @@ import { faker } from '@faker-js/faker';
 import { OrderListComponent } from '../order-list/order-list.component';
 import { OrderCreateService } from './order-create.service';
 import { OrderCreateMockService } from 'test/order-create-mock.service';
+import { ProductListService } from 'src/app/product/product-list/product-list.service';
+import { ProductModel } from 'src/interface/product.interface';
+import { ProductListMockService } from 'test/product-list-mock.service';
+import { CommandListService } from 'src/app/command/command-list/command-list.service';
+import { CommandListMockService } from 'test/command-list-mock.service';
+import { CommandModel } from 'src/interface/command.interface';
 
 describe('OrderCreateComponent', () => {
     let component: OrderCreateComponent;
     let fixture: ComponentFixture<OrderCreateComponent>;
     let router: Router;
     let service: OrderCreateService;
+    let productListService: ProductListService;
+    let commandListService: CommandListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'order-list', component: OrderListComponent}
@@ -29,7 +37,11 @@ describe('OrderCreateComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [OrderCreateComponent],
-            providers: [{provide: OrderCreateService, useClass: OrderCreateMockService }],
+            providers: [
+                { provide: OrderCreateService, useClass: OrderCreateMockService },
+                { provide: ProductListService, useClass: ProductListMockService },
+                { provide: CommandListService, useClass: CommandListMockService }
+            ],
             imports: [
                 RouterTestingModule.withRoutes(routes),
                 BrowserAnimationsModule,
@@ -43,6 +55,8 @@ describe('OrderCreateComponent', () => {
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
         service = TestBed.inject(OrderCreateService);
+        productListService = TestBed.inject(ProductListService);
+        commandListService = TestBed.inject(CommandListService);
         fixture.detectChanges();
     }));
 
@@ -360,6 +374,75 @@ describe('OrderCreateComponent', () => {
                 //Assert
                 expect(component.totalValue).toBe(expectedValue);
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
+            });
+        })
+
+        describe('ListCommand', () => {
+
+            it('ListCommand => Success => Subscribe', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'listCommand').and.callThrough();
+                var com: CommandModel = new CommandModel(); 
+                com.userName
+                const response = [
+                    {
+                        "amount": "1",
+                        "buyerId": "1",
+                        "buyerName": "Product",
+                        "userId": "1",
+                        "userName": "Product",
+                        "commandId": "1",
+                        "salePrice": "29.90",
+                        "dateInsert": "",
+                        "dateUpdate": ""
+                    }
+                ];
+                
+                commandListService.list().subscribe((data) => {
+                    expect(data).toEqual(response);
+                });
+
+                //Act
+                component.listCommand();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.listCommand).toHaveBeenCalled();
+            });
+        })
+
+        describe('ListProduct', () => {
+
+            it('ListProduct => Success => Subscribe', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'listProducts').and.callThrough();
+                const response = [
+                    {
+                        "categoryId": "1",
+                        "categoryName": "Administrador",
+                        "costPrice": "10.99",
+                        "minimumStockQuantity": "20",
+                        "needToPrint": "true",
+                        "productId": "1",
+                        "productName": "Produto",
+                        "quantityStock": "10",
+                        "quantityBuy": "10",
+                        "salePrice": "",
+                        "dateInsert": "",
+                        "dateUpdate": ""
+                    }
+                ];
+                
+                productListService.list().subscribe((data) => {
+                    expect(data).toEqual(response);
+                });
+
+                //Act
+                component.listProducts();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.listProducts).toHaveBeenCalled();
             });
         })
     });
