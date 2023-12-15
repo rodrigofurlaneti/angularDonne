@@ -20,25 +20,67 @@ let ELEMENT_DATA_BUYER: BuyerModel[];
 
 export class OrderUpdateComponent implements OnInit {
 
+  //#region [Properties]
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
+
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+
+  //Property OrderModel
+  private _orderModel = new OrderModel();
+  get orderModel() { return this._orderModel; }
+  set orderModel(value) { this._orderModel = value; }
+
+  //Property IsIdZero
+  private _isIdZero: boolean = true;
+  get isIdZero() { return this._isIdZero; }
+  set isIdZero(value) { this._isIdZero = value; }
+
+  //Property IsIdGreaterThanZero
+  private _isIdGreaterThanZero: boolean = false;
+  get isIdGreaterThanZero() { return this._isIdGreaterThanZero; }
+  set isIdGreaterThanZero(value) { this._isIdGreaterThanZero = value; }
+
+  //Property Status
+  private _status: string = '';
+  get status() { return this._status; }
+  set status(value) { this._status = value; }
+
+  //Property Ids
+  private _ids: number = 0;
+  get ids() { return this._ids; }
+  set ids(value) { this._ids = value; }
+
   orderID: number = 0;
   clientSelected: string = " ";
   clientSelectedID: number = 0;
   productSelectedName: string = " ";
   productSelectedID: number = 0;
 
-  isIdZero = true;
-
-  isIdGreaterThanZero = false;
-
-  displayedColumns: string[] = ['name'];
-
-  status: string = '';
-
-  ids: number = 0;
-
   public selected: string = '';
 
-  orderModel = new OrderModel();
+  // #endregion
+
 
   constructor(private orderUpdateService: OrderUpdateService,
     private buyerListService: BuyerListService,
@@ -132,7 +174,8 @@ export class OrderUpdateComponent implements OnInit {
   dataSourceProducts = ELEMENT_DATA_PRODUCT;
 
   reply(){
-    this.router.navigate(['main']);
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
 
   public update() {

@@ -515,7 +515,7 @@ describe('OrderCreateComponent', () => {
             it('Save => Success => Subscribe', () => {
                 //Arrange
                 var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var order: OrderModel = new OrderModel();
+                let order: OrderModel = new OrderModel();
                 order.amount = 1;
                 order.buyerName = 'Administrador';
                 order.commandId = 1;

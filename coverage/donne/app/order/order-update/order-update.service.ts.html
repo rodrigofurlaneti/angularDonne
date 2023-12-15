@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for app/buyer/buyer-list/buyer-list.service.ts</title>
+    <title>Code coverage report for app/order/order-update/order-update.service.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">app/buyer/buyer-list</a> buyer-list.service.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">app/order/order-update</a> order-update.service.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>6/7</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>6/7</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,7 +88,12 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -98,47 +103,54 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">34x</span>
-<span class="cline-any cline-yes">34x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BuyerModel } from 'src/interface/buyer.interface';
+import { OrderModel } from 'src/interface/order.interface';
 &nbsp;
 @Injectable({
   providedIn: 'root'
 })
-export class BuyerListService {
 &nbsp;
-  private route = 'https://localhost:7027/Buyer';
-  private routeAzure = 'https://apidonne.azurewebsites.net/Buyer';
+export class OrderUpdateService {
 &nbsp;
-  constructor(private http: HttpClient) { }
+  private route = 'https://localhost:7027/Order';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Order';
 &nbsp;
-  list() : Observable&lt;any&gt;{
-    var ret = this.http.get(this.routeAzure);
-    return ret;
+  constructor(
+    private httpClient: HttpClient
+  ) {}
+&nbsp;
+  public list() : Observable&lt;any&gt;{
+    return this.httpClient.get(this.routeAzure);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  listBuyerStatus(</span>id:number) : Observable&lt;any&gt;{
-    var ret = <span class="cstat-no" title="statement not covered" >this.http.options&lt;any&gt;(this.routeAzure+'/'+id); </span>
-<span class="cstat-no" title="statement not covered" >    return ret;</span>
+  public <span class="fstat-no" title="function not covered" >getById(</span>id: number): Observable&lt;any&gt; {
+<span class="cstat-no" title="statement not covered" >    return this.httpClient.get&lt;any&gt;(this.routeAzure+'/'+id);</span>
   }
-}
-&nbsp;</pre></td></tr></table></pre>
+&nbsp;
+  public update(orderModel: OrderModel) {
+    return this.httpClient.put(this.routeAzure, orderModel);
+  }
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

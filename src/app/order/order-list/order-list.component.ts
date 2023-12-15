@@ -12,29 +12,60 @@ let ELEMENT_DATA: OrderModel[];
 })
 export class OrderListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','command','buyer','product','amount'];
+    //#region [Properties]
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['id','command','buyer','product','amount'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
+
+  //Property DataSource
+  private _dataSource: OrderModel[] = [];
+  get dataSource() { return this._dataSource; }
+  set dataSource(value) { this._dataSource = value; }
+
+  //Property ClickedRows
+  private _clickedRows = new Set<OrderModel>();
+  get clickedRows() { return this._clickedRows; }
+  set clickedRows(value) { this._clickedRows = value; }
+  
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+  
+  // #endregion
+
+  // #region [Constructor]
 
   constructor(private orderListService: OrderListService,
               private router: Router) { }
   
+  // #endregion
+
+  // #region [Methods]
+
   ngOnInit(): void {
     this.list();
   }
 
   list() {
     this.orderListService.list().subscribe(list => {
-      ELEMENT_DATA = list;
-      this.dataSource = ELEMENT_DATA;
+      this.dataSource = list;
       console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar os pedidos', err);
     })
   }
-
-  dataSource = ELEMENT_DATA;
-  clickedRows = new Set<OrderModel>();
-
+ 
   reply(){
-    this.router.navigate(['main']);
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
+
+  // #endregion
 }
