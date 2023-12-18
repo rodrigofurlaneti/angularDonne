@@ -13,6 +13,12 @@ import { MainComponent } from 'src/app/main/main.component';
 import { of } from 'rxjs';
 import { OrderUpdateService } from './order-update.service';
 import { OrderUpdateMockService } from 'test/order-update-mock.service';
+import { BuyerModel } from 'src/interface/buyer.interface';
+import { BuyerListService } from 'src/app/buyer/buyer-list/buyer-list.service';
+import { BuyerListMockService } from 'test/buyer-list-mock.service';
+import { ProductModel } from 'src/interface/product.interface';
+import { ProductListService } from 'src/app/product/product-list/product-list.service';
+import { ProductListMockService } from 'test/product-list-mock.service';
 
 describe('OrderUpdateComponent', () => {
     let component: OrderUpdateComponent;
@@ -20,6 +26,8 @@ describe('OrderUpdateComponent', () => {
     let router: Router;
     let service: OrderUpdateService;
     let orderUpdateService: OrderUpdateService;
+    let buyerListService: BuyerListService;
+    let productListService: ProductListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'order-update', component: OrderUpdateComponent}
@@ -30,7 +38,11 @@ describe('OrderUpdateComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [OrderUpdateComponent],
-            providers: [{provide: OrderUpdateService, useClass: OrderUpdateMockService }],
+            providers: [
+                { provide: OrderUpdateService, useClass: OrderUpdateMockService },
+                { provide: BuyerListService, useClass: BuyerListMockService },
+                { provide: ProductListService, useClass: ProductListMockService }
+            ],
             imports: [
                 RouterTestingModule.withRoutes(routes),
                 BrowserAnimationsModule,
@@ -45,6 +57,8 @@ describe('OrderUpdateComponent', () => {
         router = TestBed.inject(Router);
         service = TestBed.inject(OrderUpdateService);
         orderUpdateService = TestBed.inject(OrderUpdateService);
+        buyerListService = TestBed.inject(BuyerListService);
+        productListService = TestBed.inject(ProductListService);
         fixture.detectChanges();
     }));
 
@@ -351,6 +365,163 @@ describe('OrderUpdateComponent', () => {
 
             
         });        
+
+        describe('ListBuyer', () => {
+    
+            it('ListBuyer => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'listBuyer').and.callThrough();
+
+                //Act
+                component.listBuyer();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.listBuyer).toHaveBeenCalled();
+            });
+
+            it('ListBuyer => Success => Subscribe', () => {
+                //Arrange
+                let buyer: BuyerModel = new BuyerModel()
+                buyer.buyerAddress = 'Rua Teste, 12345';
+                buyer.buyerId = '1';
+                buyer.buyerName = 'Administrador';
+                buyer.buyerPhone = '11995882409';
+                buyer.userId = 1;
+                buyer.userName = "Administrador";
+                let spyOnComponent = spyOn(component, 'listBuyer').and.callThrough();
+                let getSpy = spyOn(buyerListService, 'list').and.returnValue(of(buyer));
+                service.list().subscribe((data) => {
+                    expect(data).toEqual(buyer);
+                });
+
+                //Act
+                component.listBuyer();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.listBuyer).toHaveBeenCalled();
+            });
+
+            
+        });     
+
+        describe('ListProducts', () => {
+    
+            it('ListProducts => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'listProducts').and.callThrough();
+
+                //Act
+                component.listProducts();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.listProducts).toHaveBeenCalled();
+            });
+
+            it('ListProducts => Success => Subscribe', () => {
+                //Arrange
+                let product: ProductModel = new ProductModel()
+                product.categoryId = 1;
+                product.categoryName = 'Categoria'
+                product.userId = 1;
+                product.userName = 'Administrador';
+                product.costPrice = '10.00';
+                product.minimumStockQuantity = 10;
+                product.needToPrint = true;
+                product.productId = 1;
+                product.productName = 'Produto';
+                product.quantityStock = 50;
+                product.quantityToBuy = 0;
+                product.salePrice = '20.00';
+                product.status = true;
+                product.totalValueCostOfInventory = '500.00';
+                product.totalValueOfLastPurchase = '10.00';
+                product.totalValueSaleStock = '1000.00';
+                let spyOnComponent = spyOn(component, 'listProducts').and.callThrough();
+                let getSpy = spyOn(productListService, 'list').and.returnValue(of(product));
+                service.list().subscribe((data) => {
+                    expect(data).toEqual(product);
+                });
+
+                //Act
+                component.listProducts();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.listProducts).toHaveBeenCalled();
+            });
+
+            
+        });  
+        
+        describe('ShowUpdateButton', () => {
+    
+            it('ShowUpdateButton => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'showUpdateButton').and.callThrough();
+
+                //Act
+                component.showUpdateButton();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.showUpdateButton).toHaveBeenCalled();
+            });
+            
+        });  
+
+        describe('Change', () => {
+    
+            it('Change => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'change').and.callThrough();
+                const event = { target: { value: 42 }};
+
+                //Act
+                component.change(event);
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.change).toHaveBeenCalled();
+            });
+            
+        }); 
+        
+        describe('ChangeProduct', () => {
+    
+            it('ChangeProduct => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'changeProduct').and.callThrough();
+                const event = { target: { value: 42 }};
+
+                //Act
+                component.changeProduct(event);
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.changeProduct).toHaveBeenCalled();
+            });
+            
+        }); 
+
+        describe('GetById', () => {
+    
+            it('GetById => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'getById').and.callThrough();
+                const event = { target: { value: 42 }};
+
+                //Act
+                component.getById(42);
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.getById).toHaveBeenCalled();
+            });
+            
+        }); 
     });  
     // #endregion
 });
