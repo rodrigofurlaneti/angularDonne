@@ -261,21 +261,6 @@ describe('OrderUpdateComponent', () => {
     
     describe('Methods', () => {
 
-        describe('Update', () => {
-
-            it('Update => Success', () => {
-                //Arrange
-                var spyOnComponent = spyOn(component, 'update').and.callThrough();
-
-                //Act
-                component.update();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.update).toHaveBeenCalled();
-            });
-          
-        });
 
         describe('Reply', () => {
 

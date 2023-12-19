@@ -19,25 +19,85 @@ let ELEMENT_DATA_FORM_OF_PAYMENT: FormOfPaymentModel[];
 
 export class PaymentCreateComponent implements OnInit{
 
-  commandSelected: string = "";
+  //#region [Properties]
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+  
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+  
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+  
+  //Property OrderModel
+  private _paymentModel = new PaymentModel();
+  get paymentModel() { return this._paymentModel; }
+  set paymentModel(value) { this._paymentModel = value; }
 
-  commandSelectedID: number = 0;
+  //Property CommandSelected
+  private _commandSelected: string = "";
+  get commandSelected() { return this._commandSelected; }
+  set commandSelected(value) { this._commandSelected = value; }
 
-  formOfPaymentSelected: string = "";
+  //Property CommandSelectedID 
+  private _commandSelectedID: number = 0;
+  get commandSelectedID() { return this._commandSelectedID; }
+  set commandSelectedID(value) { this._commandSelectedID = value; }
 
-  formOfPaymentSelectedID: number = 0;
+  //Property ProductSelected 
+  private _productSelected: string = "";
+  get productSelected() { return this._productSelected; }
+  set productSelected(value) { this._productSelected = value; }
 
-  paymentModel = new PaymentModel();
+  //Property ProductSelectedID
+  private _productSelectedID: number = 0;
+  get productSelectedID() { return this._productSelectedID; }
+  set productSelectedID(value) { this._productSelectedID = value; }
 
-  messageTime: number = 5000;
+  //Property ProductSelectedID
+  private _totalValue: number = 0;
+  get totalValue() { return this._totalValue; }
+  set totalValue(value) { this._totalValue = value; }
 
-  selectedPaymentType = 'Total';
+  //Property FormOfPaymentSelected
+  private _formOfPaymentSelected: string = "";
+  get formOfPaymentSelected() { return this._formOfPaymentSelected; }
+  set formOfPaymentSelected(value) { this._formOfPaymentSelected = value; }
+
+  //Property SelectedPaymentType
+  private _selectedPaymentType: string = 'Total';
+  get selectedPaymentType() { return this._selectedPaymentType; }
+  set selectedPaymentType(value) { this._selectedPaymentType = value; }
+
+  //Property FormOfPaymentSelectedID
+  private _formOfPaymentSelectedID: number = 0;
+  get formOfPaymentSelectedID() { return this._formOfPaymentSelectedID; }
+  set formOfPaymentSelectedID(value) { this._formOfPaymentSelectedID = value; }
+  
+// #endregion
+
+// #region [Constructor]
 
   constructor(private paymentCreateService: PaymentCreateService,
     private commandListService: CommandListService, 
     private formOfPaymentListService: FormOfPaymentListService, 
     private _snackBar: MatSnackBar,  
     private readonly router: Router) { }
+
+// #endregion
+
+// #region [Methods]
 
   ngOnInit(): void {
     this.listCommand();
@@ -83,14 +143,16 @@ export class PaymentCreateComponent implements OnInit{
     //checkFields
     if(this.paymentModel.commandId == 0)
     {
-      this._snackBar.open('A comanda não foi selecionada, necessário selecionar uma comanda para cadastrar o pagamento!','', {
+      this.messageErro = 'A comanda não foi selecionada, necessário selecionar uma comanda para cadastrar o pagamento!';
+      this._snackBar.open(this.messageErro,'', {
         duration: this.messageTime
       });
     }
 
     if(this.paymentModel.formOfPaymentId == 0)
     {
-      this._snackBar.open('A forma de pagamento não foi selecionada, necessário selecionar uma forma de pagamento para cadastrar o pagamento!','', {
+      this._messageErro = 'A forma de pagamento não foi selecionada, necessário selecionar uma forma de pagamento para cadastrar o pagamento!';
+      this._snackBar.open(this._messageErro,'', {
         duration: this.messageTime
       });
     }
@@ -99,22 +161,26 @@ export class PaymentCreateComponent implements OnInit{
     if(this.paymentModel.commandId > 0 && this.paymentModel.formOfPaymentId > 0)
     {
       this.authenticatedUser();
-      this.paymentCreateService.save(this.paymentModel).subscribe(user => {
+      this.paymentCreateService.save(this.paymentModel)
+        .subscribe(user => {
         this.successMessage();
         this.paymentList();
       }, err => {
         this.errorMessage()
-        console.log('Erro ao cadastrar o pagamento número "'+ this.paymentModel.paymentId +'", necessário refazer o procedimento!', err);
+        this._messageErro = 'Erro ao cadastrar o pagamento número "'+ this.paymentModel.paymentId +'", necessário refazer o procedimento!';
+        console.log(this._messageErro, err);
       })
     }
   }
 
   reply(){
-    this.router.navigate(['main']);
+    this._routerString = 'main';
+    this.router.navigate([this._routerString]);
   }
 
   paymentList(){
-    this.router.navigate(['payment-list']);
+    this._routerString = 'payment-list';
+    this.router.navigate([this._routerString]);
   }
 
   public authenticatedUser(){
@@ -130,14 +196,18 @@ export class PaymentCreateComponent implements OnInit{
   }
 
   public successMessage(){
-    this._snackBar.open('O pagamento foi cadastrado com sucesso!','', {
+    this._messageSuccess = 'O pagamento foi cadastrado com sucesso!';
+    this._snackBar.open(this._messageSuccess,'', {
       duration: this.messageTime
     });
   }
 
   public errorMessage(){
-    this._snackBar.open('Erro ao cadastrar o pagamento !','', {
+    this._messageErro = 'Erro ao cadastrar o pagamento !';
+    this._snackBar.open(this._messageErro,'', {
       duration: this.messageTime
     });
   }
+
+  // #endregion
 }
