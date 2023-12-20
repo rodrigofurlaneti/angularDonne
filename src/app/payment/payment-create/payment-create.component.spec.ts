@@ -21,6 +21,9 @@ import { CommandListMockService } from 'test/command-list-mock.service';
 import { CommandModel } from 'src/interface/command.interface';
 import { ProductUpdateService } from 'src/app/product/product-update/product-update.service';
 import { ProductUpdateMockService } from 'test/product-update-mock.service';
+import { FormOfPaymentListService } from 'src/app/formofpayment/formofpayment-list/formofpayment-list.service';
+import { FormOfPaymentListMockService } from 'test/formOfPayment-list-mock.service';
+import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 
 describe('paymentCreateComponent', () => {
     let component: PaymentCreateComponent;
@@ -28,6 +31,8 @@ describe('paymentCreateComponent', () => {
     let router: Router;
     let service: PaymentCreateService;
     let paymentCreateService: PaymentCreateService;
+    let commandListService: CommandListService;
+    let formOfPaymentListService: FormOfPaymentListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'payment-list', component: PaymentListComponent}
@@ -40,6 +45,8 @@ describe('paymentCreateComponent', () => {
             declarations: [PaymentCreateComponent],
             providers: [
                 { provide: PaymentCreateService, useClass: PaymentCreateMockService },
+                { provide: CommandListService, useClass: CommandListMockService },
+                { provide: FormOfPaymentListService, useClass: FormOfPaymentListMockService }
             ],
             imports: [
                 RouterTestingModule.withRoutes(routes),
@@ -55,6 +62,8 @@ describe('paymentCreateComponent', () => {
         router = TestBed.inject(Router);
         service = TestBed.inject(PaymentCreateService);
         paymentCreateService = TestBed.inject(PaymentCreateService);
+        commandListService = TestBed.inject(CommandListService);
+        formOfPaymentListService = TestBed.inject(FormOfPaymentListService);
         fixture.detectChanges();
     }));
 
@@ -183,6 +192,45 @@ describe('paymentCreateComponent', () => {
         expect(component.totalValue).toBe(expectedValue);
     });
 
+    it('FormOfPaymentSelected => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'string';
+        let expectedValue: string = faker.number.int().toString();
+        
+        //Act
+        component.formOfPaymentSelected = expectedValue;
+                
+                //Assert
+        expect(typeof(component.formOfPaymentSelected)).toBe(expectedValueTypeOf);
+        expect(component.formOfPaymentSelected).toBe(expectedValue);
+    });
+
+    it('SelectedPaymentType => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'string';
+        let expectedValue: string = faker.number.int().toString();
+        
+        //Act
+        component.selectedPaymentType = expectedValue;
+                
+                //Assert
+        expect(typeof(component.selectedPaymentType)).toBe(expectedValueTypeOf);
+        expect(component.selectedPaymentType).toBe(expectedValue);
+    });
+
+    it('FormOfPaymentSelectedID => TypeOf', () => {
+        //Arrange
+        let expectedValueTypeOf: string = 'number';
+        let expectedValue: number = faker.number.int();
+        
+        //Act
+        component.formOfPaymentSelectedID = expectedValue;
+                
+                //Assert
+        expect(typeof(component.formOfPaymentSelectedID)).toBe(expectedValueTypeOf);
+        expect(component.formOfPaymentSelectedID).toBe(expectedValue);
+    });
+
     it('paymentModel => TypeOf', () => {
         //Arrange
         var objPaymentModel: PaymentModel = new PaymentModel()
@@ -244,6 +292,102 @@ describe('paymentCreateComponent', () => {
                 expect(component.routerString).toBe(routerString);
             }));
 
+        });
+
+        describe('ListFormOfPayment', () => {
+
+            it('ListFormOfPayment => Success', fakeAsync(() => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'listFormOfPayment').and.callThrough();
+        
+                //Act
+                component.listFormOfPayment();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+            }));
+
+            it('ListFormOfPayment => Success => Subscribe', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'listFormOfPayment').and.callThrough();
+                let formOfPaymentModel: FormOfPaymentModel = new FormOfPaymentModel();
+                formOfPaymentModel.formOfPaymentId = 1;
+                formOfPaymentModel.formOfPaymentName = "Forma de pagamento";
+                formOfPaymentModel.userId = 1;
+                formOfPaymentModel.userName = "Product";
+                const response = [
+                    {
+                        "formOfPaymentId": "1",
+                        "formOfPaymentName": "1",
+                        "userId": "1",
+                        "userName": "Product",
+                    }
+                ];
+                
+                formOfPaymentListService
+                .list()
+                .subscribe((data) => {
+                    expect(data).toEqual(response);
+                });
+
+                //Act
+                component.listFormOfPayment();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.listFormOfPayment).toHaveBeenCalled();
+            })
+        });
+
+        describe('ListCommand', () => {
+
+            it('ListCommand => Success', fakeAsync(() => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'listCommand').and.callThrough();
+        
+                //Act
+                component.listCommand();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+            }));
+
+            it('ListCommand => Success => Subscribe', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'listCommand').and.callThrough();
+                let command: CommandModel = new CommandModel();
+                command.amount = 1;
+                command.buyerId = 1;
+                command.buyerName = "Product";
+                command.commandId = 1;
+                command.userId = 1;
+                command.userName = "Product";
+                const response = [
+                    {
+                        "amount": "1",
+                        "buyerId": "1",
+                        "buyerName": "Product",
+                        "userId": "1",
+                        "userName": "Product",
+                        "commandId": "1",
+                        "salePrice": "29.90",
+                        "dateInsert": "",
+                        "dateUpdate": ""
+                    }
+                ];
+                
+                commandListService.listCommandStatus(1)
+                    .subscribe((data) => {
+                    expect(data).toEqual(response);
+                });
+
+                //Act
+                component.listCommand();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.listCommand).toHaveBeenCalled();
+            })
         });
 
         describe('paymentList', () => {
@@ -351,6 +495,22 @@ describe('paymentCreateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(typeof(result)).toBe(expectedValueTypeOf);
             });
+        })
+
+        describe('ChangeFormOfPayment', () => {
+
+            it('ChangeFormOfPayment => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'changeFormOfPayment').and.callThrough();
+                const event = { target: { value: 'commandId' }};
+
+                //Act
+                component.changeFormOfPayment(event);
+
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.changeFormOfPayment).toHaveBeenCalled();
+            })
         })
 
         describe('ChangeCommand', () => {

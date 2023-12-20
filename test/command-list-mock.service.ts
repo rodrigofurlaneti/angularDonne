@@ -21,4 +21,9 @@ export class CommandListMockService extends CommandListService
     { 
         return of(this.response) 
     }
+
+    override listCommandStatus(number: number)
+    { 
+        return of(this.response) 
+    }
 }

@@ -507,6 +507,49 @@ describe('OrderUpdateComponent', () => {
             });
             
         }); 
+
+        describe('Update', () => {
+    
+            it('Update => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'update').and.callThrough();
+                
+                //Act
+                component.update();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.update).toHaveBeenCalled();
+            });
+
+            it('Update => Success => Subscribe', () => {
+                //Arrange
+                let orderModel: OrderModel = new OrderModel()
+                orderModel.amount = 1;
+                orderModel.buyerName = 'Administrador';
+                orderModel.commandId = 1;
+                orderModel.orderId = 1;
+                orderModel.productId = 1;
+                orderModel.productName = 'Produto';
+                orderModel.salePrice = '20.00';
+                orderModel.totalSalePrice = '20.00';
+                orderModel.userId = 1;
+                orderModel.userName = 'Administrador';
+                let spyOnComponent = spyOn(component, 'update').and.callThrough();
+                let getSpy = spyOn(orderUpdateService, 'list').and.returnValue(of(orderModel));
+                orderUpdateService.update(orderModel).subscribe((data) => {
+                    expect(data).toEqual(orderModel);
+                });
+
+                //Act
+                component.update();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.update).toHaveBeenCalled();
+            });
+            
+        }); 
     });  
     // #endregion
 });
