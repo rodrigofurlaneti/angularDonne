@@ -1,33 +1,33 @@
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
-import { BuyerListComponent } from './buyer-list.component';
+import { ProductListComponent } from './product-list.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { BuyerModel } from 'src/interface/buyer.interface';
+import { ProductModel } from 'src/interface/product.interface';
 import { faker } from '@faker-js/faker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { of } from 'rxjs';
-import { BuyerListService } from './buyer-list.service';
+import { ProductListService } from './product-list.service';
 
-describe('BuyerlistComponent', () => {
-    let component: BuyerListComponent;
-    let fixture: ComponentFixture<BuyerListComponent>;
+describe('ProductlistComponent', () => {
+    let component: ProductListComponent;
+    let fixture: ComponentFixture<ProductListComponent>;
     let router: Router;
-    let service: BuyerListService;
+    let service: ProductListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
-        {path: 'buyer-list', component: BuyerListComponent}
+        {path: 'Product-list', component: ProductListComponent}
       ];
 
     // #region [BeforeEach]
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [BuyerListComponent],
+            declarations: [ProductListComponent],
             imports: [
                 RouterTestingModule.withRoutes(routes),
                 BrowserAnimationsModule,
@@ -37,10 +37,10 @@ describe('BuyerlistComponent', () => {
             ],
             schemas: [ NO_ERRORS_SCHEMA ]
         }).compileComponents();
-        fixture = TestBed.createComponent(BuyerListComponent);
+        fixture = TestBed.createComponent(ProductListComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(BuyerListService);
+        service = TestBed.inject(ProductListService);
         fixture.detectChanges();
     }));
 
@@ -50,7 +50,7 @@ describe('BuyerlistComponent', () => {
 
     describe('Should', () => {
 
-        it('list => Buyer list component', () => {
+        it('list => Product list component', () => {
             expect(component).toBeTruthy();
         });
 
@@ -78,7 +78,7 @@ describe('BuyerlistComponent', () => {
             it('ClickedRows => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'object';
-                let objClickedRows: Set<BuyerModel> = new Set<BuyerModel>();
+                let objClickedRows: Set<ProductModel> = new Set<ProductModel>();
 
                 //Act
                 component.clickedRows = objClickedRows;
@@ -113,7 +113,7 @@ describe('BuyerlistComponent', () => {
             it('DataSource => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'object';
-                let expectedValue: BuyerModel[] = [];
+                let expectedValue: ProductModel[] = [];
         
                 //Act
                 component.dataSource = expectedValue;
@@ -147,18 +147,24 @@ describe('BuyerlistComponent', () => {
 
             it('List => Success => Subscribe', () => {
                 //Arrange
-                var objBuyerModel: BuyerModel = new BuyerModel()
-                objBuyerModel.buyerAddress = faker.location.streetAddress();
-                objBuyerModel.buyerName = faker.person.fullName();
-                objBuyerModel.buyerPhone = faker.phone.number().toString();
-                objBuyerModel.dateInsert = faker.date.anytime();
-                objBuyerModel.dateUpdate = faker.date.anytime();
-                objBuyerModel.userId = faker.number.int();
-                objBuyerModel.userName = faker.person.fullName();
+                var objProductModel: ProductModel = new ProductModel()
+                objProductModel.categoryId = faker.number.int();
+                objProductModel.categoryName = faker.person.fullName();
+                objProductModel.costPrice = faker.phone.number().toString();
+                objProductModel.minimumStockQuantity = faker.number.int();
+                objProductModel.needToPrint = true;
+                objProductModel.productId = faker.number.int();
+                objProductModel.productName = faker.phone.number().toString();
+                objProductModel.quantityStock = faker.number.int();
+                objProductModel.quantityToBuy = faker.number.int();
+                objProductModel.dateInsert = faker.date.anytime();
+                objProductModel.dateUpdate = faker.date.anytime();
+                objProductModel.userId = faker.number.int();
+                objProductModel.userName = faker.person.fullName();
                 var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                var getSpy = spyOn(service, 'list').and.returnValue(of(objBuyerModel));
+                var getSpy = spyOn(service, 'list').and.returnValue(of(objProductModel));
                 service.list().subscribe((data) => {
-                    expect(data).toEqual(objBuyerModel);
+                    expect(data).toEqual(objProductModel);
                 });
 
                 //Act

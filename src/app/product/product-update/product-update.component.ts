@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { ProductUpdateService } from './product-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -7,7 +7,7 @@ import { CategoryModel } from 'src/interface/category.interface';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { CategoryListService } from 'src/app/category/category-list/category-list.service';
 
-let ELEMENT_DATA: ProductModel[];
+let ELEMENT_DATA_PRODUCT: ProductModel[];
 let ELEMENT_DATA_CATEGORY: CategoryModel[];
 
 @Component({
@@ -18,23 +18,118 @@ let ELEMENT_DATA_CATEGORY: CategoryModel[];
 
 export class ProductUpdateComponent implements OnInit {
 
-  selectedValue: string = " ";
-  needToPrint: boolean = false;
-  productStatus: boolean = false;
-  categoryObj: CategoryModel = new CategoryModel();
-  categoryNameSelect: string = " ";
-  categoryIDSelect: number = 0;
-  productID: number = 0;
+  //#region [Properties]
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
 
-  isIdZero = true;
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
 
-  isIdGreaterThanZero = false;
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
 
-  displayedColumns: string[] = ['name', 'category'];
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
 
-  ids: number = 0;
+  //Property MessageBuyerName
+  private _messageBuyerName: string = '';
+  get messageBuyerName() { return this._messageBuyerName; }
+  set messageBuyerName(value) { this._messageBuyerName = value; }
+  
+  //Property MessageBuyerAddress
+  private _messageBuyerAddress: string = '';
+  get messageBuyerAddress() { return this._messageBuyerAddress; }
+  set messageBuyerAddress(value) { this._messageBuyerAddress = value; }
+      
+  //Property MessageBuyerPhone
+  private _messageBuyerPhone: string = '';
+  get messageBuyerPhone() { return this._messageBuyerPhone; }
+  set messageBuyerPhone(value) { this._messageBuyerPhone = value; }
 
-  productModel = new ProductModel();
+  //Property ProductModel
+  private _productModel = new ProductModel();
+  get productModel() { return this._productModel; }
+  set productModel(value) { this._productModel = value; }
+
+  //Property IsIdZero
+  private _isIdZero: boolean = true;
+  get isIdZero() { return this._isIdZero; }
+  set isIdZero(value) { this._isIdZero = value; }
+
+  //Property IsIdGreaterThanZero
+  private _isIdGreaterThanZero: boolean = false;
+  get isIdGreaterThanZero() { return this._isIdGreaterThanZero; }
+  set isIdGreaterThanZero(value) { this._isIdGreaterThanZero = value; }
+
+  // //Property Status
+  // private _status: string = '';
+  // get status() { return this._status; }
+  // set status(value) { this._status = value; }
+
+  //Property Ids
+  private _ids: number = 0;
+  get ids() { return this._ids; }
+  set ids(value) { this._ids = value; }
+
+  //Property SelectedValue 
+  private _selectedValue: string = ' ';
+  get selectedValue() { return this._selectedValue; }
+  set selectedValue(value) { this._selectedValue = value; }
+
+  //Property NeedToPrint 
+  private _needToPrint: boolean = false;
+  get needToPrint() { return this._needToPrint; }
+  set needToPrint(value) { this._needToPrint = value; }
+
+  //Property ProductStatus 
+  private _productStatus: boolean = false;
+  get productStatus() { return this._productStatus; }
+  set productStatus(value) { this._productStatus = value; }
+
+  //Property CategoryObj 
+  private _categoryObj: CategoryModel = new CategoryModel();
+  get categoryObj() { return this._categoryObj; }
+  set categoryObj(value) { this._categoryObj = value; }
+
+  //Property CategoryNameSelect 
+  private _categoryNameSelect: string = " ";
+  get categoryNameSelect() { return this._categoryNameSelect; }
+  set categoryNameSelect(value) { this._categoryNameSelect = value; }
+
+  //Property CategoryIDSelect 
+  private _categoryIDSelect: number = 0;
+  get categoryIDSelect() { return this._categoryIDSelect; }
+  set categoryIDSelect(value) { this._categoryIDSelect = value; }
+
+  //Property ProductID 
+  private _productID: number = 0;
+  get productID() { return this._productID; }
+  set productID(value) { this._productID = value; }
+
+  //Property ClickedRows
+  private _clickedRows = new Set<ProductModel>();
+  get clickedRows() { return this._clickedRows };
+  set clickedRows(value) { this._clickedRows = value };
+
+  //Property DataSource
+  private _dataSource: ProductModel[] = [];
+  get dataSource() { return this._dataSource; }
+  set dataSource(value) { this._dataSource = value; }
+
+  // #endregion
    
   constructor(private productUpdateService: ProductUpdateService,
     private categoryListService: CategoryListService,
@@ -106,9 +201,8 @@ export class ProductUpdateComponent implements OnInit {
 
   list() {
     this.productUpdateService.list().subscribe(list => {
-      ELEMENT_DATA = list;
-      this.dataSource = ELEMENT_DATA;
-
+      ELEMENT_DATA_PRODUCT = list
+      this.dataSource = ELEMENT_DATA_PRODUCT;
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })
@@ -145,10 +239,6 @@ export class ProductUpdateComponent implements OnInit {
                                 this.isIdGreaterThanZero = true;
                               });
   }
-
-  dataSource = ELEMENT_DATA;
-
-  clickedRows = new Set<ProductModel>();
 
   dataSourceCategory = ELEMENT_DATA_CATEGORY;
 
