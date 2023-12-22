@@ -12,15 +12,20 @@ import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { of } from 'rxjs';
 import { ProductUpdateService } from './product-update.service';
+import { CategoryModel } from 'src/interface/category.interface';
+import { CategoryListService } from 'src/app/category/category-list/category-list.service';
+import { CategoryListMockService } from 'test/category-list-mock.service';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 describe('ProductUpdateComponent', () => {
     let component: ProductUpdateComponent;
     let fixture: ComponentFixture<ProductUpdateComponent>;
     let router: Router;
     let service: ProductUpdateService;
+    let categoryListService: CategoryListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
-        {path: 'Product-update', component: ProductUpdateComponent}
+        {path: 'product-update', component: ProductUpdateComponent}
       ];
 
     // #region [BeforeEach]
@@ -28,6 +33,9 @@ describe('ProductUpdateComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ProductUpdateComponent],
+            providers: [
+                { provide: CategoryListService, useClass: CategoryListMockService }
+            ],
             imports: [
                 RouterTestingModule.withRoutes(routes),
                 BrowserAnimationsModule,
@@ -41,6 +49,7 @@ describe('ProductUpdateComponent', () => {
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
         service = TestBed.inject(ProductUpdateService);
+        categoryListService = TestBed.inject(CategoryListService);
         fixture.detectChanges();
     }));
 
@@ -216,6 +225,45 @@ describe('ProductUpdateComponent', () => {
                 expect(component.ids).toBe(expectedValue);
                 expect(typeof(component.ids)).toBe(expectedValueTypeOf);
             });
+
+            it('CategoryObj => TypeOf', () => {
+                //Arrange
+                let expectedValueTypeOf: string = 'object';
+                let expectedValue: CategoryModel = new CategoryModel();;
+                
+                //Act
+                component.categoryObj = expectedValue;
+                
+                //Assert
+                expect(component.categoryObj).toBe(expectedValue);
+                expect(typeof(component.categoryObj)).toBe(expectedValueTypeOf);
+            });
+
+            it('DataSourceCategory => TypeOf', () => {
+                //Arrange
+                let expectedValueTypeOf: string = 'object';
+                let expectedValue: CategoryModel[] = [];
+                
+                //Act
+                component.dataSourceCategory = expectedValue;
+                
+                //Assert
+                expect(component.dataSourceCategory).toBe(expectedValue);
+                expect(typeof(component.dataSourceCategory)).toBe(expectedValueTypeOf);
+            });
+
+            it('ClickedRows => TypeOf', () => {
+                //Arrange
+                let expectedValueTypeOf: string = 'object';
+                let expectedValue = new Set<ProductModel>()
+                
+                //Act
+                component.clickedRows = expectedValue;
+                
+                //Assert
+                expect(component.clickedRows).toBe(expectedValue);
+                expect(typeof(component.clickedRows)).toBe(expectedValueTypeOf);
+            });
         });
         
         // #endregion
@@ -230,37 +278,6 @@ describe('ProductUpdateComponent', () => {
             it('Update => Success', () => {
                 //Arrange
                 var spyOnComponent = spyOn(component, 'update').and.callThrough();
-
-                //Act
-                component.update();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.update).toHaveBeenCalled();
-            });
-
-            it('Update => Success => Subscribe', () => {
-                //Arrange
-                var objProductModel: ProductModel = new ProductModel()
-                objProductModel.categoryId = faker.number.int();
-                objProductModel.categoryName = faker.person.fullName();
-                objProductModel.costPrice = faker.phone.number().toString();
-                objProductModel.minimumStockQuantity = faker.number.int();
-                objProductModel.needToPrint = true;
-                objProductModel.productId = faker.number.int();
-                objProductModel.productName = faker.phone.number().toString();
-                objProductModel.quantityStock = faker.number.int();
-                objProductModel.quantityToBuy = faker.number.int();
-                objProductModel.dateInsert = faker.date.anytime();
-                objProductModel.dateUpdate = faker.date.anytime();
-                objProductModel.userId = faker.number.int();
-                objProductModel.userName = faker.person.fullName();
-                var spyOnComponent = spyOn(component, 'update').and.callThrough();
-                var getSpy = spyOn(service, 'update').and.returnValue(of(objProductModel));
-                spyOnProperty(component, 'productModel').and.returnValue(objProductModel);
-                service.update(objProductModel).subscribe((data) => {
-                    expect(data).toEqual(objProductModel);
-                });
 
                 //Act
                 component.update();
@@ -359,8 +376,123 @@ describe('ProductUpdateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.list).toHaveBeenCalled();
             });
+        });
+
+        describe('ListCategory', () => {
+    
+            it('ListCategory => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'listCategory').and.callThrough();
+
+                //Act
+                component.listCategory();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.listCategory).toHaveBeenCalled();
+            });
+
+            it('ListCategory => Success => Subscribe', () => {
+                //Arrange
+                var objCategoryModel: CategoryModel = new CategoryModel()
+                objCategoryModel.categoryId = faker.number.int();
+                objCategoryModel.categoryName = faker.person.fullName();
+                objCategoryModel.dateInsert = faker.date.anytime();
+                objCategoryModel.dateUpdate = faker.date.anytime();
+                objCategoryModel.userId = faker.number.int();
+                objCategoryModel.userName = faker.person.fullName();
+                var spyOnComponent = spyOn(component, 'listCategory').and.callThrough();
+                var getSpy = spyOn(categoryListService, 'list').and.returnValue(of(objCategoryModel));
+                service.list().subscribe((data) => {
+                    expect(data).toEqual(objCategoryModel);
+                });
+
+                //Act
+                component.listCategory();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.listCategory).toHaveBeenCalled();
+            });
 
             
+        });
+
+        describe('OnChange', () => {
+    
+            it('OnChange => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'onChange').and.callThrough();
+                const event : MatCheckboxChange = new MatCheckboxChange();
+
+                //Act
+                component.onChange(event);
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.onChange).toHaveBeenCalled();
+            });
+        });
+
+        describe('OnChangeStatus', () => {
+    
+            it('OnChangeStatus => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'onChangeStatus').and.callThrough();
+                const event : MatCheckboxChange = new MatCheckboxChange();
+
+                //Act
+                component.onChangeStatus(event);
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.onChangeStatus).toHaveBeenCalled();
+            });
+        });
+
+        describe('Change', () => {
+    
+            it('Change => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'change').and.callThrough();
+
+                //Act
+                component.change();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.change).toHaveBeenCalled();
+            });
+        });
+
+        describe('Calculate', () => {
+    
+            it('Calculate => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'calculate').and.callThrough();
+
+                //Act
+                component.calculate();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.calculate).toHaveBeenCalled();
+            });
+        });
+
+        describe('CalculateQuantityToBuy', () => {
+    
+            it('CalculateQuantityToBuy => Success', () => {
+                //Arrange
+                var spyOnComponent = spyOn(component, 'calculateQuantityToBuy').and.callThrough();
+
+                //Act
+                component.calculateQuantityToBuy();
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(1);
+                expect(component.calculateQuantityToBuy).toHaveBeenCalled();
+            });
         });
 
         describe('GetById', () => {
@@ -430,5 +562,67 @@ describe('ProductUpdateComponent', () => {
             });
         });
     });  
+
+    // #endregion
+
+    // #region [BusinessRules]
+
+    describe('BusinessRules', () => {
+    
+        it('Calculate => TotalValueCostOfInventory => Multiplication => CostPrice x QuantityStock => Success', () => {
+            //Arrange
+            var objProductModel: ProductModel = new ProductModel()
+            objProductModel.categoryId = faker.number.int();
+            objProductModel.categoryName = faker.person.fullName();
+            objProductModel.costPrice = '10.00';
+            objProductModel.minimumStockQuantity = faker.number.int();
+            objProductModel.needToPrint = true;
+            objProductModel.productId = faker.number.int();
+            objProductModel.productName = faker.phone.number().toString();
+            objProductModel.quantityStock = 10;
+            objProductModel.quantityToBuy = faker.number.int();
+            objProductModel.dateInsert = faker.date.anytime();
+            objProductModel.dateUpdate = faker.date.anytime();
+            objProductModel.userId = faker.number.int();
+            objProductModel.userName = faker.person.fullName();
+            let expectedValue = '100';
+            spyOnProperty(component, 'productModel', 'get').and.returnValue(objProductModel);
+
+            //Act
+            component.calculate();
+
+            //Assert
+            expect(component.productModel.totalValueCostOfInventory).toEqual(expectedValue)
+        });
+
+        it('Calculate => TotalValueSaleStock => Multiplication => SalePrice x QuantityStock => Success', () => {
+            //Arrange
+            var objProductModel: ProductModel = new ProductModel()
+            objProductModel.categoryId = faker.number.int();
+            objProductModel.categoryName = faker.person.fullName();
+            objProductModel.costPrice = '10.00';
+            objProductModel.salePrice = '20.00';
+            objProductModel.minimumStockQuantity = 20;
+            objProductModel.needToPrint = true;
+            objProductModel.productId = faker.number.int();
+            objProductModel.productName = faker.phone.number().toString();
+            objProductModel.quantityStock = 10;
+            objProductModel.quantityToBuy = 5;
+            objProductModel.dateInsert = faker.date.anytime();
+            objProductModel.dateUpdate = faker.date.anytime();
+            objProductModel.userId = faker.number.int();
+            objProductModel.userName = faker.person.fullName();
+            let expectedValue = '200';
+            spyOnProperty(component, 'productModel', 'get').and.returnValue(objProductModel);
+
+            //Act
+            component.calculate();
+
+            //Assert
+            expect(component.productModel.totalValueSaleStock).toEqual(expectedValue)
+        });
+
+    });
+    
     // #endregion
 });

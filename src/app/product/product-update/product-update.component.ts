@@ -7,9 +7,6 @@ import { CategoryModel } from 'src/interface/category.interface';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { CategoryListService } from 'src/app/category/category-list/category-list.service';
 
-let ELEMENT_DATA_PRODUCT: ProductModel[];
-let ELEMENT_DATA_CATEGORY: CategoryModel[];
-
 @Component({
   selector: 'product-update',
   templateUrl: './product-update.component.html',
@@ -43,22 +40,7 @@ export class ProductUpdateComponent implements OnInit {
   private _messageTime: number = 3000;
   get messageTime() { return this._messageTime; }
   set messageTime(value) { this._messageTime = value; }
-
-  //Property MessageBuyerName
-  private _messageBuyerName: string = '';
-  get messageBuyerName() { return this._messageBuyerName; }
-  set messageBuyerName(value) { this._messageBuyerName = value; }
   
-  //Property MessageBuyerAddress
-  private _messageBuyerAddress: string = '';
-  get messageBuyerAddress() { return this._messageBuyerAddress; }
-  set messageBuyerAddress(value) { this._messageBuyerAddress = value; }
-      
-  //Property MessageBuyerPhone
-  private _messageBuyerPhone: string = '';
-  get messageBuyerPhone() { return this._messageBuyerPhone; }
-  set messageBuyerPhone(value) { this._messageBuyerPhone = value; }
-
   //Property ProductModel
   private _productModel = new ProductModel();
   get productModel() { return this._productModel; }
@@ -129,13 +111,24 @@ export class ProductUpdateComponent implements OnInit {
   get dataSource() { return this._dataSource; }
   set dataSource(value) { this._dataSource = value; }
 
+  //Property DataSourceCategory
+  private _dataSourceCategory: CategoryModel[] = [];
+  get dataSourceCategory() { return this._dataSourceCategory; }
+  set dataSourceCategory(value) { this._dataSourceCategory = value; }
+
   // #endregion
    
+  // #region [Constructor]
+
   constructor(private productUpdateService: ProductUpdateService,
     private categoryListService: CategoryListService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
+  // #endregion
+
+  // #region [Methods]
+
   ngOnInit(): void {
     this.list();  
     this.listCategory();  
@@ -153,11 +146,13 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   listCategory() {
-    this.categoryListService.list().subscribe(list => {
-      ELEMENT_DATA_CATEGORY = list;
-      this.dataSourceCategory = ELEMENT_DATA_CATEGORY;
+    this.messageErro = 'Erro ao listar as categorias!';
+    this.categoryListService
+        .list()
+        .subscribe(list => {
+      this.dataSourceCategory = list;
     }, err => {
-      console.log('Erro ao listar as categorias ', err);
+      console.log(this.messageErro, err);
     })
   }
 
@@ -200,11 +195,11 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   list() {
+    this.messageErro = 'Erro ao listar os produtos!';
     this.productUpdateService.list().subscribe(list => {
-      ELEMENT_DATA_PRODUCT = list
-      this.dataSource = ELEMENT_DATA_PRODUCT;
+      this.dataSource = list;
     }, err => {
-      console.log('Erro ao listar as categorias', err);
+      console.log(this.messageErro, err);
     })
   }
 
@@ -240,13 +235,13 @@ export class ProductUpdateComponent implements OnInit {
                               });
   }
 
-  dataSourceCategory = ELEMENT_DATA_CATEGORY;
-
   reply(){
-    this.router.navigate(['main']);
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
 
   public update() {
+    this.messageSuccess = 'Produto atualizado com sucesso!';
     this.productModel.productId = this.productID;
     this.productModel.productName = (<HTMLSelectElement>document.getElementById('nameProduct')).value;
     this.productModel.categoryName = this.categoryNameSelect;
@@ -261,13 +256,15 @@ export class ProductUpdateComponent implements OnInit {
     this.productModel.quantityToBuy = this.productModel.quantityToBuy;
     this.productModel.totalValueOfLastPurchase = this.productModel.totalValueOfLastPurchase;
     this.productModel;
-    this.productUpdateService.update(this.productModel)
-                              .subscribe(product => { 
-                                this._snackBar.open('Produto atualizado com sucesso!','', {
-                                  duration: 2000
-                                });
-                                this.reply();
-
-                              });
+    this.productUpdateService
+        .update(this.productModel)
+        .subscribe(product => { 
+          this._snackBar.open(this.messageSuccess,'', {
+            duration: this.messageTime
+            });
+          this.reply();
+        });
   }
+  
+  // #endregion
 }

@@ -496,7 +496,6 @@ describe('OrderUpdateComponent', () => {
             it('GetById => Success', () => {
                 //Arrange
                 var spyOnComponent = spyOn(component, 'getById').and.callThrough();
-                const event = { target: { value: 42 }};
 
                 //Act
                 component.getById(42);
