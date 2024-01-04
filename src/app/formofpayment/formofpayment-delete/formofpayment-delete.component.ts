@@ -13,16 +13,64 @@ let ELEMENT_DATA: FormOfPaymentModel[];
 })
 export class FormOfPaymentDeleteComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
+  //#region [Properties]
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+  
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+  
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
 
-  status: string = '';
+  //Property Status
+  private _status: string = '';
+  get status() { return this._status; }
+  set status(value) { this._status = value; }
 
-  ids: number = 0;
+  //Property Ids
+  private _ids: number = 0;
+  get ids() { return this._ids; }
+  set ids(value) { this._ids = value; }
+
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
+
+  //Property DataSource
+  private _dataSource: FormOfPaymentModel[] = [];
+  get dataSource() { return this._dataSource; }
+  set dataSource(value) { this._dataSource = value; }
+
+  //Property ClickedRows
+  private _clickedRows = new Set<FormOfPaymentModel>();
+  get clickedRows() { return this._clickedRows; }
+  set clickedRows(value) { this._clickedRows = value; }
+
+  // #endregion
+
+  //#region [Constructor]
 
   constructor(private formOfPaymentDeleteService: FormOfPaymentDeleteService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
+  // #endregion
+
+  //#region [Methods]
+
   ngOnInit(): void {
     this.list();
   }
@@ -45,10 +93,8 @@ export class FormOfPaymentDeleteComponent implements OnInit {
     });
   }
 
-  dataSource = ELEMENT_DATA;
-  clickedRows = new Set<FormOfPaymentModel>();
-
   reply(){
     this.router.navigate(['main']);
   }
+  // #endregion
 }

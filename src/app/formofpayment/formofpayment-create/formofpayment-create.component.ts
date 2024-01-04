@@ -12,16 +12,51 @@ import { FormOfPaymentModel } from '../../../interface/formofpayment.interface';
 
 export class FormOfPaymentCreateComponent {
 
-  formOfPaymentModel = new FormOfPaymentModel();
+  //#region [Properties]
+  
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+  
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+  
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+  
+  //Property FormOfPaymentModelModel
+  private _formOfPaymentModel = new FormOfPaymentModel();
+  get formOfPaymentModel() { return this._formOfPaymentModel; }
+  set formOfPaymentModel(value) { this._formOfPaymentModel = value; }
 
-  messageTime: number = 5000;
+  //Property MessageCategoryName
+  private _messageCategoryName : string = '';
+  get messageCategoryName() { return this._messageCategoryName; }
+  set messageCategoryName(value) { this._messageCategoryName = value; }
 
+  
+  // #endregion
+
+  //#region [Constructor]
+  
   constructor(private formOfPaymentCreateService: FormOfPaymentCreateService,
-    private _snackBar: MatSnackBar, private readonly router: Router) {
+              private _snackBar: MatSnackBar, 
+              private readonly router: Router) {
   }
 
+  // #endregion
+
   save() {
-    console.log(this.formOfPaymentModel);
     //checkFields
     if(this.formOfPaymentModel.formOfPaymentName == "")
     {
@@ -34,7 +69,6 @@ export class FormOfPaymentCreateComponent {
     if (this.formOfPaymentModel.formOfPaymentName != '') {
       this.authenticatedUser();
       this.formOfPaymentCreateService.save(this.formOfPaymentModel).subscribe(formofpayment => {
-        console.log(this.formOfPaymentModel);
         this.successMessage();
         this.formOfPaymentList();  
       }, err => {
@@ -65,13 +99,13 @@ export class FormOfPaymentCreateComponent {
   }
 
   public successMessage(){
-    this._snackBar.open('A forma de pagamento "'+ this.formOfPaymentModel.formOfPaymentName +'" foi cadastrada com sucesso!','', {
+    this._snackBar.open('A forma de pagamento foi cadastrada com sucesso!','', {
     duration: this.messageTime
     });
   }
 
   public errorMessage(){
-    this._snackBar.open('Erro ao cadastrar a forma de pagamento "'+ this.formOfPaymentModel.formOfPaymentName +'" !','', {
+    this._snackBar.open('Erro ao cadastrar a forma de pagamento!','', {
     duration: this.messageTime
     });
   }

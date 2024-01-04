@@ -19,23 +19,80 @@ let ELEMENT_DATA_CATEGORY: CategoryModel[];
 
 export class ProductCreateComponent {
 
-  needToPrint: boolean = false;
+  //#region [Properties]
+  //Property NeedToPrint
+  private _needToPrint: boolean = false;
+  get needToPrint() { return this._needToPrint; }
+  set needToPrint(value) { this._needToPrint = value; }
 
-  productStatus: boolean = false;
+  //Property ProductStatus
+  private _productStatus: boolean = false;
+  get productStatus() { return this._productStatus; }
+  set productStatus(value) { this._productStatus = value; }
 
-  categoryNameSelect: string = "";
+  //Property CategoryNameSelect
+  private _categoryNameSelect: string = "";
+  get categoryNameSelect() { return this._categoryNameSelect; }
+  set categoryNameSelect(value) { this._categoryNameSelect = value; }
 
-  categoryIDSelect: number = 0;
+  //Property CategoryNameSelect
+  private _categoryIDSelect: number = 0;
+  get categoryIDSelect() { return this._categoryIDSelect; }
+  set categoryIDSelect(value) { this._categoryIDSelect = value; }
 
-  productModel = new ProductModel();
+  //Property ProductModel
+  private _productModel = new ProductModel();
+  get productModel() { return this._productModel; }
+  set productModel(value) { this._productModel = value; }
 
-  displayedColumns: string[] = ['name'];
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
 
-  disableSelect = new FormControl(false);
+  //Property DisableSelect
+  private _disableSelect = new FormControl(false);
+  get disableSelect() { return this._disableSelect; }
+  set disableSelect(value) { this._disableSelect = value; }
 
-  selectedCategory: CategoryModel = new CategoryModel();
+  //Property SelectedCategory
+  private _selectedCategory: CategoryModel = new CategoryModel();
+  get selectedCategory() { return this._selectedCategory; }
+  set selectedCategory(value) { this._selectedCategory = value; }
 
-  messageTime: number = 5000;
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+  
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
+  
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+  
+  //Property CategoryModel
+  private _categoryModel = new CategoryModel();
+  get categoryModel() { return this._categoryModel; }
+  set categoryModel(value) { this._categoryModel = value; }
+
+  //Property MessageCategoryName
+  private _messageCategoryName : string = '';
+  get messageCategoryName() { return this._messageCategoryName; }
+  set messageCategoryName(value) { this._messageCategoryName = value; }
+  
+  // #endregion
+
+  //#region [Constructor]
 
   constructor(private productCreateService: ProductCreateService,
     private categoryListService: CategoryListService,
@@ -43,8 +100,12 @@ export class ProductCreateComponent {
     private readonly router: Router) {
   }
 
+  //#endregion
+
   @ViewChild('matSelect')
   matSelect!: MatSelect;
+
+  //#region [Methods]
 
   ngOnInit(): void {
     this.listCategory();
@@ -184,6 +245,9 @@ export class ProductCreateComponent {
       duration: this.messageTime
     });
   }
+
+  //#endregion
+  
 }
 
 
