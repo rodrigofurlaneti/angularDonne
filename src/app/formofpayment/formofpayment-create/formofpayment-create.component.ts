@@ -38,13 +38,7 @@ export class FormOfPaymentCreateComponent {
   private _formOfPaymentModel = new FormOfPaymentModel();
   get formOfPaymentModel() { return this._formOfPaymentModel; }
   set formOfPaymentModel(value) { this._formOfPaymentModel = value; }
-
-  //Property MessageCategoryName
-  private _messageCategoryName : string = '';
-  get messageCategoryName() { return this._messageCategoryName; }
-  set messageCategoryName(value) { this._messageCategoryName = value; }
-
-  
+ 
   // #endregion
 
   //#region [Constructor]

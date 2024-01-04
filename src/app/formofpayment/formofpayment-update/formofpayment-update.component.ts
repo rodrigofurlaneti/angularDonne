@@ -14,21 +14,78 @@ let ELEMENT_DATA: FormOfPaymentModel[];
 
 export class FormOfPaymentUpdateComponent implements OnInit {
 
-  formOfPaymentModel = new FormOfPaymentModel();
+  //#region [Properties]
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
 
-  isIdZero = true;
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
 
-  isIdGreaterThanZero = false;
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
 
-  displayedColumns: string[] = ['name'];
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
 
-  ids: number = 0;
+  //Property FormOfPaymentModel
+  private _formOfPaymentModel = new FormOfPaymentModel();
+  get formOfPaymentModel() { return this._formOfPaymentModel; }
+  set formOfPaymentModel(value) { this._formOfPaymentModel = value; }
 
-  messageTime: number = 5000;
+  //Property IsIdZero
+  private _isIdZero: boolean = true;
+  get isIdZero() { return this._isIdZero; }
+  set isIdZero(value) { this._isIdZero = value; }
+
+  //Property IsIdGreaterThanZero
+  private _isIdGreaterThanZero: boolean = false;
+  get isIdGreaterThanZero() { return this._isIdGreaterThanZero; }
+  set isIdGreaterThanZero(value) { this._isIdGreaterThanZero = value; }
+
+  //Property Status
+  private _status: string = '';
+  get status() { return this._status; }
+  set status(value) { this._status = value; }
+
+  //Property Ids
+  private _ids: number = 0;
+  get ids() { return this._ids; }
+  set ids(value) { this._ids = value; }
+
+  //Property DataSource
+  private _dataSource: FormOfPaymentModel[] = [];
+  get dataSource() { return this._dataSource; }
+  set dataSource(value) { this._dataSource = value; }
+
+  //Property ClickedRows
+  private _clickedRows = new Set<FormOfPaymentModel>();
+  get clickedRows() { return this._clickedRows; }
+  set clickedRows(value) { this._clickedRows = value; }
+
+  // #endregion
+
+  // #region [Constructor]
 
   constructor(private formOfPaymentUpdateService: FormOfPaymentUpdateService,
     private _snackBar: MatSnackBar,
     private router: Router) { }
+
+  // #endregion  
+
+  // #region [Methods]
 
   ngOnInit(): void {
     this.list();
@@ -67,9 +124,8 @@ export class FormOfPaymentUpdateComponent implements OnInit {
       });
   }
 
-  dataSource = ELEMENT_DATA;
 
-  clickedRows = new Set<FormOfPaymentModel>();
+
 
   reply() {
     this.router.navigate(['main']);
@@ -107,15 +163,17 @@ export class FormOfPaymentUpdateComponent implements OnInit {
     }
 }
 
-public successMessage(){
-this._snackBar.open('A forma de pagamento "'+ this.formOfPaymentModel.formOfPaymentName +'" foi atualizada com sucesso!','', {
-  duration: this.messageTime
-});
-}
+  public successMessage(){
+    this._snackBar.open('A forma de pagamento foi atualizada com sucesso!','', {
+      duration: this.messageTime
+    });
+  }
 
-public errorMessage(){
-this._snackBar.open('Erro ao atualizar a forma de pagamento "'+ this.formOfPaymentModel.formOfPaymentName +'" !','', {
-  duration: this.messageTime
-});
-}
+  public errorMessage(){
+    this._snackBar.open('Erro ao atualizar a forma de pagamento!','', {
+      duration: this.messageTime
+    });
+  }
+
+  //#endregion
 }

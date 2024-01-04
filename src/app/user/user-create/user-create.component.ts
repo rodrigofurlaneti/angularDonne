@@ -8,8 +8,6 @@ import { ProfileModel } from 'src/interface/profile.interface';
 import { MatSelect } from '@angular/material/select';
 import { ProfileListService } from 'src/app/profile/profile-list/profile-list.service';
 
-let ELEMENT_DATA: ProfileModel[];
-
 @Component({
   selector: 'user-create',
   templateUrl: './user-create.component.html',
@@ -18,25 +16,84 @@ let ELEMENT_DATA: ProfileModel[];
 
 export class UserCreateComponent implements OnInit, AfterViewInit{
 
-  user: UserModel;
+  //#region [Properties]
+  //Property MessageTime
+  private _messageTime: number = 3000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
   
-  showPassword: boolean = false;
-
-  displayedColumns: string[] = ['name'];
-
-  disableSelect = new FormControl(false);
+  //Property RouterString
+  private _routerString: string = '';
+  get routerString() { return this._routerString; }
+  set routerString(value) { this._routerString = value; }
   
-  selectedProfile : ProfileModel = new ProfileModel();
+  //Property MessageSuccess
+  private _messageSuccess: string = '';
+  get messageSuccess() { return this._messageSuccess; }
+  set messageSuccess(value) { this._messageSuccess = value; }
+  
+  //Property MessageErro
+  private _messageErro: string = '';
+  get messageErro() { return this._messageErro; }
+  set messageErro(value) { this._messageErro = value; }
+  
+  //Property UserModel
+  private _userModel = new UserModel();
+  get userModel() { return this._userModel; }
+  set userModel(value) { this._userModel = value; }
+
+  //Property User
+  private _user: UserModel = new UserModel();
+  get user() { return this._user; }
+  set user(value) { this._user = value; }
+  
+  //Property ShowPassword
+  private _showPassword: boolean = false;
+  get showPassword() { return this._showPassword; }
+  set showPassword(value) { this._showPassword = value; }
+
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
+
+  //Property DisableSelect
+  private _disableSelect = new FormControl(false);
+  get disableSelect() { return this._disableSelect; }
+  set disableSelect(value) { this._disableSelect = value; }
+  
+  //Property SelectedProfile
+  private _selectedProfile : ProfileModel = new ProfileModel();
+  get selectedProfile() { return this._selectedProfile; }
+  set selectedProfile(value) { this._selectedProfile = value; }
+
+  //Property ClickedRows
+  private _clickedRows = new Set<ProfileModel>();
+  get clickedRows() { return this._clickedRows; }
+  set clickedRows(value) { this._clickedRows = value; }
+
+  //Property DataSource
+  private _dataSource: ProfileModel[] = [];
+  get dataSource() { return this._dataSource; }
+  set dataSource(value) { this._dataSource = value; }
+  
+  // #endregion
+
+  //#region [Constructor]
 
   constructor(private userCreateService: UserCreateService, 
     private profileListService: ProfileListService,
     private _snackBar: MatSnackBar,  private readonly router: Router) {
       this.user = new UserModel()
     }
+  
+  //#endregion
 
   @ViewChild('matSelect')
   matSelect!: MatSelect;
  
+  //#region [Methods]
+
   onChangeofOptions(newGov: string) {
     console.log(newGov);
   }
@@ -55,8 +112,7 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
 
   listProfile() {
     this.profileListService.list().subscribe(list => {
-        ELEMENT_DATA = list;
-        this.dataSource = ELEMENT_DATA;
+        this.dataSource = list;
       }, err => {
         console.log('Erro ao listar os perfis', err);
       })
@@ -88,11 +144,7 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
       });
     }
   }
-
-  dataSource = ELEMENT_DATA;
-
-  clickedRows = new Set<ProfileModel>();
-  
+ 
   reply(){
     this.router.navigate(['main']);
   }
@@ -101,4 +153,6 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
     this.selectedProfile.profileName = event.target.outerText;
     console.log(this.selectedProfile.profileName)
   }
+
+  //#endregion
 }

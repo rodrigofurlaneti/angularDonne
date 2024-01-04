@@ -13,7 +13,7 @@ import { faker } from '@faker-js/faker';
 import { FormOfPaymentListComponent } from '../formofpayment-list/formofpayment-list.component';
 import { FormOfPaymentCreateService } from './formofpayment-create.service';
 
-describe('formofpaymentCreateComponent', () => {
+describe('FormOfPaymentCreateComponent', () => {
     let component: FormOfPaymentCreateComponent;
     let fixture: ComponentFixture<FormOfPaymentCreateComponent>;
     let router: Router;
@@ -133,7 +133,7 @@ describe('formofpaymentCreateComponent', () => {
 
         describe('Save', () => {
 
-            it('Save => formofpaymentName => Empty', () => {
+            it('Save => formOfPaymentName => Empty', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'undefined';
                 let messageformofpaymentName: string = 'Não está preenchido o campo nome da categoria!';
