@@ -17,7 +17,7 @@ export class ProductUpdateComponent implements OnInit {
 
   //#region [Properties]
   //Property DisplayedColumns
-  private _displayedColumns: string[] = ['name'];
+  private _displayedColumns: string[] = ['name', 'category'];
   get displayedColumns() { return this._displayedColumns; }
   set displayedColumns(value) { this._displayedColumns = value; }
 

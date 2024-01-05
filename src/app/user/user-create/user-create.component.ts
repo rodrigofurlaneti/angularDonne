@@ -128,7 +128,7 @@ export class UserCreateComponent{
   {
     if(objUserModel.userName == "" && objUserModel.userPassword == "")
     {
-      this._messageUserName = 'Não está preenchido o campo nome e a senha do usuario!'; 
+      this._messageUserName = 'Não está preenchido o campo nome'; 
       this._messageUserPassword = ' e a senha do usuario!'; 
       this._snackBar.open(this.messageUserName + this.messageUserPassword,'', 
       {
