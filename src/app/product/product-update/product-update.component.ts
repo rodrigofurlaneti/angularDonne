@@ -37,7 +37,7 @@ export class ProductUpdateComponent implements OnInit {
   set messageErro(value) { this._messageErro = value; }
 
   //Property MessageTime
-  private _messageTime: number = 3000;
+  private _messageTime: number = 1000;
   get messageTime() { return this._messageTime; }
   set messageTime(value) { this._messageTime = value; }
   
