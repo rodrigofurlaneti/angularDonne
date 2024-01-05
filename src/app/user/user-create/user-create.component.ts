@@ -14,7 +14,7 @@ import { ProfileListService } from 'src/app/profile/profile-list/profile-list.se
   styleUrls: ['./user-create.component.css']
 })
 
-export class UserCreateComponent implements OnInit, AfterViewInit{
+export class UserCreateComponent{
 
   //#region [Properties]
   //Property MessageTime
@@ -27,6 +27,16 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
   get routerString() { return this._routerString; }
   set routerString(value) { this._routerString = value; }
   
+  //Property MessageUserName
+  private _messageUserName: string = '';
+  get messageUserName() { return this._messageUserName; }
+  set messageUserName(value) { this._messageUserName = value; }
+
+  //Property MessageUserPassword
+  private _messageUserPassword: string = '';
+  get messageUserPassword() { return this._messageUserPassword; }
+  set messageUserPassword(value) { this._messageUserPassword = value; }
+
   //Property MessageSuccess
   private _messageSuccess: string = '';
   get messageSuccess() { return this._messageSuccess; }
@@ -94,21 +104,17 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
  
   //#region [Methods]
 
-  onChangeofOptions(newGov: string) {
-    console.log(newGov);
-  }
-	
   ngOnInit(): void {
     this.user = new UserModel();
     this.listProfile();
   }
 
-  ngAfterViewInit() {
-    this.matSelect.valueChange.subscribe(obj => {
-      this.selectedProfile.profileId = obj.profileId;
-      this.selectedProfile.profileName = obj.profileName;
-    });
-}
+//   ngAfterViewInit() {
+//     this.matSelect.valueChange.subscribe(obj => {
+//       this.selectedProfile.profileId = obj.profileId;
+//       this.selectedProfile.profileName = obj.profileName;
+//     });
+// }
 
   listProfile() {
     this.profileListService.list().subscribe(list => {
@@ -118,35 +124,57 @@ export class UserCreateComponent implements OnInit, AfterViewInit{
       })
     }
 
+  public checkFields(objUserModel: UserModel):UserModel
+  {
+    if(objUserModel.userName == "" && objUserModel.userPassword == "")
+    {
+      this._messageUserName = 'Não está preenchido o campo nome e a senha do usuario!'; 
+      this._messageUserPassword = ' e a senha do usuario!'; 
+      this._snackBar.open(this.messageUserName + this.messageUserPassword,'', 
+      {
+        duration: this.messageTime
+      });
+    }
+    else if(objUserModel.userName == "")
+    {
+      this._messageUserName = 'Não está preenchido o campo nome do usuário!'; 
+      this._snackBar.open(this.messageUserName,'',
+      {
+        duration: this.messageTime
+      });
+    }
+    else if(objUserModel.userPassword == "")
+      {
+        this._messageUserPassword = 'Não está preenchido o campo senha do usuario!'; 
+        this._snackBar.open(this.messageUserPassword,'',
+        {
+          duration: this.messageTime
+        });
+      }
+      return objUserModel;
+    }
+
   save() {
 
     if(this.user.userName != '' && this.user.userPassword != '')
     {
-      this.userCreateService.save(this.user).subscribe(userResp => {
-        this._snackBar.open('Perfil cadastrada com sucesso!','', {
-          duration: 2000
-        });
+      this.userCreateService.save(this.user)
+        .subscribe(userResp => {
+          this._snackBar.open('O usuário foi cadastrado com sucesso!','', {
+            duration: 2000
+          });
         this.router.navigate(['user-list']);
       }, err => {
           console.log('Erro ao adicionar o novo usuário!', err);
       })
     }
-    if(this.user.userName == '')
-    {
-      this._snackBar.open('Não está preenchido o campo nome do usuario!','', {
-        duration: 2000
-      });
-    }
-    if(this.user.userPassword == '')
-    {
-      this._snackBar.open('Não está preenchido o campo senha do usuario!','', {
-        duration: 2000
-      });
-    }
+
+    this.checkFields(this.user)
   }
  
-  reply(){
-    this.router.navigate(['main']);
+  reply() : void{
+    this.routerString = 'main';
+    this.router.navigate([this.routerString]);
   }
 
   selectChangeHandler (event: any) {
