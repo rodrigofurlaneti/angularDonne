@@ -11,7 +11,7 @@ import { ProductModel } from 'src/interface/product.interface';
 })
 export class ProductDeleteComponent implements OnInit {
 
-    //#region [Properties]
+  //#region [Properties]
   //Property Status
   private _status: string = '';
   get status() { return this._status; }

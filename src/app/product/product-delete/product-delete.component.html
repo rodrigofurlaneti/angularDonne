@@ -11,7 +11,7 @@
     </ng-container>
     <ng-container matColumnDef="category">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;">Categoria</th>
-      <td style="padding-left: 2vh;" mat-cell (click)="delete(element.productId)" *matCellDef="let element">
+      <td mat-cell (click)="delete(element.productId)" *matCellDef="let element">
         {{element.categoryName}}
       </td>
     </ng-container>
