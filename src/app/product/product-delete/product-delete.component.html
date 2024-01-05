@@ -9,6 +9,12 @@
         {{element.productName}}
       </td>
     </ng-container>
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center;">Categoria</th>
+      <td style="padding-left: 2vh;" mat-cell *matCellDef="let element">
+        {{element.categoryName}}
+      </td>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
