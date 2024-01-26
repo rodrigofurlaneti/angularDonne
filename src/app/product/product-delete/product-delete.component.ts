@@ -76,6 +76,7 @@ export class ProductDeleteComponent implements OnInit {
   public list() {
     this.productDeleteService.list().subscribe(list => {
       this.dataSource = list;
+      
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })

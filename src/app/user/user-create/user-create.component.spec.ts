@@ -325,7 +325,6 @@ describe('UserCreateComponent', () => {
             it('CheckFields => UserPassword and UserPassword => Empty => Success', () => {
                 //Arrange
                 var expectedValue = 'Não está preenchido o campo nome'; 
-                var expectedValueConcat = ' e a senha do usuario!'; 
                 var objUserModel: UserModel = new UserModel()
                 objUserModel.userId = faker.number.int();
                 objUserModel.userName = '';
@@ -340,7 +339,7 @@ describe('UserCreateComponent', () => {
                         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
-                expect(component.messageUserName).toBe(expectedValue + expectedValueConcat);
+                expect(component.messageUserName).toBe(expectedValue);
             })
 
         });

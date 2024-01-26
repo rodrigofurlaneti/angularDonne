@@ -21,7 +21,7 @@ export class CommandCreateComponent {
 
   buyerNameSelect: string = "";
 
-  messageTime: number = 5000;
+  messageTime: number = 2000;
 
   constructor(private commandCreateService: CommandCreateService,
     private buyerListService: BuyerListService,
@@ -58,6 +58,7 @@ export class CommandCreateComponent {
       this.commandCreateService.saveClient(this.commandModel).subscribe(buyerResponse => {
         this.commandModel.commandId = buyerResponse;
         this.successMessage();
+        this.commandsList();
       }, err => {
         this._snackBar.open('Erro ao cadastrar o novo cliente "' + this.commandModel.buyerName + '" foi cadastrada com sucesso!', '', {
           duration: this.messageTime

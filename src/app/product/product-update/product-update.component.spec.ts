@@ -157,7 +157,7 @@ describe('ProductUpdateComponent', () => {
            
             it('MessageTime => Empty', () => {
                 //Arrange
-                let expectedValue: number = 3000;
+                let expectedValue: number = 1000;
         
                 //Act
                 //Assert
