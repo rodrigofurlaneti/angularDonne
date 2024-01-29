@@ -113,10 +113,15 @@ export class DynamicDatabase {
         { name:'Listar', path:'/user-list', icon:'view_headline'},
       ],
     ],
+    ['Tipo de veículo', 
+    [
+      { name:'Adicionar', path:'/vehicleType-create', icon:'exposure_plus_1'}
+    ],
+  ],
   ]);
 
   rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Estoque', 'Forma de pagamento', 'Pagamento', 
-  'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle'];
+  'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle', 'Tipo de veículo'];
 
   /** Initial data from database */
   initialData(): DynamicFlatNode[] {

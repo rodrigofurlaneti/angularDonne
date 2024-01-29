@@ -51,6 +51,7 @@ import { FormOfPaymentCreateComponent } from './formofpayment/formofpayment-crea
 import { FormOfPaymentListComponent } from './formofpayment/formofpayment-list/formofpayment-list.component';
 import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-delete/formofpayment-delete.component';
 import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-update/formofpayment-update.component';
+import { VehicleTypeCreateComponent } from './vehicleType/vehicleType-create/vehicleType-create.component';
 
 export const routes: Routes = [
   { path: '', component: AppComponent },
@@ -92,6 +93,7 @@ export const routes: Routes = [
   { path: 'user-update', component: UserUpdateComponent },
   { path: 'user-delete', component: UserDeleteComponent },
   { path: 'user-list', component: UserListComponent },
+  { path: 'vehicleType-create', component: VehicleTypeCreateComponent }
 ];
 
 @NgModule({

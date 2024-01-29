@@ -67,7 +67,6 @@ import { ProductDeleteComponent } from './product/product-delete/product-delete.
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
 import { ProductStockInventoryComponent } from './product/product-stockinventory/product-stockinventory.component';
 
-
 //Profile
 import { ProfileCreateModule } from './profile/profile-create/profile-create.module';
 import { ProfileDeleteModule } from './profile/profile-delete/profile-delete.module';
@@ -87,6 +86,10 @@ import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
+
+//Vehicle Type
+import { VehicleTypeCreateModule } from './vehicleType/vehicleType-create/vehicleType-create.module';
+import { VehicleTypeCreateComponent } from './vehicleType/vehicleType-create/vehicleType-create.component';
 
 //Material
 import { MatNativeDateModule } from '@angular/material/core';
@@ -148,7 +151,8 @@ import { FormsModule } from '@angular/forms';
     FormOfPaymentCreateComponent,
     FormOfPaymentListComponent,
     FormOfPaymentDeleteComponent,
-    FormOfPaymentUpdateComponent
+    FormOfPaymentUpdateComponent,
+    VehicleTypeCreateComponent
   ],
   imports: [
     CurrencyMaskModule,
@@ -173,6 +177,7 @@ import { FormsModule } from '@angular/forms';
     ProfileListModule,
     ProfileUpdateModule,
     FormOfPaymentCreateModule,
+    VehicleTypeCreateModule,
     HttpClientModule,
     MatNativeDateModule,
     MatIconModule,
