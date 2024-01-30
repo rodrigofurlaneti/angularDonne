@@ -120,11 +120,16 @@ export class DynamicDatabase {
       { name:'Excluir', path:'/vehicleType-delete', icon:'delete_forever'},
       { name:'Listar', path:'/vehicleType-list', icon:'view_headline'}
     ],
-  ],
+    ],
+    ['Marca de veículo', 
+    [
+      { name:'Adicionar', path:'/brand-create', icon:'exposure_plus_1'}
+    ],
+    ],
   ]);
 
   rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Estoque', 'Forma de pagamento', 'Pagamento', 
-  'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle', 'Tipo de veículo'];
+  'Marca de veículo', 'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle', 'Tipo de veículo'];
 
   /** Initial data from database */
   initialData(): DynamicFlatNode[] {
@@ -407,5 +412,9 @@ export class MainComponent {
   
   public activeVehicleTypeUpdate() {
     this.router.navigate(['vehicleType-update']);
+  }
+
+  public activeBrandCreate() {
+    this.router.navigate(['brand-create']);
   }
 }

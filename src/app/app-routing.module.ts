@@ -37,6 +37,7 @@ import { MainComponent } from './main/main.component';
 import { OrderCreateComponent } from './order/order-create/order-create.component';
 import { OrderListComponent } from './order/order-list/order-list.component';
 import { OrderDeleteComponent } from './order/order-delete/order-delete.component';
+import { OrderUpdateComponent } from './order/order-update/order-update.component';
 
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
@@ -44,8 +45,6 @@ import { ProductShoppingListComponent } from './product/product-shoppinglist/pro
 import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 import { ProductUpdateComponent } from './product/product-update/product-update.component';
 import { ProductStockInventoryComponent } from './product/product-stockinventory/product-stockinventory.component';
-
-import { OrderUpdateComponent } from './order/order-update/order-update.component';
 
 import { FormOfPaymentCreateComponent } from './formofpayment/formofpayment-create/formofpayment-create.component';
 import { FormOfPaymentListComponent } from './formofpayment/formofpayment-list/formofpayment-list.component';
@@ -56,6 +55,8 @@ import { VehicleTypeCreateComponent } from './vehicleType/vehicleType-create/veh
 import { VehicleTypeListComponent } from './vehicleType/vehicleType-list/vehicleType-list.component';
 import { VehicleTypeDeleteComponent } from './vehicleType/vehicleType-delete/vehicleType-delete.component';
 import { VehicleTypeUpdateComponent } from './vehicleType/vehicleType-update/vehicleType-update.component';
+
+import { BrandCreateComponent } from './brand/brand-create/brand-create.component';
 
 export const routes: Routes = [
   { path: '', component: AppComponent },
@@ -100,7 +101,9 @@ export const routes: Routes = [
   { path: 'vehicleType-create', component: VehicleTypeCreateComponent },
   { path: 'vehicleType-list', component: VehicleTypeListComponent },
   { path: 'vehicleType-delete', component: VehicleTypeDeleteComponent }, 
-  { path: 'vehicleType-update', component: VehicleTypeUpdateComponent }   
+  { path: 'vehicleType-update', component: VehicleTypeUpdateComponent },
+  { path: 'brand-create', component: BrandCreateComponent }
+     
 ];
 
 @NgModule({

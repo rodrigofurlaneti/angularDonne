@@ -1,0 +1,33 @@
+<section class="center">
+  <mat-card style="width: 35vh;">
+    <mat-card-content>Adicionar uma nova marca de veículo</mat-card-content>
+    <form class="example-form">
+      <mat-grid-list cols="1" rowHeight="5vh">
+        <mat-grid-tile>
+          <mat-form-field style="width: 100%;" class="example-full-width">
+            <mat-label>Nome da nova marca de veículo</mat-label>
+            <input matInput placeholder="Nome do tipo de veículo" id="brandName" name="brandName" [(ngModel)]="brandModel.brandName" matInput />
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+    <div class="wrapper">
+      <div>
+        <div>Voltar</div>
+        <button mat-raised-button mat-mini-fab matTooltip="Voltar" 
+          (click)="reply()" color="primary" aria-label="Voltar">
+          <mat-icon>reply_all</mat-icon>
+        </button>
+      </div>
+    <div>
+    </div>
+      <div>
+        <div>Salvar</div>
+        <button mat-raised-button mat-mini-fab matTooltip="Salvar nova marca de veículo"
+          (click)="save()" color="primary" aria-label="Salvar">
+          <mat-icon>save_alt</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</section>

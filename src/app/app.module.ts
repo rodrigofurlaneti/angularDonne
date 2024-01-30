@@ -97,6 +97,10 @@ import { VehicleTypeDeleteModule } from './vehicleType/vehicleType-delete/vehicl
 import { VehicleTypeUpdateComponent } from './vehicleType/vehicleType-update/vehicleType-update.component';
 import { VehicleTypeUpdateModule } from './vehicleType/vehicleType-update/vehicleType-update.module';
 
+//Brand
+import { BrandCreateModule } from './brand/brand-create/brand-create.module';
+import { BrandCreateComponent } from './brand/brand-create/brand-create.component';
+
 //Material
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -116,6 +120,7 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
 import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -161,7 +166,8 @@ import { FormsModule } from '@angular/forms';
     VehicleTypeCreateComponent,
     VehicleTypeListComponent,
     VehicleTypeDeleteComponent,
-    VehicleTypeUpdateComponent
+    VehicleTypeUpdateComponent,
+    BrandCreateComponent
   ],
   imports: [
     CurrencyMaskModule,
@@ -190,6 +196,7 @@ import { FormsModule } from '@angular/forms';
     VehicleTypeListModule,
     VehicleTypeUpdateModule,
     VehicleTypeDeleteModule,
+    BrandCreateModule,
     HttpClientModule,
     MatNativeDateModule,
     MatIconModule,

@@ -131,7 +131,6 @@ export class VehicleTypeUpdateComponent implements OnInit {
     //update
     if(this.vehicleTypeModel.vehicleTypeName != "")
     {
-      console.log(this.vehicleTypeModel);
       this.vehicleTypeUpdateService
           .update(this.vehicleTypeModel)
           .subscribe(vehicleType => { 
