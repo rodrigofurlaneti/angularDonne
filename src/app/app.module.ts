@@ -90,6 +90,12 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
 //Vehicle Type
 import { VehicleTypeCreateModule } from './vehicleType/vehicleType-create/vehicleType-create.module';
 import { VehicleTypeCreateComponent } from './vehicleType/vehicleType-create/vehicleType-create.component';
+import { VehicleTypeListModule } from './vehicleType/vehicleType-list/vehicleType-list.module';
+import { VehicleTypeListComponent } from './vehicleType/vehicleType-list/vehicleType-list.component';
+import { VehicleTypeDeleteComponent } from './vehicleType/vehicleType-delete/vehicleType-delete.component';
+import { VehicleTypeDeleteModule } from './vehicleType/vehicleType-delete/vehicleType-delete.module';
+import { VehicleTypeUpdateComponent } from './vehicleType/vehicleType-update/vehicleType-update.component';
+import { VehicleTypeUpdateModule } from './vehicleType/vehicleType-update/vehicleType-update.module';
 
 //Material
 import { MatNativeDateModule } from '@angular/material/core';
@@ -152,7 +158,10 @@ import { FormsModule } from '@angular/forms';
     FormOfPaymentListComponent,
     FormOfPaymentDeleteComponent,
     FormOfPaymentUpdateComponent,
-    VehicleTypeCreateComponent
+    VehicleTypeCreateComponent,
+    VehicleTypeListComponent,
+    VehicleTypeDeleteComponent,
+    VehicleTypeUpdateComponent
   ],
   imports: [
     CurrencyMaskModule,
@@ -178,6 +187,9 @@ import { FormsModule } from '@angular/forms';
     ProfileUpdateModule,
     FormOfPaymentCreateModule,
     VehicleTypeCreateModule,
+    VehicleTypeListModule,
+    VehicleTypeUpdateModule,
+    VehicleTypeDeleteModule,
     HttpClientModule,
     MatNativeDateModule,
     MatIconModule,

@@ -115,7 +115,10 @@ export class DynamicDatabase {
     ],
     ['Tipo de veículo', 
     [
-      { name:'Adicionar', path:'/vehicleType-create', icon:'exposure_plus_1'}
+      { name:'Adicionar', path:'/vehicleType-create', icon:'exposure_plus_1'},
+      { name:'Atualizar', path:'/vehicleType-update', icon:'sync'},
+      { name:'Excluir', path:'/vehicleType-delete', icon:'delete_forever'},
+      { name:'Listar', path:'/vehicleType-list', icon:'view_headline'}
     ],
   ],
   ]);
@@ -388,5 +391,21 @@ export class MainComponent {
 
   public activePaymentList() {
     this.router.navigate(['payment-list']);
+  }
+
+  public activeVehicleTypeCreate() {
+    this.router.navigate(['vehicleType-create']);
+  }
+
+  public activeVehicleTypeDelete() {
+    this.router.navigate(['vehicleType-delete']);
+  }
+
+  public activeVehicleTypeList() {
+    this.router.navigate(['vehicleType-list']);
+  }
+  
+  public activeVehicleTypeUpdate() {
+    this.router.navigate(['vehicleType-update']);
   }
 }
