@@ -123,7 +123,10 @@ export class DynamicDatabase {
     ],
     ['Marca de veículo', 
     [
-      { name:'Adicionar', path:'/brand-create', icon:'exposure_plus_1'}
+      { name:'Adicionar', path:'/brand-create', icon:'exposure_plus_1'},
+      { name:'Atualizar', path:'/brand-update', icon:'sync'},
+      { name:'Excluir', path:'/brand-delete', icon:'delete_forever'},
+      { name:'Listar', path:'/brand-list', icon:'view_headline'}
     ],
     ],
   ]);
@@ -416,5 +419,17 @@ export class MainComponent {
 
   public activeBrandCreate() {
     this.router.navigate(['brand-create']);
+  }
+
+  public activeBrandDelete() {
+    this.router.navigate(['brand-delete']);
+  }
+
+  public activeBrandList() {
+    this.router.navigate(['brand-list']);
+  }
+
+  public activeBrandUpdate() {
+    this.router.navigate(['brand-update']);
   }
 }

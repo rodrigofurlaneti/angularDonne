@@ -100,6 +100,12 @@ import { VehicleTypeUpdateModule } from './vehicleType/vehicleType-update/vehicl
 //Brand
 import { BrandCreateModule } from './brand/brand-create/brand-create.module';
 import { BrandCreateComponent } from './brand/brand-create/brand-create.component';
+import { BrandDeleteModule } from './brand/brand-delete/brand-delete.module';
+import { BrandDeleteComponent } from './brand/brand-delete/brand-delete.component';
+import { BrandListModule } from './brand/brand-list/brand-list.module';
+import { BrandListComponent } from './brand/brand-list/brand-list.component';
+import { BrandUpdateModule } from './brand/brand-update/brand-update.module';
+import { BrandUpdateComponent } from './brand/brand-update/brand-update.component';
 
 //Material
 import { MatNativeDateModule } from '@angular/material/core';
@@ -167,7 +173,10 @@ import { FormsModule } from '@angular/forms';
     VehicleTypeListComponent,
     VehicleTypeDeleteComponent,
     VehicleTypeUpdateComponent,
-    BrandCreateComponent
+    BrandCreateComponent,
+    BrandDeleteComponent,
+    BrandListComponent,
+    BrandUpdateComponent
   ],
   imports: [
     CurrencyMaskModule,
@@ -197,6 +206,9 @@ import { FormsModule } from '@angular/forms';
     VehicleTypeUpdateModule,
     VehicleTypeDeleteModule,
     BrandCreateModule,
+    BrandDeleteModule,
+    BrandListModule,
+    BrandUpdateModule,
     HttpClientModule,
     MatNativeDateModule,
     MatIconModule,
