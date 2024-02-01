@@ -107,15 +107,15 @@ import { BrandListComponent } from './brand/brand-list/brand-list.component';
 import { BrandUpdateModule } from './brand/brand-update/brand-update.module';
 import { BrandUpdateComponent } from './brand/brand-update/brand-update.component';
 
-//Model
-import { ModelCreateComponent } from './model/model-create/model-create.component';
-import { ModelCreateModule } from './model/model-create/model-create.module';
-import { ModelListComponent } from './model/model-list/model-list.component';
-import { ModelListModule } from './model/model-list/model-list.module';
-import { ModelDeleteComponent } from './model/model-delete/model-delete.component';
-import { ModelDeleteModule } from './model/model-delete/model-delete.module';
-import { ModelUpdateComponent } from './model/model-update/model-update.component';
-import { ModelUpdateModule } from './model/model-update/model-update.module';
+//Vehicle Model
+import { VehicleModelCreateComponent } from './vehicleModel/vehicleModel-create/vehicleModel-create.component';
+import { VehicleModelCreateModule } from './vehicleModel/vehicleModel-create/vehicleModel-create.module';
+import { VehicleModelListComponent } from './vehicleModel/vehicleModel-list/vehicleModel-list.component';
+import { VehicleModelListModule } from './vehicleModel/vehicleModel-list/vehicleModel-list.module';
+import { VehicleModelDeleteComponent } from './vehicleModel/vehicleModel-delete/vehicleModel-delete.component';
+import { VehicleModelDeleteModule } from './vehicleModel/vehicleModel-delete/vehicleModel-delete.module';
+import { VehicleModelUpdateComponent } from './vehicleModel/vehicleModel-update/vehicleModel-update.component';
+import { VehicleModelUpdateModule } from './vehicleModel/vehicleModel-update/vehicleModel-update.module';
 
 //Material
 import { MatNativeDateModule } from '@angular/material/core';
@@ -187,10 +187,10 @@ import { FormsModule } from '@angular/forms';
     BrandDeleteComponent,
     BrandListComponent,
     BrandUpdateComponent,
-    ModelCreateComponent,
-    ModelListComponent,
-    ModelDeleteComponent,
-    ModelUpdateComponent
+    VehicleModelCreateComponent,
+    VehicleModelListComponent,
+    VehicleModelDeleteComponent,
+    VehicleModelUpdateComponent
   ],
   imports: [
     CurrencyMaskModule,
@@ -223,10 +223,10 @@ import { FormsModule } from '@angular/forms';
     BrandDeleteModule,
     BrandListModule,
     BrandUpdateModule,
-    ModelCreateModule,
-    ModelListModule,
-    ModelDeleteModule,
-    ModelUpdateModule,
+    VehicleModelCreateModule,
+    VehicleModelListModule,
+    VehicleModelDeleteModule,
+    VehicleModelUpdateModule,
     HttpClientModule,
     MatNativeDateModule,
     MatIconModule,

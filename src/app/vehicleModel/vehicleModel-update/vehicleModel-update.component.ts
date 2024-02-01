@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { ModelUpdateService } from './model-update.service';
+import { VehicleModelUpdateService } from './vehicleModel-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Model } from 'src/interface/model.inteface';
+import { VehicleModel } from 'src/interface/vehicleModel.inteface';
 
-let ELEMENT_DATA: Model[];
+let ELEMENT_DATA: VehicleModel[];
 
 @Component({
-  selector: 'model-update',
-  templateUrl: './model-update.component.html',
-  styleUrls: ['./model-update.component.css']
+  selector: 'vehicleModel-update',
+  templateUrl: './vehicleModel-update.component.html',
+  styleUrls: ['./vehicleModel-update.component.css']
 })
 
-export class ModelUpdateComponent implements OnInit {
+export class VehicleModelUpdateComponent implements OnInit {
 
   //#region [Properties]
   //Property DisplayedColumns
-  private _displayedColumns: string[] = ['modelId','modelName'];
+  private _displayedColumns: string[] = ['vehicleModelId','vehicleModelName'];
   get displayedColumns() { return this._displayedColumns; }
   set displayedColumns(value) { this._displayedColumns = value; }
 
@@ -46,9 +46,9 @@ export class ModelUpdateComponent implements OnInit {
   set messageModelName(value) { this._messageModelName = value; }
   
   //Property ModelModel
-  private _model = new Model();
-  get model() { return this._model; }
-  set model(value) { this._model = value; }
+  private _vehicleModel = new VehicleModel();
+  get vehicleModel() { return this._vehicleModel; }
+  set vehicleModel(value) { this._vehicleModel = value; }
 
   //Property IsIdZero
   private _isIdZero: boolean = true;
@@ -73,7 +73,7 @@ export class ModelUpdateComponent implements OnInit {
   // #endregion
 
   //#region [Constructor]
-  constructor(private modelUpdateService: ModelUpdateService,
+  constructor(private vehicleModelUpdateService: VehicleModelUpdateService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
@@ -97,7 +97,7 @@ export class ModelUpdateComponent implements OnInit {
   }
 
   list() {
-    this.modelUpdateService.list().subscribe(list => {
+    this.vehicleModelUpdateService.list().subscribe(list => {
       this.dataSource = list;
     }, err => {
       console.log('Erro ao listar os modelos dos veículos!', err);
@@ -106,10 +106,10 @@ export class ModelUpdateComponent implements OnInit {
 
   public getById(id: number) {
     this.showUpdateButton();
-    this.modelUpdateService.getById(id)
+    this.vehicleModelUpdateService.getById(id)
                               .subscribe(modelResponse => { 
-                                this.model.modelId = modelResponse.ModelId;
-                                this.model.modelName = modelResponse.ModelName;
+                                this.vehicleModel.vehicleModelId = modelResponse.ModelId;
+                                this.vehicleModel.vehicleModelName = modelResponse.ModelName;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
@@ -117,7 +117,7 @@ export class ModelUpdateComponent implements OnInit {
 
   dataSource = ELEMENT_DATA;
 
-  clickedRows = new Set<Model>();
+  clickedRows = new Set<VehicleModel>();
 
   reply(){
     this.routerString = 'main';
@@ -126,12 +126,12 @@ export class ModelUpdateComponent implements OnInit {
 
   public update() {
 
-    this.model = this.checkFields(this.model);
+    this.vehicleModel = this.checkFields(this.vehicleModel);
 
     //update
-    if(this.model.modelName != "")
+    if(this.vehicleModel.vehicleModelName != "")
     {
-      this.modelUpdateService.update(this.model)
+      this.vehicleModelUpdateService.update(this.vehicleModel)
       .subscribe(modelResponse => { 
         this.successMessage();
         this.reply();
@@ -141,9 +141,9 @@ export class ModelUpdateComponent implements OnInit {
     }
   }
 
-  public checkFields(objModelModel : Model) : Model
+  public checkFields(objModelModel : VehicleModel) : VehicleModel
   {
-    if(objModelModel.modelName == "")
+    if(objModelModel.vehicleModelName == "")
     {
       this.messageModelName = 'Não está preenchido o campo nome do modelo do veículo!';
       this._snackBar.open(this.messageModelName,'', {

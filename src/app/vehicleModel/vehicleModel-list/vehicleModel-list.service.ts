@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ModelListService {
+export class VehicleModelListService {
 
-  private route = 'https://localhost:7027/model';
-  private routeAzure = 'https://apidonne.azurewebsites.net/model';
+  private route = 'https://localhost:7027/vehicleModel';
+  private routeAzure = 'https://apidonne.azurewebsites.net/vehicleModel';
 
   constructor(private http: HttpClient) { }
 

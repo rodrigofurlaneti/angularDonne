@@ -1,15 +1,15 @@
 <section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <ng-container matColumnDef="modelId">
+    <ng-container matColumnDef="vehicleModelId">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;">Número do modelo do veículo</th>
-      <td mat-cell (click)="delete(element.modelId)" *matCellDef="let element" class="headerDeleteModel">
-        {{element.modelId}}
+      <td mat-cell (click)="delete(element.vehicleModelId)" *matCellDef="let element" class="headerDeleteModel">
+        {{element.vehicleModelId}}
       </td>
     </ng-container>
-    <ng-container matColumnDef="modelName">
+    <ng-container matColumnDef="vehicleModelName">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nome do modelo do veículo</th>
-      <td mat-cell (click)="delete(element.ModelId)" *matCellDef="let element" class="headerDeleteModel">
-        {{element.ModelName}}
+      <td mat-cell (click)="delete(element.vehicleModelId)" *matCellDef="let element" class="headerDeleteModel">
+        {{element.vehicleModelName}}
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

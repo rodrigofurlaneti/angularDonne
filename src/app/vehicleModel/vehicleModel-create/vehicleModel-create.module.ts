@@ -13,4 +13,4 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatGridListModule
   ]
 })
-export class ModelCreateModule{ }
+export class VehicleModelCreateModule{ }

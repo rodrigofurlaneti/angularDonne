@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { ModelDeleteService } from './model-delete.service';
+import { VehicleModelDeleteService } from './vehicleModel-delete.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Model } from 'src/interface/model.inteface';
+import { VehicleModel } from 'src/interface/vehicleModel.inteface';
 
 @Component({
-  selector: 'model-delete',
-  templateUrl: './model-delete.component.html',
-  styleUrls: ['./model-delete.component.css']
+  selector: 'vehicleModel-delete',
+  templateUrl: './vehicleModel-delete.component.html',
+  styleUrls: ['./vehicleModel-delete.component.css']
 })
-export class ModelDeleteComponent implements OnInit {
+export class VehicleModelDeleteComponent implements OnInit {
 
   //#region [Properties]
   //Property Status
@@ -23,17 +23,17 @@ export class ModelDeleteComponent implements OnInit {
   set ids(value) { this._ids = value; }
 
   //Property DisplayedColumns
-  private _displayedColumns: string[] = ['modelId','modelName'];
+  private _displayedColumns: string[] = ['vehicleModelId','vehicleModelName'];
   get displayedColumns() { return this._displayedColumns; }
   set displayedColumns(value) { this._displayedColumns = value; }
 
   //Property DataSource
-  private _dataSource: Model[] = [];
+  private _dataSource: VehicleModel[] = [];
   get dataSource() { return this._dataSource; }
   set dataSource(value) { this._dataSource = value; }
 
   //Property ClickedRows
-  private _clickedRows = new Set<Model>();
+  private _clickedRows = new Set<VehicleModel>();
   get clickedRows() { return this._clickedRows; }
   set clickedRows(value) { this._clickedRows = value; }
 
@@ -61,7 +61,7 @@ export class ModelDeleteComponent implements OnInit {
 
   //#region [Constructor]
   
-  constructor(private modelDeleteService: ModelDeleteService,
+  constructor(private vehicleModelDeleteService: VehicleModelDeleteService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
@@ -74,7 +74,7 @@ export class ModelDeleteComponent implements OnInit {
 
   list():void {
     this.messageErro = 'Erro ao listar os modelos dos veículos!';
-    this.modelDeleteService.list().subscribe((list) => {
+    this.vehicleModelDeleteService.list().subscribe((list) => {
         this.dataSource = list;
     },
       (err) => {
@@ -87,7 +87,7 @@ export class ModelDeleteComponent implements OnInit {
 
   delete(id: number):void {
     this.messageSuccess = 'O modelo do veículo foi excluído com sucesso!'
-    this.modelDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
+    this.vehicleModelDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
     this.reply();
     this._snackBar.open(this.messageSuccess,'', {
       duration: this.messageTime

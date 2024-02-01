@@ -131,10 +131,10 @@ export class DynamicDatabase {
     ],
     ['Modelo do veículo', 
     [
-      { name:'Adicionar', path:'/model-create', icon:'exposure_plus_1'},
-      { name:'Atualizar', path:'/model-update', icon:'sync'},
-      { name:'Excluir', path:'/model-delete', icon:'delete_forever'},
-      { name:'Listar', path:'/model-list', icon:'view_headline'},
+      { name:'Adicionar', path:'/vehicleModel-create', icon:'exposure_plus_1'},
+      { name:'Atualizar', path:'/vehicleModel-update', icon:'sync'},
+      { name:'Excluir', path:'/vehicleModel-delete', icon:'delete_forever'},
+      { name:'Listar', path:'/vehicleModel-list', icon:'view_headline'},
     ],
     ],
   ]);
@@ -441,19 +441,19 @@ export class MainComponent {
     this.router.navigate(['brand-update']);
   }
 
-  public activeModelCreate() {
-    this.router.navigate(['model-create']);
+  public activeVehicleModelCreate() {
+    this.router.navigate(['vehicleModel-create']);
   }
 
-  public activeModelList() {
-    this.router.navigate(['model-list']);
+  public activeVehicleModelList() {
+    this.router.navigate(['vehicleModel-list']);
   }
 
-  public activeModelDelete() {
-    this.router.navigate(['model-delete']);
+  public activeVehicleModelDelete() {
+    this.router.navigate(['vehicleModel-delete']);
   }
 
-  public activeModelUpdate() {
-    this.router.navigate(['model-update']);
+  public activeVehicleModelUpdate() {
+    this.router.navigate(['vehicleModel-update']);
   }
 }

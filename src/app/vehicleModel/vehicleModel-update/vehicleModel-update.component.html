@@ -2,20 +2,20 @@
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-        <ng-container matColumnDef="modelId">
+        <ng-container matColumnDef="vehicleModelId">
           <th mat-header-cell *matHeaderCellDef style="text-align: center;">
             Número do modelo do veículo
           </th>
           <td mat-cell (click)="getById(element.modelId)" *matCellDef="let element">
-            <div class="headerUpdateModel">{{element.modelId}}</div>
+            <div class="headerUpdateModel">{{element.vehicleModelId}}</div>
           </td>
         </ng-container>
-        <ng-container matColumnDef="modelName">
+        <ng-container matColumnDef="vehicleModelName">
           <th mat-header-cell *matHeaderCellDef style="text-align: center;">
             Nome do modelo do veículo
           </th>
-          <td mat-cell (click)="getById(element.modelId)" *matCellDef="let element">
-            <div class="headerUpdateModel">{{element.modelName}}</div>
+          <td mat-cell (click)="getById(element.vehicleModelId)" *matCellDef="let element">
+            <div class="headerUpdateModel">{{element.vehicleModelName}}</div>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -33,7 +33,7 @@
             <mat-grid-tile>
               <mat-form-field style="width: 100%;" class="example-full-width">
                 <mat-label>Nome do modelo do veículo</mat-label>
-                <input matInput placeholder="Nome do modelo do veículo" id="modelName" name="modelName" [(ngModel)]="model.modelName" matInput />
+                <input matInput placeholder="Nome do modelo do veículo" id="vehicleModelName" name="vehicleModelName" [(ngModel)]="vehicleModel.vehicleModelName" matInput />
               </mat-form-field>
             </mat-grid-tile>
           </mat-grid-list>
@@ -63,7 +63,7 @@
           <div class="example-button-container">
             <div class="example-label titleUpdateModel">
               <div class="labelToButton">Atualizar</div>
-              <button mat-raised-button mat-mini-fab matTooltip="Atualizar cliente" (click)="update()"
+              <button mat-raised-button mat-mini-fab matTooltip="Atualizar o modelo do veículo" (click)="update()"
                 color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>sync</mat-icon>
               </button>
@@ -73,4 +73,3 @@
       </div>
     </section>
 </section>
-
