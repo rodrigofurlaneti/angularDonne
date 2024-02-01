@@ -1,0 +1,76 @@
+<section class="center">
+  <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="modelId">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">
+            Número do modelo do veículo
+          </th>
+          <td mat-cell (click)="getById(element.modelId)" *matCellDef="let element">
+            <div class="headerUpdateModel">{{element.modelId}}</div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="modelName">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">
+            Nome do modelo do veículo
+          </th>
+          <td mat-cell (click)="getById(element.modelId)" *matCellDef="let element">
+            <div class="headerUpdateModel">{{element.modelName}}</div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
+            *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </ng-template>
+
+  <ng-template #isIdGreaterThanZero>
+    <mat-card style="width: 35vh;">
+      <mat-card-content>Atualizar o modelo do veículo</mat-card-content>
+        <form class="example-form">
+          <mat-grid-list cols="1" rowHeight="5vh">
+            <mat-grid-tile>
+              <mat-form-field style="width: 100%;" class="example-full-width">
+                <mat-label>Nome do modelo do veículo</mat-label>
+                <input matInput placeholder="Nome do modelo do veículo" id="modelName" name="modelName" [(ngModel)]="model.modelName" matInput />
+              </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </form>
+        <div class="wrapper">
+          <div>
+            <div>Voltar</div>
+            <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+          </div>
+        <div>
+        </div>
+          <div>
+            <div>Atualizar</div>
+            <button mat-raised-button mat-mini-fab matTooltip="Atualizar o modelo do veículo" (click)="update()" color="primary" aria-label="Atualizar">
+              <mat-icon>sync</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+  </ng-template>
+
+    <section class="update_btn">
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <div class="example-label titleUpdateModel">
+              <div class="labelToButton">Atualizar</div>
+              <button mat-raised-button mat-mini-fab matTooltip="Atualizar cliente" (click)="update()"
+                color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>sync</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</section>
+

@@ -132,9 +132,9 @@ export class DynamicDatabase {
     ['Modelo do veículo', 
     [
       { name:'Adicionar', path:'/model-create', icon:'exposure_plus_1'},
+      { name:'Atualizar', path:'/model-update', icon:'sync'},
       { name:'Excluir', path:'/model-delete', icon:'delete_forever'},
       { name:'Listar', path:'/model-list', icon:'view_headline'},
-
     ],
     ],
   ]);
@@ -451,5 +451,9 @@ export class MainComponent {
 
   public activeModelDelete() {
     this.router.navigate(['model-delete']);
+  }
+
+  public activeModelUpdate() {
+    this.router.navigate(['model-update']);
   }
 }
