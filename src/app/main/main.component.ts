@@ -121,7 +121,7 @@ export class DynamicDatabase {
       { name:'Listar', path:'/vehicleType-list', icon:'view_headline'}
     ],
     ],
-    ['Marca de veículo', 
+    ['Marca do veículo', 
     [
       { name:'Adicionar', path:'/brand-create', icon:'exposure_plus_1'},
       { name:'Atualizar', path:'/brand-update', icon:'sync'},
@@ -129,10 +129,18 @@ export class DynamicDatabase {
       { name:'Listar', path:'/brand-list', icon:'view_headline'}
     ],
     ],
+    ['Modelo do veículo', 
+    [
+      { name:'Adicionar', path:'/model-create', icon:'exposure_plus_1'},
+      { name:'Excluir', path:'/model-delete', icon:'delete_forever'},
+      { name:'Listar', path:'/model-list', icon:'view_headline'},
+
+    ],
+    ],
   ]);
 
   rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Estoque', 'Forma de pagamento', 'Pagamento', 
-  'Marca de veículo', 'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle', 'Tipo de veículo'];
+  'Marca do veículo', 'Modelo do veículo', 'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle', 'Tipo de veículo'];
 
   /** Initial data from database */
   initialData(): DynamicFlatNode[] {
@@ -431,5 +439,17 @@ export class MainComponent {
 
   public activeBrandUpdate() {
     this.router.navigate(['brand-update']);
+  }
+
+  public activeModelCreate() {
+    this.router.navigate(['model-create']);
+  }
+
+  public activeModelList() {
+    this.router.navigate(['model-list']);
+  }
+
+  public activeModelDelete() {
+    this.router.navigate(['model-delete']);
   }
 }

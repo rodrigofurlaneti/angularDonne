@@ -107,6 +107,14 @@ import { BrandListComponent } from './brand/brand-list/brand-list.component';
 import { BrandUpdateModule } from './brand/brand-update/brand-update.module';
 import { BrandUpdateComponent } from './brand/brand-update/brand-update.component';
 
+//Model
+import { ModelCreateComponent } from './model/model-create/model-create.component';
+import { ModelCreateModule } from './model/model-create/model-create.module';
+import { ModelListComponent } from './model/model-list/model-list.component';
+import { ModelListModule } from './model/model-list/model-list.module';
+import { ModelDeleteComponent } from './model/model-delete/model-delete.component';
+import { ModelDeleteModule } from './model/model-delete/model-delete.module';
+
 //Material
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -176,7 +184,10 @@ import { FormsModule } from '@angular/forms';
     BrandCreateComponent,
     BrandDeleteComponent,
     BrandListComponent,
-    BrandUpdateComponent
+    BrandUpdateComponent,
+    ModelCreateComponent,
+    ModelListComponent,
+    ModelDeleteComponent
   ],
   imports: [
     CurrencyMaskModule,
@@ -209,6 +220,9 @@ import { FormsModule } from '@angular/forms';
     BrandDeleteModule,
     BrandListModule,
     BrandUpdateModule,
+    ModelCreateModule,
+    ModelListModule,
+    ModelDeleteModule,
     HttpClientModule,
     MatNativeDateModule,
     MatIconModule,
