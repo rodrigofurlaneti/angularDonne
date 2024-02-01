@@ -61,6 +61,11 @@ import { BrandListComponent } from './brand/brand-list/brand-list.component';
 import { BrandDeleteComponent } from './brand/brand-delete/brand-delete.component';
 import { BrandUpdateComponent } from './brand/brand-update/brand-update.component';
 
+import { VehicleModelCreateComponent } from './vehicleModel/vehicleModel-create/vehicleModel-create.component';
+import { VehicleModelListComponent } from './vehicleModel/vehicleModel-list/vehicleModel-list.component';
+import { VehicleModelDeleteComponent } from './vehicleModel/vehicleModel-delete/vehicleModel-delete.component';
+import { VehicleModelUpdateComponent } from './vehicleModel/vehicleModel-update/vehicleModel-update.component';
+
 export const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'main', component: MainComponent },
@@ -105,6 +110,10 @@ export const routes: Routes = [
   { path: 'vehicleType-list', component: VehicleTypeListComponent },
   { path: 'vehicleType-delete', component: VehicleTypeDeleteComponent }, 
   { path: 'vehicleType-update', component: VehicleTypeUpdateComponent },
+  { path: 'vehicleModel-create', component: VehicleModelCreateComponent },
+  { path: 'vehicleModel-list', component: VehicleModelListComponent },
+  { path: 'vehicleModel-delete', component: VehicleModelDeleteComponent }, 
+  { path: 'vehicleModel-update', component: VehicleModelUpdateComponent },
   { path: 'brand-create', component: BrandCreateComponent },
   { path: 'brand-delete', component: BrandDeleteComponent },
   { path: 'brand-update', component: BrandUpdateComponent },

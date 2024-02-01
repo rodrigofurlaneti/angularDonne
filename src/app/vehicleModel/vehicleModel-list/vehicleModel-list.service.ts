@@ -7,18 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class VehicleModelListService {
 
-  private route = 'https://localhost:7027/vehicleModel';
+  private route = 'https://localhost:7027/VehicleModel';
   private routeAzure = 'https://apidonne.azurewebsites.net/vehicleModel';
 
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
     var ret = this.http.get(this.routeAzure);
-    return ret;
-  }
-
-  listModelStatus(id:number) : Observable<any>{
-    var ret = this.http.options<any>(this.routeAzure+'/'+id); 
     return ret;
   }
 }

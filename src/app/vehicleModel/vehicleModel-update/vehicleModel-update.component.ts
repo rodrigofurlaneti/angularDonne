@@ -108,8 +108,8 @@ export class VehicleModelUpdateComponent implements OnInit {
     this.showUpdateButton();
     this.vehicleModelUpdateService.getById(id)
                               .subscribe(modelResponse => { 
-                                this.vehicleModel.vehicleModelId = modelResponse.ModelId;
-                                this.vehicleModel.vehicleModelName = modelResponse.ModelName;
+                                this.vehicleModel.vehicleModelId = modelResponse.vehicleModelId;
+                                this.vehicleModel.vehicleModelName = modelResponse.vehicleModelName;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
