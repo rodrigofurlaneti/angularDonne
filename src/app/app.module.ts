@@ -87,6 +87,16 @@ import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 
+//Vehicle Color
+import { VehicleColorCreateModule } from './vehicleColor/vehicleColor-create/vehicleColor-create.module';
+import { VehicleColorCreateComponent } from './vehicleColor/vehicleColor-create/vehicleColor-create.component';
+import { VehicleColorListComponent } from './vehicleColor/vehicleColor-list/vehicleColor-list.component';
+import { VehicleColorListModule } from './vehicleColor/vehicleColor-list/vehicleColor-list.module';
+import { VehicleColorDeleteComponent } from './vehicleColor/vehicleColor-delete/vehicleColor-delete.component';
+import { VehicleColorDeleteModule } from './vehicleColor/vehicleColor-delete/vehicleColor-delete.module';
+import { VehicleColorUpdateComponent } from './vehicleColor/vehicleColor-update/vehicleColor-update.component';
+import { VehicleColorUpdateModule } from './vehicleColor/vehicleColor-update/vehicleColor-update.module';
+
 //Vehicle Type
 import { VehicleTypeCreateModule } from './vehicleType/vehicleType-create/vehicleType-create.module';
 import { VehicleTypeCreateComponent } from './vehicleType/vehicleType-create/vehicleType-create.component';
@@ -179,6 +189,10 @@ import { FormsModule } from '@angular/forms';
     FormOfPaymentListComponent,
     FormOfPaymentDeleteComponent,
     FormOfPaymentUpdateComponent,
+    VehicleColorCreateComponent,
+    VehicleColorListComponent,
+    VehicleColorDeleteComponent,
+    VehicleColorUpdateComponent,
     VehicleTypeCreateComponent,
     VehicleTypeListComponent,
     VehicleTypeDeleteComponent,
@@ -215,6 +229,10 @@ import { FormsModule } from '@angular/forms';
     ProfileListModule,
     ProfileUpdateModule,
     FormOfPaymentCreateModule,
+    VehicleColorCreateModule,
+    VehicleColorListModule,
+    VehicleColorDeleteModule,
+    VehicleColorUpdateModule, 
     VehicleTypeCreateModule,
     VehicleTypeListModule,
     VehicleTypeUpdateModule,

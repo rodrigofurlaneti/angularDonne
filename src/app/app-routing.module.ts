@@ -66,6 +66,10 @@ import { VehicleModelListComponent } from './vehicleModel/vehicleModel-list/vehi
 import { VehicleModelDeleteComponent } from './vehicleModel/vehicleModel-delete/vehicleModel-delete.component';
 import { VehicleModelUpdateComponent } from './vehicleModel/vehicleModel-update/vehicleModel-update.component';
 
+import { VehicleColorCreateComponent } from './vehicleColor/vehicleColor-create/vehicleColor-create.component';
+import { VehicleColorListComponent } from './vehicleColor/vehicleColor-list/vehicleColor-list.component';
+import { VehicleColorDeleteComponent } from './vehicleColor/vehicleColor-delete/vehicleColor-delete.component';
+
 export const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'main', component: MainComponent },
@@ -106,6 +110,9 @@ export const routes: Routes = [
   { path: 'user-update', component: UserUpdateComponent },
   { path: 'user-delete', component: UserDeleteComponent },
   { path: 'user-list', component: UserListComponent },
+  { path: 'vehicleColor-create', component: VehicleColorCreateComponent },
+  { path: 'vehicleColor-list', component: VehicleColorListComponent },
+  { path: 'vehicleColor-delete', component: VehicleColorDeleteComponent }, 
   { path: 'vehicleType-create', component: VehicleTypeCreateComponent },
   { path: 'vehicleType-list', component: VehicleTypeListComponent },
   { path: 'vehicleType-delete', component: VehicleTypeDeleteComponent }, 

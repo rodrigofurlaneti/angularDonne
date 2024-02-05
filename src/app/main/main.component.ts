@@ -113,6 +113,14 @@ export class DynamicDatabase {
         { name:'Listar', path:'/user-list', icon:'view_headline'},
       ],
     ],
+    ['Cor do veículo', 
+    [
+      { name:'Adicionar', path:'/vehicleColor-create', icon:'exposure_plus_1'},
+      { name:'Atualizar', path:'/vehicleColor-update', icon:'sync'},
+      { name:'Excluir', path:'/vehicleColor-delete', icon:'delete_forever'},
+      { name:'Listar', path:'/vehicleColor-list', icon:'view_headline'}
+    ],
+    ],
     ['Tipo de veículo', 
     [
       { name:'Adicionar', path:'/vehicleType-create', icon:'exposure_plus_1'},
@@ -140,7 +148,8 @@ export class DynamicDatabase {
   ]);
 
   rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Estoque', 'Forma de pagamento', 'Pagamento', 
-  'Marca do veículo', 'Modelo do veículo', 'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle', 'Tipo de veículo'];
+  'Cor do veículo', 'Marca do veículo', 'Modelo do veículo', 'Pedido', 'Perfil', 'Produto', 
+  'Usuário', 'Relatório', 'Painel de controle', 'Tipo de veículo'];
 
   /** Initial data from database */
   initialData(): DynamicFlatNode[] {
