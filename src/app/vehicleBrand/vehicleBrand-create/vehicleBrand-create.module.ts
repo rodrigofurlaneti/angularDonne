@@ -14,4 +14,4 @@ import { MatGridListModule } from '@angular/material/grid-list';
   ]
 })
 
-export class BrandDeleteModule{ }
+export class VehicleBrandCreateModule{ }

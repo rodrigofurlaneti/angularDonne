@@ -1,22 +1,22 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BrandCreateService } from './brand-create.service';
-import { BrandModel } from '../../../interface/brand.interface';
+import { VehicleBrandCreateService } from './vehicleBrand-create.service';
+import { VehicleBrandModel } from '../../../interface/vehicleBrand.interface';
 
 @Component({
-  selector: 'brand-create',
-  templateUrl: './brand-create.component.html',
-  styleUrls: ['./brand-create.component.css']
+  selector: 'vehicleBrand-create',
+  templateUrl: './vehicleBrand-create.component.html',
+  styleUrls: ['./vehicleBrand-create.component.css']
 })
 
-export class BrandCreateComponent {
+export class VehicleBrandCreateComponent {
   
   //#region [Properties]
   //Property BrandModel
-  private _brandModel = new BrandModel();
-  get brandModel() { return this._brandModel; }
-  set brandModel(value) { this._brandModel = value; }
+  private _vehicleBrandModel = new VehicleBrandModel();
+  get vehicleBrandModel() { return this._vehicleBrandModel; }
+  set vehicleBrandModel(value) { this._vehicleBrandModel = value; }
 
   //Property MessageTime
   private _messageTime: number = 3000;
@@ -47,7 +47,7 @@ export class BrandCreateComponent {
 
   //#region [Constructor]
   
-  constructor(private brandCreateService: BrandCreateService, 
+  constructor(private vehicleBrandCreateService: VehicleBrandCreateService, 
     private _snackBar: MatSnackBar,
     private readonly router: Router) { }
   
@@ -57,10 +57,10 @@ export class BrandCreateComponent {
 
   save():void {
     //save
-    if(this.brandModel.brandName != "" )
+    if(this.vehicleBrandModel.vehicleBrandName != "" )
     {
-      this.brandCreateService
-          .save(this.brandModel)
+      this.vehicleBrandCreateService
+          .save(this.vehicleBrandModel)
           .subscribe(brand => {
         this.successMessage();
         this.BrandList();
@@ -82,14 +82,14 @@ export class BrandCreateComponent {
 
   successMessage():void{
     this.messageSuccess = 'A marca de veículo foi cadastrado com sucesso!';
-    this._snackBar.open(this.messageSuccess + this.brandModel.brandName ,'', {
+    this._snackBar.open(this.messageSuccess + this.vehicleBrandModel.vehicleBrandName ,'', {
       duration: this.messageTime
     });
   }
 
   errorMessage():void{
-    this.messageErro = 'Erro ao cadastrar a marca d0 veículo!';
-    this._snackBar.open(this.messageErro + this.brandModel.brandName,'', {
+    this.messageErro = 'Erro ao cadastrar a marca do veículo!';
+    this._snackBar.open(this.messageErro + this.vehicleBrandModel.vehicleBrandName,'', {
       duration: this.messageTime
     });
   }

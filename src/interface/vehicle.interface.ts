@@ -1,9 +1,13 @@
 export interface IVehicleInterface {
     vehicleId: number;
     vehicleTypeId: number;
-    brandId: number;
-    modelId: number;
-    colorId: number;
+    vehicleTypeName: string;
+    vehicleBrandId: number;
+    vehicleBrandName: string;
+    vehicleModelId: number;
+    vehicleModelName: string;
+    vehicleColorId: number;
+    vehicleColorName: string;
     plate: string;
     entryDate: string;
     entryTime: string;
@@ -14,9 +18,13 @@ export interface IVehicleInterface {
 export class VehicleModel implements IVehicleInterface {
     vehicleId: number = 0;    
     vehicleTypeId: number = 0;
-    brandId: number = 0;
-    modelId: number = 0;
-    colorId: number = 0;
+    vehicleTypeName: string = '';
+    vehicleBrandId: number = 0;
+    vehicleBrandName: string = '';
+    vehicleModelId: number = 0;
+    vehicleModelName: string = '';
+    vehicleColorId: number = 0;
+    vehicleColorName: string = '';
     plate: string = '';
     entryDate: string =  '';
     entryTime: string =  '';

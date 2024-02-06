@@ -2,12 +2,12 @@
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-        <ng-container matColumnDef="brandName">
+        <ng-container matColumnDef="vehicleBrandName">
           <th mat-header-cell *matHeaderCellDef style="text-align: center;">
             Nome da marca do veículo
           </th>
           <td mat-cell (click)="getById(element.brandId)" *matCellDef="let element">
-            <div class="headerUpdateBrand">{{element.brandName}}</div>
+            <div class="headerUpdateBrand">{{element.vehicleBrandName}}</div>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -24,7 +24,7 @@
             <mat-grid-tile>
               <mat-form-field style="width: 100%;" class="example-full-width">
                 <mat-label>Nome da marca do veículo</mat-label>
-                <input matInput placeholder="Nome do cliente" id="brandName" name="brandName" [(ngModel)]="brandModel.brandName" matInput />
+                <input matInput placeholder="Nome do cliente" id="vehicleBrandName" name="vehicleBrandName" [(ngModel)]="vehicleBrandModel.vehicleBrandName" matInput />
               </mat-form-field>
             </mat-grid-tile>
           </mat-grid-list>
@@ -40,7 +40,7 @@
         </div>
           <div>
             <div>Atualizar</div>
-            <button mat-raised-button mat-mini-fab matTooltip="Atualizar cliente" (click)="update()" color="primary" aria-label="Atualizar">
+            <button mat-raised-button mat-mini-fab matTooltip="Atualizar a marca do veículo" (click)="update()" color="primary" aria-label="Atualizar">
               <mat-icon>sync</mat-icon>
             </button>
           </div>
@@ -64,4 +64,3 @@
       </div>
     </section>
 </section>
-

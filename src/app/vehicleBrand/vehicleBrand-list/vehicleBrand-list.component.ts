@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { BrandListService } from './brand-list.service';
-import { BrandModel } from 'src/interface/brand.interface';
+import { VehicleBrandListService } from './vehicleBrand-list.service';
+import { VehicleBrandModel } from 'src/interface/vehicleBrand.interface';
 
 @Component({
-  selector: 'brand-list',
-  templateUrl: './brand-list.component.html',
-  styleUrls: ['./brand-list.component.css']
+  selector: 'vehicleBrand-list',
+  templateUrl: './vehicleBrand-list.component.html',
+  styleUrls: ['./vehicleBrand-list.component.css']
 })
-export class BrandListComponent implements OnInit {
+export class VehicleBrandListComponent implements OnInit {
 
   //#region [Properties]
   //Property DisplayedColumns
-  private _displayedColumns: string[] = ['brandId','brandName'];
+  private _displayedColumns: string[] = ['vehicleBrandId','vehicleBrandName'];
   get displayedColumns() { return this._displayedColumns; }
   set displayedColumns(value) { this._displayedColumns = value; }
 
   //Property DataSource
-  private _dataSource: BrandModel[] = [];
+  private _dataSource: VehicleBrandModel[] = [];
   get dataSource() { return this._dataSource; }
   set dataSource(value) { this._dataSource = value; }
 
   //Property ClickedRows
-  private _clickedRows = new Set<BrandModel>();
+  private _clickedRows = new Set<VehicleBrandModel>();
   get clickedRows() { return this._clickedRows; }
   set clickedRows(value) { this._clickedRows = value; }
   
@@ -40,7 +40,7 @@ export class BrandListComponent implements OnInit {
 
   // #region [Constructor]
 
-  constructor(private brandListService: BrandListService,
+  constructor(private vehicleBrandListService: VehicleBrandListService,
               private router: Router) { }
   
   // #endregion
@@ -53,7 +53,7 @@ export class BrandListComponent implements OnInit {
 
   list() {
     this.messageErro = 'Erro ao listar as marcas dos veículos!';
-    this.brandListService.list().subscribe(list => {
+    this.vehicleBrandListService.list().subscribe(list => {
       this.dataSource = list;
     }, err => {
       console.log(this.messageErro, err);

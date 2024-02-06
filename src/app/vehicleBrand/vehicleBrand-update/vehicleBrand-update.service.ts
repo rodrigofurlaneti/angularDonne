@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BrandModel } from 'src/interface/brand.interface';
+import { VehicleBrandModel } from 'src/interface/vehicleBrand.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class BrandUpdateService {
+export class VehicleBrandUpdateService {
 
-  private route = 'https://localhost:7027/brand';
-  private routeAzure = 'https://apidonne.azurewebsites.net/brand';
+  private route = 'https://localhost:7027/VehicleBrand';
+  private routeAzure = 'https://apidonne.azurewebsites.net/VehicleBrand';
 
   constructor(
     private httpClient: HttpClient
@@ -25,7 +25,7 @@ export class BrandUpdateService {
     return this.httpClient.get<any>(this.routeAzure+'/'+id);
   }
 
-  public update(BrandModel: BrandModel) {
-    return this.httpClient.put(`${this.routeAzure}`, BrandModel);
+  public update(vehicleBrandModel: VehicleBrandModel) {
+    return this.httpClient.put(`${this.routeAzure}`, vehicleBrandModel);
   }
 }

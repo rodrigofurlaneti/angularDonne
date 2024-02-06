@@ -56,10 +56,10 @@ import { VehicleTypeListComponent } from './vehicleType/vehicleType-list/vehicle
 import { VehicleTypeDeleteComponent } from './vehicleType/vehicleType-delete/vehicleType-delete.component';
 import { VehicleTypeUpdateComponent } from './vehicleType/vehicleType-update/vehicleType-update.component';
 
-import { BrandCreateComponent } from './brand/brand-create/brand-create.component';
-import { BrandListComponent } from './brand/brand-list/brand-list.component';
-import { BrandDeleteComponent } from './brand/brand-delete/brand-delete.component';
-import { BrandUpdateComponent } from './brand/brand-update/brand-update.component';
+import { VehicleBrandCreateComponent } from './vehicleBrand/vehicleBrand-create/vehicleBrand-create.component';
+import { VehicleBrandListComponent } from './vehicleBrand/vehicleBrand-list/vehicleBrand-list.component';
+import { VehicleBrandDeleteComponent } from './vehicleBrand/vehicleBrand-delete/vehicleBrand-delete.component';
+import { VehicleBrandUpdateComponent } from './vehicleBrand/vehicleBrand-update/vehicleBrand-update.component';
 
 import { VehicleModelCreateComponent } from './vehicleModel/vehicleModel-create/vehicleModel-create.component';
 import { VehicleModelListComponent } from './vehicleModel/vehicleModel-list/vehicleModel-list.component';
@@ -121,10 +121,10 @@ export const routes: Routes = [
   { path: 'vehicleModel-list', component: VehicleModelListComponent },
   { path: 'vehicleModel-delete', component: VehicleModelDeleteComponent }, 
   { path: 'vehicleModel-update', component: VehicleModelUpdateComponent },
-  { path: 'brand-create', component: BrandCreateComponent },
-  { path: 'brand-delete', component: BrandDeleteComponent },
-  { path: 'brand-update', component: BrandUpdateComponent },
-  { path: 'brand-list', component: BrandListComponent }
+  { path: 'vehicleBrand-create', component: VehicleBrandCreateComponent },
+  { path: 'vehicleBrand-delete', component: VehicleBrandDeleteComponent },
+  { path: 'vehicleBrand-update', component: VehicleBrandUpdateComponent },
+  { path: 'vehicleBrand-list', component: VehicleBrandListComponent }
      
 ];
 

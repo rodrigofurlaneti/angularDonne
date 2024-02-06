@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { BrandUpdateService } from './brand-update.service';
+import { VehicleBrandUpdateService } from './vehicleBrand-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BrandModel } from 'src/interface/brand.interface';
+import { VehicleBrandModel } from 'src/interface/vehicleBrand.interface';
 
-let ELEMENT_DATA: BrandModel[];
+let ELEMENT_DATA: VehicleBrandModel[];
 
 @Component({
-  selector: 'brand-update',
-  templateUrl: './brand-update.component.html',
-  styleUrls: ['./brand-update.component.css']
+  selector: 'vehicleBrand-update',
+  templateUrl: './vehicleBrand-update.component.html',
+  styleUrls: ['./vehicleBrand-update.component.css']
 })
 
-export class BrandUpdateComponent implements OnInit {
+export class VehicleBrandUpdateComponent implements OnInit {
 
   //#region [Properties]
   //Property DisplayedColumns
-  private _displayedColumns: string[] = ['brandName'];
+  private _displayedColumns: string[] = ['vehicleBrandName'];
   get displayedColumns() { return this._displayedColumns; }
   set displayedColumns(value) { this._displayedColumns = value; }
 
@@ -46,9 +46,9 @@ export class BrandUpdateComponent implements OnInit {
   set messageBrandName(value) { this._messageBrandName = value; }
   
   //Property BrandModel
-  private _brandModel = new BrandModel();
-  get brandModel() { return this._brandModel; }
-  set brandModel(value) { this._brandModel = value; }
+  private _vehicleBrandModel = new VehicleBrandModel();
+  get vehicleBrandModel() { return this._vehicleBrandModel; }
+  set vehicleBrandModel(value) { this._vehicleBrandModel = value; }
 
   //Property IsIdZero
   private _isIdZero: boolean = true;
@@ -73,7 +73,7 @@ export class BrandUpdateComponent implements OnInit {
   // #endregion
 
   //#region [Constructor]
-  constructor(private brandUpdateService: BrandUpdateService,
+  constructor(private vehicleBrandUpdateService: VehicleBrandUpdateService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
@@ -97,7 +97,9 @@ export class BrandUpdateComponent implements OnInit {
   }
 
   list() {
-    this.brandUpdateService.list().subscribe(list => {
+    this.vehicleBrandUpdateService
+    .list()
+    .subscribe(list => {
       this.dataSource = list;
     }, err => {
       console.log('Erro ao listar as marcas dos veículos!', err);
@@ -106,10 +108,11 @@ export class BrandUpdateComponent implements OnInit {
 
   public getById(id: number) {
     this.showUpdateButton();
-    this.brandUpdateService.getById(id)
+    this.vehicleBrandUpdateService
+        .getById(id)
                               .subscribe(brand => { 
-                                this.brandModel.brandId = brand.brandId;
-                                this.brandModel.brandName = brand.brandName;
+                                this.vehicleBrandModel.vehicleBrandId = brand.brandId;
+                                this.vehicleBrandModel.vehicleBrandName = brand.brandName;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
@@ -117,7 +120,7 @@ export class BrandUpdateComponent implements OnInit {
 
   dataSource = ELEMENT_DATA;
 
-  clickedRows = new Set<BrandModel>();
+  clickedRows = new Set<VehicleBrandModel>();
 
   reply(){
     this.routerString = 'main';
@@ -126,12 +129,14 @@ export class BrandUpdateComponent implements OnInit {
 
   public update() {
 
-    this.brandModel = this.checkFields(this.brandModel);
+    this.vehicleBrandModel = this.checkFields(this.vehicleBrandModel);
 
     //update
-    if(this.brandModel.brandName != "")
+    if(this.vehicleBrandModel.vehicleBrandName != "")
     {
-      this.brandUpdateService.update(this.brandModel).subscribe(brand => { 
+      this.vehicleBrandUpdateService
+      .update(this.vehicleBrandModel)
+      .subscribe(brand => { 
         this.successMessage();
         this.reply();
       }, err => {
@@ -140,9 +145,9 @@ export class BrandUpdateComponent implements OnInit {
     }
   }
 
-  public checkFields(objbrandModel : BrandModel) : BrandModel
+  public checkFields(objbrandModel : VehicleBrandModel) : VehicleBrandModel
   {
-    if(objbrandModel.brandName == "")
+    if(objbrandModel.vehicleBrandName == "")
     {
       this.messageBrandName = 'Não está preenchido o campo nome da marca do veículo!';
       this._snackBar.open(this.messageBrandName,'', {

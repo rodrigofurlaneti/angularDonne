@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { BrandDeleteService } from './brand-delete.service';
+import { VehicleBrandDeleteService } from './vehicleBrand-delete.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BrandModel } from 'src/interface/brand.interface';
+import { VehicleBrandModel } from 'src/interface/vehicleBrand.interface';
 
 @Component({
-  selector: 'brand-delete',
-  templateUrl: './brand-delete.component.html',
-  styleUrls: ['./brand-delete.component.css']
+  selector: 'vehicleBrand-delete',
+  templateUrl: './vehicleBrand-delete.component.html',
+  styleUrls: ['./vehicleBrand-delete.component.css']
 })
-export class BrandDeleteComponent implements OnInit {
+export class VehicleBrandDeleteComponent implements OnInit {
 
   //#region [Properties]
   //Property Status
@@ -23,17 +23,17 @@ export class BrandDeleteComponent implements OnInit {
   set ids(value) { this._ids = value; }
 
   //Property DisplayedColumns
-  private _displayedColumns: string[] = ['brandId','brandName'];
+  private _displayedColumns: string[] = ['vehicleBrandId','vehicleBrandName'];
   get displayedColumns() { return this._displayedColumns; }
   set displayedColumns(value) { this._displayedColumns = value; }
 
   //Property DataSource
-  private _dataSource: BrandModel[] = [];
+  private _dataSource: VehicleBrandModel[] = [];
   get dataSource() { return this._dataSource; }
   set dataSource(value) { this._dataSource = value; }
 
   //Property ClickedRows
-  private _clickedRows = new Set<BrandModel>();
+  private _clickedRows = new Set<VehicleBrandModel>();
   get clickedRows() { return this._clickedRows; }
   set clickedRows(value) { this._clickedRows = value; }
 
@@ -61,7 +61,7 @@ export class BrandDeleteComponent implements OnInit {
 
   //#region [Constructor]
   
-  constructor(private brandDeleteService: BrandDeleteService,
+  constructor(private vehicleBrandDeleteService: VehicleBrandDeleteService,
     private _snackBar: MatSnackBar, 
     private router: Router) { }
   
@@ -74,7 +74,7 @@ export class BrandDeleteComponent implements OnInit {
 
   list():void {
     this.messageErro = 'Erro ao listar as marcas dos veículos!';
-    this.brandDeleteService.list().subscribe((list) => {
+    this.vehicleBrandDeleteService.list().subscribe((list) => {
         this.dataSource = list;
         console.log(this.dataSource);
     },
@@ -88,7 +88,8 @@ export class BrandDeleteComponent implements OnInit {
 
   delete(id: number):void {
     this.messageSuccess = 'A marca do veículo foi excluido com sucesso!'
-    this.brandDeleteService.delete(id).subscribe(() => this.status = 'Delete successful')
+    this.vehicleBrandDeleteService.delete(id)
+      .subscribe(() => this.status = 'Delete successful')
     this.reply();
     this._snackBar.open(this.messageSuccess,'', {
       duration: this.messageTime

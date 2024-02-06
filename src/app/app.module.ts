@@ -108,14 +108,14 @@ import { VehicleTypeUpdateComponent } from './vehicleType/vehicleType-update/veh
 import { VehicleTypeUpdateModule } from './vehicleType/vehicleType-update/vehicleType-update.module';
 
 //Brand
-import { BrandCreateModule } from './brand/brand-create/brand-create.module';
-import { BrandCreateComponent } from './brand/brand-create/brand-create.component';
-import { BrandDeleteModule } from './brand/brand-delete/brand-delete.module';
-import { BrandDeleteComponent } from './brand/brand-delete/brand-delete.component';
-import { BrandListModule } from './brand/brand-list/brand-list.module';
-import { BrandListComponent } from './brand/brand-list/brand-list.component';
-import { BrandUpdateModule } from './brand/brand-update/brand-update.module';
-import { BrandUpdateComponent } from './brand/brand-update/brand-update.component';
+import { VehicleBrandCreateModule } from './vehicleBrand/vehicleBrand-create/vehicleBrand-create.module';
+import { VehicleBrandCreateComponent } from './vehicleBrand/vehicleBrand-create/vehicleBrand-create.component';
+import { VehicleBrandDeleteModule } from './vehicleBrand/vehicleBrand-delete/vehicleBrand-delete.module';
+import { VehicleBrandDeleteComponent } from './vehicleBrand/vehicleBrand-delete/vehicleBrand-delete.component';
+import { VehicleBrandListModule } from './vehicleBrand/vehicleBrand-list/vehicleBrand-list.module';
+import { VehicleBrandListComponent } from './vehicleBrand/vehicleBrand-list/vehicleBrand-list.component';
+import { VehicleBrandUpdateModule } from './vehicleBrand/vehicleBrand-update/vehicleBrand-update.module';
+import { VehicleBrandUpdateComponent } from './vehicleBrand/vehicleBrand-update/vehicleBrand-update.component';
 
 //Vehicle Model
 import { VehicleModelCreateComponent } from './vehicleModel/vehicleModel-create/vehicleModel-create.component';
@@ -197,10 +197,10 @@ import { FormsModule } from '@angular/forms';
     VehicleTypeListComponent,
     VehicleTypeDeleteComponent,
     VehicleTypeUpdateComponent,
-    BrandCreateComponent,
-    BrandDeleteComponent,
-    BrandListComponent,
-    BrandUpdateComponent,
+    VehicleBrandCreateComponent,
+    VehicleBrandDeleteComponent,
+    VehicleBrandListComponent,
+    VehicleBrandUpdateComponent,
     VehicleModelCreateComponent,
     VehicleModelListComponent,
     VehicleModelDeleteComponent,
@@ -237,10 +237,10 @@ import { FormsModule } from '@angular/forms';
     VehicleTypeListModule,
     VehicleTypeUpdateModule,
     VehicleTypeDeleteModule,
-    BrandCreateModule,
-    BrandDeleteModule,
-    BrandListModule,
-    BrandUpdateModule,
+    VehicleBrandCreateModule,
+    VehicleBrandDeleteModule,
+    VehicleBrandListModule,
+    VehicleBrandUpdateModule,
     VehicleModelCreateModule,
     VehicleModelListModule,
     VehicleModelDeleteModule,

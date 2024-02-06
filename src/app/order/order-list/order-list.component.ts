@@ -14,7 +14,7 @@ export class OrderListComponent implements OnInit {
 
     //#region [Properties]
   //Property DisplayedColumns
-  private _displayedColumns: string[] = ['id','command','buyer','product','amount'];
+  private _displayedColumns: string[] = ['id','command','buyerName','product','amount'];
   get displayedColumns() { return this._displayedColumns; }
   set displayedColumns(value) { this._displayedColumns = value; }
 
@@ -56,6 +56,7 @@ export class OrderListComponent implements OnInit {
   list() {
     this.orderListService.list().subscribe(list => {
       this.dataSource = list;
+      console.log(list);
       console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar os pedidos', err);

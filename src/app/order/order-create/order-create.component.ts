@@ -112,6 +112,7 @@ export class OrderCreateComponent implements OnInit {
   }
 
   changeCommand(event: any) {
+    console.log(event);
     this.commandSelectedID = event.commandId;
     this.commandSelected = event.buyerName;
   }
