@@ -113,6 +113,11 @@ export class DynamicDatabase {
         { name:'Listar', path:'/user-list', icon:'view_headline'},
       ],
     ],
+    ['Veículo', 
+      [
+        { name:'Adicionar', path:'/vehicle-create', icon:'exposure_plus_1'}
+      ],
+    ],
     ['Cor do veículo', 
     [
       { name:'Adicionar', path:'/vehicleColor-create', icon:'exposure_plus_1'},

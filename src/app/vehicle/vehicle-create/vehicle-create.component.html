@@ -1,12 +1,13 @@
 <section class="center">
   <mat-card style="width: 35vh;">
-    <mat-card-content>Adicionar um nova marca do veículo</mat-card-content>
+    <mat-card-content>Adicionar um novo veículo</mat-card-content>
     <form class="example-form">
       <mat-grid-list cols="1" rowHeight="5vh">
         <mat-grid-tile>
           <mat-form-field style="width: 100%;" class="example-full-width">
-            <mat-label>Nome da nova marca do veículo</mat-label>
-            <input matInput placeholder="Nome da marca do veículo" id="vehicleBrandName" name="vehicleBrandName" [(ngModel)]="vehicleBrand.vehicleBrandName" matInput />
+            <mat-label>Placa do veículo</mat-label>
+            <input matInput placeholder="Placa do veículo" id="plate" 
+            name="plate" [(ngModel)]="vehicleModel.plate" matInput />
           </mat-form-field>
         </mat-grid-tile>
       </mat-grid-list>
@@ -14,7 +15,8 @@
     <div class="wrapper">
       <div>
         <div>Voltar</div>
-        <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+        <button mat-raised-button mat-mini-fab matTooltip="Voltar" 
+          (click)="reply()" color="primary" aria-label="Voltar">
           <mat-icon>reply_all</mat-icon>
         </button>
       </div>
@@ -22,7 +24,8 @@
     </div>
       <div>
         <div>Salvar</div>
-        <button mat-raised-button mat-mini-fab matTooltip="Salvar a nova cor do veículo" (click)="save()" color="primary" aria-label="Salvar">
+        <button mat-raised-button mat-mini-fab matTooltip="Salvar novo veículo"
+          (click)="save()" color="primary" aria-label="Salvar">
           <mat-icon>save_alt</mat-icon>
         </button>
       </div>

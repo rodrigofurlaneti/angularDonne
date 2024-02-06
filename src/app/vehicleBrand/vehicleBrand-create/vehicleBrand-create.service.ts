@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { VehicleBrandModel } from 'src/interface/vehicleBrand.interface';
+import { VehicleBrand } from 'src/interface/vehicleBrand.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class VehicleBrandCreateService {
 
   private route = 'https://localhost:7027/VehicleBrand';
@@ -14,8 +13,7 @@ export class VehicleBrandCreateService {
 
   constructor(private http: HttpClient) { }
 
-  save(vehicleBrand: VehicleBrandModel) : Observable<any>{
-    return this.http.post<any>(this.routeAzure, vehicleBrand)
+  save(VehicleBrand: VehicleBrand) : Observable<any>{
+    return this.http.post<any>(this.routeAzure, VehicleBrand)
   }
-
 }

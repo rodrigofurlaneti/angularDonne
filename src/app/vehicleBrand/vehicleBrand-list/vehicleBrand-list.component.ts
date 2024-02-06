@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { VehicleBrandListService } from './vehicleBrand-list.service';
-import { VehicleBrandModel } from 'src/interface/vehicleBrand.interface';
+import { VehicleBrand } from 'src/interface/vehicleBrand.interface';
 
 @Component({
   selector: 'vehicleBrand-list',
@@ -17,12 +17,12 @@ export class VehicleBrandListComponent implements OnInit {
   set displayedColumns(value) { this._displayedColumns = value; }
 
   //Property DataSource
-  private _dataSource: VehicleBrandModel[] = [];
+  private _dataSource: VehicleBrand[] = [];
   get dataSource() { return this._dataSource; }
   set dataSource(value) { this._dataSource = value; }
 
   //Property ClickedRows
-  private _clickedRows = new Set<VehicleBrandModel>();
+  private _clickedRows = new Set<VehicleBrand>();
   get clickedRows() { return this._clickedRows; }
   set clickedRows(value) { this._clickedRows = value; }
   

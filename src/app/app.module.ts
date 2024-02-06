@@ -87,6 +87,11 @@ import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 
+//Vehicle
+import { VehicleCreateModule } from './vehicle/vehicle-create/vehicle-create.module';
+import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
+
+
 //Vehicle Color
 import { VehicleColorCreateModule } from './vehicleColor/vehicleColor-create/vehicleColor-create.module';
 import { VehicleColorCreateComponent } from './vehicleColor/vehicleColor-create/vehicleColor-create.component';
@@ -189,6 +194,7 @@ import { FormsModule } from '@angular/forms';
     FormOfPaymentListComponent,
     FormOfPaymentDeleteComponent,
     FormOfPaymentUpdateComponent,
+    VehicleCreateComponent,
     VehicleColorCreateComponent,
     VehicleColorListComponent,
     VehicleColorDeleteComponent,
@@ -229,6 +235,7 @@ import { FormsModule } from '@angular/forms';
     ProfileListModule,
     ProfileUpdateModule,
     FormOfPaymentCreateModule,
+    VehicleCreateModule,
     VehicleColorCreateModule,
     VehicleColorListModule,
     VehicleColorDeleteModule,

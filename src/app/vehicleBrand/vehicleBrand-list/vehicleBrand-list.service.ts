@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { VehicleBrandModel } from 'src/interface/vehicleBrand.interface';
 
 @Injectable({
   providedIn: 'root'

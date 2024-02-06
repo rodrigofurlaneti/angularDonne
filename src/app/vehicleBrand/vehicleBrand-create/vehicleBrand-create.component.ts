@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { VehicleBrandCreateService } from './vehicleBrand-create.service';
-import { VehicleBrandModel } from '../../../interface/vehicleBrand.interface';
+import { VehicleBrand } from '../../../interface/vehicleBrand.interface';
 
 @Component({
   selector: 'vehicleBrand-create',
@@ -13,10 +13,10 @@ import { VehicleBrandModel } from '../../../interface/vehicleBrand.interface';
 export class VehicleBrandCreateComponent {
   
   //#region [Properties]
-  //Property BrandModel
-  private _vehicleBrandModel = new VehicleBrandModel();
-  get vehicleBrandModel() { return this._vehicleBrandModel; }
-  set vehicleBrandModel(value) { this._vehicleBrandModel = value; }
+  //Property VehicleBrand
+  private _vehicleBrand = new VehicleBrand();
+  get vehicleBrand() { return this._vehicleBrand; }
+  set vehicleBrand(value) { this._vehicleBrand = value; }
 
   //Property MessageTime
   private _messageTime: number = 3000;
@@ -38,11 +38,11 @@ export class VehicleBrandCreateComponent {
   get messageErro() { return this._messageErro; }
   set messageErro(value) { this._messageErro = value; }
 
-  //Property MessageBrandName
-  private _messageBrandName: string = '';
-  get messageBrandName() { return this._messageBrandName; }
-  set messageBrandName(value) { this._messageBrandName = value; }
-
+  //Property MessageVehicleBrandName
+  private _messageVehicleBrandName: string = '';
+  get messageVehicleBrandName() { return this._messageVehicleBrandName; }
+  set messageVehicleBrandName(value) { this._messageVehicleBrandName = value; }
+  
   // #endregion
 
   //#region [Constructor]
@@ -56,14 +56,21 @@ export class VehicleBrandCreateComponent {
   //#region [Methods]
 
   save():void {
-    //save
-    if(this.vehicleBrandModel.vehicleBrandName != "" )
+    //check fields
+    if(this.vehicleBrand.vehicleBrandName == "")
     {
-      this.vehicleBrandCreateService
-          .save(this.vehicleBrandModel)
-          .subscribe(brand => {
+      this.messageVehicleBrandName = 'Não está preenchido o campo nome da marca do veículo!';
+      this._snackBar.open(this.messageVehicleBrandName, 'Voltar', {
+        duration: this.messageTime
+      });
+    }
+    
+    //save
+    if(this.vehicleBrand.vehicleBrandName != "")
+    {
+      this.vehicleBrandCreateService.save(this.vehicleBrand).subscribe(vehicleBrandResponse => {
         this.successMessage();
-        this.BrandList();
+        this.vehicleBrandList();
         }, err => {
           this.errorMessage();
         })
@@ -75,21 +82,21 @@ export class VehicleBrandCreateComponent {
     this.router.navigate([this.routerString]);
   }
 
-  BrandList(){
-    this.routerString = 'brand-list';
+  vehicleBrandList(){
+    this.routerString = 'vehicleBrand-list';
     this.router.navigate([this.routerString]);
   }
 
   successMessage():void{
-    this.messageSuccess = 'A marca de veículo foi cadastrado com sucesso!';
-    this._snackBar.open(this.messageSuccess + this.vehicleBrandModel.vehicleBrandName ,'', {
+    this.messageSuccess = 'A marca do veículo foi cadastrado com sucesso!';
+    this._snackBar.open(this.messageSuccess + this.vehicleBrand.vehicleBrandName ,'', {
       duration: this.messageTime
     });
   }
 
   errorMessage():void{
     this.messageErro = 'Erro ao cadastrar a marca do veículo!';
-    this._snackBar.open(this.messageErro + this.vehicleBrandModel.vehicleBrandName,'', {
+    this._snackBar.open(this.messageErro + this.vehicleBrand.vehicleBrandName,'', {
       duration: this.messageTime
     });
   }
