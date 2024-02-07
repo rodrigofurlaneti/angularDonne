@@ -2,6 +2,38 @@
   <mat-card style="width: 35vh;">
     <mat-card-content>Adicionar um novo veículo</mat-card-content>
     <form class="example-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo do veículo</mat-label>
+        <mat-select #matSelect id="dropDownListVehicleType" name="dropDownListVehicleType" [(ngModel)]="vehicleTypeModel.vehicleTypeName" (selectionChange)="changeVehicleType($event.value)">
+          <mat-option [value]="element" *ngFor="let element of dataSourceVehicleType" >
+            {{ element.vehicleTypeId }} - {{ element.vehicleTypeName }}
+           </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Marca do veículo</mat-label>
+        <mat-select #matSelect id="dropDownListVehicleBrand" name="dropDownListVehicleBrand" [(ngModel)]="vehicleBrandModel.vehicleBrandName" (selectionChange)="changeVehicleBrand($event.value)">
+          <mat-option [value]="element" *ngFor="let element of dataSourceVehicleBrand" >
+            {{ element.vehicleBrandId }} - {{ element.vehicleBrandName }}
+           </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Modelo do veículo</mat-label>
+        <mat-select #matSelect id="dropDownListVehicleModel" name="dropDownListVehicleModel" [(ngModel)]="vehicleModel.vehicleModelName" (selectionChange)="changeVehicleModel($event.value)">
+          <mat-option [value]="element" *ngFor="let element of dataSourceVehicleModel" >
+            {{ element.vehicleModelId }} - {{ element.vehicleModelName }}
+           </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Cor do veículo</mat-label>
+        <mat-select #matSelect id="dropDownListVehicleColor" name="dropDownListVehicleColor" [(ngModel)]="vehicleColorModel.vehicleColorName" (selectionChange)="changeVehicleColor($event.value)">
+          <mat-option [value]="element" *ngFor="let element of dataSourceVehicleColor" >
+            {{ element.vehicleColorId }} - {{ element.vehicleColorName }}
+           </mat-option>
+        </mat-select>
+      </mat-form-field>
       <mat-grid-list cols="1" rowHeight="5vh">
         <mat-grid-tile>
           <mat-form-field style="width: 100%;" class="example-full-width">

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { VehicleColorListService } from './vehicleColor-list.service';
-import { VehicleColor } from 'src/interface/vehicleColor.interface';
+import { VehicleColorModel } from 'src/interface/vehicleColor.interface';
 
 @Component({
   selector: 'vehicleColor-list',
@@ -17,12 +17,12 @@ export class VehicleColorListComponent implements OnInit {
   set displayedColumns(value) { this._displayedColumns = value; }
 
   //Property DataSource
-  private _dataSource: VehicleColor[] = [];
+  private _dataSource: VehicleColorModel[] = [];
   get dataSource() { return this._dataSource; }
   set dataSource(value) { this._dataSource = value; }
 
   //Property ClickedRows
-  private _clickedRows = new Set<VehicleColor>();
+  private _clickedRows = new Set<VehicleColorModel>();
   get clickedRows() { return this._clickedRows; }
   set clickedRows(value) { this._clickedRows = value; }
   

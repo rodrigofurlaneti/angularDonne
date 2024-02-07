@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { VehicleColor } from 'src/interface/vehicleColor.interface';
+import { VehicleColorModel } from 'src/interface/vehicleColor.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class VehicleColorUpdateService {
     return this.httpClient.get<any>(this.routeAzure+'/'+id);
   }
 
-  public update(VehicleColor: VehicleColor) {
-    return this.httpClient.put(`${this.routeAzure}`, VehicleColor);
+  public update(vehicleColorModel: VehicleColorModel) {
+    return this.httpClient.put(`${this.routeAzure}`, vehicleColorModel);
   }
 }

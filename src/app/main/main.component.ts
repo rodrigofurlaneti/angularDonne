@@ -136,10 +136,10 @@ export class DynamicDatabase {
     ],
     ['Marca do veículo', 
     [
-      { name:'Adicionar', path:'/brand-create', icon:'exposure_plus_1'},
-      { name:'Atualizar', path:'/brand-update', icon:'sync'},
-      { name:'Excluir', path:'/brand-delete', icon:'delete_forever'},
-      { name:'Listar', path:'/brand-list', icon:'view_headline'}
+      { name:'Adicionar', path:'/vehicleBrand-create', icon:'exposure_plus_1'},
+      { name:'Atualizar', path:'/vehicleBrand-update', icon:'sync'},
+      { name:'Excluir', path:'/vehicleBrand-delete', icon:'delete_forever'},
+      { name:'Listar', path:'/vehicleBrand-list', icon:'view_headline'}
     ],
     ],
     ['Modelo do veículo', 
@@ -152,9 +152,9 @@ export class DynamicDatabase {
     ],
   ]);
 
-  rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Estoque', 'Forma de pagamento', 'Pagamento', 
-  'Cor do veículo', 'Marca do veículo', 'Modelo do veículo', 'Pedido', 'Perfil', 'Produto', 
-  'Usuário', 'Relatório', 'Painel de controle', 'Tipo de veículo'];
+  rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Estoque', 'Forma de pagamento',
+  'Pagamento', 'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle', 
+  'Veículo', 'Cor do veículo', 'Marca do veículo', 'Modelo do veículo', 'Tipo de veículo'];
 
   /** Initial data from database */
   initialData(): DynamicFlatNode[] {
@@ -439,20 +439,20 @@ export class MainComponent {
     this.router.navigate(['vehicleType-update']);
   }
 
-  public activeBrandCreate() {
-    this.router.navigate(['brand-create']);
+  public activeVehicleBrandCreate() {
+    this.router.navigate(['vehicleBrand-create']);
   }
 
-  public activeBrandDelete() {
-    this.router.navigate(['brand-delete']);
+  public activeVehicleBrandDelete() {
+    this.router.navigate(['vehicleBrand-delete']);
   }
 
-  public activeBrandList() {
-    this.router.navigate(['brand-list']);
+  public activeVehicleBrandList() {
+    this.router.navigate(['vehicleBrand-list']);
   }
 
-  public activeBrandUpdate() {
-    this.router.navigate(['brand-update']);
+  public activeVehicleBrandUpdate() {
+    this.router.navigate(['vehicleBrand-update']);
   }
 
   public activeVehicleModelCreate() {

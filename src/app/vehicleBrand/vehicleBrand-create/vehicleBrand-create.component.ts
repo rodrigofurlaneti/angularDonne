@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { VehicleBrandCreateService } from './vehicleBrand-create.service';
-import { VehicleBrand } from '../../../interface/vehicleBrand.interface';
+import { VehicleBrandModel } from '../../../interface/vehicleBrand.interface';
 
 @Component({
   selector: 'vehicleBrand-create',
@@ -14,9 +14,9 @@ export class VehicleBrandCreateComponent {
   
   //#region [Properties]
   //Property VehicleBrand
-  private _vehicleBrand = new VehicleBrand();
-  get vehicleBrand() { return this._vehicleBrand; }
-  set vehicleBrand(value) { this._vehicleBrand = value; }
+  private _vehicleBrandModel = new VehicleBrandModel();
+  get vehicleBrandModel() { return this._vehicleBrandModel; }
+  set vehicleBrandModel(value) { this._vehicleBrandModel = value; }
 
   //Property MessageTime
   private _messageTime: number = 3000;
@@ -57,7 +57,7 @@ export class VehicleBrandCreateComponent {
 
   save():void {
     //check fields
-    if(this.vehicleBrand.vehicleBrandName == "")
+    if(this.vehicleBrandModel.vehicleBrandName == "")
     {
       this.messageVehicleBrandName = 'Não está preenchido o campo nome da marca do veículo!';
       this._snackBar.open(this.messageVehicleBrandName, 'Voltar', {
@@ -66,9 +66,11 @@ export class VehicleBrandCreateComponent {
     }
     
     //save
-    if(this.vehicleBrand.vehicleBrandName != "")
+    if(this.vehicleBrandModel.vehicleBrandName != "")
     {
-      this.vehicleBrandCreateService.save(this.vehicleBrand).subscribe(vehicleBrandResponse => {
+      this.vehicleBrandCreateService
+        .save(this.vehicleBrandModel)
+        .subscribe(vehicleBrandResponse => {
         this.successMessage();
         this.vehicleBrandList();
         }, err => {
@@ -89,14 +91,14 @@ export class VehicleBrandCreateComponent {
 
   successMessage():void{
     this.messageSuccess = 'A marca do veículo foi cadastrado com sucesso!';
-    this._snackBar.open(this.messageSuccess + this.vehicleBrand.vehicleBrandName ,'', {
+    this._snackBar.open(this.messageSuccess + this.vehicleBrandModel.vehicleBrandName ,'', {
       duration: this.messageTime
     });
   }
 
   errorMessage():void{
     this.messageErro = 'Erro ao cadastrar a marca do veículo!';
-    this._snackBar.open(this.messageErro + this.vehicleBrand.vehicleBrandName,'', {
+    this._snackBar.open(this.messageErro + this.vehicleBrandModel.vehicleBrandName,'', {
       duration: this.messageTime
     });
   }

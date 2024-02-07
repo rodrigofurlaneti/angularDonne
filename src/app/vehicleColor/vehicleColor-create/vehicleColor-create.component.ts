@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { VehicleColorCreateService } from './vehicleColor-create.service';
-import { VehicleColor } from '../../../interface/vehicleColor.interface';
+import { VehicleColorModel } from '../../../interface/vehicleColor.interface';
 
 @Component({
   selector: 'vehicleColor-create',
@@ -13,10 +13,10 @@ import { VehicleColor } from '../../../interface/vehicleColor.interface';
 export class VehicleColorCreateComponent {
   
   //#region [Properties]
-  //Property VehicleColor
-  private _vehicleColor = new VehicleColor();
-  get vehicleColor() { return this._vehicleColor; }
-  set vehicleColor(value) { this._vehicleColor = value; }
+  //Property VehicleColorModel
+  private _vehicleColorModel = new VehicleColorModel();
+  get vehicleColorModel() { return this._vehicleColorModel; }
+  set vehicleColorModel(value) { this._vehicleColorModel = value; }
 
   //Property MessageTime
   private _messageTime: number = 3000;
@@ -57,7 +57,7 @@ export class VehicleColorCreateComponent {
 
   save():void {
     //check fields
-    if(this.vehicleColor.vehicleColorName == "")
+    if(this.vehicleColorModel.vehicleColorName == "")
     {
       this.messageVehicleColorName = 'Não está preenchido o campo nome da cor do veículo!';
       this._snackBar.open(this.messageVehicleColorName, 'Voltar', {
@@ -66,9 +66,10 @@ export class VehicleColorCreateComponent {
     }
     
     //save
-    if(this.vehicleColor.vehicleColorName != "")
+    if(this.vehicleColorModel.vehicleColorName != "")
     {
-      this.vehicleColorCreateService.save(this.vehicleColor).subscribe(VehicleColorResponse => {
+      this.vehicleColorCreateService.save(this.vehicleColorModel)
+        .subscribe(VehicleColorResponse => {
         this.successMessage();
         this.VehicleColorList();
         }, err => {
@@ -83,20 +84,20 @@ export class VehicleColorCreateComponent {
   }
 
   VehicleColorList(){
-    this.routerString = 'VehicleColor-list';
+    this.routerString = 'vehicleColor-list';
     this.router.navigate([this.routerString]);
   }
 
   successMessage():void{
     this.messageSuccess = 'O modelo do veículo foi cadastrado com sucesso!';
-    this._snackBar.open(this.messageSuccess + this.vehicleColor.vehicleColorName ,'', {
+    this._snackBar.open(this.messageSuccess + this.vehicleColorModel.vehicleColorName ,'', {
       duration: this.messageTime
     });
   }
 
   errorMessage():void{
     this.messageErro = 'Erro ao cadastrar o modelo do veículo!';
-    this._snackBar.open(this.messageErro + this.vehicleColor.vehicleColorName,'', {
+    this._snackBar.open(this.messageErro + this.vehicleColorModel.vehicleColorName,'', {
       duration: this.messageTime
     });
   }

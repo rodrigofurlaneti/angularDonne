@@ -3,7 +3,7 @@ export interface IVehicleBrandInterface {
     vehicleBrandName: string;
 }
 
-export class VehicleBrand implements IVehicleBrandInterface {
+export class VehicleBrandModel implements IVehicleBrandInterface {
     vehicleBrandId: number = 0;    
     vehicleBrandName: string = '';
     }

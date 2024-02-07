@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { VehicleColorUpdateService } from './vehicleColor-update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { VehicleColor } from 'src/interface/vehicleColor.interface';
+import { VehicleColorModel } from 'src/interface/vehicleColor.interface';
 
-let ELEMENT_DATA: VehicleColor[];
+let ELEMENT_DATA: VehicleColorModel[];
 
 @Component({
-  selector: 'VehicleColor-update',
-  templateUrl: './VehicleColor-update.component.html',
-  styleUrls: ['./VehicleColor-update.component.css']
+  selector: 'vehicleColor-update',
+  templateUrl: './vehicleColor-update.component.html',
+  styleUrls: ['./vehicleColor-update.component.css']
 })
 
 export class VehicleColorUpdateComponent implements OnInit {
@@ -45,10 +45,10 @@ export class VehicleColorUpdateComponent implements OnInit {
   get messageModelName() { return this._messageModelName; }
   set messageModelName(value) { this._messageModelName = value; }
   
-  //Property ModelModel
-  private _vehicleColor = new VehicleColor();
-  get vehicleColor() { return this._vehicleColor; }
-  set vehicleColor(value) { this._vehicleColor = value; }
+  //Property VehicleColorModel
+  private _vehicleColorModel = new VehicleColorModel();
+  get vehicleColorModel() { return this._vehicleColorModel; }
+  set vehicleColorModel(value) { this._vehicleColorModel = value; }
 
   //Property IsIdZero
   private _isIdZero: boolean = true;
@@ -108,8 +108,8 @@ export class VehicleColorUpdateComponent implements OnInit {
     this.showUpdateButton();
     this.vehicleColorUpdateService.getById(id)
                               .subscribe(modelResponse => { 
-                                this.vehicleColor.vehicleColorId = modelResponse.VehicleColorId;
-                                this.vehicleColor.vehicleColorName = modelResponse.VehicleColorName;
+                                this.vehicleColorModel.vehicleColorId = modelResponse.VehicleColorId;
+                                this.vehicleColorModel.vehicleColorName = modelResponse.VehicleColorName;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
@@ -117,7 +117,7 @@ export class VehicleColorUpdateComponent implements OnInit {
 
   dataSource = ELEMENT_DATA;
 
-  clickedRows = new Set<VehicleColor>();
+  clickedRows = new Set<VehicleColorModel>();
 
   reply(){
     this.routerString = 'main';
@@ -126,12 +126,12 @@ export class VehicleColorUpdateComponent implements OnInit {
 
   public update() {
 
-    this.vehicleColor = this.checkFields(this.vehicleColor);
+    this.vehicleColorModel = this.checkFields(this.vehicleColorModel);
 
     //update
-    if(this.vehicleColor.vehicleColorName != "")
+    if(this.vehicleColorModel.vehicleColorName != "")
     {
-      this.vehicleColorUpdateService.update(this.vehicleColor)
+      this.vehicleColorUpdateService.update(this.vehicleColorModel)
       .subscribe(modelResponse => { 
         this.successMessage();
         this.reply();
@@ -141,7 +141,7 @@ export class VehicleColorUpdateComponent implements OnInit {
     }
   }
 
-  public checkFields(objModelModel : VehicleColor) : VehicleColor
+  public checkFields(objModelModel : VehicleColorModel) : VehicleColorModel
   {
     if(objModelModel.vehicleColorName == "")
     {

@@ -1,10 +1,10 @@
 <section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <ng-container matColumnDef="brandId">
+    <ng-container matColumnDef="vehicleBrandId">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;">Número</th>
       <td mat-cell *matCellDef="let element" class="headerListBrand">{{element.vehicleBrandId}}</td>
     </ng-container>
-    <ng-container matColumnDef="brandName">
+    <ng-container matColumnDef="vehicleBrandName">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nome da marca do veículo</th>
       <td mat-cell *matCellDef="let element" class="headerListBrand">{{element.vehicleBrandName}}</td>
     </ng-container>

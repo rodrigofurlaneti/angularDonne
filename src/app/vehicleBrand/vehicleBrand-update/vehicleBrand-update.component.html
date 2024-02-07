@@ -2,11 +2,19 @@
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="vehicleBrandId">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">
+            Nome da marca do veículo
+          </th>
+          <td mat-cell (click)="getById(element.vehicleBrandId)" *matCellDef="let element">
+            <div class="headerUpdateBrand">{{element.vehicleBrandId}}</div>
+          </td>
+        </ng-container>
         <ng-container matColumnDef="vehicleBrandName">
           <th mat-header-cell *matHeaderCellDef style="text-align: center;">
             Nome da marca do veículo
           </th>
-          <td mat-cell (click)="getById(element.brandId)" *matCellDef="let element">
+          <td mat-cell (click)="getById(element.vehicleBrandId)" *matCellDef="let element">
             <div class="headerUpdateBrand">{{element.vehicleBrandName}}</div>
           </td>
         </ng-container>
@@ -24,7 +32,7 @@
             <mat-grid-tile>
               <mat-form-field style="width: 100%;" class="example-full-width">
                 <mat-label>Nome da marca do veículo</mat-label>
-                <input matInput placeholder="Nome do cliente" id="vehicleBrandName" name="vehicleBrandName" [(ngModel)]="vehicleBrand.vehicleBrandName" matInput />
+                <input matInput placeholder="Nome da marca do veículo" id="vehicleBrandName" name="vehicleBrandName" [(ngModel)]="vehicleBrandModel.vehicleBrandName" matInput />
               </mat-form-field>
             </mat-grid-tile>
           </mat-grid-list>

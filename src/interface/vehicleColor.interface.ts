@@ -3,7 +3,7 @@ export interface IVehicleColorInterface {
     vehicleColorName: string;
 }
 
-export class VehicleColor implements IVehicleColorInterface {
+export class VehicleColorModel implements IVehicleColorInterface {
     vehicleColorId: number = 0;    
     vehicleColorName: string = '';
     }
