@@ -1,11 +1,11 @@
 <section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
     <ng-container matColumnDef="vehicleColorId">
-      <th mat-header-cell *matHeaderCellDef style="text-align: center;">Número do cor do veículo</th>
+      <th mat-header-cell *matHeaderCellDef class="titleListColor">Número</th>
       <td mat-cell *matCellDef="let element" class="headerListColor">{{element.vehicleColorId}}</td>
     </ng-container>
     <ng-container matColumnDef="vehicleColorName">
-      <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nome do cor do veículo</th>
+      <th mat-header-cell *matHeaderCellDef class="titleListColor">Nome do cor do veículo</th>
       <td mat-cell *matCellDef="let element" class="headerListColor">{{element.vehicleColorName}}</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

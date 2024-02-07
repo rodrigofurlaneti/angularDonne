@@ -89,7 +89,7 @@ export class VehicleColorCreateComponent {
   }
 
   successMessage():void{
-    this.messageSuccess = 'O modelo do veículo foi cadastrado com sucesso!';
+    this.messageSuccess = 'A cor do veículo foi cadastrado com sucesso!';
     this._snackBar.open(this.messageSuccess + this.vehicleColorModel.vehicleColorName ,'', {
       duration: this.messageTime
     });

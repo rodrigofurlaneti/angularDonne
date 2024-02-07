@@ -16,3 +16,10 @@
   padding-top: 1vh;
   padding-bottom: 1vh;
 }
+.titleListColor{
+  padding: 0vh 1vh 0vh 1vh;
+  text-align: center;
+}
+.headerListColor{
+  text-align: center;
+}

@@ -8,8 +8,8 @@ import { VehicleColorModel } from 'src/interface/vehicleColor.interface';
 })
 export class VehicleColorCreateService {
 
-  private route = 'https://localhost:7027/Color';
-  private routeAzure = 'https://apidonne.azurewebsites.net/Color';
+  private route = 'https://localhost:7027/VehicleColor';
+  private routeAzure = 'https://apidonne.azurewebsites.net/VehicleColor';
 
   constructor(private http: HttpClient) { }
 
