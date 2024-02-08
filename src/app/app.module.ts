@@ -91,7 +91,6 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { VehicleCreateModule } from './vehicle/vehicle-create/vehicle-create.module';
 import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
 
-
 //Vehicle Color
 import { VehicleColorCreateModule } from './vehicleColor/vehicleColor-create/vehicleColor-create.module';
 import { VehicleColorCreateComponent } from './vehicleColor/vehicleColor-create/vehicleColor-create.component';
@@ -150,8 +149,8 @@ import { NgxMaskModule } from 'ngx-mask'
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -266,6 +265,10 @@ import { FormsModule } from '@angular/forms';
     MatGridListModule,
     MatTooltipModule,
     MatCheckboxModule,
+    MatDatepickerModule,
+    MatFormFieldModule, 
+    MatDatepickerModule, 
+    ReactiveFormsModule,
     UserCreateModule,
     UserDeleteModule,
     UserListModule,
@@ -277,7 +280,10 @@ import { FormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [  
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

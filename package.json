@@ -9,7 +9,7 @@
     "test": "ng test"
   },
   "coloredRegions": {
-    "namedColors":{
+    "namedColors": {
       "Properties": "rgba(79, 44, 115, 0.5)",
       "Constructor": "rgba(255, 165, 0, 0.15)",
       "Methods": "rgba(46, 204, 113, 0.15)",
@@ -34,6 +34,7 @@
     "bootstrap": "^5.3.0-alpha3",
     "iconv-lite": "^0.6.3",
     "jasmine": "^5.1.0",
+    "luxon": "^3.4.4",
     "ng2-currency-mask": "^13.0.3",
     "ngx-mask": "^13.1.13",
     "rxjs": "~7.5.0",
@@ -46,6 +47,7 @@
     "@angular/compiler-cli": "^15.2.7",
     "@angular/platform-server": "^15.2.7",
     "@types/jasmine": "~4.0.0",
+    "@types/luxon": "^3.4.2",
     "jasmine-core": "~4.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",

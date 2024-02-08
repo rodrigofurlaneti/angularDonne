@@ -10,6 +10,8 @@ import { VehicleBrandListService } from 'src/app/vehicleBrand/vehicleBrand-list/
 import { VehicleModelListService } from 'src/app/vehicleModel/vehicleModel-list/vehicleModel-list.service';
 import { VehicleColorModel } from 'src/interface/vehicleColor.interface';
 import { VehicleColorListService } from 'src/app/vehicleColor/vehicleColor-list/vehicleColor-list.service';
+import { FormControl } from '@angular/forms';
+import { DateTime } from 'luxon';
 
 let ELEMENT_DATA_VEHICLE_TYPE: VehicleTypeModel[];
 let ELEMENT_DATA_VEHICLE_BRAND: VehicleBrandModel[];
@@ -23,8 +25,28 @@ let ELEMENT_DATA_VEHICLE_COLOR: VehicleColorModel[];
 })
 
 export class VehicleCreateComponent {
-  
+
   //#region [Properties]
+  //Property Date
+  private _date = DateTime.now().toLocaleString(DateTime.DATE_SHORT);
+  get date() { return this._date; }
+  set date(value) { this._date = value; }
+
+  //Property Time
+  private _time = DateTime.now().toLocaleString(DateTime.TIME_24_SIMPLE);
+  get time() { return this._time; }
+  set time(value) { this._time = value; }
+
+  //Property Entry Date
+  private _entryDate = new FormControl({value:this._date, disabled: true});
+  get entryDate() { return this._entryDate; }
+  set entryDate(value) { this._entryDate = value; }
+
+  //Property Entry Time
+  private _entryTime = new FormControl({value:this._time, disabled: true});
+  get entryTime() { return this._entryTime; }
+  set entryTime(value) { this._entryTime = value; }
+
   //Property VehicleModel
   private _vehicleModel = new VehicleModel();
   get vehicleModel() { return this._vehicleModel; }
@@ -153,9 +175,34 @@ export class VehicleCreateComponent {
     this.vehicleColorSelected = event.vehicleColorName;
   }
 
+  populateVehicleModel(){
+    this.vehicleModel.parked = 1;
+    this.vehicleModel.vehicleTypeId = this.vehicleTypeSelectedID;
+    this.vehicleModel.vehicleTypeName = this.vehicleTypeSelected;
+    this.vehicleModel.vehicleBrandId = this.vehicleBrandSelectedID;
+    this.vehicleModel.vehicleBrandName = this.vehicleBrandSelected;
+    this.vehicleModel.vehicleModelId = this.vehicleModelSelectedID;
+    this.vehicleModel.vehicleModelName = this.vehicleModelSelected;
+    this.vehicleModel.vehicleColorId = this.vehicleColorSelectedID;
+    this.vehicleModel.vehicleColorName = this.vehicleColorSelected;
+    this.vehicleModel.entryDate = DateTime.now().toLocaleString(DateTime.DATE_SHORT);
+    this.vehicleModel.entryTime = DateTime.now().toLocaleString(DateTime.TIME_24_SIMPLE);
+    this.vehicleModel.departureDate = "00/00/0000";
+    this.vehicleModel.departureTime = "00:00";
+  }
+
   save():void {
+
+    this.populateVehicleModel()
+    console.log(this.vehicleModel);
+
     //save
-    if(this.vehicleModel.vehicleBrandName != "" )
+    if(this.vehicleModel.vehicleTypeId != 0 && this.vehicleModel.vehicleTypeName != "" &&
+       this.vehicleModel.vehicleBrandId != 0 && this.vehicleModel.vehicleBrandName != "" &&
+       this.vehicleModel.vehicleModelId != 0 && this.vehicleModel.vehicleModelName != "" &&
+       this.vehicleModel.vehicleColorId != 0 && this.vehicleModel.vehicleColorName != "" &&
+       this.vehicleModel.plate != "" && this.vehicleModel.entryDate != "" && 
+       this.vehicleModel.entryTime != "" && this.vehicleModel.parked == 1)
     {
       this.vehicleCreateService
           .save(this.vehicleModel)

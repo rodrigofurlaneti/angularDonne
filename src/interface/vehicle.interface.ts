@@ -13,7 +13,7 @@ export interface IVehicleInterface {
     entryTime: string;
     departureDate: string;
     departureTime: string;
-    parked: boolean;
+    parked: number;
 }
 export class VehicleModel implements IVehicleInterface {
     vehicleId: number = 0;    
@@ -30,5 +30,5 @@ export class VehicleModel implements IVehicleInterface {
     entryTime: string =  '';
     departureDate: string =  '';
     departureTime: string =  '';
-    parked: boolean = true;
+    parked: number = 0;
     }

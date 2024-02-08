@@ -4,7 +4,10 @@
     <form class="example-form">
       <mat-form-field appearance="fill">
         <mat-label>Tipo do veículo</mat-label>
-        <mat-select #matSelect id="dropDownListVehicleType" name="dropDownListVehicleType" [(ngModel)]="vehicleTypeModel.vehicleTypeName" (selectionChange)="changeVehicleType($event.value)">
+        <mat-select #matSelect id="dropDownListVehicleType" 
+        name="dropDownListVehicleType" 
+        [(ngModel)]="vehicleModel.vehicleTypeName" 
+        (selectionChange)="changeVehicleType($event.value)" required>
           <mat-option [value]="element" *ngFor="let element of dataSourceVehicleType" >
             {{ element.vehicleTypeId }} - {{ element.vehicleTypeName }}
            </mat-option>
@@ -12,7 +15,10 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Marca do veículo</mat-label>
-        <mat-select #matSelect id="dropDownListVehicleBrand" name="dropDownListVehicleBrand" [(ngModel)]="vehicleBrandModel.vehicleBrandName" (selectionChange)="changeVehicleBrand($event.value)">
+        <mat-select #matSelect id="dropDownListVehicleBrand" 
+        name="dropDownListVehicleBrand" 
+        [(ngModel)]="vehicleBrandModel.vehicleBrandName" 
+        (selectionChange)="changeVehicleBrand($event.value)" required>
           <mat-option [value]="element" *ngFor="let element of dataSourceVehicleBrand" >
             {{ element.vehicleBrandId }} - {{ element.vehicleBrandName }}
            </mat-option>
@@ -20,7 +26,10 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Modelo do veículo</mat-label>
-        <mat-select #matSelect id="dropDownListVehicleModel" name="dropDownListVehicleModel" [(ngModel)]="vehicleModel.vehicleModelName" (selectionChange)="changeVehicleModel($event.value)">
+        <mat-select #matSelect id="dropDownListVehicleModel" 
+        name="dropDownListVehicleModel" 
+        [(ngModel)]="vehicleModel.vehicleModelName" 
+        (selectionChange)="changeVehicleModel($event.value)" required>
           <mat-option [value]="element" *ngFor="let element of dataSourceVehicleModel" >
             {{ element.vehicleModelId }} - {{ element.vehicleModelName }}
            </mat-option>
@@ -28,7 +37,10 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Cor do veículo</mat-label>
-        <mat-select #matSelect id="dropDownListVehicleColor" name="dropDownListVehicleColor" [(ngModel)]="vehicleColorModel.vehicleColorName" (selectionChange)="changeVehicleColor($event.value)">
+        <mat-select #matSelect id="dropDownListVehicleColor" 
+        name="dropDownListVehicleColor" 
+        [(ngModel)]="vehicleColorModel.vehicleColorName" 
+        (selectionChange)="changeVehicleColor($event.value)" required>
           <mat-option [value]="element" *ngFor="let element of dataSourceVehicleColor" >
             {{ element.vehicleColorId }} - {{ element.vehicleColorName }}
            </mat-option>
@@ -39,10 +51,15 @@
           <mat-form-field style="width: 100%;" class="example-full-width">
             <mat-label>Placa do veículo</mat-label>
             <input matInput placeholder="Placa do veículo" id="plate" 
-            name="plate" [(ngModel)]="vehicleModel.plate" matInput />
+            name="plate" [(ngModel)]="vehicleModel.plate" matInput required/>
           </mat-form-field>
         </mat-grid-tile>
       </mat-grid-list>
+      <mat-form-field style="width: 100%;" class="example-full-width">
+        <mat-label>Data e hora da entrada</mat-label>
+        <input class="dateAndTimeEntry" matInput id="entryDate" name="entryDate" [formControl]="entryDate">
+        <input class="dateAndTimeEntry" matInput id="entryTime" name="entryTime" [formControl]="entryTime">
+      </mat-form-field>
     </form>
     <div class="wrapper">
       <div>

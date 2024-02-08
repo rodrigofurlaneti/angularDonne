@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [],
@@ -10,7 +12,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
     CommonModule,
     MatIconModule,
     MatFormFieldModule,
-    MatGridListModule
+    MatGridListModule,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatDatepickerModule
   ]
 })
 

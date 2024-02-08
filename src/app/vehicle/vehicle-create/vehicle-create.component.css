@@ -17,3 +17,20 @@
   display: grid;
   grid-template-columns: 5vh 5vh 5vh;
 }
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}
+
+.mdc-text-field__input::-webkit-calendar-picker-indicator {
+  display: block !important;
+}
+.dateAndTimeEntry{
+  text-align: center; 
+  width: 50%;
+  font-size: 125%;
+  color: white;
+}
