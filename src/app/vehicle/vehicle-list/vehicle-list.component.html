@@ -1,0 +1,68 @@
+<section class="center">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <ng-container class="headerList" matColumnDef="vehicleId">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Número</th>
+      <td mat-cell *matCellDef="let element" class="headerList">{{element.vehicleId}}</td>
+    </ng-container>
+    <ng-container class="headerList" matColumnDef="vehicleTypeName">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Tipo</th>
+      <td mat-cell *matCellDef="let element" class="headerList">{{element.vehicleTypeName}}</td>
+    </ng-container>
+    <ng-container class="headerList" matColumnDef="vehicleBrandName">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Marca</th>
+      <td mat-cell *matCellDef="let element" class="headerList">{{element.vehicleBrandName}}</td>
+    </ng-container>
+    <ng-container class="headerList" matColumnDef="vehicleModelName">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Modelo</th>
+      <td mat-cell *matCellDef="let element" class="headerList">{{element.vehicleModelName}}</td>
+    </ng-container>
+    <ng-container class="headerList" matColumnDef="vehicleColorName">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Cor</th>
+      <td mat-cell *matCellDef="let element" class="headerList">{{element.vehicleColorName}}</td>
+    </ng-container>
+    <ng-container class="headerList" matColumnDef="plate">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Placa</th>
+      <td mat-cell *matCellDef="let element" class="headerList">{{element.plate}}</td>
+    </ng-container>
+    <ng-container class="headerList" matColumnDef="entryDate">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Data da entrada</th>
+      <td mat-cell *matCellDef="let element" class="headerList">{{element.entryDate}}</td>
+    </ng-container>
+    <ng-container class="headerList" matColumnDef="entryTime">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Horario da entrada</th>
+      <td mat-cell *matCellDef="let element" class="headerList">{{element.entryTime}}</td>
+    </ng-container>
+    <ng-container class="headerList" matColumnDef="departureDate">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Data da saída</th>
+      <td mat-cell *matCellDef="let element" class="headerList">{{element.departureDate}}</td>
+    </ng-container>
+    <ng-container class="headerList" matColumnDef="departureTime">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Horario da saída</th>
+      <td mat-cell *matCellDef="let element" class="headerList">{{element.departureTime}}</td>
+    </ng-container>
+    <ng-container class="headerList" matColumnDef="parked">
+      <th mat-header-cell *matHeaderCellDef class="headerList">Estacionado</th>
+      <td mat-cell *matCellDef="let element" class="headerList">
+        {{element.parked == 1 ? "Sim" : "Não"}}
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+    <div class="btn-center">
+            <div class="lbl-voltar">Voltar</div>
+            <button mat-raised-button
+                  mat-mini-fab
+                  matTooltip="Voltar"
+                  (click)="reply()" 
+                   color="primary" 
+                  aria-label="Example icon button with a menu icon">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+    </div>
+  </section>

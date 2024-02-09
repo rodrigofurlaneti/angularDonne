@@ -90,6 +90,8 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
 //Vehicle
 import { VehicleCreateModule } from './vehicle/vehicle-create/vehicle-create.module';
 import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
+import { VehicleListModule } from './vehicle/vehicle-list/vehicle-list.module';
+import { VehicleListComponent } from './vehicle/vehicle-list/vehicle-list.component';
 
 //Vehicle Color
 import { VehicleColorCreateModule } from './vehicleColor/vehicleColor-create/vehicleColor-create.module';
@@ -151,6 +153,7 @@ import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -194,6 +197,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     FormOfPaymentDeleteComponent,
     FormOfPaymentUpdateComponent,
     VehicleCreateComponent,
+    VehicleListComponent,
     VehicleColorCreateComponent,
     VehicleColorListComponent,
     VehicleColorDeleteComponent,
@@ -235,6 +239,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     ProfileUpdateModule,
     FormOfPaymentCreateModule,
     VehicleCreateModule,
+    VehicleListModule,
     VehicleColorCreateModule,
     VehicleColorListModule,
     VehicleColorDeleteModule,
@@ -268,6 +273,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatDatepickerModule,
     MatFormFieldModule, 
     MatDatepickerModule, 
+    MatSlideToggleModule,
     ReactiveFormsModule,
     UserCreateModule,
     UserDeleteModule,

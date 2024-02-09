@@ -52,6 +52,7 @@ import { FormOfPaymentDeleteComponent } from './formofpayment/formofpayment-dele
 import { FormOfPaymentUpdateComponent } from './formofpayment/formofpayment-update/formofpayment-update.component';
 
 import { VehicleCreateComponent } from './vehicle/vehicle-create/vehicle-create.component';
+import { VehicleListComponent } from './vehicle/vehicle-list/vehicle-list.component';
 
 import { VehicleTypeCreateComponent } from './vehicleType/vehicleType-create/vehicleType-create.component';
 import { VehicleTypeListComponent } from './vehicleType/vehicleType-list/vehicleType-list.component';
@@ -113,6 +114,7 @@ export const routes: Routes = [
   { path: 'user-delete', component: UserDeleteComponent },
   { path: 'user-list', component: UserListComponent },
   { path: 'vehicle-create', component: VehicleCreateComponent },
+  { path: 'vehicle-list', component: VehicleListComponent },
   { path: 'vehicleColor-create', component: VehicleColorCreateComponent },
   { path: 'vehicleColor-list', component: VehicleColorListComponent },
   { path: 'vehicleColor-delete', component: VehicleColorDeleteComponent }, 

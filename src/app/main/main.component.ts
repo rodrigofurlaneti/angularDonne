@@ -115,7 +115,8 @@ export class DynamicDatabase {
     ],
     ['Veículo', 
       [
-        { name:'Adicionar', path:'/vehicle-create', icon:'exposure_plus_1'}
+        { name:'Adicionar', path:'/vehicle-create', icon:'exposure_plus_1'},
+        { name:'Listar', path:'/vehicle-list', icon:'view_headline'}
       ],
     ],
     ['Cor do veículo', 
@@ -469,5 +470,13 @@ export class MainComponent {
 
   public activeVehicleModelUpdate() {
     this.router.navigate(['vehicleModel-update']);
+  }
+
+  public activeVehicleCreate() {
+    this.router.navigate(['vehicle-create']);
+  }
+
+  public activeVehicleList() {
+    this.router.navigate(['vehicle-list']);
   }
 }
