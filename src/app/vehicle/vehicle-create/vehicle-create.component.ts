@@ -192,26 +192,48 @@ export class VehicleCreateComponent {
   }
 
   save():void {
-
-    this.populateVehicleModel()
     console.log(this.vehicleModel);
-
-    //save
-    if(this.vehicleModel.vehicleTypeId != 0 && this.vehicleModel.vehicleTypeName != "" &&
-       this.vehicleModel.vehicleBrandId != 0 && this.vehicleModel.vehicleBrandName != "" &&
-       this.vehicleModel.vehicleModelId != 0 && this.vehicleModel.vehicleModelName != "" &&
-       this.vehicleModel.vehicleColorId != 0 && this.vehicleModel.vehicleColorName != "" &&
-       this.vehicleModel.plate != "" && this.vehicleModel.entryDate != "" && 
-       this.vehicleModel.entryTime != "" && this.vehicleModel.parked == 1)
+    if(this.vehicleModel.vehicleTypeId == 0 && this.vehicleModel.vehicleTypeName == ""){
+      this.messageErro = 'O campo tipo do veículo não foi preenchido!';
+    }
+    if(this.vehicleModel.vehicleBrandId == 0 && this.vehicleModel.vehicleBrandName == ""){
+      this.messageErro = this.messageErro + ' O campo marca do veículo não foi preenchido!';
+    }
+    if(this.vehicleModel.vehicleModelId == 0 && this.vehicleModel.vehicleModelName == ""){
+      this.messageErro = this.messageErro + ' O campo tipo do veículo não foi preenchido!';
+    }
+    if(this.vehicleModel.vehicleColorId == 0 && this.vehicleModel.vehicleColorName == ""){
+      this.messageErro = this.messageErro + ' O campo cor do veículo não foi preenchido!';
+    }
+    if(this.vehicleModel.plate == ""){
+      this.messageErro = this.messageErro + ' O campo placa do veículo não foi preenchido!';
+    }
+    if(this.messageErro != ""){
+      this._snackBar.open(this.messageErro ,'', {
+        duration: this.messageTime,
+      });
+      this.messageErro = "";
+    }
+    else
     {
-      this.vehicleCreateService
-          .save(this.vehicleModel)
-          .subscribe(brand => {
-        this.successMessage();
-        this.brandList();
-        }, err => {
-          this.errorMessage();
-        })
+      this.populateVehicleModel();
+      //save
+      if(this.vehicleModel.vehicleTypeId != 0 && this.vehicleModel.vehicleTypeName != "" &&
+          this.vehicleModel.vehicleBrandId != 0 && this.vehicleModel.vehicleBrandName != "" &&
+          this.vehicleModel.vehicleModelId != 0 && this.vehicleModel.vehicleModelName != "" &&
+          this.vehicleModel.vehicleColorId != 0 && this.vehicleModel.vehicleColorName != "" &&
+          this.vehicleModel.plate != "" && this.vehicleModel.entryDate != "" && 
+          this.vehicleModel.entryTime != "" && this.vehicleModel.parked == 1)
+          {
+            this.vehicleCreateService
+                .save(this.vehicleModel)
+                .subscribe(brand => {
+              this.successMessage();
+              this.vehicleModelList();
+              }, err => {
+                this.errorMessage();
+              })
+            }
       }
     }
 
@@ -264,21 +286,21 @@ export class VehicleCreateComponent {
     this.router.navigate([this.routerString]);
   }
 
-  brandList(){
-    this.routerString = 'brand-list';
+  vehicleModelList(){
+    this.routerString = 'vehicle-list';
     this.router.navigate([this.routerString]);
   }
 
   successMessage():void{
     this.messageSuccess = 'O veículo foi cadastrado com sucesso!';
-    this._snackBar.open(this.messageSuccess + this.vehicleModel.plate ,'', {
+    this._snackBar.open(this.messageSuccess + ' ' +this.vehicleModel.plate ,'', {
       duration: this.messageTime
     });
   }
 
   errorMessage():void{
     this.messageErro = 'Erro ao cadastrar o veículo!';
-    this._snackBar.open(this.messageErro + this.vehicleModel.plate,'', {
+    this._snackBar.open(this.messageErro + ' ' + this.vehicleModel.plate,'', {
       duration: this.messageTime
     });
   }

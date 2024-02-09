@@ -14,8 +14,13 @@ export class VehicleCreateService {
 
   constructor(private http: HttpClient) { }
 
-  save(vehicleBrand: VehicleModel) : Observable<any>{
-    return this.http.post<any>(this.route, vehicleBrand)
+  save(vehicleModel: VehicleModel) : Observable<any>{
+    return this.http.post<any>(this.routeAzure, vehicleModel)
+  }
+
+  list() : Observable<any>{
+    var ret = this.http.get(this.routeAzure);
+    return ret;
   }
 
 }

@@ -17,7 +17,7 @@
         <mat-label>Marca do veículo</mat-label>
         <mat-select #matSelect id="dropDownListVehicleBrand" 
         name="dropDownListVehicleBrand" 
-        [(ngModel)]="vehicleBrandModel.vehicleBrandName" 
+        [(ngModel)]="vehicleModel.vehicleBrandName" 
         (selectionChange)="changeVehicleBrand($event.value)" required>
           <mat-option [value]="element" *ngFor="let element of dataSourceVehicleBrand" >
             {{ element.vehicleBrandId }} - {{ element.vehicleBrandName }}
@@ -39,7 +39,7 @@
         <mat-label>Cor do veículo</mat-label>
         <mat-select #matSelect id="dropDownListVehicleColor" 
         name="dropDownListVehicleColor" 
-        [(ngModel)]="vehicleColorModel.vehicleColorName" 
+        [(ngModel)]="vehicleModel.vehicleColorName" 
         (selectionChange)="changeVehicleColor($event.value)" required>
           <mat-option [value]="element" *ngFor="let element of dataSourceVehicleColor" >
             {{ element.vehicleColorId }} - {{ element.vehicleColorName }}
