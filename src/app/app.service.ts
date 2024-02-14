@@ -2,19 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserModel } from 'src/interface/user.interface';
+import { AuthenticationUserModel } from 'src/interface/authenticationUser.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
 
-  private route = 'https://localhost:7027/User';
-  private routeAzure = 'https://apidonne.azurewebsites.net/User';
+  private route = 'https://localhost:7027/Authentication';
+  private routeAzure = 'https://apidonne.azurewebsites.net/Authentication';
 
   constructor(private http: HttpClient) { }
 
-  appService(user: UserModel) : Observable<any>{
-    return this.http.get(this.routeAzure+'/'+user.userName)
+  public getIPAddress()  
+  {  
+    return this.http.get("http://api.ipify.org/?format=json");  
+  } 
+
+  appService(authenticationUserModel: AuthenticationUserModel) : Observable<any>{
+    console.log(authenticationUserModel);
+    return this.http.post<any>(this.route, authenticationUserModel)
   }
 }
 

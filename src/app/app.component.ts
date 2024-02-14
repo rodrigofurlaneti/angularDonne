@@ -1,19 +1,22 @@
-  import { Component } from '@angular/core';
-  import { AppService } from './app.service';
-  import { Router } from '@angular/router'; 
-  import { UserModel } from 'src/interface/user.interface';
-  import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component, OnInit } from '@angular/core';  
+import { AppService } from './app.service';
+import { Router } from '@angular/router'; 
+import { UserModel } from 'src/interface/user.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthenticationUserModel } from 'src/interface/authenticationUser.interface';
 
   @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
   })
-  export class AppComponent{
+  export class AppComponent implements OnInit{
     
     title = 'Donne';
 
     user: UserModel;
+
+    authenticationUser: AuthenticationUserModel;
     
     hide = true;
 
@@ -25,48 +28,88 @@
                 private _snackBar: MatSnackBar,
                 private router: Router) {
                   this.user = new UserModel();
-                }
+                  this.authenticationUser = new AuthenticationUserModel();
+                };
+    
+    ipAddress:string = '';
+
+    ngOnInit()  
+    {  
+      this.getIP();  
+    }   
 
     addUserName(event: any)
     {
-      this.user.userName = event.target.value;
+      this.authenticationUser.userName = event.target.value;
     }
 
     addUserPassword(event: any)
     {
-      this.user.userPassword = event.target.value;
+      this.authenticationUser.userPassword = event.target.value;
     }
 
     validar() {
-      this.appService.appService(this.user).subscribe(userResp => {
-      if(userResp.userName === null)
+      this.authenticationUser.navigatorUserAgent = this.navigatorUserAgent(navigator);
+      this.authenticationUser.clientInternetProtocol = this.ipAddress;
+      if(this.authenticationUser.userName == '')
       {
-        this._snackBar.open('Não existe este usuário cadastrado!','',);
+        this._snackBar.open('Usuário não está preenchido!','',);        
       }
-      else if(this.user.userPassword === '')
+      else
       {
-        this._snackBar.open('Não está preenchido o campo senha!','',);
-      }
-      else if(this.user.userPassword != userResp.userPassword)
-      {
-        this._snackBar.open('Senha inválida!','',);
-      }
-      else if(this.user.userPassword === userResp.userPassword && 
-          this.user.userName === userResp.userName)
-      {
-        this.access = true;
-        this.user.userId = userResp.userId;
-        this.router.navigate(['/main']);
-        this._snackBar.open('Acesso autorizado com sucesso! Seja bem-vindo!','',{
-          duration: this.messageTime
-        });
-      }
-      }, err => {
-        console.log('Erro autenticar o usuário', err);
-      })
+        this.appService.appService(this.authenticationUser).subscribe(userResp => {
+          console.log(userResp);
+          if(this.authenticationUser.userName != userResp.userName)
+          {
+            this._snackBar.open('Usuário não existe!','',);
+          }
+          else if(this.authenticationUser.userPassword != userResp.userPassword)
+          {
+            this._snackBar.open('Senha inválida!','',);
+          }
 
-      setTimeout(() => {
-        this._snackBar.dismiss();
-      }, 2000);
+          else 
+          {
+            this.access = true;
+            this.authenticationUser.userId = userResp.userId;
+            this.router.navigate(['/main']);
+            this._snackBar.open('Acesso autorizado com sucesso! Seja bem-vindo!','',{
+              duration: this.messageTime
+            });
+          }
+          }, err => {
+            console.log('Erro autenticar o usuário', err);
+          })
+    
+          setTimeout(() => {
+            this._snackBar.dismiss();
+          }, 2000);
+        }
+      }
+      
+
+    getIP()  
+    {  
+      this.appService.getIPAddress().subscribe((res:any)=>{  
+        this.ipAddress=res.ip;
+      });  
+    } 
+
+    navigatorUserAgent(navigator: Navigator){
+      var sBrowser = '';
+      let sUsrAg = navigator.userAgent;
+      if (sUsrAg.indexOf("Chrome") > -1) {
+        sBrowser = "Google Chrome";
+      } else if (sUsrAg.indexOf("Safari") > -1) {
+        sBrowser = "Apple Safari";
+      } else if (sUsrAg.indexOf("Opera") > -1) {
+        sBrowser = "Opera";
+      } else if (sUsrAg.indexOf("Firefox") > -1) {
+        sBrowser = "Mozilla Firefox";
+      } else if (sUsrAg.indexOf("MSIE") > -1) {
+        sBrowser = "Microsoft Internet Explorer";
+      }
+      return sBrowser;
     }
+
   }
