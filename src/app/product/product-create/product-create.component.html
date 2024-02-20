@@ -64,10 +64,10 @@
       </div>
         <div class="checkbox">
           <div>
-            <mat-checkbox class="example-margin" id="needToPrint" name="needToPrint" [(ngModel)]="needToPrint">Imprimir</mat-checkbox>
+            <mat-checkbox (click)="onClickNeedToPrint()" [checked]="needToPrint" class="example-margin" id="needToPrint" name="needToPrint" [(ngModel)]="needToPrint">Imprimir</mat-checkbox>
           </div>
           <div>
-            <mat-checkbox class="example-margin" id="productStatus" name="productStatus" [(ngModel)]="productStatus">Ativo</mat-checkbox>
+            <mat-checkbox (click)="onClickProductStatus()" [checked]="productStatus" class="example-margin" id="productStatus" name="productStatus" [(ngModel)]="productStatus">Ativo</mat-checkbox>
           </div>
         </div>
     </form>

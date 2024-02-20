@@ -16,7 +16,7 @@ export class ProductUpdateService {
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.routeAzure);
+    return this.httpClient.get(this.route);
   }
 
   public getById(id: number): Observable<any> {

@@ -11,10 +11,10 @@ export interface IProductInterface {
     totalValueSaleStock: string;
     dateInsert: Date;
     dateUpdate: Date;
-    needToPrint: boolean;
+    needToPrint: number;
     userId: number;
     userName: string;
-    status: boolean;
+    status: number;
     quantityToBuy: number;
     totalValueOfLastPurchase: string;
 }
@@ -22,19 +22,19 @@ export class ProductModel implements IProductInterface {
     productId: number = 0;    
     productName: string = ''; 
     categoryId: number = 0;
-    categoryName : string = " ";
-    costPrice: string = " ";
-    salePrice: string = " ";
-    quantityStock: number = NaN;
+    categoryName : string = '';
+    costPrice: string = '';
+    salePrice: string = '';
+    quantityStock: number = 0;
     minimumStockQuantity: number = 0;
-    totalValueCostOfInventory: string = " ";
-    totalValueSaleStock: string = " ";
+    totalValueCostOfInventory: string = '';
+    totalValueSaleStock: string = '';
     dateInsert: Date = new Date();
     dateUpdate: Date = new Date();
-    needToPrint: boolean = false;
+    needToPrint: number = 0;
     userId: number = 0;
     userName: string = '';
-    status: boolean = false;
+    status: number = 0;
     quantityToBuy: number = 0;
-    totalValueOfLastPurchase: string = " ";
+    totalValueOfLastPurchase: string = '';
   }

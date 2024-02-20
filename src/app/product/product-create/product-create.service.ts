@@ -14,7 +14,7 @@ export class ProductCreateService {
   constructor(private http: HttpClient) { }
 
   save(product: ProductModel) : Observable<any>{
-    return this.http.post<any>(this.routeAzure, product)
+    return this.http.post<any>(this.route, product)
   }
 
 }

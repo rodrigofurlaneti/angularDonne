@@ -72,12 +72,12 @@ export class ProductUpdateComponent implements OnInit {
   set selectedValue(value) { this._selectedValue = value; }
 
   //Property NeedToPrint 
-  private _needToPrint: boolean = false;
+  private _needToPrint: number = 0;
   get needToPrint() { return this._needToPrint; }
   set needToPrint(value) { this._needToPrint = value; }
 
   //Property ProductStatus 
-  private _productStatus: boolean = false;
+  private _productStatus: number = 0;
   get productStatus() { return this._productStatus; }
   set productStatus(value) { this._productStatus = value; }
 
@@ -160,11 +160,13 @@ export class ProductUpdateComponent implements OnInit {
   status = [{ selected: false, label: 'Status do produto?' }];
 
   onChange(event: MatCheckboxChange) {
-    this.needToPrint = event.checked;
+    if(event.checked)
+      this.needToPrint = 1;
   }
 
   onChangeStatus(event: MatCheckboxChange) {
-    this.productStatus = event.checked;
+    if(event.checked)
+      this.productStatus = 1;
   }
 
   change() {

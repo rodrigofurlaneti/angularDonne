@@ -6,27 +6,33 @@ import { CategoryModel } from 'src/interface/category.interface';
 import { MatSelect } from '@angular/material/select';
 import { FormControl } from '@angular/forms';
 import { Component, ViewChild } from '@angular/core';
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatCheckboxChange, MatCheckboxClickAction } from '@angular/material/checkbox';
 import { CategoryListService } from 'src/app/category/category-list/category-list.service';
+import {
+  MAT_CHECKBOX_DEFAULT_OPTIONS,
+  MatCheckboxDefaultOptions
+} from '@angular/material/checkbox';
+
 
 let ELEMENT_DATA_CATEGORY: CategoryModel[];
 
 @Component({
   selector: 'product-create',
   templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.css']
+  styleUrls: ['./product-create.component.css'],
+  providers: [{provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: { clickAction: 'noop' } as MatCheckboxDefaultOptions}]
 })
 
 export class ProductCreateComponent {
 
   //#region [Properties]
   //Property NeedToPrint
-  private _needToPrint: boolean = false;
+  private _needToPrint: boolean = true;
   get needToPrint() { return this._needToPrint; }
   set needToPrint(value) { this._needToPrint = value; }
 
   //Property ProductStatus
-  private _productStatus: boolean = false;
+  private _productStatus: boolean = true;
   get productStatus() { return this._productStatus; }
   set productStatus(value) { this._productStatus = value; }
 
@@ -130,11 +136,24 @@ export class ProductCreateComponent {
   status = [{ selected: false, label: 'Status do produto?' }];
 
   onChange(event: MatCheckboxChange) {
-    this.needToPrint = event.checked;
+    if(event.checked)
+      this.needToPrint = true;
   }
 
-  onChangeStatus(event: MatCheckboxChange) {
-    this.productStatus = event.checked;
+  onClickNeedToPrint():void {
+    this.needToPrint = !this.needToPrint;
+    if(this.needToPrint)
+      this.productModel.needToPrint = 1;
+    else
+      this.productModel.needToPrint = 0;
+  }
+
+  onClickProductStatus():void {
+    this.productStatus = !this.productStatus;
+    if(this.productStatus)
+      this.productModel.status = 1;
+    else
+      this.productModel.status = 0;
   }
 
   change(event: any) {
@@ -165,19 +184,17 @@ export class ProductCreateComponent {
   }
  
   save() {
-
     //CheckFields
     this.checkFields();
 
     //save
     if (this.productModel.productName != '' && this.productModel.costPrice != '' && this.productModel.salePrice != '' && this.productModel.quantityStock != 0) {
       this.authenticatedUser();
+      console.log(this.productModel);
       this.productModel.categoryName = this.categoryNameSelect;
       this.productModel.categoryId = this.categoryIDSelect;
       this.productModel.costPrice = parseFloat(this.productModel.costPrice).toString(); //parseFloat(priceCost)
       this.productModel.salePrice = parseFloat(this.productModel.salePrice).toString(); //parseFloat(priceSale)
-      this.productModel.needToPrint = this.needToPrint;
-      this.productModel.status = this.productStatus;
       this.productModel.quantityToBuy = this.productModel.quantityToBuy;
       this.productModel.totalValueOfLastPurchase = parseFloat(this.productModel.totalValueOfLastPurchase).toString(); 
       this.productCreateService.save(this.productModel).subscribe(product => {
@@ -219,6 +236,14 @@ export class ProductCreateComponent {
       this._snackBar.open('A quantidade no estoque do produto! está vazio, preciso preencher','', {
         duration: this.messageTime
       });
+    }
+    //Verifica de a opção imprimir foi clicada, caso não pega o padrão.
+    if(this.productModel.needToPrint == 0 && this.needToPrint){
+      this.productModel.needToPrint = 1;
+    }
+    //Verifica de a opção ativo foi clicada, caso não pega o padrão.
+    if(this.productModel.status == 0 && this.productStatus){
+      this.productModel.status = 1;
     }
   }
 
