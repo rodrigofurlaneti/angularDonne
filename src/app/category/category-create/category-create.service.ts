@@ -14,7 +14,7 @@ export class CategoryCreateService {
   constructor(private http: HttpClient) { }
 
   save(category: CategoryModel) : Observable<any>{
-    return this.http.post<any>(this.routeAzure, category)
+    return this.http.post<any>(this.route, category)
   }
 
 }

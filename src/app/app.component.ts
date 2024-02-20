@@ -22,7 +22,7 @@ import { AuthenticationUserModel } from 'src/interface/authenticationUser.interf
 
     access: boolean = false;
 
-    messageTime: number = 5000;
+    messageTime: number = 1000;
 
     constructor(private appService: AppService,
                 private _snackBar: MatSnackBar,

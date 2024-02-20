@@ -13,6 +13,6 @@ export class UserListService {
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    return this.http.get(this.routeAzure)
+    return this.http.get(this.route)
   }
 }

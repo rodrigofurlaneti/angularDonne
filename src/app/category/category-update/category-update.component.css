@@ -1,10 +1,30 @@
 .center{
-  padding-top: 25vh;
+  padding-top: 40vh;
 }
-
-.btn-center{
+.wrapper {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  display: grid;
+  grid-template-columns: 5vh 5vh 5vh;
 }
+.update_btn {
+  padding-left: 5vh;
+}
+
+.labelToButtonDark{
+  color: #1b1b1b;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.lbl-voltar{
+  font-weight: bold;
+  font-style: oblique;
+  color: darkmagenta;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+

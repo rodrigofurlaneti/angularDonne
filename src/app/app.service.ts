@@ -20,7 +20,6 @@ export class AppService {
   } 
 
   appService(authenticationUserModel: AuthenticationUserModel) : Observable<any>{
-    console.log(authenticationUserModel);
     return this.http.post<any>(this.route, authenticationUserModel)
   }
 }

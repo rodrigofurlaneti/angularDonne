@@ -17,15 +17,15 @@ export class CategoryUpdateService {
   ) {}
 
   public list() : Observable<any>{
-    return this.httpClient.get(this.routeAzure);
+    return this.httpClient.get(this.route);
 
   }
 
   public getById(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.routeAzure+'/'+id);
+    return this.httpClient.get<any>(this.route+'/'+id);
   }
 
   public update(categoryModel: CategoryModel) {
-    return this.httpClient.put(this.routeAzure, categoryModel);
+    return this.httpClient.put(this.route, categoryModel);
   }
 }

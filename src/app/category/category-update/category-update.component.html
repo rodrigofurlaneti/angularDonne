@@ -2,7 +2,6 @@
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-        <caption>Categoria</caption>
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef class="titleUpdateCategory headerUpdateCategory">Categoria</th>
           <td mat-cell (click)="getById(element.categoryId)" *matCellDef="let element" class="headerUpdateCategory">
@@ -17,22 +16,24 @@
   </ng-template>
 
   <ng-template #isIdGreaterThanZero>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Nome categoria</mat-label>
-        <input id="categoryName" name="categoryName" [(ngModel)]="categoryModel.categoryName" matInput>
-      </mat-form-field>
-    </div>
-
+    <mat-card>
+      <mat-card-content style="text-align: center;">Nome da categoria</mat-card-content>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nome da categoria</mat-label>
+          <input id="categoryName" name="categoryName" [(ngModel)]="categoryModel.categoryName" matInput>
+        </mat-form-field>
+      </form>
+    </mat-card>
   </ng-template>
 
-  <div class=" btn-center">
+  <div class="wrapper">
     <section class="back_btn">
       <div class="example-button-row">
         <div class="example-flex-container">
           <div class="example-button-container">
             <div class="example-label headerUpdateCategory">
-              <div class="labelToButton">Voltar</div>
+              <div class="lbl-voltar">Voltar</div>
               <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
                 color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>reply_all</mat-icon>
@@ -48,8 +49,8 @@
         <div class="example-flex-container">
           <div class="example-button-container">
             <div class="example-label headerUpdateCategory">
-              <div class="labelToBButton">Atualizar</div>
-              <button mat-raised-button mat-mini-fab matTooltip="Atualizar categoria" (click)="update()"
+              <div class="lbl-voltar">Atualizar</div>
+              <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria" (click)="update()"
                 color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>sync</mat-icon>
               </button>
