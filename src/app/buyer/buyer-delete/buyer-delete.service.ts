@@ -22,7 +22,7 @@ export class BuyerDeleteService {
     let options={
       headers:httpheaders
     };
-    return this.http.delete(this.routeAzure+'/'+id, options)
+    return this.http.delete(this.route+'/'+id, options)
   }
   
 }

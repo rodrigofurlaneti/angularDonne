@@ -72,6 +72,8 @@ import { AuthenticationUserModel } from 'src/interface/authenticationUser.interf
           {
             this.access = true;
             this.authenticationUser.userId = userResp.userId;
+            this.user.userId = userResp.userId;
+            this.user.userName = userResp.userName;
             this.router.navigate(['/main']);
             this._snackBar.open('Acesso autorizado com sucesso! Seja bem-vindo!','',{
               duration: this.messageTime

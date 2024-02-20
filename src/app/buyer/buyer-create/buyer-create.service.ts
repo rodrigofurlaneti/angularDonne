@@ -14,7 +14,7 @@ export class BuyerCreateService {
   constructor(private http: HttpClient) { }
 
   save(buyer: BuyerModel) : Observable<any>{
-    return this.http.post<any>(this.routeAzure, buyer)
+    return this.http.post<any>(this.route, buyer)
   }
 
 }

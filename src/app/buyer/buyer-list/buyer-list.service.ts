@@ -14,12 +14,12 @@ export class BuyerListService {
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    var ret = this.http.get(this.routeAzure);
+    var ret = this.http.get(this.route);
     return ret;
   }
 
   listBuyerStatus(id:number) : Observable<any>{
-    var ret = this.http.options<any>(this.routeAzure+'/'+id); 
+    var ret = this.http.options<any>(this.route+'/'+id); 
     return ret;
   }
 }
