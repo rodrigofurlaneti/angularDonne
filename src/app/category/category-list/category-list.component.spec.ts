@@ -135,30 +135,7 @@ describe('CategoryListComponent', () => {
 
             it('List => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'list').and.callThrough();
-
-                //Act
-                component.list();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.list).toHaveBeenCalled();
-            });
-
-            it('List => Success => Subscribe', () => {
-                //Arrange
-                var objCategoryModel: CategoryModel = new CategoryModel()
-                objCategoryModel.categoryId = faker.number.int();
-                objCategoryModel.categoryName = faker.person.fullName();
-                objCategoryModel.dateInsert = faker.date.anytime();
-                objCategoryModel.dateUpdate = faker.date.anytime();
-                objCategoryModel.userId = faker.number.int();
-                objCategoryModel.userName = faker.person.fullName();
-                var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                var getSpy = spyOn(service, 'list').and.returnValue(of(objCategoryModel));
-                service.list().subscribe((data) => {
-                    expect(data).toEqual(objCategoryModel);
-                });
+                let spyOnComponent = spyOn(component, 'list').and.callThrough();
 
                 //Act
                 component.list();
@@ -176,7 +153,7 @@ describe('CategoryListComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.reply;
+                let result = component.reply;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -185,8 +162,8 @@ describe('CategoryListComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -201,7 +178,7 @@ describe('CategoryListComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act

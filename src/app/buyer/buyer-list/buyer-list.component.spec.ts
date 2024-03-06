@@ -5,19 +5,15 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BuyerModel } from 'src/interface/buyer.interface';
-import { faker } from '@faker-js/faker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
-import { BuyerListService } from './buyer-list.service';
 
 describe('BuyerlistComponent', () => {
     let component: BuyerListComponent;
     let fixture: ComponentFixture<BuyerListComponent>;
     let router: Router;
-    let service: BuyerListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'buyer-list', component: BuyerListComponent}
@@ -40,7 +36,6 @@ describe('BuyerlistComponent', () => {
         fixture = TestBed.createComponent(BuyerListComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(BuyerListService);
         fixture.detectChanges();
     }));
 
@@ -153,7 +148,7 @@ describe('BuyerlistComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.reply;
+                let result = component.reply;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);

@@ -17,8 +17,6 @@ import { BuyerDeleteService } from './buyer-delete.service';
 describe('BuyerDeleteComponent', () => {
     let component: BuyerDeleteComponent;
     let fixture: ComponentFixture<BuyerDeleteComponent>;
-    let service: BuyerDeleteService;
-    let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'buyer-list', component: BuyerListComponent},
@@ -41,7 +39,6 @@ describe('BuyerDeleteComponent', () => {
         }).compileComponents();
         fixture = TestBed.createComponent(BuyerDeleteComponent);
         component = fixture.componentInstance;
-        service = TestBed.inject(BuyerDeleteService);
         fixture.detectChanges();
     }));
 

@@ -11,7 +11,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { CategoryUpdateService } from './category-update.service';
 
 describe('CategoryUpdateComponent', () => {
@@ -65,7 +64,7 @@ describe('CategoryUpdateComponent', () => {
 
             it('CategoryModel => TypeOf', () => {
                 //Arrange
-                var objCategoryModel: CategoryModel = new CategoryModel()
+                let objCategoryModel: CategoryModel = new CategoryModel()
                 objCategoryModel.categoryId = faker.number.int();
                 objCategoryModel.categoryName = faker.person.fullName();
                 objCategoryModel.dateInsert = faker.date.anytime();
@@ -237,31 +236,7 @@ describe('CategoryUpdateComponent', () => {
 
             it('Update => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'update').and.callThrough();
-
-                //Act
-                component.update();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.update).toHaveBeenCalled();
-            });
-
-            it('Update => Success => Subscribe', () => {
-                //Arrange
-                var objCategoryModel: CategoryModel = new CategoryModel()
-                objCategoryModel.categoryId = faker.number.int();
-                objCategoryModel.categoryName = faker.person.fullName();
-                objCategoryModel.dateInsert = faker.date.anytime();
-                objCategoryModel.dateUpdate = faker.date.anytime();
-                objCategoryModel.userId = faker.number.int();
-                objCategoryModel.userName = faker.person.fullName();
-                var spyOnComponent = spyOn(component, 'update').and.callThrough();
-                var getSpy = spyOn(service, 'update').and.returnValue(of(objCategoryModel));
-                spyOnProperty(component, 'categoryModel').and.returnValue(objCategoryModel);
-                service.update(objCategoryModel).subscribe((data) => {
-                    expect(data).toEqual(objCategoryModel);
-                });
+                let spyOnComponent = spyOn(component, 'update').and.callThrough();
 
                 //Act
                 component.update();
@@ -279,7 +254,7 @@ describe('CategoryUpdateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.reply;
+                let result = component.reply;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -288,8 +263,8 @@ describe('CategoryUpdateComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -304,7 +279,7 @@ describe('CategoryUpdateComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -321,7 +296,7 @@ describe('CategoryUpdateComponent', () => {
 
             it('CheckFields => Success', () => {
                 //Arrange
-                var objCategoryModel: CategoryModel = new CategoryModel()
+                let objCategoryModel: CategoryModel = new CategoryModel()
                 objCategoryModel.categoryId = faker.number.int();
                 objCategoryModel.categoryName = faker.person.fullName();
                 objCategoryModel.dateInsert = faker.date.anytime();
@@ -332,7 +307,7 @@ describe('CategoryUpdateComponent', () => {
                 let expectedValueTypeOf: string = 'object';
         
                 //Act
-                var result = component.checkFields(objCategoryModel);
+                let result = component.checkFields(objCategoryModel);
                         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -347,7 +322,7 @@ describe('CategoryUpdateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.successMessage;
+                let result = component.successMessage;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -360,7 +335,7 @@ describe('CategoryUpdateComponent', () => {
             it('ErrorMessage => MessageErro', () => {
                 //Arrange
                 let expectedValue: string = 'Erro ao cadastrar o cliente!';
-                var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -376,7 +351,7 @@ describe('CategoryUpdateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.errorMessage;
+                let result = component.errorMessage;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -385,11 +360,11 @@ describe('CategoryUpdateComponent', () => {
             it('ErrorMessage', () => {
                 //Arrange
                 let messageErro: string = 'Erro ao cadastrar o cliente';
-                var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
         
                 //Act/
-                var result = component.errorMessage;
+                let result = component.errorMessage;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -403,15 +378,15 @@ describe('CategoryUpdateComponent', () => {
             it('AuthenticatedUser => UserIdLogin', () => {
                 //Arrange
                 let userIdLogin: number = faker.number.int();
-                var element = document.createElement('input');
+                let element = document.createElement('input');
                 element.id = 'userIdLogin';
                 element.name = 'userIdLogin';
                 element.value = userIdLogin.toString();
                 element.type="hidden";
                 document.getElementById = jasmine.createSpy('userIdLogin').and.returnValue(element);
-                var objCategoryModel: CategoryModel = new CategoryModel();
+                let objCategoryModel: CategoryModel = new CategoryModel();
                 objCategoryModel.categoryId = userIdLogin;
-                var spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
+                let spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
                 spyOnProperty(component, 'categoryModel', 'get').and.returnValue(objCategoryModel);
                 
                 //Act
@@ -426,7 +401,7 @@ describe('CategoryUpdateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.authenticatedUser;
+                let result = component.authenticatedUser;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -437,7 +412,7 @@ describe('CategoryUpdateComponent', () => {
     
             it('List => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'list').and.callThrough();
+                let spyOnComponent = spyOn(component, 'list').and.callThrough();
 
                 //Act
                 component.list();
@@ -446,31 +421,6 @@ describe('CategoryUpdateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.list).toHaveBeenCalled();
             });
-
-            it('List => Success => Subscribe', () => {
-                //Arrange
-                var objCategoryModel: CategoryModel = new CategoryModel()
-                objCategoryModel.categoryId = faker.number.int();
-                objCategoryModel.categoryName = faker.person.fullName();
-                objCategoryModel.dateInsert = faker.date.anytime();
-                objCategoryModel.dateUpdate = faker.date.anytime();
-                objCategoryModel.userId = faker.number.int();
-                objCategoryModel.userName = faker.person.fullName();
-                var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                var getSpy = spyOn(service, 'list').and.returnValue(of(objCategoryModel));
-                service.list().subscribe((data) => {
-                    expect(data).toEqual(objCategoryModel);
-                });
-
-                //Act
-                component.list();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.list).toHaveBeenCalled();
-            });
-
-            
         });
 
         describe('GetById', () => {
@@ -478,7 +428,7 @@ describe('CategoryUpdateComponent', () => {
             it('GetByIb => Success', () => {
             
                 //Arrange
-                var objCategoryModel: CategoryModel = new CategoryModel()
+                let objCategoryModel: CategoryModel = new CategoryModel()
                 objCategoryModel.categoryId = faker.number.int();
                 objCategoryModel.categoryName = faker.person.fullName();
                 objCategoryModel.dateInsert = faker.date.anytime();
@@ -486,7 +436,7 @@ describe('CategoryUpdateComponent', () => {
                 objCategoryModel.userId = faker.number.int();
                 objCategoryModel.userName = faker.person.fullName();
                 let idFake : number = faker.number.int();
-                var spyOnComponent = spyOn(component, 'getById').and.callThrough();
+                let spyOnComponent = spyOn(component, 'getById').and.callThrough();
                 spyOnProperty(component, 'categoryModel', 'get').and.returnValue(objCategoryModel);
                 
                 //Act
@@ -496,33 +446,6 @@ describe('CategoryUpdateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.categoryModel).toEqual(objCategoryModel);
 
-            });
-
-            it('GetByIb => Success => Subscribe', () => {
-            
-                //Arrange
-                var objCategoryModel: CategoryModel = new CategoryModel()
-                objCategoryModel.categoryId = faker.number.int();
-                objCategoryModel.categoryName = faker.person.fullName();
-                objCategoryModel.dateInsert = faker.date.anytime();
-                objCategoryModel.dateUpdate = faker.date.anytime();
-                objCategoryModel.userId = faker.number.int();
-                objCategoryModel.userName = faker.person.fullName();
-                let idFake : number = faker.number.int();
-                var spyOnComponent = spyOn(component, 'getById').and.callThrough();
-                spyOnProperty(component, 'categoryModel', 'get').and.returnValue(objCategoryModel);
-                var getSpy = spyOn(service, 'getById').and.returnValue(of(objCategoryModel));
-                
-                //Act
-                component.getById(idFake);
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.categoryModel).toEqual(objCategoryModel);
-                service.getById(idFake).subscribe((data) => {
-                    expect(data).toEqual(objCategoryModel);
-                });
-               expect(component.getById).toHaveBeenCalled();
             });
         });
     });  

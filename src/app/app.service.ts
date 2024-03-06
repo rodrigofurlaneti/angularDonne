@@ -10,12 +10,13 @@ export class AppService {
 
   private route = 'https://localhost:7027/Authentication';
   private routeAzure = 'https://apidonne.azurewebsites.net/Authentication';
+  private routeIp = 'https://api.ipify.org/?format=json';
 
   constructor(private http: HttpClient) { }
 
   public getIPAddress()  
   {  
-    return this.http.get("http://api.ipify.org/?format=json");  
+    return this.http.get(this.routeIp);  
   } 
 
   appService(authenticationUserModel: AuthenticationUserModel) : Observable<any>{

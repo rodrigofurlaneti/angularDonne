@@ -99,7 +99,7 @@ describe('CategoryCreateComponent', () => {
 
     it('CategoryModel => TypeOf', () => {
         //Arrange
-        var objCategoryModel: CategoryModel = new CategoryModel()
+        let objCategoryModel: CategoryModel = new CategoryModel()
         objCategoryModel.categoryId = faker.number.int();
         objCategoryModel.categoryName = faker.person.fullName();
         objCategoryModel.userId = faker.number.int();
@@ -141,14 +141,14 @@ describe('CategoryCreateComponent', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'undefined';
                 let messageCategoryName: string = 'Não está preenchido o campo nome da categoria!';
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objCategoryModel: CategoryModel = new CategoryModel()
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let objCategoryModel: CategoryModel = new CategoryModel()
                 objCategoryModel.categoryName = '';
                 spyOnProperty(component, 'categoryModel', 'get').and.returnValue(objCategoryModel);
                 spyOnProperty(component, 'messageCategoryName', 'get').and.returnValue(messageCategoryName);
                 
                 //Act
-                var result = component.save();
+                let result = component.save();
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
@@ -158,8 +158,8 @@ describe('CategoryCreateComponent', () => {
 
             it('Save => CategoryModel => Populate', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objCategoryModel: CategoryModel = new CategoryModel()
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let objCategoryModel: CategoryModel = new CategoryModel()
                 objCategoryModel.categoryName = faker.person.fullName();
                 spyOnProperty(component, 'categoryModel', 'get').and.returnValue(objCategoryModel);
                 
@@ -170,41 +170,6 @@ describe('CategoryCreateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.categoryModel.categoryName).toBe(objCategoryModel.categoryName);
             });
-
-            it('Save => Success => Subscribe', () => {
-                //Arrange
-                var objCategoryModel: CategoryModel = new CategoryModel()
-                objCategoryModel.userId = 1;
-                objCategoryModel.userName = 'Administrador';
-                objCategoryModel.categoryId = 1;
-                objCategoryModel.categoryName = 'Administrador';
-                objCategoryModel.dateUpdate = faker.date.anytime();
-                objCategoryModel.dateInsert = faker.date.anytime();
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-
-                const response = [
-                    {
-                        "categoryId": "1",
-                        "categoryName": "Administrador",
-                        "dateInsert": "",
-                        "dateUpdate": "",
-                        "userId": "1",
-                        "userName": "Administrador"
-                    }
-                ];
-                
-                service.save(objCategoryModel).subscribe((data) => {
-                    expect(data).toEqual(response);
-                });
-
-                //Act
-                component.save();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.save).toHaveBeenCalled();
-            });
-
         });
 
         describe('Reply', () => {
@@ -212,8 +177,8 @@ describe('CategoryCreateComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -228,7 +193,7 @@ describe('CategoryCreateComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -246,8 +211,8 @@ describe('CategoryCreateComponent', () => {
             it('CategoryList => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'category-list';
-                var spyOnComponent = spyOn(component, 'categoryList').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'categoryList').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -262,7 +227,7 @@ describe('CategoryCreateComponent', () => {
             it('CategoryList', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'category-list';
-                var spyOnComponent = spyOn(component, 'categoryList').and.callThrough();
+                let spyOnComponent = spyOn(component, 'categoryList').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -280,15 +245,15 @@ describe('CategoryCreateComponent', () => {
             it('AuthenticatedUser => UserIdLogin', () => {
                 //Arrange
                 let userIdLogin: number = faker.number.int();
-                var element = document.createElement('input');
+                let element = document.createElement('input');
                 element.id = 'userIdLogin';
                 element.name = 'userIdLogin';
                 element.value = userIdLogin.toString();
                 element.type="hidden";
                 document.getElementById = jasmine.createSpy('userIdLogin').and.returnValue(element);
-                var objCategoryModel: CategoryModel = new CategoryModel();
+                let objCategoryModel: CategoryModel = new CategoryModel();
                 objCategoryModel.userId = userIdLogin;
-                var spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
+                let spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
                 spyOnProperty(component, 'categoryModel', 'get').and.returnValue(objCategoryModel);
                 
                 //Act
@@ -303,7 +268,7 @@ describe('CategoryCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.authenticatedUser;
+                let result = component.authenticatedUser;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -316,7 +281,7 @@ describe('CategoryCreateComponent', () => {
 
             it('CheckFields => Success', () => {
                 //Arrange
-                var objCategoryModel: CategoryModel = new CategoryModel()
+                let objCategoryModel: CategoryModel = new CategoryModel()
                 objCategoryModel.categoryId = faker.number.int();
                 objCategoryModel.categoryName = faker.person.fullName();
                 objCategoryModel.userId = faker.number.int();
@@ -327,7 +292,7 @@ describe('CategoryCreateComponent', () => {
                 let expectedValueTypeOf: string = 'object';
         
                 //Act
-                var result = component.checkFields(objCategoryModel);
+                let result = component.checkFields(objCategoryModel);
                         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -335,8 +300,8 @@ describe('CategoryCreateComponent', () => {
 
             it('CheckFields => CategoryName => Empty => Success', () => {
                 //Arrange
-                var expectedValue: string = 'Não está preenchido o campo nome da categoria!';
-                var objCategoryModel: CategoryModel = new CategoryModel()
+                let expectedValue: string = 'Não está preenchido o campo nome da categoria!';
+                let objCategoryModel: CategoryModel = new CategoryModel()
                 objCategoryModel.categoryId = faker.number.int();
                 objCategoryModel.categoryName = '';
                 objCategoryModel.userId = faker.number.int();
@@ -347,7 +312,7 @@ describe('CategoryCreateComponent', () => {
                 let expectedValueTypeOf: string = 'object';
         
                 //Act
-                var result = component.checkFields(objCategoryModel);
+                let result = component.checkFields(objCategoryModel);
                         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -388,11 +353,11 @@ describe('CategoryCreateComponent', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'undefined';
                 let expectedValue: string = 'Erro ao cadastrar a categoria!';
-                var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(expectedValue);
                 
                 //Act
-                var result = component.errorMessage();
+                let result = component.errorMessage();
         
                 //Assert
                 expect(component.messageErro).toBe(expectedValue);

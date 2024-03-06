@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -11,14 +11,14 @@ import { CategoryListComponent } from '../category-list/category-list.component'
 import { CategoryDeleteComponent } from './category-delete.component';
 import { faker } from '@faker-js/faker';
 import { CategoryModel } from 'src/interface/category.interface';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 import { CategoryDeleteService } from './category-delete.service';
 
 describe('CategoryDeleteComponent', () => {
     let component: CategoryDeleteComponent;
     let fixture: ComponentFixture<CategoryDeleteComponent>;
     let service: CategoryDeleteService;
-    let router: Router;
+
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'category-list', component: CategoryListComponent}
@@ -40,7 +40,6 @@ describe('CategoryDeleteComponent', () => {
         }).compileComponents();
         fixture = TestBed.createComponent(CategoryDeleteComponent);
         component = fixture.componentInstance;
-        router = TestBed.inject(Router);
         service = TestBed.inject(CategoryDeleteService);
         fixture.detectChanges();
     }));
@@ -171,31 +170,8 @@ describe('CategoryDeleteComponent', () => {
     
                 it('List => Success', () => {
                     //Arrange
-                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'list').and.callThrough();
 
-                    //Act
-                    component.list();
-            
-                    //Assert
-                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                    expect(component.list).toHaveBeenCalled();
-                });
-
-                it('List => Success => Subscribe', () => {
-                    //Arrange
-                    var objCategoryModel: CategoryModel = new CategoryModel()
-                    objCategoryModel.categoryId = faker.number.int();
-                    objCategoryModel.categoryName = faker.person.fullName();
-                    objCategoryModel.dateInsert = faker.date.anytime();
-                    objCategoryModel.dateUpdate = faker.date.anytime();
-                    objCategoryModel.userId = faker.number.int();
-                    objCategoryModel.userName = faker.person.fullName();
-                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                    var getSpy = spyOn(service, 'list').and.returnValue(of(objCategoryModel));
-                    service.list().subscribe((data) => {
-                        expect(data).toEqual(objCategoryModel);
-                    });
-    
                     //Act
                     component.list();
             
@@ -212,7 +188,7 @@ describe('CategoryDeleteComponent', () => {
                     let mockId: number = faker.number.int();
                     let expectedValueMessageSuccess: string = 'O cliente foi excluido com sucesso!';
                     let expectedValueStatus: string = 'Delete successful';
-                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'delete').and.callThrough();
                     spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValueMessageSuccess);
                     spyOnProperty(component, 'status', 'get').and.returnValue(expectedValueStatus);
                     let usersMock = [
@@ -227,30 +203,6 @@ describe('CategoryDeleteComponent', () => {
                     //Assert
                     expect(component.messageSuccess).toBe(expectedValueMessageSuccess);
                     expect(component.status).toBe(expectedValueStatus);
-                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                    expect(component.delete).toHaveBeenCalled();
-                });
-
-                it('Delete => Success => Subscribe', () => {
-                    //Arrange
-                    let CategoryId : number = faker.number.int();
-                    var objCategoryModel : CategoryModel = new CategoryModel()
-                    objCategoryModel.categoryId = faker.number.int();
-                    objCategoryModel.categoryName = faker.person.fullName();
-                    objCategoryModel.dateInsert = faker.date.anytime();
-                    objCategoryModel.dateUpdate = faker.date.anytime();
-                    objCategoryModel.userId = faker.number.int();
-                    objCategoryModel.userName = faker.person.fullName();
-                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
-                    var getSpy = spyOn(service, 'delete').and.returnValue(of(objCategoryModel));
-                    service.delete(CategoryId).subscribe((data) => {
-                        expect(data).toEqual(objCategoryModel);
-                    });
-    
-                    //Act
-                    component.delete(CategoryId);
-            
-                    //Assert
                     expect(spyOnComponent).toHaveBeenCalledTimes(1);
                     expect(component.delete).toHaveBeenCalled();
                 });

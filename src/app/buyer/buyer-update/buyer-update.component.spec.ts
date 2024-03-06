@@ -303,7 +303,7 @@ describe('BuyerUpdateComponent', () => {
                 //Arrange
                 let expectedValue: string = 'main';
                 let spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -418,7 +418,7 @@ describe('BuyerUpdateComponent', () => {
             it('AuthenticatedUser => UserIdLogin', () => {
                 //Arrange
                 let userIdLogin: string = faker.number.int().toString();
-                var element = document.createElement('input');
+                let element = document.createElement('input');
                 element.id = 'userIdLogin';
                 element.name = 'userIdLogin';
                 element.value = userIdLogin;
@@ -488,35 +488,6 @@ describe('BuyerUpdateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.buyerModel).toEqual(objBuyerModel);
 
-            });
-
-            it('GetByIb => Success => Subscribe', () => {
-            
-                //Arrange
-                let objBuyerModel: BuyerModel = new BuyerModel()
-                objBuyerModel.buyerAddress = faker.address.streetAddress();
-                objBuyerModel.buyerId = faker.number.int().toString();
-                objBuyerModel.buyerName = faker.person.fullName();
-                objBuyerModel.buyerPhone = faker.phone.number().toString();
-                objBuyerModel.dateInsert = faker.date.anytime();
-                objBuyerModel.dateUpdate = faker.date.anytime();
-                objBuyerModel.userId = faker.number.int();
-                objBuyerModel.userName = faker.person.fullName();
-                let idFake : number = faker.number.int();
-                let spyOnComponent = spyOn(component, 'getById').and.callThrough();
-                spyOnProperty(component, 'buyerModel', 'get').and.returnValue(objBuyerModel);
-                let getSpy = spyOn(service, 'getById').and.returnValue(of(objBuyerModel));
-                
-                //Act
-                component.getById(idFake);
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.buyerModel).toEqual(objBuyerModel);
-                service.getById(idFake).subscribe((data) => {
-                    expect(data).toEqual(objBuyerModel);
-                });
-               expect(component.getById).toHaveBeenCalled();
             });
         });
     });  

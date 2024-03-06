@@ -8,7 +8,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('BuyerCreateComponent', () => {
     let service: BuyerCreateService;
-    let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
     // #region [BeforeEach]
 
@@ -21,7 +20,6 @@ describe('BuyerCreateComponent', () => {
             ]
         });
         service = TestBed.inject(BuyerCreateService);
-        httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
     });
 
     // #endregion
