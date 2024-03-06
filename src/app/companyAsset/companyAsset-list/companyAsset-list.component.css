@@ -1,0 +1,24 @@
+.center{
+  padding-top: 25vh;
+}
+
+.btn-center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.lbl-voltar{
+  font-weight: bold;
+  font-style: oblique;
+  color: darkmagenta;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.headerListCompanyAsset{
+  text-align: center;
+  padding-left: 5vh;
+  padding-right: 5vh;
+}

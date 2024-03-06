@@ -1,0 +1,23 @@
+<section class="center">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Ativo da empresa</th>
+      <td mat-cell (click)="delete(element.companyAssetId)" *matCellDef="let element">
+        {{element.companyAssetName}}
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="btn-center">
+    <div class="lbl-voltar">Voltar</div>
+      <button mat-raised-button mat-mini-fab
+                matTooltip="Voltar"
+                (click)="reply()" 
+                 color="primary" 
+                aria-label="Example icon button with a menu icon">
+            <mat-icon>reply_all</mat-icon>
+      </button>
+    </div>
+  </section>
+

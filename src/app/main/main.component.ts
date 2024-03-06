@@ -27,6 +27,14 @@ export class DynamicFlatNode {
 export class DynamicDatabase {
 
   dataMap = new Map<string, FoodNode[]>([
+    ['Ativo da empresa', 
+    [
+      { name:'Adicionar', path:'/companyAsset-create', icon:'exposure_plus_1'},
+      { name:'Atualizar', path:'/companyAsset-update', icon:'sync'},
+      { name:'Excluir', path:'/companyAsset-delete', icon:'delete_forever'},
+      { name:'Listar', path:'/companyAsset-list', icon:'view_headline'},
+    ]
+    ],
     ['Categoria', 
       [
         { name:'Adicionar', path:'/category-create', icon:'exposure_plus_1'},
@@ -159,7 +167,7 @@ export class DynamicDatabase {
     ],
   ]);
 
-  rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Estoque', 'Forma de pagamento',
+  rootLevelNodes: string[] = ['Ativo da empresa', 'Categoria', 'Cliente', 'Comanda', 'Estoque', 'Forma de pagamento',
   'Pagamento', 'Pedido', 'Produto', 'Relatório'];
 
   rootLevelNodesPainel: string[] = ['Perfil', 'Usuário'];

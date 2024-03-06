@@ -1,0 +1,32 @@
+<section class="center">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <div class="headerListCompanyAsset">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="headerListCompanyAsset">Ativo da empresa</th>
+        <td mat-cell *matCellDef="let element" class="headerListCompanyAsset">{{element.companyAssetName}}</td>
+      </ng-container>
+    </div>
+    <div class="headerListCompanyAsset">
+      <ng-container matColumnDef="costPrice">
+        <th mat-header-cell *matHeaderCellDef class="headerListCompanyAsset">Valor</th>
+        <td mat-cell *matCellDef="let element" class="headerListCompanyAsset">{{element.costPrice}}</td>
+      </ng-container>
+    </div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="btn-center">
+            <div class="lbl-voltar">Voltar</div>
+            <button mat-raised-button
+                  mat-mini-fab
+                  matTooltip="Voltar"
+                  (click)="reply()" 
+                   color="primary" 
+                  aria-label="Example icon button with a menu icon">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+    </div>
+  </section>

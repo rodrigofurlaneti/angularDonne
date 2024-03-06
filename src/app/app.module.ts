@@ -36,6 +36,16 @@ import { CommandListComponent } from './command/command-list/command-list.compon
 import { CommandSearchModule } from './command/command-search/command-search.module';
 import { CommandSearchComponent } from './command/command-search/command-search.component';
 
+//Command
+import { CompanyAssetCreateModule } from './companyAsset/companyAsset-create/companyAsset-create.module';
+import { CompanyAssetCreateComponent } from './companyAsset/companyAsset-create/companyAsset-create.component';
+import { CompanyAssetDeleteModule } from './companyAsset/companyAsset-delete/companyAsset-delete.module';
+import { CompanyAssetDeleteComponent } from './companyAsset/companyAsset-delete/companyAsset-delete.component';
+import { CompanyAssetListModule } from './companyAsset/companyAsset-list/companyAsset-list.module';
+import { CompanyAssetListComponent } from './companyAsset/companyAsset-list/companyAsset-list.component';
+import { CompanyAssetUpdateModule } from './companyAsset/companyAsset-update/companyAsset-update.module';
+import { CompanyAssetUpdateComponent } from './companyAsset/companyAsset-update/companyAsset-update.component';
+
 
 //FormOfPayment
 import { FormOfPaymentCreateModule } from './formofpayment/formofpayment-create/formofpayment-create.module';
@@ -169,6 +179,10 @@ import { MatTabsModule } from '@angular/material/tabs';
     CommandDeleteComponent,
     CommandListComponent,
     CommandSearchComponent,
+    CompanyAssetCreateComponent,
+    CompanyAssetUpdateComponent,
+    CompanyAssetListComponent,
+    CompanyAssetDeleteComponent,
     BuyerCreateComponent,
     BuyerDeleteComponent,
     BuyerListComponent,
@@ -231,6 +245,10 @@ import { MatTabsModule } from '@angular/material/tabs';
     CommandDeleteModule,
     CommandListModule,
     CommandSearchModule,
+    CompanyAssetCreateModule,
+    CompanyAssetDeleteModule,
+    CompanyAssetListModule,
+    CompanyAssetUpdateModule,
     BuyerCreateModule,
     PaymentCreateModule,
     PaymentListModule,

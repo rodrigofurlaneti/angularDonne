@@ -1,0 +1,76 @@
+<div class="center">
+  <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <caption>Ativo da empresa</caption>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Ativo da empresa</th>
+          <td mat-cell (click)="getById(element.companyAssetId)" *matCellDef="let element" class="headerUpdateFormOfPayment">
+            {{element.companyAssetName}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="costPrice">
+          <th mat-header-cell *matHeaderCellDef>Valor</th>
+          <td mat-cell (click)="getById(element.companyAssetId)" *matCellDef="let element" class="headerUpdateFormOfPayment">
+            {{element.costPrice}}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
+            *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </ng-template>
+
+  <ng-template #isIdGreaterThanZero>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome do ativo da empresa:</mat-label>
+        <input matInput id="companyAssetName" name="companyAssetName" [(ngModel)]="companyAssetModel.companyAssetName"
+          matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Valor:</mat-label>
+        <input matInput id="costPrice" name="costPrice" [(ngModel)]="companyAssetModel.costPrice"
+          matInput />
+      </mat-form-field>
+    </div>
+
+  </ng-template>
+
+  <div class=" btn-center">
+    <section class="back_btn">
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <div class="example-label headerUpdateCategory">
+              <div class="labelToButton">Voltar</div>
+              <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
+                color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>reply_all</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="update_btn">
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <div class="example-label headerUpdateCategory">
+              <div class="labelToBButton">Atualizar</div>
+              <button mat-raised-button mat-mini-fab matTooltip="Atualizar ativo da empresa" (click)="update()"
+                color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>sync</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+

@@ -19,6 +19,11 @@ import { CommandDeleteComponent } from './command/command-delete/command-delete.
 import { CommandListComponent } from './command/command-list/command-list.component';
 import { CommandSearchComponent } from './command/command-search/command-search.component';
 
+import { CompanyAssetCreateComponent } from './companyAsset/companyAsset-create/companyAsset-create.component';
+import { CompanyAssetDeleteComponent } from './companyAsset/companyAsset-delete/companyAsset-delete.component';
+import { CompanyAssetListComponent } from './companyAsset/companyAsset-list/companyAsset-list.component';
+import { CompanyAssetUpdateComponent } from './companyAsset/companyAsset-update/companyAsset-update.component';
+
 import { PaymentCreateComponent } from './payment/payment-create/payment-create.component';
 import { PaymentListComponent } from './payment/payment-list/payment-list.component';
 
@@ -89,6 +94,10 @@ export const routes: Routes = [
   { path: 'command-list', component: CommandListComponent },
   { path: 'command-search', component: CommandSearchComponent },
   { path: 'command-delete', component: CommandDeleteComponent },
+  { path: 'companyAsset-create', component: CompanyAssetCreateComponent },
+  { path: 'companyAsset-list', component: CompanyAssetListComponent },
+  { path: 'companyAsset-update', component: CompanyAssetUpdateComponent },
+  { path: 'companyAsset-delete', component: CompanyAssetDeleteComponent },
   { path: 'formofpayment-create', component: FormOfPaymentCreateComponent },
   { path: 'formofpayment-list', component: FormOfPaymentListComponent },
   { path: 'formofpayment-delete', component: FormOfPaymentDeleteComponent },
