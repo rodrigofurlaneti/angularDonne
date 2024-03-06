@@ -18,8 +18,6 @@
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
 
-![image](https://csharpcorner-mindcrackerinc.netdna-ssl.com/article/introduction-to-building-asp-net-core-and-angular-web-application/Images/architecture.JPG)
-
 ![image](https://i.stack.imgur.com/Lsofi.png)
 
 # Donne
