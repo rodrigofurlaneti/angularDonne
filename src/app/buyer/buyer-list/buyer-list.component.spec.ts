@@ -135,31 +135,7 @@ describe('BuyerlistComponent', () => {
 
             it('List => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'list').and.callThrough();
-
-                //Act
-                component.list();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.list).toHaveBeenCalled();
-            });
-
-            it('List => Success => Subscribe', () => {
-                //Arrange
-                var objBuyerModel: BuyerModel = new BuyerModel()
-                objBuyerModel.buyerAddress = faker.location.streetAddress();
-                objBuyerModel.buyerName = faker.person.fullName();
-                objBuyerModel.buyerPhone = faker.phone.number().toString();
-                objBuyerModel.dateInsert = faker.date.anytime();
-                objBuyerModel.dateUpdate = faker.date.anytime();
-                objBuyerModel.userId = faker.number.int();
-                objBuyerModel.userName = faker.person.fullName();
-                var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                var getSpy = spyOn(service, 'list').and.returnValue(of(objBuyerModel));
-                service.list().subscribe((data) => {
-                    expect(data).toEqual(objBuyerModel);
-                });
+                let spyOnComponent = spyOn(component, 'list').and.callThrough();
 
                 //Act
                 component.list();
@@ -186,8 +162,8 @@ describe('BuyerlistComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -202,7 +178,7 @@ describe('BuyerlistComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act

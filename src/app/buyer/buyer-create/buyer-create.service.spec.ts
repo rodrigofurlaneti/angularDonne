@@ -41,7 +41,7 @@ describe('BuyerCreateComponent', () => {
     describe('Method => Save', () => {
         it('with success', () => {
             //Arrange
-            var objBuyerModel: BuyerModel = new BuyerModel()
+            let objBuyerModel: BuyerModel = new BuyerModel()
             objBuyerModel.buyerAddress = faker.location.streetAddress();
             objBuyerModel.buyerId = faker.number.int().toString();
             objBuyerModel.buyerName = faker.person.fullName();

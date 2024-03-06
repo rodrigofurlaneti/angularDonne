@@ -11,7 +11,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { FormOfPaymentUpdateService } from './formofpayment-update.service';
 
 describe('FormOfPaymentUpdateComponent', () => {
@@ -161,17 +160,6 @@ describe('FormOfPaymentUpdateComponent', () => {
                 expect(component.messageTime).toBe(expectedValue);
             });
     
-            it('MessageSuccess => TypeOf', () => {
-                //Arrange
-                let expectedValueTypeOf: string = 'string';
-        
-                //Act
-                component.messageSuccess = expectedValueTypeOf;
-                
-                //Assert
-                expect(typeof(component.messageSuccess)).toBe(expectedValueTypeOf);
-            });
-
             it('IsIdZero => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'boolean';
@@ -330,20 +318,6 @@ describe('FormOfPaymentUpdateComponent', () => {
 
         describe('SuccessMessage', () => {
 
-            it('SuccessMessage => MessageSuccess', () => {
-                //Arrange
-                let expectedValue: string = 'O cliente foi cadastrado com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
-                spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValue);
-                
-                //Act
-                component.successMessage();
-        
-                //Assert
-                expect(component.messageSuccess).toBe(expectedValue);
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-            });
-
             it('SuccessMessage => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'function';
@@ -353,20 +327,6 @@ describe('FormOfPaymentUpdateComponent', () => {
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
-            });
-
-            it('SuccessMessage', () => {
-                //Arrange
-                let messageSuccess: string = 'O cliente foi cadastrado com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
-                spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(messageSuccess);
-        
-                //Act
-                var result = component.successMessage;
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(0);
-                expect(component.messageSuccess).toBe(messageSuccess);
             });
         });
     

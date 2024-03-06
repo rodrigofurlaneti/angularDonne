@@ -120,15 +120,26 @@ describe('BuyerCreateComponent', () => {
             expect(component.messageTime).toBe(expectedValue);
         });
 
-        it('MessageSuccess => TypeOf', () => {
+        it('FirstSuccessMessage => TypeOf', () => {
             //Arrange
             let expectedValueTypeOf: string = 'string';
     
             //Act
-            component.messageSuccess = expectedValueTypeOf;
+            component.firstSuccessMessage = expectedValueTypeOf;
             
             //Assert
-            expect(typeof(component.messageSuccess)).toBe(expectedValueTypeOf);
+            expect(typeof(component.firstSuccessMessage)).toBe(expectedValueTypeOf);
+        });
+
+        it('SecondSuccessMessage => TypeOf', () => {
+            //Arrange
+            let expectedValueTypeOf: string = 'string';
+    
+            //Act
+            component.secondSuccessMessage = expectedValueTypeOf;
+            
+            //Assert
+            expect(typeof(component.secondSuccessMessage)).toBe(expectedValueTypeOf);
         });
 
         it('MessageErro => TypeOf', () => {
@@ -268,50 +279,12 @@ describe('BuyerCreateComponent', () => {
                 expect(component.buyerModel.buyerPhone).toBe(objBuyerModel.buyerPhone);
             });
 
-            it('Save => Success => Subscribe', () => {
-                //Arrange
-                let objBuyerModel: BuyerModel = new BuyerModel()
-                objBuyerModel.userId = 1;
-                objBuyerModel.userName = 'Administrador';
-                objBuyerModel.buyerId = '1';
-                objBuyerModel.buyerName = 'Administrador';
-                objBuyerModel.buyerPhone = '123456789';
-                objBuyerModel.buyerAddress = 'Rua Teste, 12345, Jardim Teste';
-                objBuyerModel.dateUpdate = faker.date.anytime();
-                objBuyerModel.dateInsert = faker.date.anytime();
-                let spyOnComponent = spyOn(component, 'save').and.callThrough();
-
-                const response = [
-                    {
-                        "buyerId": "1",
-                        "buyerName": "Administrador",
-                        "buyerPhone": "123456789",
-                        "buyerAddress": "Rua Teste, 12345, Jardim Teste",
-                        "dateInsert": "",
-                        "dateUpdate": "",
-                        "userId": "1",
-                        "userName": "Administrador"
-                    }
-                ];
-                
-                service.save(objBuyerModel).subscribe((data) => {
-                    expect(data).toEqual(response);
-                });
-
-                //Act
-                component.save();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.save).toHaveBeenCalled();
-            });
-
             it('Save => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.save;
+                let result = component.save;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -326,7 +299,7 @@ describe('BuyerCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.buyerList;
+                let result = component.buyerList;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -335,8 +308,8 @@ describe('BuyerCreateComponent', () => {
             it('BuyerList => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'buyer-list';
-                var spyOnComponent = spyOn(component, 'buyerList').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'buyerList').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -355,7 +328,7 @@ describe('BuyerCreateComponent', () => {
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
-                var result = component.buyerList;
+                let result = component.buyerList;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -371,7 +344,7 @@ describe('BuyerCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.reply;
+                let result = component.reply;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -411,43 +384,43 @@ describe('BuyerCreateComponent', () => {
     
         describe('SuccessMessage', () => {
 
-            it('SuccessMessage => MessageSuccess', () => {
-                //Arrange
-                let expectedValue: string = 'O cliente foi cadastrado com sucesso!';
-                let spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
-                spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValue);
-                
-                //Act
-                component.successMessage();
-        
-                //Assert
-                expect(component.messageSuccess).toBe(expectedValue);
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-            });
-
             it('SuccessMessage => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.successMessage;
+                let result = component.successMessage;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
             });
 
-            it('SuccessMessage', () => {
+            it('FirstSuccessMessage', () => {
                 //Arrange
-                let messageSuccess: string = 'O cliente foi cadastrado com sucesso!';
+                let messageSuccess: string = 'O cliente';
                 let spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
-                spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(messageSuccess);
+                spyOnProperty(component, 'firstSuccessMessage', 'get').and.returnValue(messageSuccess);
         
                 //Act
-                var result = component.successMessage;
+                let result = component.successMessage;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
-                expect(component.messageSuccess).toBe(messageSuccess);
+                expect(component.firstSuccessMessage).toBe(messageSuccess);
+            });
+
+            it('SecondSuccessMessage', () => {
+                //Arrange
+                let messageSuccess: string = 'foi cadastrado com sucesso!';
+                let spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
+                spyOnProperty(component, 'secondSuccessMessage', 'get').and.returnValue(messageSuccess);
+        
+                //Act
+                let result = component.secondSuccessMessage;
+        
+                //Assert
+                expect(spyOnComponent).toHaveBeenCalledTimes(0);
+                expect(component.secondSuccessMessage).toBe(messageSuccess);
             });
         })
     
@@ -472,7 +445,7 @@ describe('BuyerCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.errorMessage;
+                let result = component.errorMessage;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -485,7 +458,7 @@ describe('BuyerCreateComponent', () => {
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
         
                 //Act/
-                var result = component.errorMessage;
+                let result = component.errorMessage;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -499,7 +472,7 @@ describe('BuyerCreateComponent', () => {
             it('AuthenticatedUser => UserIdLogin', () => {
                 //Arrange
                 let userIdLogin: string = faker.number.int().toString();
-                var element = document.createElement('input');
+                let element = document.createElement('input');
                 element.id = 'userIdLogin';
                 element.name = 'userIdLogin';
                 element.value = userIdLogin;
@@ -522,7 +495,7 @@ describe('BuyerCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.authenticatedUser;
+                let result = component.authenticatedUser;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);

@@ -1,6 +1,6 @@
-<input type="hidden" name="userIdLogin" id="userIdLogin" [(ngModel)]="user.userId" >
-<input type="hidden" name="userNameLogin" id="userNameLogin" [(ngModel)]="user.userName">
-<input type="hidden" name="ipAddress" id="ipAddress" [(ngModel)]="ipAddress">
+<input aria-hidden="true" type="hidden" name="userIdLogin" id="userIdLogin" [(ngModel)]="user.userId" >
+<input aria-hidden="true" type="hidden" name="userNameLogin" id="userNameLogin" [(ngModel)]="user.userName">
+<input aria-hidden="true" type="hidden" name="ipAddress" id="ipAddress" [(ngModel)]="ipAddress">
 
 <ng-container *ngIf="!access" class="ng-container" >
   <div class="mat-form">

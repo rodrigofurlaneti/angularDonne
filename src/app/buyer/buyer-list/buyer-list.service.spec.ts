@@ -1,14 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { BuyerModel } from 'src/interface/buyer.interface';
 import { faker } from '@faker-js/faker';
-import { Subject, of } from 'rxjs';
+import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BuyerListService } from './buyer-list.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('BuyerListService', () => {
     let service: BuyerListService;
-    let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
     // #region [BeforeEach]
 
@@ -21,7 +20,6 @@ describe('BuyerListService', () => {
             ]
         });
         service = TestBed.inject(BuyerListService);
-        httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
     });
 
     // #endregion
@@ -41,7 +39,7 @@ describe('BuyerListService', () => {
 describe('Method => List', () => {
     it('with success', () => {
         //Arrange
-        var objBuyerModel: BuyerModel = new BuyerModel()
+        let objBuyerModel: BuyerModel = new BuyerModel()
         objBuyerModel.buyerAddress = faker.location.streetAddress();
         objBuyerModel.buyerName = faker.person.fullName();
         objBuyerModel.buyerPhone = faker.phone.number().toString();
@@ -49,7 +47,7 @@ describe('Method => List', () => {
         objBuyerModel.dateUpdate = faker.date.anytime();
         objBuyerModel.userId = faker.number.int();
         objBuyerModel.userName = faker.person.fullName();
-        var getSpy = spyOn(service, 'list').and.returnValue(of(objBuyerModel));
+        let getSpy = spyOn(service, 'list').and.returnValue(of(objBuyerModel));
         service.list().subscribe((data) => { // now have to subscribe getUsers method to get data
             expect(data).toEqual(objBuyerModel);
       });
@@ -60,7 +58,7 @@ describe('Method => List', () => {
   describe('Method => ListBuyerStatus', () => {
     it('with success', () => {
         //Arrange
-        var objBuyerModel: BuyerModel = new BuyerModel()
+        let objBuyerModel: BuyerModel = new BuyerModel()
         objBuyerModel.buyerAddress = faker.location.streetAddress();
         objBuyerModel.buyerName = faker.person.fullName();
         objBuyerModel.buyerPhone = faker.phone.number().toString();
@@ -69,7 +67,7 @@ describe('Method => List', () => {
         objBuyerModel.userId = faker.number.int();
         objBuyerModel.userName = faker.person.fullName();
         let id:number = faker.number.int();
-        var getSpy = spyOn(service, 'listBuyerStatus').and.returnValue(of(objBuyerModel));
+        let getSpy = spyOn(service, 'listBuyerStatus').and.returnValue(of(objBuyerModel));
         service.listBuyerStatus(id).subscribe((data) => {
             expect(data).toEqual(objBuyerModel);
       });

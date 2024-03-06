@@ -75,17 +75,6 @@ describe('CategoryCreateComponent', () => {
         expect(typeof(component.messageTime)).toBe(expectedValueTypeOf);
     });
 
-    it('MessageSuccess => TypeOf', () => {
-        //Arrange
-        let expectedValueTypeOf: string = 'string';
-
-        //Act
-        component.messageSuccess = expectedValueTypeOf;
-        
-        //Assert
-        expect(typeof(component.messageSuccess)).toBe(expectedValueTypeOf);
-    });
-
     it('MessageErro => TypeOf', () => {
         //Arrange
         let expectedValueTypeOf: string = 'string';
@@ -370,20 +359,26 @@ describe('CategoryCreateComponent', () => {
     
         describe('SuccessMessage', () => {
 
-            it('SuccessMessage => MessageSuccess', () => {
+            it('FirstSuccessMessage => TypeOf', () => {
                 //Arrange
-                let expectedValueTypeOf: string = 'undefined';
-                let expectedValue: string = 'A categoria foi cadastrada com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
-                spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValue);
-                
-                //Act
-                var result = component.successMessage();
+                let expectedValueTypeOf: string = 'string';
         
+                //Act
+                component.firstSuccessMessage = expectedValueTypeOf;
+                
                 //Assert
-                expect(component.messageSuccess).toBe(expectedValue);
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(typeof(result)).toBe(expectedValueTypeOf);
+                expect(typeof(component.firstSuccessMessage)).toBe(expectedValueTypeOf);
+            });
+    
+            it('SecondSuccessMessage => TypeOf', () => {
+                //Arrange
+                let expectedValueTypeOf: string = 'string';
+        
+                //Act
+                component.secondSuccessMessage = expectedValueTypeOf;
+                
+                //Assert
+                expect(typeof(component.secondSuccessMessage)).toBe(expectedValueTypeOf);
             });
         })
     

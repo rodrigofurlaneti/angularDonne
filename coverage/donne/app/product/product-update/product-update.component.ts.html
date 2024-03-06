@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.25% </span>
+                <span class="strong">92.36% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>131/142</span>
+                <span class='fraction'>133/144</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.25% </span>
+                <span class="strong">92.36% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>131/142</span>
+                <span class='fraction'>133/144</span>
             </div>
         
             
@@ -333,7 +333,9 @@
 <a name='L268'></a><a href='#L268'>268</a>
 <a name='L269'></a><a href='#L269'>269</a>
 <a name='L270'></a><a href='#L270'>270</a>
-<a name='L271'></a><a href='#L271'>271</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -378,7 +380,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">60x</span>
+<span class="cline-any cline-yes">62x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -409,12 +411,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">31x</span>
@@ -496,10 +498,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -524,8 +528,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -677,12 +681,12 @@ export class ProductUpdateComponent implements OnInit {
   set selectedValue(value) { this._selectedValue = value; }
 &nbsp;
   //Property NeedToPrint 
-  private _needToPrint: boolean = false;
+  private _needToPrint: number = 0;
   get needToPrint() { return this._needToPrint; }
   set needToPrint(value) { this._needToPrint = value; }
 &nbsp;
   //Property ProductStatus 
-  private _productStatus: boolean = false;
+  private _productStatus: number = 0;
   get productStatus() { return this._productStatus; }
   set productStatus(value) { this._productStatus = value; }
 &nbsp;
@@ -765,11 +769,13 @@ export class ProductUpdateComponent implements OnInit {
   status = [{ selected: false, label: 'Status do produto?' }];
 &nbsp;
   onChange(event: MatCheckboxChange) {
-    this.needToPrint = event.checked;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(event.checked)
+<span class="cstat-no" title="statement not covered" >      this.needToPrint = 1;</span>
   }
 &nbsp;
   onChangeStatus(event: MatCheckboxChange) {
-    this.productStatus = event.checked;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(event.checked)
+<span class="cstat-no" title="statement not covered" >      this.productStatus = 1;</span>
   }
 &nbsp;
   change() {
@@ -792,10 +798,10 @@ export class ProductUpdateComponent implements OnInit {
       let totalValueOfLastPurchase = <span class="cstat-no" title="statement not covered" >quantityToBuy * parseFloat(this.productModel.costPrice);</span>
 <span class="cstat-no" title="statement not covered" >      this.productModel.totalValueOfLastPurchase = totalValueOfLastPurchase.toString();</span>
     }
-    <span class="missing-if-branch" title="if path not taken" >I</span>if(this.productModel.quantityStock &gt;= this.productModel.minimumStockQuantity)
+    if(this.productModel.quantityStock &gt;= this.productModel.minimumStockQuantity)
     {
-<span class="cstat-no" title="statement not covered" >      this.productModel.totalValueOfLastPurchase = '0';</span>
-<span class="cstat-no" title="statement not covered" >      this.productModel.quantityToBuy = 0;</span>
+      this.productModel.totalValueOfLastPurchase = '0';
+      this.productModel.quantityToBuy = 0;
     }
   }
 &nbsp;
@@ -880,7 +886,7 @@ export class ProductUpdateComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-09T17:32:35.214Z
+                at 2024-03-06T22:25:06.796Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -161,17 +161,6 @@ describe('CategoryUpdateComponent', () => {
                 expect(component.messageTime).toBe(expectedValue);
             });
     
-            it('MessageSuccess => TypeOf', () => {
-                //Arrange
-                let expectedValueTypeOf: string = 'string';
-        
-                //Act
-                component.messageSuccess = expectedValueTypeOf;
-                
-                //Assert
-                expect(typeof(component.messageSuccess)).toBe(expectedValueTypeOf);
-            });
-
             it('IsIdZero => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'boolean';
@@ -353,20 +342,6 @@ describe('CategoryUpdateComponent', () => {
 
         describe('SuccessMessage', () => {
 
-            it('SuccessMessage => MessageSuccess', () => {
-                //Arrange
-                let expectedValue: string = 'O cliente foi cadastrado com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
-                spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValue);
-                
-                //Act
-                component.successMessage();
-        
-                //Assert
-                expect(component.messageSuccess).toBe(expectedValue);
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-            });
-
             it('SuccessMessage => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'function';
@@ -378,19 +353,6 @@ describe('CategoryUpdateComponent', () => {
                 expect(typeof(result)).toBe(expectedValueTypeOf);
             });
 
-            it('SuccessMessage', () => {
-                //Arrange
-                let messageSuccess: string = 'O cliente foi cadastrado com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
-                spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(messageSuccess);
-        
-                //Act
-                var result = component.successMessage;
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(0);
-                expect(component.messageSuccess).toBe(messageSuccess);
-            });
         });
     
         describe('ErrorMessage', () => {

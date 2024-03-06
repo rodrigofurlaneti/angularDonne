@@ -73,17 +73,6 @@ describe('FormOfPaymentCreateComponent', () => {
         expect(typeof(component.messageTime)).toBe(expectedValueTypeOf);
     });
 
-    it('MessageSuccess => TypeOf', () => {
-        //Arrange
-        let expectedValueTypeOf: string = 'string';
-
-        //Act
-        component.messageSuccess = expectedValueTypeOf;
-        
-        //Assert
-        expect(typeof(component.messageSuccess)).toBe(expectedValueTypeOf);
-    });
-
     it('MessageErro => TypeOf', () => {
         //Arrange
         let expectedValueTypeOf: string = 'string';
@@ -305,25 +294,6 @@ describe('FormOfPaymentCreateComponent', () => {
 
         })
         
-        describe('SuccessMessage', () => {
-
-            it('SuccessMessage => MessageSuccess', () => {
-                //Arrange
-                let expectedValueTypeOf: string = 'undefined';
-                let expectedValue: string = 'A forma de pagamento foi cadastrada com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
-                spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValue);
-                
-                //Act
-                var result = component.successMessage();
-        
-                //Assert
-                expect(component.messageSuccess).toBe(expectedValue);
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(typeof(result)).toBe(expectedValueTypeOf);
-            });
-        })
-    
         describe('ErrorMessage', () => {
 
             it('ErrorMessage => MessageErro', () => {

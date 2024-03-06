@@ -91,7 +91,7 @@ import { AuthenticationUserModel } from 'src/interface/authenticationUser.interf
     } 
 
     navigatorUserAgent(navigator: Navigator){
-      var sBrowser = '';
+      let sBrowser = '';
       let sUsrAg = navigator.userAgent;
       if (sUsrAg.indexOf("Chrome") > -1) {
         sBrowser = "Google Chrome";

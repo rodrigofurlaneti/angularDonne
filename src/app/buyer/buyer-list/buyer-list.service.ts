@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BuyerModel } from 'src/interface/buyer.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +13,12 @@ export class BuyerListService {
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    var ret = this.http.get(this.route);
+    let ret = this.http.get(this.route);
     return ret;
   }
 
   listBuyerStatus(id:number) : Observable<any>{
-    var ret = this.http.options<any>(this.route+'/'+id); 
+    let ret = this.http.options<any>(this.route+'/'+id); 
     return ret;
   }
 }
