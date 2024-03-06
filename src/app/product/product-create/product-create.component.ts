@@ -14,8 +14,6 @@ import {
 } from '@angular/material/checkbox';
 
 
-let ELEMENT_DATA_CATEGORY: CategoryModel[];
-
 @Component({
   selector: 'product-create',
   templateUrl: './product-create.component.html',
@@ -96,6 +94,8 @@ export class ProductCreateComponent {
   get messageCategoryName() { return this._messageCategoryName; }
   set messageCategoryName(value) { this._messageCategoryName = value; }
   
+  dataSourceCategory : any;
+  
   // #endregion
 
   //#region [Constructor]
@@ -125,8 +125,7 @@ export class ProductCreateComponent {
 
   listCategory() {
     this.categoryListService.list().subscribe(list => {
-      ELEMENT_DATA_CATEGORY = list;
-      this.dataSourceCategory = ELEMENT_DATA_CATEGORY;
+      this.dataSourceCategory = list;
     }, err => {
       console.log('Erro ao listar os perfis', err);
     })
@@ -206,8 +205,6 @@ export class ProductCreateComponent {
     }
   }
 
-  dataSourceCategory = ELEMENT_DATA_CATEGORY;
-
   reply() {
     this.router.navigate(['main']);
   }
@@ -260,13 +257,13 @@ export class ProductCreateComponent {
 }
 
   public successMessage(){
-    this._snackBar.open('O produto "'+ this.productModel.productName +'" foi cadastrado com sucesso!','', {
+    this._snackBar.open('O produto '+ this.productModel.productName +' foi cadastrado com sucesso!','', {
       duration: this.messageTime
     });
   }
 
   public errorMessage(){
-    this._snackBar.open('Erro ao cadastrar o produto "'+ this.productModel.productName +'" !','', {
+    this._snackBar.open('Erro ao cadastrar o produto '+ this.productModel.productName +' !','', {
       duration: this.messageTime
     });
   }

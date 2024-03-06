@@ -24,10 +24,15 @@ export class FormOfPaymentCreateComponent {
   get routerString() { return this._routerString; }
   set routerString(value) { this._routerString = value; }
   
-  //Property MessageSuccess
-  private _messageSuccess: string = '';
-  get messageSuccess() { return this._messageSuccess; }
-  set messageSuccess(value) { this._messageSuccess = value; }
+  //Property FirstSuccessMessage
+  private _firstSuccessMessage: string = '';
+  get firstSuccessMessage() { return this._firstSuccessMessage; }
+  set firstSuccessMessage(value) { this._firstSuccessMessage = value; }
+
+  //Property SecondSuccessMessage
+  private _secondSuccessMessage: string = '';
+  get secondSuccessMessage() { return this._secondSuccessMessage; }
+  set secondSuccessMessage(value) { this._secondSuccessMessage = value; }
   
   //Property MessageErro
   private _messageErro: string = '';
@@ -50,7 +55,9 @@ export class FormOfPaymentCreateComponent {
 
   // #endregion
 
+  //#region [Methods]
   save() {
+
     //checkFields
     if(this.formOfPaymentModel.formOfPaymentName == "")
     {
@@ -58,6 +65,9 @@ export class FormOfPaymentCreateComponent {
         duration: this.messageTime
       });
     }
+
+    //Date update default
+    this.formOfPaymentModel.dateUpdate = new Date(1900, 1, 1, 1, 1, 1, 1);
 
     //save
     if (this.formOfPaymentModel.formOfPaymentName != '') {
@@ -92,9 +102,11 @@ export class FormOfPaymentCreateComponent {
     }
   }
 
-  public successMessage(){
-    this._snackBar.open('A forma de pagamento foi cadastrada com sucesso!','', {
-    duration: this.messageTime
+  public successMessage():void{
+    this.firstSuccessMessage = 'A forma de pagamento';
+    this.secondSuccessMessage = 'foi cadastrada com sucesso!';
+    this._snackBar.open(this.firstSuccessMessage + ' ' + this.formOfPaymentModel.formOfPaymentName + ' ' + this.secondSuccessMessage, '', {
+      duration: this.messageTime
     });
   }
 
@@ -104,3 +116,4 @@ export class FormOfPaymentCreateComponent {
     });
   }
 }
+  // #endregion

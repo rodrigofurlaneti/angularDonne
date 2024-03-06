@@ -45,8 +45,8 @@
     <mat-card>
       <mat-card-content>
         <h3 class="txt-center lbl">Comanda</h3>
-        <h4 class="txt-center lbl">Número da comanda: {{commandId}}</h4>
-        <h4 class="txt-center lbl">Nome do cliente: {{buyerName}}</h4>
+        <h4 class="txt-center lbl">Número da comanda: {{commandModel.commandId}}</h4>
+        <h4 class="txt-center lbl">Nome do cliente: {{commandModel.buyerName}}</h4>
       </mat-card-content>
     </mat-card>
     <table mat-table [dataSource]="dataSourceCommandOrder" class="mat-elevation-z8 demo-table">

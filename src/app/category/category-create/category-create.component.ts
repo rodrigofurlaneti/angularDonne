@@ -23,10 +23,15 @@ export class CategoryCreateComponent {
   get routerString() { return this._routerString; }
   set routerString(value) { this._routerString = value; }
   
-  //Property MessageSuccess
-  private _messageSuccess: string = '';
-  get messageSuccess() { return this._messageSuccess; }
-  set messageSuccess(value) { this._messageSuccess = value; }
+  //Property FirstSuccessMessage
+  private _firstSuccessMessage: string = '';
+  get firstSuccessMessage() { return this._firstSuccessMessage; }
+  set firstSuccessMessage(value) { this._firstSuccessMessage = value; }
+
+  //Property SecondSuccessMessage
+  private _secondSuccessMessage: string = '';
+  get secondSuccessMessage() { return this._secondSuccessMessage; }
+  set secondSuccessMessage(value) { this._secondSuccessMessage = value; }
   
   //Property MessageErro
   private _messageErro: string = '';
@@ -70,6 +75,7 @@ export class CategoryCreateComponent {
   save() {
     
     this.categoryModel = this.checkFields(this.categoryModel);
+    this.categoryModel.dateUpdate = new Date(1900, 1, 1, 1, 1, 1, 1);
     
     //save
     if(this.categoryModel.categoryName != "")
@@ -107,9 +113,10 @@ export class CategoryCreateComponent {
         }
   }
 
-  public successMessage(){
-    this.messageSuccess = 'A categoria foi cadastrada com sucesso!'; 
-    this._snackBar.open(this.messageSuccess,'', {
+  public successMessage():void{
+    this.firstSuccessMessage = 'A categoria';
+    this.secondSuccessMessage = 'foi cadastrada com sucesso!';
+    this._snackBar.open(this.firstSuccessMessage + ' ' + this.categoryModel.categoryName + ' ' + this.secondSuccessMessage, '', {
       duration: this.messageTime
     });
   }

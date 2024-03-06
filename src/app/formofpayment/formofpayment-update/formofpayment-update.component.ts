@@ -25,10 +25,15 @@ export class FormOfPaymentUpdateComponent implements OnInit {
   get routerString() { return this._routerString; }
   set routerString(value) { this._routerString = value; }
 
-  //Property MessageSuccess
-  private _messageSuccess: string = '';
-  get messageSuccess() { return this._messageSuccess; }
-  set messageSuccess(value) { this._messageSuccess = value; }
+  //Property FirstSuccessMessage
+  private _firstSuccessMessage: string = '';
+  get firstSuccessMessage() { return this._firstSuccessMessage; }
+  set firstSuccessMessage(value) { this._firstSuccessMessage = value; }
+
+  //Property SecondSuccessMessage
+  private _secondSuccessMessage: string = '';
+  get secondSuccessMessage() { return this._secondSuccessMessage; }
+  set secondSuccessMessage(value) { this._secondSuccessMessage = value; }
   
   //Property MessageErro
   private _messageErro: string = '';
@@ -121,6 +126,7 @@ export class FormOfPaymentUpdateComponent implements OnInit {
         this.formOfPaymentModel.dateInsert = formOfPayment.dateInsert;
         this.formOfPaymentModel.formOfPaymentId = formOfPayment.formOfPaymentId;
         this.formOfPaymentModel.formOfPaymentName = formOfPayment.formOfPaymentName;
+        this.formOfPaymentModel.dateInsert = formOfPayment.dateInsert;
       });
   }
 
@@ -161,10 +167,12 @@ export class FormOfPaymentUpdateComponent implements OnInit {
     if (userIdLogin != null) {
       this.formOfPaymentModel.userName = userNameLogin.value;
     }
-}
+  }
 
-  public successMessage(){
-    this._snackBar.open('A forma de pagamento foi atualizada com sucesso!','', {
+  public successMessage():void{
+    this.firstSuccessMessage = 'A forma de pagamento';
+    this.secondSuccessMessage = 'foi atualizada com sucesso!';
+    this._snackBar.open(this.firstSuccessMessage + ' ' + this.formOfPaymentModel.formOfPaymentName + ' ' + this.secondSuccessMessage, '', {
       duration: this.messageTime
     });
   }

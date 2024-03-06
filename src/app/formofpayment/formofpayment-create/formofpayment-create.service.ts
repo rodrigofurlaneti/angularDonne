@@ -14,6 +14,6 @@ export class FormOfPaymentCreateService {
   constructor(private http: HttpClient) { }
 
   save(formOfPayment: FormOfPaymentModel) : Observable<any>{
-    return this.http.post<any>(this.routeAzure, formOfPayment)
+    return this.http.post<any>(this.route, formOfPayment)
   }
 }

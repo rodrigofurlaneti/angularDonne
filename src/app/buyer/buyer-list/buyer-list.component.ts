@@ -12,7 +12,7 @@ export class BuyerListComponent implements OnInit {
 
   //#region [Properties]
   //Property DisplayedColumns
-  private _displayedColumns: string[] = ['id','name'];
+  private _displayedColumns: string[] = ['name'];
   get displayedColumns() { return this._displayedColumns; }
   set displayedColumns(value) { this._displayedColumns = value; }
 

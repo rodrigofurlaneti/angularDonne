@@ -23,9 +23,9 @@ export class DynamicFlatNode {
   ) {}
 }
 
-
 @Injectable({providedIn: 'root'})
 export class DynamicDatabase {
+
   dataMap = new Map<string, FoodNode[]>([
     ['Categoria', 
       [
@@ -81,14 +81,6 @@ export class DynamicDatabase {
         { name:'Listar', path:'/order-list', icon:'view_headline'},
       ],
     ],
-    ['Perfil', 
-      [
-        { name:'Adicionar', path:'/profile-create', icon:'exposure_plus_1'},
-        { name:'Atualizar', path:'/profile-update', icon:'sync'},
-        { name:'Excluir', path:'/profile-delete', icon:'delete_forever'},
-        { name:'Listar', path:'/profile-list', icon:'view_headline'},
-      ],
-    ],
     ['Produto', 
       [
         { name:'Adicionar', path:'/product-create', icon:'exposure_plus_1'},
@@ -105,6 +97,17 @@ export class DynamicDatabase {
         { name:'Listar', path:'/product-list', icon:'view_headline'},
       ],
     ],
+  ]);
+
+  dataMapPainel = new Map<string, FoodNode[]>([
+    ['Perfil', 
+      [
+        { name:'Adicionar', path:'/profile-create', icon:'exposure_plus_1'},
+        { name:'Atualizar', path:'/profile-update', icon:'sync'},
+        { name:'Excluir', path:'/profile-delete', icon:'delete_forever'},
+        { name:'Listar', path:'/profile-list', icon:'view_headline'},
+      ],
+    ],
     ['Usuário', 
       [
         { name:'Adicionar', path:'/user-create', icon:'exposure_plus_1'},
@@ -112,7 +115,10 @@ export class DynamicDatabase {
         { name:'Excluir', path:'/user-delete', icon:'delete_forever'},
         { name:'Listar', path:'/user-list', icon:'view_headline'},
       ],
-    ],
+    ]
+  ]);
+
+  dataMapEstacionamento = new Map<string, FoodNode[]>([
     ['Veículo', 
       [
         { name:'Adicionar', path:'/vehicle-create', icon:'exposure_plus_1'},
@@ -154,36 +160,87 @@ export class DynamicDatabase {
   ]);
 
   rootLevelNodes: string[] = ['Categoria', 'Cliente', 'Comanda', 'Estoque', 'Forma de pagamento',
-  'Pagamento', 'Pedido', 'Perfil', 'Produto', 'Usuário', 'Relatório', 'Painel de controle', 
-  'Veículo', 'Cor do veículo', 'Marca do veículo', 'Modelo do veículo', 'Tipo de veículo'];
+  'Pagamento', 'Pedido', 'Produto', 'Relatório'];
+
+  rootLevelNodesPainel: string[] = ['Perfil', 'Usuário'];
+
+  rootLevelNodesEstacionamento: string[] = ['Veículo', 'Cor do veículo', 'Marca do veículo', 
+  'Modelo do veículo', 'Tipo de veículo'];
 
   /** Initial data from database */
   initialData(): DynamicFlatNode[] {
     return this.rootLevelNodes.map(foodNode => new DynamicFlatNode(foodNode, foodNode, foodNode, 0, true));
   }
 
+  initialDataPainel(): DynamicFlatNode[] {
+    return this.rootLevelNodesPainel.map(foodNode => new DynamicFlatNode(foodNode, foodNode, foodNode, 0, true));
+  }
+
+  initialDataEstacinamento(): DynamicFlatNode[] {
+    return this.rootLevelNodesEstacionamento.map(foodNode => new DynamicFlatNode(foodNode, foodNode, foodNode, 0, true));
+  }
+
   getChildren(node: string): FoodNode[] | undefined {
     return this.dataMap.get(node);
+  }
+
+  getChildrenPainel(node: string): FoodNode[] | undefined {
+    return this.dataMapPainel.get(node);
+  }
+
+  getChildrenEstacionamento(node: string): FoodNode[] | undefined {
+    return this.dataMapEstacionamento.get(node);
   }
 
   isExpandable(node: string): boolean {
     return this.dataMap.has(node);
   }
+
+  isExpandablePainel(node: string): boolean {
+    return this.dataMap.has(node);
+  }
+
+  isExpandableEstacionamento(node: string): boolean {
+    return this.dataMapEstacionamento.has(node);
+  }
 }
 
 export class DynamicDataSource implements DataSource<DynamicFlatNode> {
   dataChange = new BehaviorSubject<DynamicFlatNode[]>([]);
+  dataChangePainel = new BehaviorSubject<DynamicFlatNode[]>([]);
+  dataChangeEstacionamento = new BehaviorSubject<DynamicFlatNode[]>([]);
 
   get data(): DynamicFlatNode[] {
     return this.dataChange.value;
   }
+
   set data(value: DynamicFlatNode[]) {
     this._treeControl.dataNodes = value;
     this.dataChange.next(value);
   }
 
+  get dataPainel(): DynamicFlatNode[] {
+    return this.dataChangePainel.value;
+  }
+
+  set dataPainel(value: DynamicFlatNode[]) {
+    this._treeControlPainel.dataNodes = value;
+    this.dataChangePainel.next(value);
+  }
+
+  get dataEstacionamento(): DynamicFlatNode[] {
+    return this.dataChangeEstacionamento.value;
+  }
+
+  set dataEstacionamento(value: DynamicFlatNode[]) {
+    this._treeControlEstacionamento.dataNodes = value;
+    this.dataChangeEstacionamento.next(value);
+  }
+
   constructor(
     private _treeControl: FlatTreeControl<DynamicFlatNode>,
+    private _treeControlPainel: FlatTreeControl<DynamicFlatNode>,
+    private _treeControlEstacionamento: FlatTreeControl<DynamicFlatNode>,
     private _database: DynamicDatabase,
   ) {}
 
@@ -200,9 +257,38 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
     return merge(collectionViewer.viewChange, this.dataChange).pipe(map(() => this.data));
   }
 
+  connectPainel(collectionViewer: CollectionViewer): Observable<DynamicFlatNode[]> {
+    this._treeControlPainel.expansionModel.changed.subscribe(change => {
+      if (
+        (change as SelectionChange<DynamicFlatNode>).added ||
+        (change as SelectionChange<DynamicFlatNode>).removed
+      ) {
+        this.handleTreeControlPainel(change as SelectionChange<DynamicFlatNode>);
+      }
+    });
+
+    return merge(collectionViewer.viewChange, this.dataChangePainel).pipe(map(() => this.data));
+  }
+
+  connectEstacionamento(collectionViewer: CollectionViewer): Observable<DynamicFlatNode[]> {
+    this._treeControlEstacionamento.expansionModel.changed.subscribe(change => {
+      if (
+        (change as SelectionChange<DynamicFlatNode>).added ||
+        (change as SelectionChange<DynamicFlatNode>).removed
+      ) {
+        this.handleTreeControlEstacionamento(change as SelectionChange<DynamicFlatNode>);
+      }
+    });
+
+    return merge(collectionViewer.viewChange, this.dataChangeEstacionamento).pipe(map(() => this.data));
+  }
+
   disconnect(collectionViewer: CollectionViewer): void {}
 
-  /** Handle expand/collapse behaviors */
+  disconnectPainel(collectionViewer: CollectionViewer): void {}
+
+  disconnectEstacionamento(collectionViewer: CollectionViewer): void {}
+
   handleTreeControl(change: SelectionChange<DynamicFlatNode>) {
     if (change.added) {
       change.added.forEach(node => this.toggleNode(node, true));
@@ -215,9 +301,30 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
     }
   }
 
-  /**
-   * Toggle the node, remove from display list
-   */
+  handleTreeControlPainel(change: SelectionChange<DynamicFlatNode>) {
+    if (change.added) {
+      change.added.forEach(node => this.toggleNode(node, true));
+    }
+    if (change.removed) {
+      change.removed
+        .slice()
+        .reverse()
+        .forEach(node => this.toggleNodePainel(node, false));
+    }
+  }
+
+  handleTreeControlEstacionamento(change: SelectionChange<DynamicFlatNode>) {
+    if (change.added) {
+      change.added.forEach(node => this.toggleNode(node, true));
+    }
+    if (change.removed) {
+      change.removed
+        .slice()
+        .reverse()
+        .forEach(node => this.toggleNodeEstacionamento(node, false));
+    }
+  }
+
   toggleNode(node: DynamicFlatNode, expand: boolean) {
     const children = this._database.getChildren(node.item);
     const index = this.data.indexOf(node);
@@ -249,6 +356,70 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
       node.isLoading = false;
     }, 2000);
   }
+
+  toggleNodePainel(node: DynamicFlatNode, expand: boolean) {
+    const children = this._database.getChildren(node.item);
+    const index = this.data.indexOf(node);
+    if (!children || index < 0) {
+      // If no children, or cannot find the node, no op
+      return;
+    }
+
+    node.isLoading = true;
+
+    setTimeout(() => {
+      if (expand) {
+        const nodes = children.map(
+          foodNode => new DynamicFlatNode(foodNode.name, foodNode.path, foodNode.icon, node.level + 1, this._database.isExpandable(foodNode.name)),
+        );
+        this.data.splice(index + 1, 0, ...nodes);
+      } else {
+        let count = 0;
+        for (
+          let i = index + 1;
+          i < this.data.length && this.data[i].level > node.level;
+          i++, count++
+        ) {}
+        this.data.splice(index + 1, count);
+      }
+
+      // notify the change
+      this.dataChange.next(this.data);
+      node.isLoading = false;
+    }, 2000);
+  }
+
+  toggleNodeEstacionamento(node: DynamicFlatNode, expand: boolean) {
+    const children = this._database.getChildren(node.item);
+    const index = this.data.indexOf(node);
+    if (!children || index < 0) {
+      // If no children, or cannot find the node, no op
+      return;
+    }
+
+    node.isLoading = true;
+
+    setTimeout(() => {
+      if (expand) {
+        const nodes = children.map(
+          foodNode => new DynamicFlatNode(foodNode.name, foodNode.path, foodNode.icon, node.level + 1, this._database.isExpandable(foodNode.name)),
+        );
+        this.data.splice(index + 1, 0, ...nodes);
+      } else {
+        let count = 0;
+        for (
+          let i = index + 1;
+          i < this.data.length && this.data[i].level > node.level;
+          i++, count++
+        ) {}
+        this.data.splice(index + 1, count);
+      }
+
+      // notify the change
+      this.dataChangeEstacionamento.next(this.data);
+      node.isLoading = false;
+    }, 2000);
+  }
 }
 
 @Component({
@@ -261,14 +432,27 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
 export class MainComponent {
   constructor(private router: Router, database: DynamicDatabase) {
     this.treeControl = new FlatTreeControl<DynamicFlatNode>(this.getLevel, this.isExpandable);
-    this.dataSource = new DynamicDataSource(this.treeControl, database);
-
+    this.treeControlPainel = new FlatTreeControl<DynamicFlatNode>(this.getLevel, this.isExpandable);
+    this.treeControlEstacionamento = new FlatTreeControl<DynamicFlatNode>(this.getLevel, this.isExpandable);
+    this.dataSource = new DynamicDataSource(this.treeControl, this.treeControlPainel, this.treeControlEstacionamento, database);
     this.dataSource.data = database.initialData();
+    this.dataSourcePainel = new DynamicDataSource(this.treeControl, this.treeControlPainel, this.treeControlEstacionamento, database);
+    this.dataSourcePainel.data = database.initialDataPainel();
+    this.dataSourceEstacionamento = new DynamicDataSource(this.treeControl, this.treeControlPainel, this.treeControlEstacionamento, database);
+    this.dataSourceEstacionamento.data = database.initialDataEstacinamento();
   }
 
   treeControl: FlatTreeControl<DynamicFlatNode>;
 
+  treeControlPainel: FlatTreeControl<DynamicFlatNode>;
+
+  treeControlEstacionamento: FlatTreeControl<DynamicFlatNode>;
+
   dataSource: DynamicDataSource;
+
+  dataSourcePainel: DynamicDataSource;
+
+  dataSourceEstacionamento: DynamicDataSource;
 
   getLevel = (node: DynamicFlatNode) => node.level;
 

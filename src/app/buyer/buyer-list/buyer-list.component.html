@@ -1,9 +1,5 @@
 <section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef style="text-align: center;">Número</th>
-      <td mat-cell *matCellDef="let element" class="headerListBuyer">{{element.buyerId}}</td>
-    </ng-container>
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nome</th>
       <td mat-cell *matCellDef="let element" class="headerListBuyer">{{element.buyerName}}</td>

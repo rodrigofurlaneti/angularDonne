@@ -28,10 +28,15 @@ export class BuyerCreateComponent {
   get routerString() { return this._routerString; }
   set routerString(value) { this._routerString = value; }
 
-  //Property MessageSuccess
-  private _messageSuccess: string = '';
-  get messageSuccess() { return this._messageSuccess; }
-  set messageSuccess(value) { this._messageSuccess = value; }
+  //Property FirstSuccessMessage
+  private _firstSuccessMessage: string = '';
+  get firstSuccessMessage() { return this._firstSuccessMessage; }
+  set firstSuccessMessage(value) { this._firstSuccessMessage = value; }
+
+  //Property SecondSuccessMessage
+  private _secondSuccessMessage: string = '';
+  get secondSuccessMessage() { return this._secondSuccessMessage; }
+  set secondSuccessMessage(value) { this._secondSuccessMessage = value; }
 
   //Property MessageErro
   private _messageErro: string = '';
@@ -90,6 +95,8 @@ export class BuyerCreateComponent {
       });
     }
 
+    this.buyerModel.dateUpdate = new Date(1900, 1, 1, 1, 1, 1, 1);
+    
     //save
     if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
     {
@@ -127,8 +134,9 @@ export class BuyerCreateComponent {
   }
 
   successMessage():void{
-    this.messageSuccess = 'O cliente foi cadastrado com sucesso!';
-    this._snackBar.open(this.messageSuccess + this.buyerModel.buyerName ,'', {
+    this.firstSuccessMessage = 'O cliente';
+    this.secondSuccessMessage = 'foi cadastrado com sucesso!';
+    this._snackBar.open(this.firstSuccessMessage + ' ' + this.buyerModel.buyerName + ' ' + this.secondSuccessMessage, '', {
       duration: this.messageTime
     });
   }

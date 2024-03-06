@@ -23,10 +23,15 @@ export class CategoryUpdateComponent implements OnInit {
   get routerString() { return this._routerString; }
   set routerString(value) { this._routerString = value; }
 
-  //Property MessageSuccess
-  private _messageSuccess: string = '';
-  get messageSuccess() { return this._messageSuccess; }
-  set messageSuccess(value) { this._messageSuccess = value; }
+  //Property FirstSuccessMessage
+  private _firstSuccessMessage: string = '';
+  get firstSuccessMessage() { return this._firstSuccessMessage; }
+  set firstSuccessMessage(value) { this._firstSuccessMessage = value; }
+
+  //Property SecondSuccessMessage
+  private _secondSuccessMessage: string = '';
+  get secondSuccessMessage() { return this._secondSuccessMessage; }
+  set secondSuccessMessage(value) { this._secondSuccessMessage = value; }
   
   //Property MessageErro
   private _messageErro: string = '';
@@ -37,21 +42,6 @@ export class CategoryUpdateComponent implements OnInit {
   private _messageTime: number = 3000;
   get messageTime() { return this._messageTime; }
   set messageTime(value) { this._messageTime = value; }
-
-  //Property MessageBuyerName
-  private _messageBuyerName: string = '';
-  get messageBuyerName() { return this._messageBuyerName; }
-  set messageBuyerName(value) { this._messageBuyerName = value; }
-  
-  //Property MessageBuyerAddress
-  private _messageBuyerAddress: string = '';
-  get messageBuyerAddress() { return this._messageBuyerAddress; }
-  set messageBuyerAddress(value) { this._messageBuyerAddress = value; }
-      
-  //Property MessageBuyerPhone
-  private _messageBuyerPhone: string = '';
-  get messageBuyerPhone() { return this._messageBuyerPhone; }
-  set messageBuyerPhone(value) { this._messageBuyerPhone = value; }
 
   //Property CategoryModel
   private _categoryModel = new CategoryModel();
@@ -125,6 +115,7 @@ export class CategoryUpdateComponent implements OnInit {
                               .subscribe(category => { 
                                 this.categoryModel.categoryId = category.categoryId;
                                 this.categoryModel.categoryName = category.categoryName;
+                                this.categoryModel.dateInsert = category.dateInsert;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
@@ -180,14 +171,17 @@ export class CategoryUpdateComponent implements OnInit {
         }
   }
 
-  public successMessage(){
-    this._snackBar.open('A categoria "'+ this.categoryModel.categoryName +'" foi atualizada com sucesso!','', {
+  public successMessage():void{
+    this.firstSuccessMessage = 'A categoria';
+    this.secondSuccessMessage = 'foi atualizada com sucesso!';
+    this._snackBar.open(this.firstSuccessMessage + ' ' + this.categoryModel.categoryName + ' ' + this.secondSuccessMessage, '', {
       duration: this.messageTime
     });
   }
 
   public errorMessage(){
-    this._snackBar.open('Erro ao atualizar a categoria "'+ this.categoryModel.categoryName +'" !','', {
+    this.messageErro = 'Erro ao atualizar a categoria!'
+    this._snackBar.open(this.messageErro,'', {
       duration: this.messageTime
     });
   }

@@ -14,10 +14,10 @@ export class CommandCreateService {
   constructor(private http: HttpClient) { }
 
   saveClient(command: CommandModel) : Observable<any>{
-    return this.http.post<any>(this.routeAzure, command)
+    return this.http.post<any>(this.route, command)
   }
 
   listCommand() : Observable<any>{
-    return this.http.get(this.routeAzure)
+    return this.http.get(this.route)
   }
 }

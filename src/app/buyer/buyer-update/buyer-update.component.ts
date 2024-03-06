@@ -25,10 +25,15 @@ export class BuyerUpdateComponent implements OnInit {
   get routerString() { return this._routerString; }
   set routerString(value) { this._routerString = value; }
 
-  //Property MessageSuccess
-  private _messageSuccess: string = '';
-  get messageSuccess() { return this._messageSuccess; }
-  set messageSuccess(value) { this._messageSuccess = value; }
+  //Property FirstSuccessMessage
+  private _firstSuccessMessage: string = '';
+  get firstSuccessMessage() { return this._firstSuccessMessage; }
+  set firstSuccessMessage(value) { this._firstSuccessMessage = value; }
+
+  //Property SecondSuccessMessage
+  private _secondSuccessMessage: string = '';
+  get secondSuccessMessage() { return this._secondSuccessMessage; }
+  set secondSuccessMessage(value) { this._secondSuccessMessage = value; }
   
   //Property MessageErro
   private _messageErro: string = '';
@@ -122,6 +127,7 @@ export class BuyerUpdateComponent implements OnInit {
                                 this.buyerModel.buyerName = buyer.buyerName;
                                 this.buyerModel.buyerAddress = buyer.buyerAddress;
                                 this.buyerModel.buyerPhone = buyer.buyerPhone;
+                                this.buyerModel.dateInsert = buyer.dateInsert;
                                 this.isIdZero = false;
                                 this.isIdGreaterThanZero = true;
                               });
@@ -191,15 +197,16 @@ export class BuyerUpdateComponent implements OnInit {
     }
   }
 
-  public successMessage(){
-    this.messageSuccess = 'O cliente foi atualizado com sucesso!';
-    this._snackBar.open(this.messageSuccess,'', {
+  public successMessage():void{
+    this.firstSuccessMessage = 'Os dados do cliente';
+    this.secondSuccessMessage = 'foram atualizados com sucesso!';
+    this._snackBar.open(this.firstSuccessMessage + ' ' + this.buyerModel.buyerName + ' ' + this.secondSuccessMessage, '', {
       duration: this.messageTime
     });
   }
 
   public errorMessage(){
-    this.messageErro = 'Erro ao atualizar o cliente!'
+    this.messageErro = 'Erro ao atualizar os dados do cliente!'
     this._snackBar.open(this.messageErro,'', {
       duration: this.messageTime
     });

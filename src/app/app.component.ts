@@ -22,7 +22,9 @@ import { AuthenticationUserModel } from 'src/interface/authenticationUser.interf
 
     access: boolean = false;
 
-    messageTime: number = 1000;
+    messageTime: number = 30000;
+
+    messageTimeErro: number = 60000;
 
     constructor(private appService: AppService,
                 private _snackBar: MatSnackBar,
@@ -51,42 +53,33 @@ import { AuthenticationUserModel } from 'src/interface/authenticationUser.interf
     validar() {
       this.authenticationUser.navigatorUserAgent = this.navigatorUserAgent(navigator);
       this.authenticationUser.clientInternetProtocol = this.ipAddress;
-      if(this.authenticationUser.userName == '')
-      {
-        this._snackBar.open('Usuário não está preenchido!','',);        
-      }
-      else
-      {
-        this.appService.appService(this.authenticationUser).subscribe(userResp => {
-          console.log(userResp);
-          if(this.authenticationUser.userName != userResp.userName)
+      this.appService.appService(this.authenticationUser).subscribe(userResp => {
+        this.access = true;
+        this.authenticationUser.userId = userResp.userId;
+        this.user.userId = userResp.userId;
+        this.user.userName = userResp.userName;
+        this.router.navigate(['/main']);
+        this._snackBar.open('Acesso autorizado com sucesso! Seja bem-vindo!','',{
+          duration: this.messageTime
+        });
+        }, err => {
+          console.log('Erro autenticar o usuário', err);
+          if(err.error == 'InvalidUserName')
           {
-            this._snackBar.open('Usuário não existe!','',);
-          }
-          else if(this.authenticationUser.userPassword != userResp.userPassword)
-          {
-            this._snackBar.open('Senha inválida!','',);
-          }
-
-          else 
-          {
-            this.access = true;
-            this.authenticationUser.userId = userResp.userId;
-            this.user.userId = userResp.userId;
-            this.user.userName = userResp.userName;
-            this.router.navigate(['/main']);
-            this._snackBar.open('Acesso autorizado com sucesso! Seja bem-vindo!','',{
-              duration: this.messageTime
+            this._snackBar.open('O usuário não está cadastrado no banco de dados, entre em contato com o administrador do sistema!','',{
+              duration: this.messageTimeErro
             });
           }
-          }, err => {
-            console.log('Erro autenticar o usuário', err);
-          })
-    
+          else if(err.error == 'InvalidPassword')
+          {
+            this._snackBar.open('A senha está inválida, entre em contato com o administrador do sistema!','',{
+              duration: this.messageTimeErro
+            });
+          }
+        })
           setTimeout(() => {
             this._snackBar.dismiss();
-          }, 2000);
-        }
+          }, 30000);
       }
       
 

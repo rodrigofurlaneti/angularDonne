@@ -4,9 +4,6 @@ import { CommandSearchService } from './command-search.service';
 import { CommandModel } from 'src/interface/command.interface';
 import { CommandOrderModel } from 'src/interface/commandOrder.interface';
 
-let ELEMENT_DATA_COMMAND: CommandModel[];
-let ELEMENT_DATA_COMMAND_ORDER: CommandOrderModel[];
-
 @Component({
   selector: 'command-search',
   templateUrl: './command-search.component.html',
@@ -15,33 +12,71 @@ let ELEMENT_DATA_COMMAND_ORDER: CommandOrderModel[];
 
 export class CommandSearchComponent {
   
-  isIdZero = true;
+  //#region [Properties]
+  //Property IsIdZero
+  private _isIdZero: boolean = true;
+  get isIdZero() { return this._isIdZero; }
+  set isIdZero(value) { this._isIdZero = value; }
 
-  isIdGreaterThanZero = false;
+  //Property IsIdGreaterThanZero
+  private _isIdGreaterThanZero: boolean = false;
+  get isIdGreaterThanZero() { return this._isIdGreaterThanZero; }
+  set isIdGreaterThanZero(value) { this._isIdGreaterThanZero = value; }
 
-  displayedColumns: string[] = ['id','name'];
+  //Property DisplayedColumns
+  private _displayedColumns: string[] = ['id','name'];
+  get displayedColumns() { return this._displayedColumns; }
+  set displayedColumns(value) { this._displayedColumns = value; }
 
-  displayedColumnsCommandOrder: string[] = ['product','amount','salePrice','totalSalePrice'];
+  //Property DisplayedColumnsCommandOrder
+  private _displayedColumnsCommandOrder: string[] = ['product','amount','salePrice','totalSalePrice'];
+  get displayedColumnsCommandOrder() { return this._displayedColumnsCommandOrder; }
+  set displayedColumnsCommandOrder(value) { this._displayedColumnsCommandOrder = value; }
 
-  commandOrderModel = new CommandOrderModel();
+  //Property CommandOrderModel
+  private _commandOrderModel = new CommandOrderModel();
+  get commandOrderModel() { return this._commandOrderModel; }
+  set commandOrderModel(value) { this._commandOrderModel = value; }
 
-  totalCommand = 0.00;
+  //Property TotalCommand
+  private _totalCommand:number = 0.00;
+  get totalCommand() { return this._totalCommand; }
+  set totalCommand(value) { this._totalCommand = value; }
 
-  buyerName:string = '';
+  //Property CommandModel
+  private _commandModel = new CommandModel();
+  get commandModel() { return this._commandModel; }
+  set commandModel(value) { this._commandModel = value; }
 
-  commandId:number = 0;
+  //Property Set<CommandModel>
+  private _clickedRows = new Set<CommandModel>();
+  get clickedRows() { return this._clickedRows; }
+  set clickedRows(value) { this._clickedRows = value; }
 
+  //Property Set<CommandModel>
+  private _clickedRowsCommandOrder = new Set<CommandOrderModel>();
+  get clickedRowsCommandOrder() { return this._clickedRowsCommandOrder; }
+  set clickedRowsCommandOrder(value) { this._clickedRowsCommandOrder = value; }
+
+  dataSource: any;
+
+  dataSourceCommandOrder: any;
+
+  //#endregion
+
+  //#region [Constructor]
   constructor(private commandSearchService: CommandSearchService,
     private readonly router: Router) {  }
+  //#endregion
 
+  //#region [Methods]
   ngOnInit(): void {
     this.list();
   }
 
   public list() {
     this.commandSearchService.list().subscribe(list => {
-      ELEMENT_DATA_COMMAND = list;
-      this.dataSource = ELEMENT_DATA_COMMAND;
+      this.dataSource = list;
     }, err => {
       console.log('Erro ao listar as categorias', err);
     })
@@ -54,27 +89,21 @@ export class CommandSearchComponent {
                                 if(len > 0){
                                   for (let i = 0; i <= len; i++) {
                                     if(listResponse[i] !== undefined){
-                                      this.commandId = listResponse[i].commandId;
-                                      this.buyerName = listResponse[i].buyerName;
+                                      this.commandModel.commandId = listResponse[i].commandId;
+                                      this.commandModel.buyerName = listResponse[i].buyerName;
                                       this.totalCommand = parseFloat(listResponse[i].totalSalePrice) + this.totalCommand;
                                       this.commandOrderModel.totalCommand = this.totalCommand.toFixed(2).toString(); 
                                       this.isIdZero = false;
                                       this.isIdGreaterThanZero = true;
-                                      ELEMENT_DATA_COMMAND_ORDER = listResponse;
-                                      this.dataSourceCommandOrder = ELEMENT_DATA_COMMAND_ORDER;
+                                      this.dataSourceCommandOrder = listResponse;
                                     }
                                   }
                                 }
                              });
   }
-
-  dataSource = ELEMENT_DATA_COMMAND;
-  clickedRows = new Set<CommandModel>();
-
-  dataSourceCommandOrder = ELEMENT_DATA_COMMAND_ORDER;
-  clickedRowsCommandOrder = new Set<CommandOrderModel>();
-  
+ 
   reply() {
     this.router.navigate(['main']);
   }
+  //#endregion
 }
