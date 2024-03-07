@@ -9,13 +9,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { CategoryListService } from './category-list.service';
 
 describe('CategoryListComponent', () => {
     let component: CategoryListComponent;
     let fixture: ComponentFixture<CategoryListComponent>;
     let router: Router;
-    let service: CategoryListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'category-list', component: CategoryListComponent}
@@ -38,7 +36,6 @@ describe('CategoryListComponent', () => {
         fixture = TestBed.createComponent(CategoryListComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(CategoryListService);
         fixture.detectChanges();
     }));
 

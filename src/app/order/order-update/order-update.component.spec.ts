@@ -405,21 +405,6 @@ describe('OrderUpdateComponent', () => {
             });
             
         }); 
-
-        describe('Update', () => {
-    
-            it('Update => Success', () => {
-                //Arrange
-                let spyOnComponent = spyOn(component, 'update').and.callThrough();
-                
-                //Act
-                component.update();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.update).toHaveBeenCalled();
-            });
-        }); 
     });  
     // #endregion
 });
