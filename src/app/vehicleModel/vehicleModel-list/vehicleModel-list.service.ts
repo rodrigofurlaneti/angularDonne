@@ -13,7 +13,7 @@ export class VehicleModelListService {
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    var ret = this.http.get(this.routeAzure);
+    let ret = this.http.get(this.routeAzure);
     return ret;
   }
 }

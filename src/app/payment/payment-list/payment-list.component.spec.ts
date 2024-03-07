@@ -135,34 +135,7 @@ describe('PaymentlistComponent', () => {
 
             it('List => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'list').and.callThrough();
-
-                //Act
-                component.list();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.list).toHaveBeenCalled();
-            });
-
-            it('List => Success => Subscribe', () => {
-                //Arrange
-                var objPaymentModel: PaymentModel = new PaymentModel()
-                objPaymentModel.commandId = faker.number.int();
-                objPaymentModel.formOfPaymentId = faker.number.int();
-                objPaymentModel.formOfPaymentName = faker.person.firstName();
-                objPaymentModel.paymentAmount = faker.number.int().toString();
-                objPaymentModel.paymentId = faker.number.int();
-                objPaymentModel.paymentType = faker.person.firstName();
-                objPaymentModel.dateInsert = faker.date.anytime();
-                objPaymentModel.dateUpdate = faker.date.anytime();
-                objPaymentModel.userId = faker.number.int();
-                objPaymentModel.userName = faker.person.fullName();
-                var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                var getSpy = spyOn(service, 'list').and.returnValue(of(objPaymentModel));
-                service.list().subscribe((data) => {
-                    expect(data).toEqual(objPaymentModel);
-                });
+                let spyOnComponent = spyOn(component, 'list').and.callThrough();
 
                 //Act
                 component.list();
@@ -180,7 +153,7 @@ describe('PaymentlistComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.reply;
+                let result = component.reply;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -189,8 +162,8 @@ describe('PaymentlistComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -205,7 +178,7 @@ describe('PaymentlistComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act

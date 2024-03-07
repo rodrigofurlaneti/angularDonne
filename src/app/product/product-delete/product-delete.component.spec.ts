@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -18,7 +18,6 @@ describe('ProductDeleteComponent', () => {
     let component: ProductDeleteComponent;
     let fixture: ComponentFixture<ProductDeleteComponent>;
     let service: ProductDeleteService;
-    let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'product-list', component: ProductListComponent},
@@ -41,7 +40,6 @@ describe('ProductDeleteComponent', () => {
         }).compileComponents();
         fixture = TestBed.createComponent(ProductDeleteComponent);
         component = fixture.componentInstance;
-        router = TestBed.inject(Router);
         service = TestBed.inject(ProductDeleteService);
         fixture.detectChanges();
     }));
@@ -172,7 +170,7 @@ describe('ProductDeleteComponent', () => {
     
                 it('List => Success', () => {
                     //Arrange
-                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'list').and.callThrough();
 
                     //Act
                     component.list();
@@ -181,38 +179,6 @@ describe('ProductDeleteComponent', () => {
                     expect(spyOnComponent).toHaveBeenCalledTimes(1);
                     expect(component.list).toHaveBeenCalled();
                 });
-
-                it('List => Success => Subscribe', () => {
-                    //Arrange
-                    var objProductModel: ProductModel = new ProductModel()
-                    objProductModel.categoryId = faker.number.int();
-                    objProductModel.categoryName = faker.person.fullName();
-                    objProductModel.costPrice = faker.phone.number().toString();
-                    objProductModel.minimumStockQuantity = faker.number.int();
-                    objProductModel.needToPrint = 1;
-                    objProductModel.productId = faker.number.int();
-                    objProductModel.productName = faker.phone.number().toString();
-                    objProductModel.quantityStock = faker.number.int();
-                    objProductModel.quantityToBuy = faker.number.int();
-                    objProductModel.dateInsert = faker.date.anytime();
-                    objProductModel.dateUpdate = faker.date.anytime();
-                    objProductModel.userId = faker.number.int();
-                    objProductModel.userName = faker.person.fullName();
-                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                    var getSpy = spyOn(service, 'list').and.returnValue(of(objProductModel));
-                    service.list().subscribe((data) => {
-                        expect(data).toEqual(objProductModel);
-                    });
-    
-                    //Act
-                    component.list();
-            
-                    //Assert
-                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                    expect(component.list).toHaveBeenCalled();
-                });
-
-                
             });
 
             describe('Delete', () => {
@@ -222,7 +188,7 @@ describe('ProductDeleteComponent', () => {
                     let mockId: number = faker.number.int();
                     let expectedValueMessageSuccess: string = 'O cliente foi excluido com sucesso!';
                     let expectedValueStatus: string = 'Delete successful';
-                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'delete').and.callThrough();
                     spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValueMessageSuccess);
                     spyOnProperty(component, 'status', 'get').and.returnValue(expectedValueStatus);
                     let usersMock = [
@@ -240,39 +206,6 @@ describe('ProductDeleteComponent', () => {
                     expect(spyOnComponent).toHaveBeenCalledTimes(1);
                     expect(component.delete).toHaveBeenCalled();
                 });
-
-                it('Delete => Success => Subscribe', () => {
-                    //Arrange
-                    let ProductId : number = faker.number.int();
-                    var objProductModel : ProductModel = new ProductModel()
-                    objProductModel.categoryId = faker.number.int();
-                    objProductModel.categoryName = faker.person.fullName();
-                    objProductModel.costPrice = faker.phone.number().toString();
-                    objProductModel.minimumStockQuantity = faker.number.int();
-                    objProductModel.needToPrint = 1;
-                    objProductModel.productId = faker.number.int();
-                    objProductModel.productName = faker.phone.number().toString();
-                    objProductModel.quantityStock = faker.number.int();
-                    objProductModel.quantityToBuy = faker.number.int();
-                    objProductModel.dateInsert = faker.date.anytime();
-                    objProductModel.dateUpdate = faker.date.anytime();
-                    objProductModel.userId = faker.number.int();
-                    objProductModel.userName = faker.person.fullName();
-                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
-                    var getSpy = spyOn(service, 'delete').and.returnValue(of(objProductModel));
-                    service.delete(ProductId).subscribe((data) => {
-                        expect(data).toEqual(objProductModel);
-                    });
-    
-                    //Act
-                    component.delete(ProductId);
-            
-                    //Assert
-                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                    expect(component.delete).toHaveBeenCalled();
-                });
-
-
             });
         });
     

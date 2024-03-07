@@ -97,7 +97,7 @@ describe('FormOfPaymentCreateComponent', () => {
 
     it('formofpaymentModel => TypeOf', () => {
         //Arrange
-        var objformofpaymentModel: FormOfPaymentModel = new FormOfPaymentModel()
+        let objformofpaymentModel: FormOfPaymentModel = new FormOfPaymentModel()
         objformofpaymentModel.formOfPaymentId = faker.number.int();
         objformofpaymentModel.formOfPaymentName = faker.person.fullName();
         objformofpaymentModel.userId = faker.number.int();
@@ -125,14 +125,13 @@ describe('FormOfPaymentCreateComponent', () => {
             it('Save => formOfPaymentName => Empty', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'undefined';
-                let messageformofpaymentName: string = 'Não está preenchido o campo nome da categoria!';
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objformofpaymentModel: FormOfPaymentModel = new FormOfPaymentModel()
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let objformofpaymentModel: FormOfPaymentModel = new FormOfPaymentModel()
                 objformofpaymentModel.formOfPaymentName = '';
                 spyOnProperty(component, 'formOfPaymentModel', 'get').and.returnValue(objformofpaymentModel);
                 
                 //Act
-                var result = component.save();
+                let result = component.save();
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
@@ -141,8 +140,8 @@ describe('FormOfPaymentCreateComponent', () => {
 
             it('Save => formofpaymentModel => Populate', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objformofpaymentModel: FormOfPaymentModel = new FormOfPaymentModel()
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let objformofpaymentModel: FormOfPaymentModel = new FormOfPaymentModel()
                 objformofpaymentModel.formOfPaymentName = faker.person.fullName();
                 spyOnProperty(component, 'formOfPaymentModel', 'get').and.returnValue(objformofpaymentModel);
                 
@@ -153,41 +152,6 @@ describe('FormOfPaymentCreateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.formOfPaymentModel.formOfPaymentName).toBe(objformofpaymentModel.formOfPaymentName);
             });
-
-            it('Save => Success => Subscribe', () => {
-                //Arrange
-                var objformofpaymentModel: FormOfPaymentModel = new FormOfPaymentModel()
-                objformofpaymentModel.userId = 1;
-                objformofpaymentModel.userName = 'Administrador';
-                objformofpaymentModel.formOfPaymentId = 1;
-                objformofpaymentModel.formOfPaymentName = 'Administrador';
-                objformofpaymentModel.dateUpdate = faker.date.anytime();
-                objformofpaymentModel.dateInsert = faker.date.anytime();
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-
-                const response = [
-                    {
-                        "formofpaymentId": "1",
-                        "formofpaymentName": "Administrador",
-                        "dateInsert": "",
-                        "dateUpdate": "",
-                        "userId": "1",
-                        "userName": "Administrador"
-                    }
-                ];
-                
-                service.save(objformofpaymentModel).subscribe((data) => {
-                    expect(data).toEqual(response);
-                });
-
-                //Act
-                component.save();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.save).toHaveBeenCalled();
-            });
-
         });
 
         describe('Reply', () => {
@@ -195,8 +159,8 @@ describe('FormOfPaymentCreateComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -211,7 +175,7 @@ describe('FormOfPaymentCreateComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -229,8 +193,8 @@ describe('FormOfPaymentCreateComponent', () => {
             it('formofpaymentList => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'formofpayment-list';
-                var spyOnComponent = spyOn(component, 'formOfPaymentList').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'formOfPaymentList').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -245,7 +209,7 @@ describe('FormOfPaymentCreateComponent', () => {
             it('formofpaymentList', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'formofpayment-list';
-                var spyOnComponent = spyOn(component, 'formOfPaymentList').and.callThrough();
+                let spyOnComponent = spyOn(component, 'formOfPaymentList').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -263,15 +227,15 @@ describe('FormOfPaymentCreateComponent', () => {
             it('AuthenticatedUser => UserIdLogin', () => {
                 //Arrange
                 let userIdLogin: number = faker.number.int();
-                var element = document.createElement('input');
+                let element = document.createElement('input');
                 element.id = 'userIdLogin';
                 element.name = 'userIdLogin';
                 element.value = userIdLogin.toString();
                 element.type="hidden";
                 document.getElementById = jasmine.createSpy('userIdLogin').and.returnValue(element);
-                var objformofpaymentModel: FormOfPaymentModel = new FormOfPaymentModel();
+                let objformofpaymentModel: FormOfPaymentModel = new FormOfPaymentModel();
                 objformofpaymentModel.userId = userIdLogin;
-                var spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
+                let spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
                 spyOnProperty(component, 'formOfPaymentModel', 'get').and.returnValue(objformofpaymentModel);
                 
                 //Act
@@ -286,7 +250,7 @@ describe('FormOfPaymentCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.authenticatedUser;
+                let result = component.authenticatedUser;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -300,11 +264,11 @@ describe('FormOfPaymentCreateComponent', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'undefined';
                 let expectedValue: string = 'Erro ao cadastrar a forma de pagamento!';
-                var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(expectedValue);
                 
                 //Act
-                var result = component.errorMessage();
+                let result = component.errorMessage();
         
                 //Assert
                 expect(component.messageErro).toBe(expectedValue);

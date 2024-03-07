@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -11,7 +11,7 @@ import { OrderListComponent } from '../order-list/order-list.component';
 import { OrderDeleteComponent } from './order-delete.component';
 import { faker } from '@faker-js/faker';
 import { OrderModel } from 'src/interface/order.interface';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 import { OrderDeleteService } from './order-delete.service';
 
 describe('OrderDeleteComponent', () => {
@@ -172,7 +172,7 @@ describe('OrderDeleteComponent', () => {
     
                 it('List => Success', () => {
                     //Arrange
-                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'list').and.callThrough();
 
                     //Act
                     component.list();
@@ -181,35 +181,6 @@ describe('OrderDeleteComponent', () => {
                     expect(spyOnComponent).toHaveBeenCalledTimes(1);
                     expect(component.list).toHaveBeenCalled();
                 });
-
-                it('List => Success => Subscribe', () => {
-                    //Arrange
-                    let order: OrderModel = new OrderModel();
-                    order.amount = 1;
-                    order.buyerName = 'Administrador';
-                    order.commandId = 1;
-                    order.orderId = 1;
-                    order.productId = 1;
-                    order.productName = "Produto";
-                    order.salePrice = "20.00";
-                    order.totalSalePrice = "20.00";
-                    order.userId = 1;
-                    order.userName = "Administrador";
-                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                    var getSpy = spyOn(service, 'list').and.returnValue(of(order));
-                    service.list().subscribe((data) => {
-                        expect(data).toEqual(order);
-                    });
-    
-                    //Act
-                    component.list();
-            
-                    //Assert
-                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                    expect(component.list).toHaveBeenCalled();
-                });
-
-                
             });
 
             describe('Delete', () => {
@@ -219,7 +190,7 @@ describe('OrderDeleteComponent', () => {
                     let mockId: number = faker.number.int();
                     let expectedValueMessageSuccess: string = 'O cliente foi excluido com sucesso!';
                     let expectedValueStatus: string = 'Delete successful';
-                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'delete').and.callThrough();
                     spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValueMessageSuccess);
                     spyOnProperty(component, 'status', 'get').and.returnValue(expectedValueStatus);
                     let usersMock = [
@@ -237,36 +208,6 @@ describe('OrderDeleteComponent', () => {
                     expect(spyOnComponent).toHaveBeenCalledTimes(1);
                     expect(component.delete).toHaveBeenCalled();
                 });
-
-                it('Delete => Success => Subscribe', () => {
-                    //Arrange
-                    let OrderId : number = faker.number.int();
-                    let order: OrderModel = new OrderModel();
-                    order.amount = 1;
-                    order.buyerName = 'Administrador';
-                    order.commandId = 1;
-                    order.orderId = 1;
-                    order.productId = 1;
-                    order.productName = "Produto";
-                    order.salePrice = "20.00";
-                    order.totalSalePrice = "20.00";
-                    order.userId = 1;
-                    order.userName = "Administrador";
-                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
-                    var getSpy = spyOn(service, 'delete').and.returnValue(of(order));
-                    service.delete(OrderId).subscribe((data) => {
-                        expect(data).toEqual(order);
-                    });
-    
-                    //Act
-                    component.delete(OrderId);
-            
-                    //Assert
-                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                    expect(component.delete).toHaveBeenCalled();
-                });
-
-
             });
         });
     

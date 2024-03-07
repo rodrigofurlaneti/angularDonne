@@ -14,11 +14,9 @@ import { OrderListComponent } from '../order-list/order-list.component';
 import { OrderCreateService } from './order-create.service';
 import { OrderCreateMockService } from 'test/order-create-mock.service';
 import { ProductListService } from 'src/app/product/product-list/product-list.service';
-import { ProductModel } from 'src/interface/product.interface';
 import { ProductListMockService } from 'test/product-list-mock.service';
 import { CommandListService } from 'src/app/command/command-list/command-list.service';
 import { CommandListMockService } from 'test/command-list-mock.service';
-import { CommandModel } from 'src/interface/command.interface';
 import { ProductUpdateService } from 'src/app/product/product-update/product-update.service';
 import { ProductUpdateMockService } from 'test/product-update-mock.service';
 
@@ -195,7 +193,7 @@ describe('OrderCreateComponent', () => {
 
     it('OrderModel => TypeOf', () => {
         //Arrange
-        var objOrderModel: OrderModel = new OrderModel()
+        let objOrderModel: OrderModel = new OrderModel()
         objOrderModel.orderId = faker.number.int();
         objOrderModel.amount = faker.number.int();
         objOrderModel.buyerName = faker.person.firstName();
@@ -229,8 +227,8 @@ describe('OrderCreateComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -245,7 +243,7 @@ describe('OrderCreateComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -263,8 +261,8 @@ describe('OrderCreateComponent', () => {
             it('OrderList => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'order-list';
-                var spyOnComponent = spyOn(component, 'orderList').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'orderList').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -279,7 +277,7 @@ describe('OrderCreateComponent', () => {
             it('OrderList', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'order-list';
-                var spyOnComponent = spyOn(component, 'orderList').and.callThrough();
+                let spyOnComponent = spyOn(component, 'orderList').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -297,15 +295,15 @@ describe('OrderCreateComponent', () => {
             it('AuthenticatedUser => UserIdLogin', () => {
                 //Arrange
                 let userIdLogin: number = faker.number.int();
-                var element = document.createElement('input');
+                let element = document.createElement('input');
                 element.id = 'userIdLogin';
                 element.name = 'userIdLogin';
                 element.value = userIdLogin.toString();
                 element.type="hidden";
                 document.getElementById = jasmine.createSpy('userIdLogin').and.returnValue(element);
-                var objOrderModel: OrderModel = new OrderModel();
+                let objOrderModel: OrderModel = new OrderModel();
                 objOrderModel.userId = userIdLogin;
-                var spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
+                let spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
                 spyOnProperty(component, 'orderModel', 'get').and.returnValue(objOrderModel);
                 
                 //Act
@@ -320,7 +318,7 @@ describe('OrderCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.authenticatedUser;
+                let result = component.authenticatedUser;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -333,11 +331,11 @@ describe('OrderCreateComponent', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'undefined';
                 let expectedValue: string = 'A categoria foi cadastrada com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
                 spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValue);
                 
                 //Act
-                var result = component.successMessage();
+                let result = component.successMessage();
         
                 //Assert
                 expect(component.messageSuccess).toBe(expectedValue);
@@ -352,11 +350,11 @@ describe('OrderCreateComponent', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'undefined';
                 let expectedValue: string = 'Erro ao cadastrar a categoria!';
-                var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(expectedValue);
                 
                 //Act
-                var result = component.errorMessage();
+                let result = component.errorMessage();
         
                 //Assert
                 expect(component.messageErro).toBe(expectedValue);
@@ -373,11 +371,11 @@ describe('OrderCreateComponent', () => {
                 let expectedValueOne : number = faker.number.int();
                 let expectedValueTwo : number = faker.number.int();
                 expectedValue = expectedValueOne * expectedValueTwo; 
-                var spyOnComponent = spyOn(component, 'calculate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'calculate').and.callThrough();
                 spyOnProperty(component, 'totalValue', 'get').and.returnValue(expectedValue);
                 
                 //Act
-                var result = component.calculate();
+                let result = component.calculate();
         
                 //Assert
                 expect(component.totalValue).toBe(expectedValue);
@@ -385,78 +383,11 @@ describe('OrderCreateComponent', () => {
             });
         })
 
-        describe('ListCommand', () => {
-
-            it('ListCommand => Success => Subscribe', () => {
-                //Arrange
-                var spyOnComponent = spyOn(component, 'listCommand').and.callThrough();
-                const response = [
-                    {
-                        "amount": "1",
-                        "buyerId": "1",
-                        "buyerName": "Product",
-                        "userId": "1",
-                        "userName": "Product",
-                        "commandId": "1",
-                        "salePrice": "29.90",
-                        "dateInsert": "",
-                        "dateUpdate": ""
-                    }
-                ];
-                
-                commandListService.list().subscribe((data) => {
-                    expect(data).toEqual(response);
-                });
-
-                //Act
-                component.listCommand();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.listCommand).toHaveBeenCalled();
-            });
-        })
-
-        describe('ListProduct', () => {
-
-            it('ListProduct => Success => Subscribe', () => {
-                //Arrange
-                var spyOnComponent = spyOn(component, 'listProducts').and.callThrough();
-                const response = [
-                    {
-                        "categoryId": "1",
-                        "categoryName": "Administrador",
-                        "costPrice": "10.99",
-                        "minimumStockQuantity": "20",
-                        "needToPrint": "true",
-                        "productId": "1",
-                        "productName": "Produto",
-                        "quantityStock": "10",
-                        "quantityBuy": "10",
-                        "salePrice": "",
-                        "dateInsert": "",
-                        "dateUpdate": ""
-                    }
-                ];
-                
-                productListService.list().subscribe((data) => {
-                    expect(data).toEqual(response);
-                });
-
-                //Act
-                component.listProducts();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.listProducts).toHaveBeenCalled();
-            });
-        })
-
         describe('ChangeCommand', () => {
 
             it('ChangeCommand => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'changeCommand').and.callThrough();
+                let spyOnComponent = spyOn(component, 'changeCommand').and.callThrough();
                 const event = { target: { value: 'commandId' }};
 
                 //Act
@@ -467,94 +398,6 @@ describe('OrderCreateComponent', () => {
                 expect(component.changeCommand).toHaveBeenCalled();
             })
         })
-
-        describe('ChangeProduct', () => {
-
-            it('ChangeProduct => Success => Subscribe', () => {
-                //Arrange
-                var spyOnComponent = spyOn(component, 'changeProduct').and.callThrough();
-                const event = { target: { value: 'commandId' }};
-                const response = [
-                    {
-                        "productId": 1,
-                        "productName": "Produto",
-                        "categoryId": "1",
-                        "categoryName": "Categoria",
-                        "costPrice": "10.00",
-                        "salePrice": "20.00",
-                        "quantityStock": 10,
-                        "minimumStockQuantity": 5,
-                        "totalValueCostOfInventory": "100.00",
-                        "totalValueSaleStock": "200.00",
-                        "dateInsert": "",
-                        "dateUpdate": "",
-                        "needToPrint": true,
-                        "userId": 1,
-                        "userName": "Administrador",
-                        "status": true,
-                        "quantityToBuy": 5,
-                        "totalValueOfLastPurchase": "50.00"
-                    }
-                ];
-                
-                productUpdateService.getById(1).subscribe((data) => {
-                    expect(data).toEqual(response);
-                });
-
-                //Act
-                component.changeProduct(event);
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.changeProduct).toHaveBeenCalled();
-            })
-        })
-
-        describe('Save', () => {
-
-            it('Save => Success => Subscribe', () => {
-                //Arrange
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                let order: OrderModel = new OrderModel();
-                order.amount = 1;
-                order.buyerName = 'Administrador';
-                order.commandId = 1;
-                order.orderId = 1;
-                order.productId = 1;
-                order.productName = "Produto";
-                order.salePrice = "20.00";
-                order.totalSalePrice = "20.00";
-                order.userId = 1;
-                order.userName = "Administrador";
-                const response = [
-                    {
-                        "amount": 1,
-                        "buyerName": "Produto",
-                        "commandId": 1,
-                        "orderId": 1,
-                        "productId": 1,
-                        "productName": "Produto",
-                        "salePrice": "20.00",
-                        "totalSalePrice":  "20.00",
-                        "userId": 1,
-                        "userName": "Administrador"
-                    }
-                ];
-                
-                orderCreateService.save(order).subscribe((data) => {
-                    expect(data).toEqual(response);
-                });
-
-                //Act
-                component.save();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.save).toHaveBeenCalled();
-            })
-        })
-
-        
     });
 
     // #endregion

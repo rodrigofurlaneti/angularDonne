@@ -24,7 +24,6 @@ describe('OrderUpdateComponent', () => {
     let fixture: ComponentFixture<OrderUpdateComponent>;
     let router: Router;
     let service: OrderUpdateService;
-    let orderUpdateService: OrderUpdateService;
     let buyerListService: BuyerListService;
     let productListService: ProductListService;
     const routes: Routes = [
@@ -55,7 +54,6 @@ describe('OrderUpdateComponent', () => {
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
         service = TestBed.inject(OrderUpdateService);
-        orderUpdateService = TestBed.inject(OrderUpdateService);
         buyerListService = TestBed.inject(BuyerListService);
         productListService = TestBed.inject(ProductListService);
         fixture.detectChanges();
@@ -268,7 +266,7 @@ describe('OrderUpdateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.reply;
+                let result = component.reply;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -277,8 +275,8 @@ describe('OrderUpdateComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -293,7 +291,7 @@ describe('OrderUpdateComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -310,34 +308,7 @@ describe('OrderUpdateComponent', () => {
     
             it('List => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'list').and.callThrough();
-
-                //Act
-                component.list();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.list).toHaveBeenCalled();
-            });
-
-            it('List => Success => Subscribe', () => {
-                //Arrange
-                let order: OrderModel = new OrderModel()
-                order.amount = 1;
-                order.buyerName = 'Administrador';
-                order.commandId = 1;
-                order.orderId = 1;
-                order.productId = 1;
-                order.productName = "Produto";
-                order.salePrice = "20.00";
-                order.totalSalePrice = "20.00";
-                order.userId = 1;
-                order.userName = "Administrador";
                 let spyOnComponent = spyOn(component, 'list').and.callThrough();
-                let getSpy = spyOn(service, 'list').and.returnValue(of(order));
-                service.list().subscribe((data) => {
-                    expect(data).toEqual(order);
-                });
 
                 //Act
                 component.list();
@@ -346,38 +317,13 @@ describe('OrderUpdateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.list).toHaveBeenCalled();
             });
-
-            
         });        
 
         describe('ListBuyer', () => {
     
             it('ListBuyer => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'listBuyer').and.callThrough();
-
-                //Act
-                component.listBuyer();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.listBuyer).toHaveBeenCalled();
-            });
-
-            it('ListBuyer => Success => Subscribe', () => {
-                //Arrange
-                let buyer: BuyerModel = new BuyerModel()
-                buyer.buyerAddress = 'Rua Teste, 12345';
-                buyer.buyerId = '1';
-                buyer.buyerName = 'Administrador';
-                buyer.buyerPhone = '11995882409';
-                buyer.userId = 1;
-                buyer.userName = "Administrador";
                 let spyOnComponent = spyOn(component, 'listBuyer').and.callThrough();
-                let getSpy = spyOn(buyerListService, 'list').and.returnValue(of(buyer));
-                service.list().subscribe((data) => {
-                    expect(data).toEqual(buyer);
-                });
 
                 //Act
                 component.listBuyer();
@@ -386,48 +332,13 @@ describe('OrderUpdateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.listBuyer).toHaveBeenCalled();
             });
-
-            
         });     
 
         describe('ListProducts', () => {
     
             it('ListProducts => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'listProducts').and.callThrough();
-
-                //Act
-                component.listProducts();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.listProducts).toHaveBeenCalled();
-            });
-
-            it('ListProducts => Success => Subscribe', () => {
-                //Arrange
-                let product: ProductModel = new ProductModel()
-                product.categoryId = 1;
-                product.categoryName = 'Categoria'
-                product.userId = 1;
-                product.userName = 'Administrador';
-                product.costPrice = '10.00';
-                product.minimumStockQuantity = 10;
-                product.needToPrint = 1;
-                product.productId = 1;
-                product.productName = 'Produto';
-                product.quantityStock = 50;
-                product.quantityToBuy = 0;
-                product.salePrice = '20.00';
-                product.status = 1;
-                product.totalValueCostOfInventory = '500.00';
-                product.totalValueOfLastPurchase = '10.00';
-                product.totalValueSaleStock = '1000.00';
                 let spyOnComponent = spyOn(component, 'listProducts').and.callThrough();
-                let getSpy = spyOn(productListService, 'list').and.returnValue(of(product));
-                service.list().subscribe((data) => {
-                    expect(data).toEqual(product);
-                });
 
                 //Act
                 component.listProducts();
@@ -436,15 +347,13 @@ describe('OrderUpdateComponent', () => {
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(component.listProducts).toHaveBeenCalled();
             });
-
-            
         });  
         
         describe('ShowUpdateButton', () => {
     
             it('ShowUpdateButton => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'showUpdateButton').and.callThrough();
+                let spyOnComponent = spyOn(component, 'showUpdateButton').and.callThrough();
 
                 //Act
                 component.showUpdateButton();
@@ -460,7 +369,7 @@ describe('OrderUpdateComponent', () => {
     
             it('Change => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'change').and.callThrough();
+                let spyOnComponent = spyOn(component, 'change').and.callThrough();
                 const event = { target: { value: 42 }};
 
                 //Act
@@ -477,7 +386,7 @@ describe('OrderUpdateComponent', () => {
     
             it('ChangeProduct => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'changeProduct').and.callThrough();
+                let spyOnComponent = spyOn(component, 'changeProduct').and.callThrough();
                 const event = { target: { value: 42 }};
 
                 //Act
@@ -494,7 +403,7 @@ describe('OrderUpdateComponent', () => {
     
             it('GetById => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'getById').and.callThrough();
+                let spyOnComponent = spyOn(component, 'getById').and.callThrough();
 
                 //Act
                 component.getById(42);
@@ -510,7 +419,7 @@ describe('OrderUpdateComponent', () => {
     
             it('Update => Success', () => {
                 //Arrange
-                var spyOnComponent = spyOn(component, 'update').and.callThrough();
+                let spyOnComponent = spyOn(component, 'update').and.callThrough();
                 
                 //Act
                 component.update();

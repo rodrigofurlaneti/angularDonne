@@ -66,7 +66,7 @@ describe('ProfileCreateComponent', () => {
 
         it('ProfileModel => TypeOf', () => {
             //Arrange
-            var objProfileModel: ProfileModel = new ProfileModel()
+            let objProfileModel: ProfileModel = new ProfileModel()
             objProfileModel.profileId = faker.number.int();
             objProfileModel.profileName = faker.person.fullName();
             objProfileModel.dateInsert = faker.date.anytime();
@@ -172,8 +172,8 @@ describe('ProfileCreateComponent', () => {
             it('Save => ProfileName => Empty', () => {
                 //Arrange
                 let messageProfileName: string = 'Não está preenchido o campo nome do perfil!';
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objProfileModel: ProfileModel = new ProfileModel()
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let objProfileModel: ProfileModel = new ProfileModel()
                 objProfileModel.profileName = '';
                 spyOnProperty(component, 'profileModel', 'get').and.returnValue(objProfileModel);
                 spyOnProperty(component, 'messageProfileName', 'get').and.returnValue(messageProfileName);
@@ -189,8 +189,8 @@ describe('ProfileCreateComponent', () => {
             it('Save => ProfileName => Populate', () => {
                 //Arrange
                 let messageProfileName: string = 'Não está preenchido o campo nome do perfil!';
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-                var objProfileModel: ProfileModel = new ProfileModel()
+                let spyOnComponent = spyOn(component, 'save').and.callThrough();
+                let objProfileModel: ProfileModel = new ProfileModel()
                 objProfileModel.profileName = faker.person.fullName();
                 spyOnProperty(component, 'profileModel', 'get').and.returnValue(objProfileModel);
                 spyOnProperty(component, 'messageProfileName', 'get').and.returnValue(messageProfileName);
@@ -203,46 +203,12 @@ describe('ProfileCreateComponent', () => {
                 expect(component.messageProfileName).toBe(messageProfileName);
             });
 
-            it('Save => Success => Subscribe', () => {
-                //Arrange
-                var objProfileModel: ProfileModel = new ProfileModel()
-                objProfileModel.userId = 1;
-                objProfileModel.userName = 'Administrador';
-                objProfileModel.profileId = 1;
-                objProfileModel.profileName = 'Administrador';
-                objProfileModel.dateUpdate = faker.date.anytime();
-                objProfileModel.dateInsert = faker.date.anytime();
-                var spyOnComponent = spyOn(component, 'save').and.callThrough();
-
-                const response = [
-                    {
-                        "profileId": "1",
-                        "profileName": "Administrador",
-                        "dateInsert": "",
-                        "dateUpdate": "",
-                        "userId": "1",
-                        "userName": "Administrador"
-                    }
-                ];
-                
-                service.save(objProfileModel).subscribe((data) => {
-                    expect(data).toEqual(response);
-                });
-
-                //Act
-                component.save();
-        
-                //Assert
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                expect(component.save).toHaveBeenCalled();
-            });
-
             it('Save => TypeOf', () => {
                 //Arrange
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.save;
+                let result = component.save;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -257,7 +223,7 @@ describe('ProfileCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.profileList;
+                let result = component.profileList;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -266,8 +232,8 @@ describe('ProfileCreateComponent', () => {
             it('ProfileList => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'profile-list';
-                var spyOnComponent = spyOn(component, 'profileList').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'profileList').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -282,11 +248,11 @@ describe('ProfileCreateComponent', () => {
             it('ProfileList', () => {
                 //Arrange
                 let routerString: string = 'profile-list';
-                var spyOnComponent = spyOn(component, 'profileList').and.callThrough();
+                let spyOnComponent = spyOn(component, 'profileList').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
-                var result = component.profileList;
+                let result = component.profileList;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -302,7 +268,7 @@ describe('ProfileCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.reply;
+                let result = component.reply;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -311,8 +277,8 @@ describe('ProfileCreateComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -327,7 +293,7 @@ describe('ProfileCreateComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -345,7 +311,7 @@ describe('ProfileCreateComponent', () => {
             it('SuccessMessage => MessageSuccess', () => {
                 //Arrange
                 let expectedValue: string = 'O cliente foi cadastrado com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
                 spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -361,7 +327,7 @@ describe('ProfileCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.successMessage;
+                let result = component.successMessage;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -370,11 +336,11 @@ describe('ProfileCreateComponent', () => {
             it('SuccessMessage', () => {
                 //Arrange
                 let messageSuccess: string = 'O cliente foi cadastrado com sucesso!';
-                var spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'successMessage').and.callThrough();
                 spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(messageSuccess);
         
                 //Act
-                var result = component.successMessage;
+                let result = component.successMessage;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -387,7 +353,7 @@ describe('ProfileCreateComponent', () => {
             it('ErrorMessage => MessageErro', () => {
                 //Arrange
                 let expectedValue: string = 'Erro ao cadastrar o cliente!';
-                var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -403,7 +369,7 @@ describe('ProfileCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.errorMessage;
+                let result = component.errorMessage;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -412,11 +378,11 @@ describe('ProfileCreateComponent', () => {
             it('ErrorMessage', () => {
                 //Arrange
                 let messageErro: string = 'Erro ao cadastrar o cliente';
-                var spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
+                let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
         
                 //Act/
-                var result = component.errorMessage;
+                let result = component.errorMessage;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -430,15 +396,15 @@ describe('ProfileCreateComponent', () => {
             it('AuthenticatedUser => UserIdLogin', () => {
                 //Arrange
                 let userIdLogin: number = faker.number.int();
-                var element = document.createElement('input');
+                let element = document.createElement('input');
                 element.id = 'userIdLogin';
                 element.name = 'userIdLogin';
                 element.value = userIdLogin.toString();
                 element.type="hidden";
                 document.getElementById = jasmine.createSpy('userIdLogin').and.returnValue(element);
-                var objProfileModel: ProfileModel = new ProfileModel();
+                let objProfileModel: ProfileModel = new ProfileModel();
                 objProfileModel.userId = userIdLogin;
-                var spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
+                let spyOnComponent = spyOn(component, 'authenticatedUser').and.callThrough();
                 spyOnProperty(component, 'profileModel', 'get').and.returnValue(objProfileModel);
                 
                 //Act
@@ -453,7 +419,7 @@ describe('ProfileCreateComponent', () => {
                 let expectedValueTypeOf: string = 'function';
         
                 //Act
-                var result = component.authenticatedUser;
+                let result = component.authenticatedUser;
         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);

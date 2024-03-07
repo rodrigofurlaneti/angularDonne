@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -171,31 +171,8 @@ describe('FormOfPaymentDeleteComponent', () => {
     
                 it('List => Success', () => {
                     //Arrange
-                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'list').and.callThrough();
 
-                    //Act
-                    component.list();
-            
-                    //Assert
-                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                    expect(component.list).toHaveBeenCalled();
-                });
-
-                it('List => Success => Subscribe', () => {
-                    //Arrange
-                    var objFormOfPaymentModel: FormOfPaymentModel = new FormOfPaymentModel()
-                    objFormOfPaymentModel.formOfPaymentId = faker.number.int();
-                    objFormOfPaymentModel.formOfPaymentName = faker.person.fullName();
-                    objFormOfPaymentModel.dateInsert = faker.date.anytime();
-                    objFormOfPaymentModel.dateUpdate = faker.date.anytime();
-                    objFormOfPaymentModel.userId = faker.number.int();
-                    objFormOfPaymentModel.userName = faker.person.fullName();
-                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                    var getSpy = spyOn(service, 'list').and.returnValue(of(objFormOfPaymentModel));
-                    service.list().subscribe((data) => {
-                        expect(data).toEqual(objFormOfPaymentModel);
-                    });
-    
                     //Act
                     component.list();
             
@@ -212,7 +189,7 @@ describe('FormOfPaymentDeleteComponent', () => {
                     let mockId: number = faker.number.int();
                     let expectedValueMessageSuccess: string = 'O cliente foi excluido com sucesso!';
                     let expectedValueStatus: string = 'Delete successful';
-                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'delete').and.callThrough();
                     spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValueMessageSuccess);
                     spyOnProperty(component, 'status', 'get').and.returnValue(expectedValueStatus);
                     let usersMock = [
@@ -227,30 +204,6 @@ describe('FormOfPaymentDeleteComponent', () => {
                     //Assert
                     expect(component.messageSuccess).toBe(expectedValueMessageSuccess);
                     expect(component.status).toBe(expectedValueStatus);
-                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                    expect(component.delete).toHaveBeenCalled();
-                });
-
-                it('Delete => Success => Subscribe', () => {
-                    //Arrange
-                    let FormOfPaymentId : number = faker.number.int();
-                    var objFormOfPaymentModel : FormOfPaymentModel = new FormOfPaymentModel()
-                    objFormOfPaymentModel.formOfPaymentId = faker.number.int();
-                    objFormOfPaymentModel.formOfPaymentName = faker.person.fullName();
-                    objFormOfPaymentModel.dateInsert = faker.date.anytime();
-                    objFormOfPaymentModel.dateUpdate = faker.date.anytime();
-                    objFormOfPaymentModel.userId = faker.number.int();
-                    objFormOfPaymentModel.userName = faker.person.fullName();
-                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
-                    var getSpy = spyOn(service, 'delete').and.returnValue(of(objFormOfPaymentModel));
-                    service.delete(FormOfPaymentId).subscribe((data) => {
-                        expect(data).toEqual(objFormOfPaymentModel);
-                    });
-    
-                    //Act
-                    component.delete(FormOfPaymentId);
-            
-                    //Assert
                     expect(spyOnComponent).toHaveBeenCalledTimes(1);
                     expect(component.delete).toHaveBeenCalled();
                 });

@@ -2,7 +2,7 @@ import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testi
 import { UserCreateComponent } from './user-create.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -21,7 +21,6 @@ import { ProfileModel } from 'src/interface/profile.interface';
 describe('UserCreateComponent', () => {
     let component: UserCreateComponent;
     let fixture: ComponentFixture<UserCreateComponent>;
-    let service: UserCreateService;
     let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
@@ -50,7 +49,6 @@ describe('UserCreateComponent', () => {
         fixture = TestBed.createComponent(UserCreateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(UserCreateService);
         fixture.detectChanges();
     }));
 
@@ -134,7 +132,7 @@ describe('UserCreateComponent', () => {
 
             //Act
             component.showPassword = expectedTypeOf;
-            var displayedColumnsMock: string[] = ['name'];
+            let displayedColumnsMock: string[] = ['name'];
             console.log('displayedColumnsMock : '+typeof(displayedColumnsMock));
 
             //Assert
@@ -145,7 +143,7 @@ describe('UserCreateComponent', () => {
         it('DisplayedColumns => TypeOf', () => {
             //Arrange
             let expectedValueTypeOf: string = 'object';
-            var expectedTypeOf: string[] = ['name'];
+            let expectedTypeOf: string[] = ['name'];
 
             //Act
             component.displayedColumns = expectedTypeOf;
@@ -158,7 +156,7 @@ describe('UserCreateComponent', () => {
         it('DisableSelect => TypeOf', () => {
             //Arrange
             let expectedValueTypeOf: string = 'object';
-            var expectedTypeOf = new FormControl(false);
+            let expectedTypeOf = new FormControl(false);
 
             //Act
             component.disableSelect = expectedTypeOf;
@@ -171,7 +169,7 @@ describe('UserCreateComponent', () => {
         it('SelectedProfile => TypeOf', () => {
             //Arrange
             let expectedValueTypeOf: string = 'object';
-            var expectedTypeOf : ProfileModel = new ProfileModel();
+            let expectedTypeOf : ProfileModel = new ProfileModel();
 
             //Act
             component.selectedProfile = expectedTypeOf;
@@ -184,7 +182,7 @@ describe('UserCreateComponent', () => {
         it('ClickedRows => TypeOf', () => {
             //Arrange
             let expectedValueTypeOf: string = 'object';
-            var expectedTypeOf : Set<ProfileModel> = new Set<ProfileModel>();
+            let expectedTypeOf : Set<ProfileModel> = new Set<ProfileModel>();
 
             //Act
             component.clickedRows = expectedTypeOf;
@@ -207,7 +205,7 @@ describe('UserCreateComponent', () => {
     
         it('UserModel => TypeOf', () => {
             //Arrange
-            var objUserModel: UserModel = new UserModel()
+            let objUserModel: UserModel = new UserModel()
             objUserModel.userId = faker.number.int();
             objUserModel.userName = faker.person.fullName();
             objUserModel.profileId = faker.number.int();
@@ -233,8 +231,8 @@ describe('UserCreateComponent', () => {
             it('Reply => RouterString', fakeAsync(() => {
                 //Arrange
                 let expectedValue: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                 
                 //Act
@@ -249,7 +247,7 @@ describe('UserCreateComponent', () => {
             it('Reply', fakeAsync(() => {
                 //Arrange
                 let routerString: string = 'main';
-                var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
@@ -266,7 +264,7 @@ describe('UserCreateComponent', () => {
 
             it('CheckFields => Success', () => {
                 //Arrange
-                var objUserModel: UserModel = new UserModel()
+                let objUserModel: UserModel = new UserModel()
                 objUserModel.userId = faker.number.int();
                 objUserModel.userName = faker.person.fullName();
                 objUserModel.userPassword = faker.number.int().toString();
@@ -276,7 +274,7 @@ describe('UserCreateComponent', () => {
                 let expectedValueTypeOf: string = 'object';
         
                 //Act
-                var result = component.checkFields(objUserModel);
+                let result = component.checkFields(objUserModel);
                         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -284,8 +282,8 @@ describe('UserCreateComponent', () => {
 
             it('CheckFields => UserName => Empty => Success', () => {
                 //Arrange
-                var expectedValue: string = 'Não está preenchido o campo nome do usuário!';
-                var objUserModel: UserModel = new UserModel()
+                let expectedValue: string = 'Não está preenchido o campo nome do usuário!';
+                let objUserModel: UserModel = new UserModel()
                 objUserModel.userId = faker.number.int();
                 objUserModel.userName = '';
                 objUserModel.userPassword = faker.number.int().toString();
@@ -295,7 +293,7 @@ describe('UserCreateComponent', () => {
                 let expectedValueTypeOf: string = 'object';
         
                 //Act
-                var result = component.checkFields(objUserModel);
+                let result = component.checkFields(objUserModel);
                         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -304,8 +302,8 @@ describe('UserCreateComponent', () => {
 
             it('CheckFields => UserPassword => Empty => Success', () => {
                 //Arrange
-                var expectedValue: string = 'Não está preenchido o campo senha do usuario!';
-                var objUserModel: UserModel = new UserModel()
+                let expectedValue: string = 'Não está preenchido o campo senha do usuario!';
+                let objUserModel: UserModel = new UserModel()
                 objUserModel.userId = faker.number.int();
                 objUserModel.userName = faker.person.fullName();;
                 objUserModel.userPassword = '';
@@ -315,7 +313,7 @@ describe('UserCreateComponent', () => {
                 let expectedValueTypeOf: string = 'object';
         
                 //Act
-                var result = component.checkFields(objUserModel);
+                let result = component.checkFields(objUserModel);
                         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);
@@ -324,8 +322,8 @@ describe('UserCreateComponent', () => {
 
             it('CheckFields => UserPassword and UserPassword => Empty => Success', () => {
                 //Arrange
-                var expectedValue = 'Não está preenchido o campo nome'; 
-                var objUserModel: UserModel = new UserModel()
+                let expectedValue = 'Não está preenchido o campo nome'; 
+                let objUserModel: UserModel = new UserModel()
                 objUserModel.userId = faker.number.int();
                 objUserModel.userName = '';
                 objUserModel.userPassword = '';
@@ -335,7 +333,7 @@ describe('UserCreateComponent', () => {
                 let expectedValueTypeOf: string = 'object';
         
                 //Act
-                var result = component.checkFields(objUserModel);
+                let result = component.checkFields(objUserModel);
                         
                 //Assert
                 expect(typeof(result)).toBe(expectedValueTypeOf);

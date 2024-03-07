@@ -13,12 +13,12 @@ export class VehicleListService {
   constructor(private http: HttpClient) { }
 
   list() : Observable<any>{
-    var ret = this.http.get(this.routeAzure);
+    let ret = this.http.get(this.routeAzure);
     return ret;
   }
 
   listBrandStatus(id:number) : Observable<any>{
-    var ret = this.http.options<any>(this.routeAzure+'/'+id); 
+    let ret = this.http.options<any>(this.routeAzure+'/'+id); 
     return ret;
   }
 }

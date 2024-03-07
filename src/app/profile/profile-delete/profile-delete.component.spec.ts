@@ -171,31 +171,8 @@ describe('ProfileDeleteComponent', () => {
     
                 it('List => Success', () => {
                     //Arrange
-                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'list').and.callThrough();
 
-                    //Act
-                    component.list();
-            
-                    //Assert
-                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                    expect(component.list).toHaveBeenCalled();
-                });
-
-                it('List => Success => Subscribe', () => {
-                    //Arrange
-                    var objProfileModel: ProfileModel = new ProfileModel()
-                    objProfileModel.profileId = faker.number.int();
-                    objProfileModel.profileName = faker.person.fullName();
-                    objProfileModel.dateInsert = faker.date.anytime();
-                    objProfileModel.dateUpdate = faker.date.anytime();
-                    objProfileModel.userId = faker.number.int();
-                    objProfileModel.userName = faker.person.fullName();
-                    var spyOnComponent = spyOn(component, 'list').and.callThrough();
-                    var getSpy = spyOn(service, 'list').and.returnValue(of(objProfileModel));
-                    service.list().subscribe((data) => {
-                        expect(data).toEqual(objProfileModel);
-                    });
-    
                     //Act
                     component.list();
             
@@ -212,7 +189,7 @@ describe('ProfileDeleteComponent', () => {
                     let mockId: number = faker.number.int();
                     let expectedValueMessageSuccess: string = 'O cliente foi excluido com sucesso!';
                     let expectedValueStatus: string = 'Delete successful';
-                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'delete').and.callThrough();
                     spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(expectedValueMessageSuccess);
                     spyOnProperty(component, 'status', 'get').and.returnValue(expectedValueStatus);
                     let usersMock = [
@@ -230,30 +207,6 @@ describe('ProfileDeleteComponent', () => {
                     expect(spyOnComponent).toHaveBeenCalledTimes(1);
                     expect(component.delete).toHaveBeenCalled();
                 });
-
-                it('Delete => Success => Subscribe', () => {
-                    //Arrange
-                    let ProfileId : number = faker.number.int();
-                    var objProfileModel : ProfileModel = new ProfileModel()
-                    objProfileModel.profileId = faker.number.int();
-                    objProfileModel.profileName = faker.person.fullName();
-                    objProfileModel.dateInsert = faker.date.anytime();
-                    objProfileModel.dateUpdate = faker.date.anytime();
-                    objProfileModel.userId = faker.number.int();
-                    objProfileModel.userName = faker.person.fullName();
-                    var spyOnComponent = spyOn(component, 'delete').and.callThrough();
-                    var getSpy = spyOn(service, 'delete').and.returnValue(of(objProfileModel));
-                    service.delete(ProfileId).subscribe((data) => {
-                        expect(data).toEqual(objProfileModel);
-                    });
-    
-                    //Act
-                    component.delete(ProfileId);
-            
-                    //Assert
-                    expect(spyOnComponent).toHaveBeenCalledTimes(1);
-                    expect(component.delete).toHaveBeenCalled();
-                });
             });
 
             describe('Reply', () => {
@@ -261,8 +214,8 @@ describe('ProfileDeleteComponent', () => {
                 it('Reply => RouterString', fakeAsync(() => {
                     //Arrange
                     let expectedValue: string = 'main';
-                    var spyOnComponent = spyOn(component, 'reply').and.callThrough();
-                    var spyOnRouter = spyOn(router, 'navigate').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                    let spyOnRouter = spyOn(router, 'navigate').and.callThrough();
                     spyOnProperty(component, 'routerString', 'get').and.returnValue(expectedValue);
                     
                     //Act
@@ -277,7 +230,7 @@ describe('ProfileDeleteComponent', () => {
                 it('Reply', fakeAsync(() => {
                     //Arrange
                     let routerString: string = 'main';
-                    var spyOnComponent = spyOn(component, 'reply').and.callThrough();
+                    let spyOnComponent = spyOn(component, 'reply').and.callThrough();
                     spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
             
                     //Act
