@@ -165,6 +165,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -294,6 +295,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatDatepickerModule, 
     MatSlideToggleModule,
     MatTabsModule,
+    MatButtonToggleModule,
     ReactiveFormsModule,
     UserCreateModule,
     UserDeleteModule,
