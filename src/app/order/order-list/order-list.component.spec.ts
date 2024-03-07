@@ -9,14 +9,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
-import { OrderListService } from './order-list.service';
 
 describe('OrderlistComponent', () => {
     let component: OrderListComponent;
     let fixture: ComponentFixture<OrderListComponent>;
     let router: Router;
-    let service: OrderListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'Order-list', component: OrderListComponent}
@@ -39,7 +36,6 @@ describe('OrderlistComponent', () => {
         fixture = TestBed.createComponent(OrderListComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(OrderListService);
         fixture.detectChanges();
     }));
 

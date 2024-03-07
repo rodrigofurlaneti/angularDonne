@@ -10,14 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
-import { ProfileUpdateService } from './profile-update.service';
 
 describe('ProfileUpdateComponent', () => {
     let component: ProfileUpdateComponent;
     let fixture: ComponentFixture<ProfileUpdateComponent>;
     let router: Router;
-    let service: ProfileUpdateService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'Profile-update', component: ProfileUpdateComponent}
@@ -40,7 +37,6 @@ describe('ProfileUpdateComponent', () => {
         fixture = TestBed.createComponent(ProfileUpdateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(ProfileUpdateService);
         fixture.detectChanges();
     }));
 
@@ -360,7 +356,6 @@ describe('ProfileUpdateComponent', () => {
                 spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(messageSuccess);
         
                 //Act
-                let result = component.successMessage;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -401,9 +396,8 @@ describe('ProfileUpdateComponent', () => {
                 let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
         
-                //Act/
-                let result = component.errorMessage;
-        
+                //Act
+                        
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
                 expect(component.messageErro).toBe(messageErro);

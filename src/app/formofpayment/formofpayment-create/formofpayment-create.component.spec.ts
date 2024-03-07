@@ -11,13 +11,11 @@ import { MainComponent } from 'src/app/main/main.component';
 import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 import { faker } from '@faker-js/faker';
 import { FormOfPaymentListComponent } from '../formofpayment-list/formofpayment-list.component';
-import { FormOfPaymentCreateService } from './formofpayment-create.service';
 
 describe('FormOfPaymentCreateComponent', () => {
     let component: FormOfPaymentCreateComponent;
     let fixture: ComponentFixture<FormOfPaymentCreateComponent>;
     let router: Router;
-    let service: FormOfPaymentCreateService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'formofpayment-list', component: FormOfPaymentListComponent}
@@ -40,7 +38,6 @@ describe('FormOfPaymentCreateComponent', () => {
         fixture = TestBed.createComponent(FormOfPaymentCreateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(FormOfPaymentCreateService);
         fixture.detectChanges();
     }));
 

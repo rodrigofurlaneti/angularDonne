@@ -10,14 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
-import { BuyerUpdateService } from './buyer-update.service';
 
 describe('BuyerUpdateComponent', () => {
     let component: BuyerUpdateComponent;
     let fixture: ComponentFixture<BuyerUpdateComponent>;
     let router: Router;
-    let service: BuyerUpdateService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'buyer-update', component: BuyerUpdateComponent}
@@ -40,7 +37,6 @@ describe('BuyerUpdateComponent', () => {
         fixture = TestBed.createComponent(BuyerUpdateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(BuyerUpdateService);
         fixture.detectChanges();
     }));
 
@@ -403,8 +399,7 @@ describe('BuyerUpdateComponent', () => {
                 let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
         
-                //Act/
-                let result = component.errorMessage;
+                //Act
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);

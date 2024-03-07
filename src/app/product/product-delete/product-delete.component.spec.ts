@@ -5,19 +5,17 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router, Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductDeleteComponent } from './product-delete.component';
 import { faker } from '@faker-js/faker';
 import { ProductModel } from 'src/interface/product.interface';
 import { of } from 'rxjs';
-import { ProductDeleteService } from './product-delete.service';
 
 describe('ProductDeleteComponent', () => {
     let component: ProductDeleteComponent;
     let fixture: ComponentFixture<ProductDeleteComponent>;
-    let service: ProductDeleteService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'product-list', component: ProductListComponent},
@@ -40,7 +38,6 @@ describe('ProductDeleteComponent', () => {
         }).compileComponents();
         fixture = TestBed.createComponent(ProductDeleteComponent);
         component = fixture.componentInstance;
-        service = TestBed.inject(ProductDeleteService);
         fixture.detectChanges();
     }));
 

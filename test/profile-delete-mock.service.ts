@@ -1,6 +1,5 @@
 import { of } from "rxjs";
 import { ProfileDeleteService } from "src/app/profile/profile-delete/profile-delete.service";
-import { ProfileModel } from "src/interface/profile.interface";
 
 export class ProfileDeleteMockService extends ProfileDeleteService
 {

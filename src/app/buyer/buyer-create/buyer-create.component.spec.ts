@@ -8,7 +8,7 @@ import { BuyerModel } from 'src/interface/buyer.interface';
 import { faker } from '@faker-js/faker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import {Router, Routes} from '@angular/router';
+import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { BuyerListComponent } from '../buyer-list/buyer-list.component';
 import { BuyerCreateService } from './buyer-create.service';
@@ -17,7 +17,6 @@ import { BuyerCreateMockService } from 'test/buyer-create-mock.service';
 describe('BuyerCreateComponent', () => {
     let component: BuyerCreateComponent;
     let fixture: ComponentFixture<BuyerCreateComponent>;
-    let service: BuyerCreateService;
     let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
@@ -42,7 +41,6 @@ describe('BuyerCreateComponent', () => {
         fixture = TestBed.createComponent(BuyerCreateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(BuyerCreateService);
         fixture.detectChanges();
     }));
 
@@ -328,8 +326,7 @@ describe('BuyerCreateComponent', () => {
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
-                let result = component.buyerList;
-        
+      
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
                 expect(component.routerString).toBe(routerString);
@@ -402,7 +399,6 @@ describe('BuyerCreateComponent', () => {
                 spyOnProperty(component, 'firstSuccessMessage', 'get').and.returnValue(messageSuccess);
         
                 //Act
-                let result = component.successMessage;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -416,7 +412,6 @@ describe('BuyerCreateComponent', () => {
                 spyOnProperty(component, 'secondSuccessMessage', 'get').and.returnValue(messageSuccess);
         
                 //Act
-                let result = component.secondSuccessMessage;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -457,8 +452,7 @@ describe('BuyerCreateComponent', () => {
                 let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
         
-                //Act/
-                let result = component.errorMessage;
+                //Act
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);

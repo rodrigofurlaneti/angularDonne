@@ -5,19 +5,15 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ProductModel } from 'src/interface/product.interface';
-import { faker } from '@faker-js/faker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
-import { ProductListService } from './product-list.service';
 
 describe('ProductlistComponent', () => {
     let component: ProductListComponent;
     let fixture: ComponentFixture<ProductListComponent>;
     let router: Router;
-    let service: ProductListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'Product-list', component: ProductListComponent}
@@ -40,7 +36,6 @@ describe('ProductlistComponent', () => {
         fixture = TestBed.createComponent(ProductListComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(ProductListService);
         fixture.detectChanges();
     }));
 

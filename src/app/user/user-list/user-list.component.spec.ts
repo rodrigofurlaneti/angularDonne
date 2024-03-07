@@ -9,14 +9,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
-import { UserListService } from './user-list.service';
 
 describe('UserlistComponent', () => {
     let component: UserListComponent;
     let fixture: ComponentFixture<UserListComponent>;
     let router: Router;
-    let service: UserListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'user-list', component: UserListComponent}
@@ -39,7 +36,6 @@ describe('UserlistComponent', () => {
         fixture = TestBed.createComponent(UserListComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(UserListService);
         fixture.detectChanges();
     }));
 

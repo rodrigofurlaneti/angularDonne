@@ -9,13 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
 import { OrderUpdateService } from './order-update.service';
 import { OrderUpdateMockService } from 'test/order-update-mock.service';
-import { BuyerModel } from 'src/interface/buyer.interface';
 import { BuyerListService } from 'src/app/buyer/buyer-list/buyer-list.service';
 import { BuyerListMockService } from 'test/buyer-list-mock.service';
-import { ProductModel } from 'src/interface/product.interface';
 import { ProductListService } from 'src/app/product/product-list/product-list.service';
 import { ProductListMockService } from 'test/product-list-mock.service';
 
@@ -23,9 +20,6 @@ describe('OrderUpdateComponent', () => {
     let component: OrderUpdateComponent;
     let fixture: ComponentFixture<OrderUpdateComponent>;
     let router: Router;
-    let service: OrderUpdateService;
-    let buyerListService: BuyerListService;
-    let productListService: ProductListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'order-update', component: OrderUpdateComponent}
@@ -53,9 +47,6 @@ describe('OrderUpdateComponent', () => {
         fixture = TestBed.createComponent(OrderUpdateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(OrderUpdateService);
-        buyerListService = TestBed.inject(BuyerListService);
-        productListService = TestBed.inject(ProductListService);
         fixture.detectChanges();
     }));
 

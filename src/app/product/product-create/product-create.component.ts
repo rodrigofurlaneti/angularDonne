@@ -6,11 +6,11 @@ import { CategoryModel } from 'src/interface/category.interface';
 import { MatSelect } from '@angular/material/select';
 import { FormControl } from '@angular/forms';
 import { Component, ViewChild } from '@angular/core';
-import { MatCheckboxChange, MatCheckboxClickAction } from '@angular/material/checkbox';
 import { CategoryListService } from 'src/app/category/category-list/category-list.service';
 import {
   MAT_CHECKBOX_DEFAULT_OPTIONS,
-  MatCheckboxDefaultOptions
+  MatCheckboxDefaultOptions,
+  MatCheckboxChange
 } from '@angular/material/checkbox';
 
 

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { VehicleListService } from './vehicle-list.service';
 import { VehicleModel } from 'src/interface/vehicle.interface';
-import { MatSlideToggle } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'vehicle-list',

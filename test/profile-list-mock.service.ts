@@ -1,6 +1,5 @@
 import { of } from "rxjs";
 import { ProfileListService } from "src/app/profile/profile-list/profile-list.service";
-import { ProfileModel } from "src/interface/profile.interface";
 
 export class ProfileListMockService extends ProfileListService
 {

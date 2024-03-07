@@ -5,20 +5,18 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router, Routes} from '@angular/router';
+import { Routes} from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { FormOfPaymentListComponent } from '../formofpayment-list/formofpayment-list.component';
 import { FormOfPaymentDeleteComponent } from './formofpayment-delete.component';
 import { faker } from '@faker-js/faker';
 import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 import { of } from 'rxjs';
-import { FormOfPaymentDeleteService } from './formofpayment-delete.service';
 
 describe('FormOfPaymentDeleteComponent', () => {
     let component: FormOfPaymentDeleteComponent;
     let fixture: ComponentFixture<FormOfPaymentDeleteComponent>;
-    let service: FormOfPaymentDeleteService;
-    let router: Router;
+
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'FormOfPayment-list', component: FormOfPaymentListComponent}
@@ -40,8 +38,6 @@ describe('FormOfPaymentDeleteComponent', () => {
         }).compileComponents();
         fixture = TestBed.createComponent(FormOfPaymentDeleteComponent);
         component = fixture.componentInstance;
-        router = TestBed.inject(Router);
-        service = TestBed.inject(FormOfPaymentDeleteService);
         fixture.detectChanges();
     }));
 

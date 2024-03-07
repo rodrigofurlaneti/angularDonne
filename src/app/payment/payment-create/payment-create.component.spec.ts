@@ -15,19 +15,13 @@ import { PaymentCreateService } from './payment-create.service';
 import { PaymentCreateMockService } from 'test/payment-create-mock.service';
 import { CommandListService } from 'src/app/command/command-list/command-list.service';
 import { CommandListMockService } from 'test/command-list-mock.service';
-import { CommandModel } from 'src/interface/command.interface';
 import { FormOfPaymentListService } from 'src/app/formofpayment/formofpayment-list/formofpayment-list.service';
 import { FormOfPaymentListMockService } from 'test/formOfPayment-list-mock.service';
-import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
 
 describe('paymentCreateComponent', () => {
     let component: PaymentCreateComponent;
     let fixture: ComponentFixture<PaymentCreateComponent>;
     let router: Router;
-    let service: PaymentCreateService;
-    let paymentCreateService: PaymentCreateService;
-    let commandListService: CommandListService;
-    let formOfPaymentListService: FormOfPaymentListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'payment-list', component: PaymentListComponent}
@@ -55,9 +49,6 @@ describe('paymentCreateComponent', () => {
         fixture = TestBed.createComponent(PaymentCreateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        paymentCreateService = TestBed.inject(PaymentCreateService);
-        commandListService = TestBed.inject(CommandListService);
-        formOfPaymentListService = TestBed.inject(FormOfPaymentListService);
         fixture.detectChanges();
     }));
 

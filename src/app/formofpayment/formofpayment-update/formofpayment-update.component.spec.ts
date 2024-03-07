@@ -10,14 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
-import { FormOfPaymentUpdateService } from './formofpayment-update.service';
 
 describe('FormOfPaymentUpdateComponent', () => {
     let component: FormOfPaymentUpdateComponent;
     let fixture: ComponentFixture<FormOfPaymentUpdateComponent>;
     let router: Router;
-    let service: FormOfPaymentUpdateService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'FormOfPayment-update', component: FormOfPaymentUpdateComponent}
@@ -40,7 +37,6 @@ describe('FormOfPaymentUpdateComponent', () => {
         fixture = TestBed.createComponent(FormOfPaymentUpdateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(FormOfPaymentUpdateService);
         fixture.detectChanges();
     }));
 
@@ -339,9 +335,8 @@ describe('FormOfPaymentUpdateComponent', () => {
                 let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
         
-                //Act/
-                let result = component.errorMessage;
-        
+                //Act
+                        
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
                 expect(component.messageErro).toBe(messageErro);
@@ -354,7 +349,7 @@ describe('FormOfPaymentUpdateComponent', () => {
             it('AuthenticatedUser => UserIdLogin', () => {
                 //Arrange
                 let userIdLogin: number = faker.number.int();
-                var element = document.createElement('input');
+                let element = document.createElement('input');
                 element.id = 'userIdLogin';
                 element.name = 'userIdLogin';
                 element.value = userIdLogin.toString();

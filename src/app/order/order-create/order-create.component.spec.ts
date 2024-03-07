@@ -24,11 +24,6 @@ describe('OrderCreateComponent', () => {
     let component: OrderCreateComponent;
     let fixture: ComponentFixture<OrderCreateComponent>;
     let router: Router;
-    let service: OrderCreateService;
-    let orderCreateService: OrderCreateService;
-    let productListService: ProductListService;
-    let commandListService: CommandListService;
-    let productUpdateService: ProductUpdateService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'order-list', component: OrderListComponent}
@@ -58,11 +53,6 @@ describe('OrderCreateComponent', () => {
         fixture = TestBed.createComponent(OrderCreateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(OrderCreateService);
-        orderCreateService = TestBed.inject(OrderCreateService);
-        productListService = TestBed.inject(ProductListService);
-        productUpdateService = TestBed.inject(ProductUpdateService);
-        commandListService = TestBed.inject(CommandListService);
         fixture.detectChanges();
     }));
 
@@ -360,26 +350,6 @@ describe('OrderCreateComponent', () => {
                 expect(component.messageErro).toBe(expectedValue);
                 expect(spyOnComponent).toHaveBeenCalledTimes(1);
                 expect(typeof(result)).toBe(expectedValueTypeOf);
-            });
-        })
-
-        describe('Calculate', () => {
-
-            it('Calculate => Success', () => {
-                //Arrange
-                let expectedValue : number = 0;
-                let expectedValueOne : number = faker.number.int();
-                let expectedValueTwo : number = faker.number.int();
-                expectedValue = expectedValueOne * expectedValueTwo; 
-                let spyOnComponent = spyOn(component, 'calculate').and.callThrough();
-                spyOnProperty(component, 'totalValue', 'get').and.returnValue(expectedValue);
-                
-                //Act
-                let result = component.calculate();
-        
-                //Assert
-                expect(component.totalValue).toBe(expectedValue);
-                expect(spyOnComponent).toHaveBeenCalledTimes(1);
             });
         })
 

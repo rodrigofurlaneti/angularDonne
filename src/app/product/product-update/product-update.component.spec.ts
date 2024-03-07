@@ -10,8 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
-import { ProductUpdateService } from './product-update.service';
 import { CategoryModel } from 'src/interface/category.interface';
 import { CategoryListService } from 'src/app/category/category-list/category-list.service';
 import { CategoryListMockService } from 'test/category-list-mock.service';
@@ -21,8 +19,6 @@ describe('ProductUpdateComponent', () => {
     let component: ProductUpdateComponent;
     let fixture: ComponentFixture<ProductUpdateComponent>;
     let router: Router;
-    let service: ProductUpdateService;
-    let categoryListService: CategoryListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'product-update', component: ProductUpdateComponent}
@@ -48,8 +44,6 @@ describe('ProductUpdateComponent', () => {
         fixture = TestBed.createComponent(ProductUpdateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(ProductUpdateService);
-        categoryListService = TestBed.inject(CategoryListService);
         fixture.detectChanges();
     }));
 

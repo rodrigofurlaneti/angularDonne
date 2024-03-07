@@ -18,7 +18,6 @@ describe('CategoryCreateComponent', () => {
     let component: CategoryCreateComponent;
     let fixture: ComponentFixture<CategoryCreateComponent>;
     let router: Router;
-    let service: CategoryCreateService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'category-list', component: CategoryListComponent}
@@ -42,7 +41,6 @@ describe('CategoryCreateComponent', () => {
         fixture = TestBed.createComponent(CategoryCreateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(CategoryCreateService);
         fixture.detectChanges();
     }));
 

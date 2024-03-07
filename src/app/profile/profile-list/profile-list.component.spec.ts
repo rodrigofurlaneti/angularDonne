@@ -5,12 +5,10 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ProfileModel } from 'src/interface/profile.interface';
-import { faker } from '@faker-js/faker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
 import { ProfileListService } from './profile-list.service';
 import { ProfileListMockService } from '../../../../test/profile-list-mock.service'; 
 
@@ -18,7 +16,6 @@ describe('ProfileListComponent', () => {
     let component: ProfileListComponent;
     let fixture: ComponentFixture<ProfileListComponent>;
     let router: Router;
-    let service: ProfileListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'profile-list', component: ProfileListComponent}
@@ -42,7 +39,6 @@ describe('ProfileListComponent', () => {
         fixture = TestBed.createComponent(ProfileListComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(ProfileListService);
         fixture.detectChanges();
     }));
 

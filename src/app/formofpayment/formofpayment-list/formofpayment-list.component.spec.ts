@@ -5,19 +5,15 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormOfPaymentModel } from 'src/interface/formofpayment.interface';
-import { faker } from '@faker-js/faker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
-import { of } from 'rxjs';
-import { FormOfPaymentListService } from './formofpayment-list.service';
 
 describe('FormOfPaymentListComponent', () => {
     let component: FormOfPaymentListComponent;
     let fixture: ComponentFixture<FormOfPaymentListComponent>;
     let router: Router;
-    let service: FormOfPaymentListService;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'FormOfPayment-list', component: FormOfPaymentListComponent}
@@ -40,7 +36,6 @@ describe('FormOfPaymentListComponent', () => {
         fixture = TestBed.createComponent(FormOfPaymentListComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(FormOfPaymentListService);
         fixture.detectChanges();
     }));
 

@@ -17,7 +17,6 @@ import { ProfileCreateMockService } from '../../../../test/profile-create-mock.s
 describe('ProfileCreateComponent', () => {
     let component: ProfileCreateComponent;
     let fixture: ComponentFixture<ProfileCreateComponent>;
-    let service: ProfileCreateService;
     let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
@@ -42,7 +41,6 @@ describe('ProfileCreateComponent', () => {
         fixture = TestBed.createComponent(ProfileCreateComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(ProfileCreateService);
         fixture.detectChanges();
     }));
 
@@ -252,7 +250,6 @@ describe('ProfileCreateComponent', () => {
                 spyOnProperty(component, 'routerString', 'get').and.returnValue(routerString);
         
                 //Act
-                let result = component.profileList;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -340,7 +337,6 @@ describe('ProfileCreateComponent', () => {
                 spyOnProperty(component, 'messageSuccess', 'get').and.returnValue(messageSuccess);
         
                 //Act
-                let result = component.successMessage;
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);
@@ -381,8 +377,7 @@ describe('ProfileCreateComponent', () => {
                 let spyOnComponent = spyOn(component, 'errorMessage').and.callThrough();
                 spyOnProperty(component, 'messageErro', 'get').and.returnValue(messageErro);
         
-                //Act/
-                let result = component.errorMessage;
+                //Act
         
                 //Assert
                 expect(spyOnComponent).toHaveBeenCalledTimes(0);

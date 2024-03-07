@@ -5,14 +5,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router, Routes} from '@angular/router';
+import { Routes} from '@angular/router';
 import { MainComponent } from 'src/app/main/main.component';
 import { BuyerListComponent } from '../buyer-list/buyer-list.component';
 import { BuyerDeleteComponent } from './buyer-delete.component';
 import { faker } from '@faker-js/faker';
 import { BuyerModel } from 'src/interface/buyer.interface';
 import { of } from 'rxjs';
-import { BuyerDeleteService } from './buyer-delete.service';
 
 describe('BuyerDeleteComponent', () => {
     let component: BuyerDeleteComponent;

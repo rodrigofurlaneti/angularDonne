@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -11,13 +11,11 @@ import { ProfileListComponent } from '../profile-list/profile-list.component';
 import { ProfileDeleteComponent } from './profile-delete.component';
 import { faker } from '@faker-js/faker';
 import { ProfileModel } from 'src/interface/profile.interface';
-import { of, throwError } from 'rxjs';
-import { ProfileDeleteService } from './profile-delete.service';
+import { of } from 'rxjs';
 
 describe('ProfileDeleteComponent', () => {
     let component: ProfileDeleteComponent;
     let fixture: ComponentFixture<ProfileDeleteComponent>;
-    let service: ProfileDeleteService;
     let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
@@ -41,7 +39,6 @@ describe('ProfileDeleteComponent', () => {
         fixture = TestBed.createComponent(ProfileDeleteComponent);
         component = fixture.componentInstance;
         router = TestBed.inject(Router);
-        service = TestBed.inject(ProfileDeleteService);
         fixture.detectChanges();
     }));
 

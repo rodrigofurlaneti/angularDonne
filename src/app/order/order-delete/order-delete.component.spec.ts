@@ -17,8 +17,6 @@ import { OrderDeleteService } from './order-delete.service';
 describe('OrderDeleteComponent', () => {
     let component: OrderDeleteComponent;
     let fixture: ComponentFixture<OrderDeleteComponent>;
-    let service: OrderDeleteService;
-    let router: Router;
     const routes: Routes = [
         {path: 'main', component: MainComponent},
         {path: 'Order-list', component: OrderListComponent},
@@ -41,8 +39,6 @@ describe('OrderDeleteComponent', () => {
         }).compileComponents();
         fixture = TestBed.createComponent(OrderDeleteComponent);
         component = fixture.componentInstance;
-        router = TestBed.inject(Router);
-        service = TestBed.inject(OrderDeleteService);
         fixture.detectChanges();
     }));
 
