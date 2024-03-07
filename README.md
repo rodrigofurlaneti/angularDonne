@@ -1,6 +1,22 @@
 # DonneAngular
 
-![image](https://csharpcorner-mindcrackerinc.netdna-ssl.com/article/introduction-to-building-asp-net-core-and-angular-web-application/Images/architecture.JPG)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=bugs)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=coverage)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=rodrigofurlaneti_angularDonne)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)
 
 ![image](https://i.stack.imgur.com/Lsofi.png)
 
@@ -27,6 +43,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running coverage reports
+Run `ng test --code-coverage` to execute it and create source code coverage reports.
 
 ## Running end-to-end tests
 
