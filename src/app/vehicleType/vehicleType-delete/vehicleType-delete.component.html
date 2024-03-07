@@ -1,5 +1,6 @@
 <section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <caption></caption>
     <ng-container matColumnDef="vehicleTypeName">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;">Nome</th>
       <td mat-cell (click)="delete(element.vehicleTypeId)" *matCellDef="let element" class="headerDeleteVehicleType">

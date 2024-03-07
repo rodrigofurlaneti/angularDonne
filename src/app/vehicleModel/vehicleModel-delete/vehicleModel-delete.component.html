@@ -1,5 +1,6 @@
 <section class="center">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <caption></caption>
     <ng-container matColumnDef="vehicleModelId">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;">Número do modelo do veículo</th>
       <td mat-cell (click)="delete(element.vehicleModelId)" *matCellDef="let element" class="headerDeleteModel">

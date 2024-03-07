@@ -2,6 +2,7 @@
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <caption></caption>
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef class="titleUpdateCategory headerUpdateCategory">Categoria</th>
           <td mat-cell (click)="getById(element.categoryId)" *matCellDef="let element" class="headerUpdateCategory">

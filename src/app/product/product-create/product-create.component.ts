@@ -194,7 +194,6 @@ export class ProductCreateComponent {
       this.productModel.categoryId = this.categoryIDSelect;
       this.productModel.costPrice = parseFloat(this.productModel.costPrice).toString(); //parseFloat(priceCost)
       this.productModel.salePrice = parseFloat(this.productModel.salePrice).toString(); //parseFloat(priceSale)
-      this.productModel.quantityToBuy = this.productModel.quantityToBuy;
       this.productModel.totalValueOfLastPurchase = parseFloat(this.productModel.totalValueOfLastPurchase).toString(); 
       this.productCreateService.save(this.productModel).subscribe(product => {
         this.successMessage();

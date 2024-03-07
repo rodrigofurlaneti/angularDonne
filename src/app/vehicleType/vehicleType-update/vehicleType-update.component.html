@@ -2,6 +2,7 @@
   <ng-template [ngIf]="isIdZero" [ngIfElse]="isIdGreaterThanZero">
     <div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <caption></caption>
         <ng-container matColumnDef="vehicleTypeId">
           <th mat-header-cell *matHeaderCellDef style="text-align: center;">
             Número

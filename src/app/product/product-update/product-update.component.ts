@@ -254,10 +254,6 @@ export class ProductUpdateComponent implements OnInit {
     this.productModel.status = this.productStatus;
     this.productModel.totalValueCostOfInventory = (this.productModel.quantityStock * parseFloat(this.productModel.costPrice)).toString();
     this.productModel.totalValueSaleStock = (this.productModel.quantityStock * parseFloat(this.productModel.salePrice)).toString();
-    this.productModel.minimumStockQuantity = this.productModel.minimumStockQuantity;
-    this.productModel.quantityToBuy = this.productModel.quantityToBuy;
-    this.productModel.totalValueOfLastPurchase = this.productModel.totalValueOfLastPurchase;
-    this.productModel;
     this.productUpdateService
         .update(this.productModel)
         .subscribe(product => { 
