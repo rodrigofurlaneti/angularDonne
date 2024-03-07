@@ -6,24 +6,18 @@
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  display: grid;
-  grid-template-columns: 25vh;
 }
 .checkbox{
   display: block;
   margin-left: 1vh;
   margin-right: auto;
   width: 50%;
-  display: grid;
-  grid-template-columns: 20vh 20vh;
 }
 .line {
   display: block;
   margin-left: 1vh;
   margin-right: auto;
   width: 50%;
-  display: grid;
-  grid-template-columns: 25vh;
 }
 
 .line-button {
@@ -31,8 +25,6 @@
   margin-left: 1vh;
   margin-right: auto;
   width: 50%;
-  display: grid;
-  grid-template-columns: 25vh 5vh 25vh;
 }
 
 .card{

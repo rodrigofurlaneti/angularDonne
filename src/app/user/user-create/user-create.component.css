@@ -6,16 +6,12 @@
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  display: grid;
-  grid-template-columns: 5vh 5vh 5vh;
 }
 .line {
   display: block;
   margin-left: 1vh;
   margin-right: auto;
   width: 50%;
-  display: grid;
-  grid-template-columns: 33vh;
 }
 .card{
   height: 52vh;

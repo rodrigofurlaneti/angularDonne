@@ -6,13 +6,10 @@
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  grid-template-columns: 35vh;
 }
 .wrapper {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  display: grid;
-  grid-template-columns: 5vh 5vh 5vh;
 }

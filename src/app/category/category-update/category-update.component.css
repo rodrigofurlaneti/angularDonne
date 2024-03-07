@@ -6,8 +6,6 @@
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  display: grid;
-  grid-template-columns: 5vh 5vh 5vh;
 }
 .update_btn {
   padding-left: 5vh;
