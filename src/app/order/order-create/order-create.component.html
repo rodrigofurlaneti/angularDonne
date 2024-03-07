@@ -30,37 +30,18 @@
     <mat-label>Valor total do pedido</mat-label>
     <input type="text" id="TotalSalePrice" name="totalSalePrice" matInput [(ngModel)]="orderModel.totalSalePrice" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }"/>
   </mat-form-field>
-
-<section>
-  <div class="example-button-row">
-    <div class="example-flex-container">
-      <div class="example-button-container">
-        <div class="example-label titleAddOrder">
-          <div class="labelToButton">Voltar</div>
-          <button mat-raised-button
-                mat-mini-fab
-                matTooltip="Voltar para a pagina principal."
-                (click)="reply()" 
-                 color="primary" 
-                aria-label="Example icon button with a menu icon">
-            <mat-icon>reply_all</mat-icon>
-          </button>
-        </div>  
-      </div>
-      <div class="example-button-container">
-        <div class="example-label titleAddOrder">
-          <div class="labelToButton">Salvar</div>
-          <button mat-raised-button
-                mat-mini-fab
-                matTooltip="Salvar o novo perfil."
-                (click)="save()" 
-                color="primary" 
-                aria-label="Example icon button with a menu icon">
-            <mat-icon>save_alt</mat-icon>
-          </button>
-        </div>
-      </div>
-    </div>
+  <div class="button-toggle-group-out">
+    <mat-button-toggle-group class="button-toggle-group" name="menu-button" aria-label="Font Style">
+      <mat-button-toggle style="border: none;" value="Voltar">Voltar
+        <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+          <mat-icon>reply_all</mat-icon>
+        </button>
+      </mat-button-toggle>
+      <mat-button-toggle style="border: none;" value="Salvar">Salvar
+        <button mat-raised-button mat-mini-fab matTooltip="Salvar novo cliente" (click)="save()" color="primary" aria-label="Salvar">
+          <mat-icon>save_alt</mat-icon>
+        </button>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
   </div>
-</section>
 </div>

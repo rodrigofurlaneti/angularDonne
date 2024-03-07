@@ -1,43 +1,33 @@
 <section class="center">
-  <mat-card style="width: 35vh;">
-    <mat-card-content>Adicionar um novo cliente</mat-card-content>
+  <mat-card>
+    <mat-card-content style="text-align: center;">Adicionar um novo cliente</mat-card-content>
     <form class="example-form">
-      <mat-grid-list cols="1" rowHeight="5vh">
-        <mat-grid-tile>
-          <mat-form-field style="width: 100%;" class="example-full-width">
-            <mat-label>Nome do novo cliente</mat-label>
-            <input matInput placeholder="Nome do cliente" id="buyerName" name="buyerName" [(ngModel)]="buyerModel.buyerName" matInput />
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-form-field style="width: 100%;" class="example-full-width">
-            <mat-label>Telefone</mat-label>
-            <input matInput placeholder="Telefone do cliente" id="buyerPhone" name="buyerPhone" [(ngModel)]="buyerModel.buyerPhone" matInput mask='00 00000-0000' placeholder="DDD + numero de telefone"/>
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-form-field style="width: 100%;" class="example-full-width">
-            <mat-label>Endereço</mat-label>
-            <input matInput placeholder="Endereço do cliente" id="buyerAddress" name="buyerAddress" [(ngModel)]="buyerModel.buyerAddress" matInput />
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Nome do novo cliente</mat-label>
+          <input matInput placeholder="Nome do cliente" id="buyerName" name="buyerName" [(ngModel)]="buyerModel.buyerName" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Telefone</mat-label>
+        <input matInput placeholder="Telefone do cliente" id="buyerPhone" name="buyerPhone" [(ngModel)]="buyerModel.buyerPhone" matInput mask='00 00000-0000' placeholder="DDD + numero de telefone"/>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Endereço</mat-label>
+          <input matInput placeholder="Endereço do cliente" id="buyerAddress" name="buyerAddress" [(ngModel)]="buyerModel.buyerAddress" matInput />
+      </mat-form-field>
     </form>
-    <div class="wrapper">
-      <div>
-        <div>Voltar</div>
-        <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
-          <mat-icon>reply_all</mat-icon>
-        </button>
-      </div>
-    <div>
-    </div>
-      <div>
-        <div>Salvar</div>
-        <button mat-raised-button mat-mini-fab matTooltip="Salvar novo cliente" (click)="save()" color="primary" aria-label="Salvar">
-          <mat-icon>save_alt</mat-icon>
-        </button>
-      </div>
+    <div class="button-toggle-group-out">
+      <mat-button-toggle-group class="button-toggle-group" name="menu-button" aria-label="Font Style">
+        <mat-button-toggle style="border: none;" value="Voltar">Voltar
+          <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+            <mat-icon>reply_all</mat-icon>
+          </button>
+        </mat-button-toggle>
+        <mat-button-toggle style="border: none;" value="Salvar">Salvar
+          <button mat-raised-button mat-mini-fab matTooltip="Salvar novo cliente" (click)="save()" color="primary" aria-label="Salvar">
+            <mat-icon>save_alt</mat-icon>
+          </button>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
     </div>
   </mat-card>
 </section>

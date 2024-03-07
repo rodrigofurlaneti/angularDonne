@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CompanyAssetDeleteService {
 
-  private route = 'https://localhost:7027/Formofpayment';
+  private route = 'https://localhost:7027/CompanyAsset';
   private routeAzure = 'https://apidonne.azurewebsites.net/CompanyAsset';
 
   constructor(private http: HttpClient) { }

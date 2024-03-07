@@ -17,3 +17,13 @@
   height: 52vh;
   width: 35vh;
 }
+
+.button-toggle-group-out{
+  display: block;
+  margin-left: 1vh;
+  margin-right: auto;
+  width: 50%;
+}
+.button-toggle-group{
+  border: none;
+}

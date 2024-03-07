@@ -7,9 +7,12 @@
   margin-right: auto;
   width: 50%;
 }
-.wrapper {
+.button-toggle-group-out{
   display: block;
-  margin-left: auto;
+  margin-left: 1vh;
   margin-right: auto;
   width: 50%;
+}
+.button-toggle-group{
+  border: none;
 }

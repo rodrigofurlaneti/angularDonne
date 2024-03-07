@@ -22,3 +22,13 @@
   padding-left: 5vh;
   padding-right: 5vh;
 }
+
+.button-toggle-group-out{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.button-toggle-group{
+  border: none;
+}

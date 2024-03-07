@@ -16,3 +16,12 @@
   padding-top: 1vh;
   padding-bottom: 1vh;
 }
+.button-toggle-group-out{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.button-toggle-group{
+  border: none;
+}

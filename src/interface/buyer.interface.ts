@@ -7,6 +7,7 @@ export interface IBuyerInterface {
     dateUpdate: Date;
     userId: number;
     userName: string;
+    status: number;
 }
 export class BuyerModel implements IBuyerInterface {
     buyerId: string = "0";    
@@ -17,4 +18,5 @@ export class BuyerModel implements IBuyerInterface {
     dateUpdate: Date = new Date();
     userId: number = 0;
     userName: string = '';
+    status: number = 0;
   }

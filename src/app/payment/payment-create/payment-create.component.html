@@ -29,38 +29,19 @@
           <mat-option value="Parcial">Parcial</mat-option>
         </mat-select>
       </mat-form-field>
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <div class="example-label headerAddPayment">
-            <div class="labelToButton">Voltar</div>
-            <button
-              mat-raised-button
-              mat-mini-fab
-              matTooltip="Voltar"
-              (click)="reply()"
-              color="primary"
-              aria-label="Example icon button with a menu icon"
-            >
+      <div class="button-toggle-group-out">
+        <mat-button-toggle-group class="button-toggle-group" name="menu-button" aria-label="Font Style">
+          <mat-button-toggle style="border: none;" value="Voltar">Voltar
+            <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
               <mat-icon>reply_all</mat-icon>
             </button>
-          </div>
-        </div>
-        <div class="example-button-container">
-          <div class="example-label headerAddCategory">
-            <div class="labelToButton">Salvar</div>
-            <button
-              mat-raised-button
-              mat-mini-fab
-              matTooltip="Salvar nova categoria"
-              (click)="save()"
-              color="primary"
-              aria-label="Example icon button with a menu icon">
+          </mat-button-toggle>
+          <mat-button-toggle style="border: none;" value="Salvar">Salvar
+            <button mat-raised-button mat-mini-fab matTooltip="Salvar novo pagamento" (click)="save()" color="primary" aria-label="Salvar">
               <mat-icon>save_alt</mat-icon>
             </button>
-          </div>
-        </div>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
       </div>
-    </div>
   </section>
   

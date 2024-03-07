@@ -7,8 +7,6 @@ import { MatSelect } from '@angular/material/select';
 import { BuyerModel } from 'src/interface/buyer.interface';
 import { BuyerListService } from 'src/app/buyer/buyer-list/buyer-list.service';
 
-let ELEMENT_DATA_BUYER: BuyerModel[];
-
 @Component({
   selector: 'command-create',
   templateUrl: './command-create.component.html',
@@ -17,28 +15,51 @@ let ELEMENT_DATA_BUYER: BuyerModel[];
 
 export class CommandCreateComponent {
   
-  commandModel = new CommandModel();
+  //#region [Properties]
 
-  buyerNameSelect: string = "";
+  //Property CommandModel
+  private _commandModel = new CommandModel();
+  get commandModel() { return this._commandModel; }
+  set commandModel(value) { this._commandModel = value; }
+  
+  //Property BuyerNameSelect
+  private _buyerNameSelect: string = "";
+  get buyerNameSelect() { return this._buyerNameSelect; }
+  set buyerNameSelect(value) { this._buyerNameSelect = value; }
 
-  messageTime: number = 2000;
+  //Property MessageTime
+  private _messageTime: number = 2000;
+  get messageTime() { return this._messageTime; }
+  set messageTime(value) { this._messageTime = value; }
+  
+  //Property MessageTime
+  private _dataSourceBuyer: BuyerModel[] = [];
+  get dataSourceBuyer() { return this._dataSourceBuyer; }
+  set dataSourceBuyer(value) { this._dataSourceBuyer = value; }
 
+  //#endregion
+
+  //#region [Constructor]
+  
   constructor(private commandCreateService: CommandCreateService,
     private buyerListService: BuyerListService,
     private _snackBar: MatSnackBar, 
     private readonly router: Router) {  }
-
+  
+  //#endregion
+  
   @ViewChild('matSelect')
   matSelect!: MatSelect;
+
+  //#region [Methods]
 
   ngOnInit(): void {
     this.listBuyer();
   }
 
   listBuyer() {
-    this.buyerListService.listBuyerStatus(0).subscribe(list => {
-      ELEMENT_DATA_BUYER = list;
-      this.dataSourceBuyer = ELEMENT_DATA_BUYER;
+    this.buyerListService.listBuyerStatus(1).subscribe(list => {
+      this.dataSourceBuyer = list;
     }, err => {
       console.log('Erro ao listar os clientes', err);
     })
@@ -67,8 +88,6 @@ export class CommandCreateComponent {
       })
     }
   }
-
-  dataSourceBuyer = ELEMENT_DATA_BUYER;
 
   reply() {
     this.router.navigate(['main']);
@@ -101,4 +120,5 @@ export class CommandCreateComponent {
       duration: this.messageTime
     });
   }
+  //#endregion
 }

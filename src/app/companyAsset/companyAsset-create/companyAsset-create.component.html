@@ -1,31 +1,40 @@
 <section class="center">
   <mat-card>
-    <mat-card-content>Adicionar um novo ativo da empresa</mat-card-content>
+    <mat-card-content >
+      <p style="text-align: center;">
+        Adicionar um novo ativo da empresa
+      </p>
+    </mat-card-content>
       <form class="example-form">
         <p>
-          <mat-form-field appearance="fill" class="example-full-width">
-            <mat-label>Nome do novo ativo da empresa</mat-label>
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>
+                Nome do novo ativo da empresa
+            </mat-label>
             <input matInput placeholder="Nome do novo ativo da empresa" id="companyAssetName" name="companyAssetName" [(ngModel)]="companyAssetModel.companyAssetName" matInput />
           </mat-form-field>
         </p>
         <p>
-          <mat-form-field appearance="fill" class="example-full-width">
+          <mat-form-field appearance="fill" class="form-field">
             <mat-label>Valor do ativo da empresa</mat-label>
             <input matInput placeholder="Valor do ativo da empresa" id="costPrice" name="costPrice" [(ngModel)]="companyAssetModel.costPrice" matInput currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',' }" />
           </mat-form-field>
         </p>
       </form>
-      <mat-button-toggle-group style="border: none;" name="menu-button" aria-label="Font Style">
-        <mat-button-toggle style="border: none;" value="Voltar">Voltar
-          <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
-            <mat-icon>reply_all</mat-icon>
-          </button>
-        </mat-button-toggle>
-        <mat-button-toggle style="border: none;" value="Salvar">Salvar
-          <button mat-raised-button mat-mini-fab matTooltip="Salvar novo ativo" (click)="save()" color="primary" aria-label="Salvar">
-            <mat-icon>save_alt</mat-icon>
-          </button>
-        </mat-button-toggle>
-      </mat-button-toggle-group>
+      <div class="button-toggle-group-out">
+        <mat-button-toggle-group class="button-toggle-group" name="menu-button" aria-label="Font Style">
+          <mat-button-toggle style="border: none;" value="Voltar">Voltar
+            <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+              <mat-icon>reply_all</mat-icon>
+            </button>
+          </mat-button-toggle>
+          <mat-button-toggle style="border: none;" value="Salvar">Salvar
+            <button mat-raised-button mat-mini-fab matTooltip="Salvar novo ativo" (click)="save()" color="primary" aria-label="Salvar">
+              <mat-icon>save_alt</mat-icon>
+            </button>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
   </mat-card>
 </section>

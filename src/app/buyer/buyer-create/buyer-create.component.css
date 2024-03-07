@@ -1,15 +1,16 @@
 .center{
-  padding-top: 25vh;
+  padding-top: 20vh;
+  width: 45vh;
 }
-.formGrid{
+.form-field {
+  width: 100%;
+}
+.button-toggle-group-out{
   display: block;
-  margin-left: auto;
+  margin-left: 1vh;
   margin-right: auto;
   width: 50%;
 }
-.wrapper {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+.button-toggle-group{
+  border: none;
 }

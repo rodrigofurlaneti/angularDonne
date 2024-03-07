@@ -1,41 +1,16 @@
 .center{
-  padding-top: 30vh;
+  padding-top: 20vh;
+  width: 45vh;
 }
-.wrapper {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+.form-field {
+  width: 100%;
 }
-.checkbox{
+.button-toggle-group-out{
   display: block;
   margin-left: 1vh;
   margin-right: auto;
   width: 50%;
 }
-.line {
-  display: block;
-  margin-left: 1vh;
-  margin-right: auto;
-  width: 50%;
-}
-
-.line-button {
-  display: block;
-  margin-left: 1vh;
-  margin-right: auto;
-  width: 50%;
-}
-
-.card{
-  height: 35vh;
-  width: 39vh;
-}
-
-.lbl-voltar{
-  font-weight: bold;
-  font-style: oblique;
-  color: darkmagenta;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
+.button-toggle-group{
+  border: none;
 }

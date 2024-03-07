@@ -4,8 +4,6 @@ import { CompanyAssetDeleteService } from './companyAsset-delete.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CompanyAssetModel } from '../../../interface/companyAsset.interface';
 
-let ELEMENT_DATA: CompanyAssetModel[];
-
 @Component({
   selector: 'companyAsset-delete',
   templateUrl: './companyAsset-delete.component.html',
@@ -77,8 +75,7 @@ export class CompanyAssetDeleteComponent implements OnInit {
 
   public list() {
     this.companyAssetDeleteService.list().subscribe(list => {
-      ELEMENT_DATA = list;
-      this.dataSource = ELEMENT_DATA;
+      this.dataSource = list;
       console.log(this.dataSource);
     }, err => {
       console.log('Erro ao listar os ativos da empresa!', err);

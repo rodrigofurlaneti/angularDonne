@@ -71,7 +71,7 @@ export class BuyerCreateComponent {
   //#region [Methods]
 
   save():void {
-    console.log(this.buyerModel);
+
     //check fields
     if(this.buyerModel.buyerName == "")
     {
@@ -95,8 +95,10 @@ export class BuyerCreateComponent {
       });
     }
 
-    this.buyerModel.dateUpdate = new Date(1900, 1, 1, 1, 1, 1, 1);
-    
+    this.buyerModel.dateUpdate = new Date(1900, 1, 1, 0, 0, 0, 0);
+
+    this.buyerModel.status = 1;
+
     //save
     if(this.buyerModel.buyerName != "" && this.buyerModel.buyerAddress != "" && this.buyerModel.buyerPhone != "")
     {

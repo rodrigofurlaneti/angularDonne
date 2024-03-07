@@ -98,3 +98,13 @@ section {
     overflow: auto;
     border: 1px solid #ccc;
   }
+
+  .button-toggle-group-out{
+    display: block;
+    margin-left: 1vh;
+    margin-right: auto;
+    width: 50%;
+  }
+  .button-toggle-group{
+    border: none;
+  }
