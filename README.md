@@ -40,7 +40,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 `ng build --base-href /angularDonne/`    
 
-## Running unit tests
+## Running unit tests - Karma
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
@@ -50,6 +50,9 @@ Run `ng test --code-coverage` to execute it and create source code coverage repo
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Running unit tests - jest
+Run `yarn jest --passWithNoTests` to execute it and create source code coverage jest reports.
 
 ## Further help
 
