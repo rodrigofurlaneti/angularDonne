@@ -51,6 +51,9 @@ Run `ng test --code-coverage` to execute it and create source code coverage repo
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Uninstall Karma/Jasmine
+Run `npm uninstall karma karma-chrome-launcher karma-coverage karma-jasmine karma-jasmine-html-reporter @types/jasmine jasmine-core` to execute.
+
 ## Running unit tests - jest
 Run `yarn jest --passWithNoTests` to execute it and create source code coverage jest reports.
 
