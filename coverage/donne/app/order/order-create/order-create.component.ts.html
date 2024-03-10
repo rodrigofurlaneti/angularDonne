@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.31% </span>
+                <span class="strong">75.58% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>65/83</span>
+                <span class='fraction'>65/86</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.31% </span>
+                <span class="strong">75.58% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>65/83</span>
+                <span class='fraction'>65/86</span>
             </div>
         
             
@@ -254,7 +254,12 @@
 <a name='L189'></a><a href='#L189'>189</a>
 <a name='L190'></a><a href='#L190'>190</a>
 <a name='L191'></a><a href='#L191'>191</a>
-<a name='L192'></a><a href='#L192'>192</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -377,6 +382,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -389,6 +396,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -567,6 +577,8 @@ export class OrderCreateComponent implements OnInit {
 <span class="fstat-no" title="function not covered" >  changeProduct(</span>event: any) {
 <span class="cstat-no" title="statement not covered" >    this.productSelectedID = event.productId;</span>
 <span class="cstat-no" title="statement not covered" >    this.productSelected = event.productName;</span>
+<span class="cstat-no" title="statement not covered" >    console.log(this.productSelectedID);</span>
+<span class="cstat-no" title="statement not covered" >    console.log(this.productSelected);</span>
 <span class="cstat-no" title="statement not covered" >    this.productUpdateService.getById(this.productSelectedID)</span>
         .subscribe(<span class="fstat-no" title="function not covered" >productResponse </span>=&gt; { 
 <span class="cstat-no" title="statement not covered" >          this.orderModel.salePrice = productResponse.salePrice;</span>
@@ -574,12 +586,15 @@ export class OrderCreateComponent implements OnInit {
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  save(</span>) {
+<span class="cstat-no" title="statement not covered" >    console.log(this.orderModel);</span>
 <span class="cstat-no" title="statement not covered" >    this.authenticatedUser();</span>
 <span class="cstat-no" title="statement not covered" >    this.orderModel.productName = this.productSelected;</span>
 <span class="cstat-no" title="statement not covered" >    this.orderModel.productId = this.productSelectedID;</span>
 <span class="cstat-no" title="statement not covered" >    this.orderModel.buyerName = this.commandSelected;</span>
 <span class="cstat-no" title="statement not covered" >    this.orderModel.commandId = this.commandSelectedID;</span>
-<span class="cstat-no" title="statement not covered" >    this.orderCreateService.save(this.orderModel).subscribe(<span class="fstat-no" title="function not covered" >order </span>=&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    this.orderCreateService</span>
+      .save(this.orderModel)
+      .subscribe(<span class="fstat-no" title="function not covered" >order </span>=&gt; {
 <span class="cstat-no" title="statement not covered" >      this.successMessage();</span>
 <span class="cstat-no" title="statement not covered" >      this.orderList();</span>
         }, <span class="fstat-no" title="function not covered" >err </span>=&gt; {
@@ -643,7 +658,7 @@ export class OrderCreateComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-07T12:47:49.460Z
+                at 2024-03-10T15:09:01.159Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
