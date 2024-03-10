@@ -103,7 +103,7 @@
   <div class="wrapper">
     <div>
       <div class="lbl-voltar">Voltar</div>
-      <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+      <button mat-raised-button mat-mini-fab matTooltip="Voltar" onblur="changeLoading();" (click)="reply()" color="primary" aria-label="Voltar">
         <mat-icon>reply_all</mat-icon>
       </button>
     </div>

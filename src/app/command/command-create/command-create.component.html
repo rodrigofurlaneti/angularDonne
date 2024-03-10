@@ -17,13 +17,13 @@
     <div class="button-toggle-group-out">
       <mat-button-toggle-group class="button-toggle-group" name="menu-button" aria-label="Font Style">
         <mat-button-toggle style="border: none;" value="Voltar">Voltar
-          <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+          <button mat-raised-button mat-mini-fab matTooltip="Voltar" onblur="changeLoading();" (click)="reply()" color="primary" aria-label="Voltar">
             <mat-icon>reply_all</mat-icon>
           </button>
         </mat-button-toggle>
         <mat-button-toggle style="border: none;" value="Salvar">Salvar
           <button mat-raised-button mat-mini-fab matTooltip="Salvar" color="primary" aria-label="Example icon button with a menu icon" 
-          (click)="saveBuyerToCommand()">
+          (click)="saveBuyerToCommand()" onblur="changeLoading();"> 
           <mat-icon>save_alt</mat-icon>
         </button>
         </mat-button-toggle>

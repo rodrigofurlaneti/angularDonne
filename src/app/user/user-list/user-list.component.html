@@ -16,7 +16,7 @@
   </table>
   <div class="btn-center">
     <div class="lbl-voltar">Voltar</div>
-      <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Example icon button with a menu icon">
+      <button mat-raised-button mat-mini-fab matTooltip="Voltar" onblur="changeLoading();" (click)="reply()" color="primary" aria-label="Example icon button with a menu icon">
         <mat-icon>reply_all</mat-icon>
       </button>
     </div>

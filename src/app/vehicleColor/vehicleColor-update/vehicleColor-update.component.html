@@ -7,7 +7,7 @@
           <th mat-header-cell *matHeaderCellDef style="text-align: center;">
             Número da cor do veículo
           </th>
-          <td mat-cell (click)="getById(element.modelId)" *matCellDef="let element">
+          <td mat-cell onblur="changeLoading();" (click)="getById(element.modelId)" *matCellDef="let element">
             <div class="headerUpdateModel">{{element.vehicleColorId}}</div>
           </td>
         </ng-container>
@@ -15,7 +15,7 @@
           <th mat-header-cell *matHeaderCellDef style="text-align: center;">
             Nome da cor do veículo
           </th>
-          <td mat-cell (click)="getById(element.VehicleColorId)" *matCellDef="let element">
+          <td mat-cell onblur="changeLoading();" (click)="getById(element.VehicleColorId)" *matCellDef="let element">
             <div class="headerUpdateModel">{{element.vehicleColorName}}</div>
           </td>
         </ng-container>
@@ -42,7 +42,7 @@
         <div class="wrapper">
           <div>
             <div>Voltar</div>
-            <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+            <button mat-raised-button mat-mini-fab matTooltip="Voltar" onblur="changeLoading();" (click)="reply()" color="primary" aria-label="Voltar">
               <mat-icon>reply_all</mat-icon>
             </button>
           </div>
@@ -50,7 +50,7 @@
         </div>
           <div>
             <div>Atualizar</div>
-            <button mat-raised-button mat-mini-fab matTooltip="Atualizar a cor do veículo" (click)="update()" color="primary" aria-label="Atualizar">
+            <button mat-raised-button mat-mini-fab matTooltip="Atualizar a cor do veículo" onblur="changeLoading();" (click)="update()" color="primary" aria-label="Atualizar">
               <mat-icon>sync</mat-icon>
             </button>
           </div>

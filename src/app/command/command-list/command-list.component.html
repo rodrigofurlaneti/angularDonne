@@ -16,6 +16,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row
         (click)="clickedRows.add(row)"
+        onblur="changeLoading();"
         [class.demo-row-is-clicked]="clickedRows.has(row)"
         *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
@@ -25,6 +26,7 @@
                   mat-mini-fab
                   matTooltip="Voltar"
                   (click)="reply()" 
+                  onblur="changeLoading();"
                    color="primary" 
                   aria-label="Example icon button with a menu icon">
               <mat-icon>reply_all</mat-icon>

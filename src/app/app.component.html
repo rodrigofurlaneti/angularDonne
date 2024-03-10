@@ -1,7 +1,6 @@
 <input aria-hidden="true" type="hidden" name="userIdLogin" id="userIdLogin" [(ngModel)]="user.userId" >
 <input aria-hidden="true" type="hidden" name="userNameLogin" id="userNameLogin" [(ngModel)]="user.userName">
 <input aria-hidden="true" type="hidden" name="ipAddress" id="ipAddress" [(ngModel)]="ipAddress">
-
 <ng-container *ngIf="!access" class="ng-container" >
   <div class="mat-form">
     <div class="acess-wrapper">
@@ -43,6 +42,7 @@
         class="example-button-row"
         matTooltip="Acessar"
         (click)="validar()"
+        onclick="changeLoading();"
         type="button"
       >
         <span>ACESSAR</span>

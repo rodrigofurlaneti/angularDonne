@@ -1,5 +1,8 @@
 .center{
-  padding-top: 40vh;
+  padding-top: 20vh;
+}
+.form-field {
+  width: 100%;
 }
 .button-toggle-group-out{
   display: block;

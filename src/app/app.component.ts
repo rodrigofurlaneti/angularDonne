@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';  
+import { Component, Inject, OnInit } from '@angular/core';  
 import { AppService } from './app.service';
 import { Router } from '@angular/router'; 
 import { UserModel } from 'src/interface/user.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthenticationUserModel } from 'src/interface/authenticationUser.interface';
+import { DOCUMENT } from '@angular/common';
 
   @Component({
     selector: 'app-root',
@@ -28,16 +29,26 @@ import { AuthenticationUserModel } from 'src/interface/authenticationUser.interf
 
     constructor(private appService: AppService,
                 private _snackBar: MatSnackBar,
-                private router: Router) {
+                private router: Router,
+                @Inject(DOCUMENT) private readonly document: Document) {
                   this.user = new UserModel();
                   this.authenticationUser = new AuthenticationUserModel();
                 };
+    
+     private addScript(scriptSrc: string) {
+                  const script = this.document.createElement('script');
+                  script.type = 'text/javascript';
+                  script.src = scriptSrc;
+                  script.async = true;
+                  this.document.head.appendChild(script);
+              }
     
     ipAddress:string = '';
 
     ngOnInit()  
     {  
-      this.getIP();  
+      this.getIP();
+      this.addScript('js/javascript.js');  
     }   
 
     addUserName(event: any)

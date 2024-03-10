@@ -20,7 +20,7 @@ export class ProductUpdateService {
   }
 
   public getById(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.routeAzure+'/'+id);
+    return this.httpClient.get<any>(this.route+'/'+id);
   }
 
   public update(productModel: ProductModel) {

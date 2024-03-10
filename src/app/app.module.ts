@@ -166,6 +166,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -306,12 +307,13 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatIconModule,
     MatTreeModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [  
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, ]
 })
 export class AppModule { }

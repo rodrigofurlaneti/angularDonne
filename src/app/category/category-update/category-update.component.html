@@ -5,12 +5,12 @@
         <caption></caption>
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef class="titleUpdateCategory headerUpdateCategory">Categoria</th>
-          <td mat-cell (click)="getById(element.categoryId)" *matCellDef="let element" class="headerUpdateCategory">
+          <td mat-cell onblur="changeLoading();" (click)="getById(element.categoryId)" *matCellDef="let element" class="headerUpdateCategory">
             {{element.categoryName}}
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
+        <tr mat-row onblur="changeLoading();" (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
             *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
@@ -35,7 +35,7 @@
           <div class="example-button-container">
             <div class="example-label headerUpdateCategory">
               <div class="lbl-voltar">Voltar</div>
-              <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
+              <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" onblur="changeLoading();"
                 color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>reply_all</mat-icon>
               </button>
@@ -51,7 +51,7 @@
           <div class="example-button-container">
             <div class="example-label headerUpdateCategory">
               <div class="lbl-voltar">Atualizar</div>
-              <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria" (click)="update()"
+              <button mat-raised-button mat-mini-fab matTooltip="Atualizar a categoria" (click)="update()" onblur="changeLoading();"
                 color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>sync</mat-icon>
               </button>

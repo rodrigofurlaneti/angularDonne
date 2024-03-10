@@ -7,7 +7,7 @@
           <th mat-header-cell *matHeaderCellDef style="text-align: center;">
             Cliente
           </th>
-          <td mat-cell (click)="getById(element.buyerId)" *matCellDef="let element">
+          <td mat-cell onblur="changeLoading();" (click)="getById(element.buyerId)" *matCellDef="let element">
             <div class="headerUpdateBuyer">{{element.buyerName}}</div>
           </td>
         </ng-container>
@@ -54,7 +54,8 @@
         </div>
           <div>
             <div>Atualizar</div>
-            <button mat-raised-button mat-mini-fab matTooltip="Atualizar cliente" (click)="update()" color="primary" aria-label="Atualizar">
+            <button mat-raised-button mat-mini-fab matTooltip="Atualizar cliente" 
+            (click)="update()" onblur="changeLoading();" color="primary" aria-label="Atualizar">
               <mat-icon>sync</mat-icon>
             </button>
           </div>
@@ -68,7 +69,7 @@
           <div class="example-button-container">
             <div class="example-label titleUpdateBuyer">
               <div class="labelToButton">Atualizar</div>
-              <button mat-raised-button mat-mini-fab matTooltip="Atualizar cliente" (click)="update()"
+              <button mat-raised-button mat-mini-fab matTooltip="Atualizar cliente" (click)="update()" onblur="changeLoading();"
                 color="primary" aria-label="Example icon button with a menu icon">
                 <mat-icon>sync</mat-icon>
               </button>

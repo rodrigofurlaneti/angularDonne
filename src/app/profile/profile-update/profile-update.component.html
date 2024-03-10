@@ -35,7 +35,7 @@
             <div class="example-button-container">
               <div class="example-label headerUpdateCategory">
                 <div class="labelToButton">Voltar</div>
-                <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()"
+                <button mat-raised-button mat-mini-fab matTooltip="Voltar" onblur="changeLoading();"(click)="reply()"
                   color="primary" aria-label="Example icon button with a menu icon">
                   <mat-icon>reply_all</mat-icon>
                 </button>

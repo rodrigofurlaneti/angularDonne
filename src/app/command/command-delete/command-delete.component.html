@@ -3,19 +3,19 @@
     <caption>Comanda</caption>
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>Número da comanda</th>
-        <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element">
+        <td mat-cell onblur="changeLoading();" (click)="delete(element.commandId)" *matCellDef="let element">
           {{element.commandId}}
         </td>
       </ng-container>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Nome do cliente</th>
-        <td mat-cell (click)="delete(element.commandId)" *matCellDef="let element">
+        <td mat-cell onblur="changeLoading();" (click)="delete(element.commandId)" *matCellDef="let element">
           {{element.buyerName}}
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row onblur="changeLoading();" (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     
     <div class="btn-center">
@@ -24,6 +24,7 @@
             mat-mini-fab
             matTooltip="Voltar"
             (click)="reply()" 
+            onblur="changeLoading();"
              color="primary" 
             aria-label="Example icon button with a menu icon">
         <mat-icon>reply_all</mat-icon>

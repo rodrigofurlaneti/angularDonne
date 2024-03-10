@@ -1,5 +1,6 @@
 <img class="logo" src="assets/logo_donne.png" alt="" />
-<mat-tab-group [backgroundColor]="'primary'" [color]="'warn'">
+<div style="position: relative">
+<mat-tab-group [backgroundColor]="'primary'" [color]="'warn'" style="position: absolute;">
   <mat-tab label="Bar"> 
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
@@ -9,11 +10,11 @@
             {{node.icon}}
           </mat-icon>
         </span>
-        <a style="color: white;" routerLink={{node.path}} routerLinkActive="mat-accent">
+        <a style="color: white;" routerLink={{node.path}} onclick="changeLoading();" routerLinkActive="mat-accent">
         {{node.item}}</a>
       </mat-tree-node>
       <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-        <button mat-icon-button
+        <button mat-icon-button 
                 [attr.aria-label]="'Toggle ' + node.item" matTreeNodeToggle>
           <mat-icon class="mat-icon-rtl-mirror">
             {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
@@ -79,4 +80,4 @@
     </mat-tree>
   </mat-tab>
 </mat-tab-group>
-
+</div>

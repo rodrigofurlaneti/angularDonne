@@ -120,6 +120,8 @@ export class OrderCreateComponent implements OnInit {
   changeProduct(event: any) {
     this.productSelectedID = event.productId;
     this.productSelected = event.productName;
+    console.log(this.productSelectedID);
+    console.log(this.productSelected);
     this.productUpdateService.getById(this.productSelectedID)
         .subscribe(productResponse => { 
           this.orderModel.salePrice = productResponse.salePrice;
@@ -127,12 +129,15 @@ export class OrderCreateComponent implements OnInit {
   }
 
   save() {
+    console.log(this.orderModel);
     this.authenticatedUser();
     this.orderModel.productName = this.productSelected;
     this.orderModel.productId = this.productSelectedID;
     this.orderModel.buyerName = this.commandSelected;
     this.orderModel.commandId = this.commandSelectedID;
-    this.orderCreateService.save(this.orderModel).subscribe(order => {
+    this.orderCreateService
+      .save(this.orderModel)
+      .subscribe(order => {
       this.successMessage();
       this.orderList();
         }, err => {

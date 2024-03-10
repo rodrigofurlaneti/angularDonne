@@ -8,12 +8,12 @@
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row  onblur="changeLoading();" (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <div class="button-toggle-group-out">
     <mat-button-toggle-group class="button-toggle-group" name="menu-button" aria-label="Font Style">
       <mat-button-toggle style="border: none;" value="Voltar">Voltar
-        <button mat-raised-button mat-mini-fab matTooltip="Voltar" (click)="reply()" color="primary" aria-label="Voltar">
+        <button mat-raised-button mat-mini-fab matTooltip="Voltar" onblur="changeLoading();" (click)="reply()" color="primary" aria-label="Voltar">
           <mat-icon>reply_all</mat-icon>
         </button>
       </mat-button-toggle>
