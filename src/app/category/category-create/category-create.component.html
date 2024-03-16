@@ -2,12 +2,17 @@
   <mat-card>
     <mat-card-content style="text-align: center;">Adicionar uma nova categoria</mat-card-content>
     <form class="example-form">
-      <mat-form-field appearance="fill" class="form-field">
+      <mat-form-field appearance="fill" class="form-field" outlineRadius="50">
         <mat-label>Nome da nova categoria</mat-label>
         <input matInput placeholder="Nome da categoria" id="categoryName" name="categoryName" 
-          [(ngModel)]="categoryModel.categoryName" matInput />
+          [(ngModel)]="categoryModel.categoryName" 
+          onblur="ValidarNomeCategoria();" 
+          onkeypress="return LettersOnly(event);" 
+          onkeydown="return OnlyFirstCapitalLetter(event);"  matInput />
+          <mat-icon id="validationIcon" matSuffix></mat-icon>
       </mat-form-field>
     </form>
+    <span style="margin-top: -2vh;" id="validationText"></span>
     <div class="button-toggle-group-out">
       <mat-button-toggle-group class="button-toggle-group" name="menu-button" aria-label="Font Style">
         <mat-button-toggle style="border: none;" value="Voltar">Voltar

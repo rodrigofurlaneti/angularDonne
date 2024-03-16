@@ -1,12 +1,30 @@
 {
   "name": "donne",
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setup.jest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/tsconfig.spec.json",
+        "stringifyContentPathRegex": " \\ .html$"
+      }
+    }
+  },
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.js",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "coloredRegions": {
     "namedColors": {
@@ -33,13 +51,13 @@
     "@fortawesome/fontawesome-free": "^6.4.0",
     "bootstrap": "^5.3.0-alpha3",
     "iconv-lite": "^0.6.3",
-    "jasmine": "^5.1.0",
     "jquery": "^3.7.1",
     "luxon": "^3.4.4",
     "ng2-currency-mask": "^13.0.3",
     "ngx-mask": "^13.1.13",
     "rxjs": "~7.5.0",
     "text-spinners": "^1.0.5",
+    "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -48,14 +66,31 @@
     "@angular/cli": "~15.2.6",
     "@angular/compiler-cli": "^15.2.7",
     "@angular/platform-server": "^15.2.7",
-    "@types/jasmine": "~4.0.0",
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-typescript": "^7.23.3",
+    "@types/jest": "^29.5.12",
     "@types/luxon": "^3.4.2",
-    "jasmine-core": "~4.2.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^14.0.3",
     "typescript": "~4.9.5"
-  }
+  },
+  "description": "[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)\r [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=bugs)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)\r [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)\r [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=coverage)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)\r [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)\r [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)\r [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)\r [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)\r [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)\r [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)\r [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=rodrigofurlaneti_angularDonne&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=rodrigofurlaneti_angularDonne)",
+  "main": "babel.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigofurlaneti/angularDonne.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodrigofurlaneti/angularDonne/issues"
+  },
+  "homepage": "https://github.com/rodrigofurlaneti/angularDonne#readme"
 }
