@@ -3,16 +3,41 @@
     <mat-card-content style="text-align: center;">Adicionar um novo cliente</mat-card-content>
     <form class="example-form">
       <mat-form-field appearance="fill" class="form-field">
-        <mat-label>Nome do novo cliente</mat-label>
-          <input matInput placeholder="Nome do cliente" id="buyerName" name="buyerName" [(ngModel)]="buyerModel.buyerName" matInput />
+        <mat-label>Nome do cliente</mat-label>
+        <span class="tooltip" data-tooltip="Nome do cliente">
+          <input matInput placeholder="Nome do cliente" id="buyerName" name="buyerName" 
+          [(ngModel)]="buyerModel.buyerName" 
+          onblur="ValidateBuyerName();" 
+          onkeypress="return LettersOnlyBuyerName(event);" 
+          onkeydown="return OnlyFirstCapitalLetterBuyerName(event);"  matInput />
+        </span>
+        <mat-icon id="validationIconBuyerName" matSuffix></mat-icon>
+        <span id="validationTextBuyerName"></span>
       </mat-form-field>
       <mat-form-field appearance="fill" class="form-field">
         <mat-label>Telefone</mat-label>
-        <input matInput placeholder="Telefone do cliente" id="buyerPhone" name="buyerPhone" [(ngModel)]="buyerModel.buyerPhone" matInput mask='00 00000-0000' placeholder="DDD + numero de telefone"/>
+        <span class="tooltip" data-tooltip="Telefone">
+        <input matInput placeholder="Telefone do cliente" id="buyerPhone" 
+        name="buyerPhone" [(ngModel)]="buyerModel.buyerPhone" 
+        onblur="ValidateBuyerPhone();" 
+        onkeypress="return NumbersOnlyBuyerPhone(event);" 
+        matInput mask='00 00000-0000' placeholder="DDD + numero de telefone"/>
+        </span>
+        <mat-icon id="validationIconBuyerPhone" matSuffix></mat-icon>
+        <span id="validationTextBuyerPhone"></span>
       </mat-form-field>
       <mat-form-field appearance="fill" class="form-field">
         <mat-label>Endereço</mat-label>
-          <input matInput placeholder="Endereço do cliente" id="buyerAddress" name="buyerAddress" [(ngModel)]="buyerModel.buyerAddress" matInput />
+        <span class="tooltip" data-tooltip="Endereço">
+          <input matInput placeholder="Endereço do cliente" id="buyerAddress" 
+          name="buyerAddress" 
+          onblur="ValidateBuyerAddress();" 
+          onkeypress="return LettersOnlyBuyerAddress(event);" 
+          onkeydown="return OnlyFirstCapitalLetterBuyerAddress(event);" 
+          [(ngModel)]="buyerModel.buyerAddress" matInput />
+        </span>
+        <mat-icon id="validationIconBuyerAddress" matSuffix></mat-icon>
+        <span id="validationTextBuyerAddress"></span>
       </mat-form-field>
     </form>
     <div class="button-toggle-group-out">
